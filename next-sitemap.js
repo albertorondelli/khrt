@@ -1,9 +1,18 @@
-const excludedPaths = ["/checkout", "/account/*"]
+const excludedPaths = [
+  "/unicredit-payment",
+  "/checkout",
+  "/account*",
+  "/server-sitemap-index.xml",
+]
+
+/** @type {import('next-sitemap').IConfig} */
+
+const siteUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:8000"
 
 module.exports = {
-  siteUrl: process.env.NEXT_PUBLIC_VERCEL_URL,
+  siteUrl: siteUrl,
   generateRobotsTxt: true,
-  exclude: excludedPaths + ["/[sitemap]"],
+  exclude: excludedPaths  + ["/[sitemap]"],
   robotsTxtOptions: {
     policies: [
       {
@@ -15,5 +24,6 @@ module.exports = {
         disallow: excludedPaths,
       },
     ],
+    additionalSitemaps: [`${siteUrl}/server-sitemap.xml`],
   },
 }
