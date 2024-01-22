@@ -95,8 +95,10 @@ export async function middleware(request: NextRequest) {
 
   // If no country code is set, we redirect to the relevant region.
   if (!urlHasCountryCode && countryCode) {
-    const redirectPath =
+    let redirectPath =
       request.nextUrl.pathname === "/" ? "" : request.nextUrl.pathname
+    // Adds search params if any
+      redirectPath += request.nextUrl.searchParams ? "?" + request.nextUrl.searchParams : ""
 
     response = NextResponse.redirect(
       `${request.nextUrl.origin}/${countryCode}${redirectPath}`,
