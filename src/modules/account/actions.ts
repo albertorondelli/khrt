@@ -8,6 +8,8 @@ import {
   getToken,
   updateCustomer,
   updateShippingAddress,
+  resetPassword,
+  customerPasswordToken,
 } from "@lib/data"
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
@@ -158,6 +160,61 @@ export async function updateCustomerPassword(
   } catch (error: any) {
     return {
       customer: currentState.customer,
+      success: false,
+      error: error.toString(),
+    }
+  }
+}
+
+export async function generateCustomerPasswordToken(
+  _currentState: unknown,
+  formData: FormData
+): Promise<{ success: boolean; error: null | string }> {
+  const email = formData.get("email") as string;
+
+  try {
+    await customerPasswordToken({ email });
+    return { success: true, error: null };
+  } catch (error: any) {
+    return { success: false, error: error.toString() };
+  }
+}
+
+
+export async function resetCustomerPassword(
+  currentState: {
+    token: string
+    email: string
+  },
+  formData: FormData
+) {
+  const email = currentState.email
+  const token = currentState.token
+
+  const password = formData.get("password") as string
+  const confirm_password = formData.get("confirm_password") as string
+
+  if (password !== confirm_password) {
+    return {
+      token,
+      email,
+      success: false,
+      error: "Passwords do not match",
+    }
+  }
+
+  try {
+    await resetPassword({ email, password, token })
+    return {
+      token,
+      email,
+      success: true,
+      error: null,
+    }
+  } catch (error: any) {
+    return {
+      token,
+      email,
       success: false,
       error: error.toString(),
     }
