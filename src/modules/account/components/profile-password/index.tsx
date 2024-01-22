@@ -42,7 +42,7 @@ const ProfileName: React.FC<MyInformationProps> = ({ customer }) => {
         errorMessage={state.error}
         clearState={clearState}
       >
-        <div className="grid grid-cols-2 gap-4">
+        <div className="flex flex-col w-full gap-y-2">
           <Input
             label="Old password"
             name="old_password"

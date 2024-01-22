@@ -8,8 +8,10 @@ import {
   StorePostCartsCartReq,
   StorePostCustomersCustomerAddressesAddressReq,
   StorePostCustomersCustomerAddressesReq,
+  StorePostCustomersCustomerPasswordTokenReq,
   StorePostCustomersCustomerReq,
   StorePostCustomersReq,
+  StorePostCustomersResetPasswordReq
 } from "@medusajs/medusa"
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 
@@ -295,6 +297,25 @@ export async function updateCustomer(data: StorePostCustomersCustomerReq) {
 
   return medusaClient.customers
     .update(data, headers)
+    .then(({ customer }) => customer)
+    .catch((err) => medusaError(err))
+}
+
+export async function resetPassword(data: StorePostCustomersResetPasswordReq) {
+  const headers = getMedusaHeaders(["customer"])
+
+  return medusaClient.customers
+    .resetPassword(data, headers)
+    .then(({ customer }) => customer)
+    .catch((err) => medusaError(err))
+}
+
+
+export async function customerPasswordToken(data: StorePostCustomersCustomerPasswordTokenReq) {
+  const headers = getMedusaHeaders(["customer"])
+
+  return medusaClient.customers
+    .generatePasswordToken(data, headers)
     .then(({ customer }) => customer)
     .catch((err) => medusaError(err))
 }

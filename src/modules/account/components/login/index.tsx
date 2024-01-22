@@ -38,6 +38,14 @@ const Login = ({ setCurrentView }: Props) => {
           />
         </div>
         <ErrorMessage error={message} />
+        <span>
+          <button
+            onClick={() => setCurrentView(LOGIN_VIEW.PASSWORD_RESET_REQUEST)}
+            className="text-small-regular text-gray-700 italic"
+          >
+            Forgot password?
+          </button>
+        </span>
         <SubmitButton className="w-full mt-6">Sign in</SubmitButton>
       </form>
       <span className="text-center text-ui-fg-base text-small-regular mt-6">
