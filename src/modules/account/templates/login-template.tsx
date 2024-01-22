@@ -35,7 +35,7 @@ const LoginTemplate = () => {
   }, [searchParams])
 
   return (
-    <div className="w-full flex justify-start px-8 py-8">
+    <div className="w-full flex justify-start p-8">
       {currentView == "sign-in" && <Login setCurrentView={setCurrentView} />}
       {currentView == "register" && (
         <Register setCurrentView={setCurrentView} />

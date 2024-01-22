@@ -2,6 +2,7 @@ import { Button, Heading, Text } from "@medusajs/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 const SignInPrompt = () => {
+
   return (
     <div className="bg-white flex items-center justify-between">
       <div>

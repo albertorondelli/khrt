@@ -1,9 +1,7 @@
-import React from "react"
-import { LOGIN_VIEW } from "@modules/account/templates/login-template"
-import { CheckCircleMiniSolid } from "@medusajs/icons"
-import { Badge, Button } from "@medusajs/ui"
-import Input from "@modules/common/components/input"
 import { useEffect, useState } from "react"
+import { LOGIN_VIEW } from "@modules/account/templates/login-template"
+import { CheckMini } from "@medusajs/icons"
+import Input from "@modules/common/components/input"
 import { useFormState } from "react-dom"
 import { generateCustomerPasswordToken } from "@modules/account/actions"
 import ErrorMessage from "@modules/checkout/components/error-message"
@@ -16,7 +14,7 @@ type Props = {
 const PasswordReset = ({ setCurrentView }: Props) => {
   const [state, formAction] = useFormState(generateCustomerPasswordToken, null)
 
-  const [successState, setSuccessState] = React.useState(false)
+  const [successState, setSuccessState] = useState(false)
 
   const clearState = () => {
     setSuccessState(false)
@@ -32,10 +30,9 @@ const PasswordReset = ({ setCurrentView }: Props) => {
     <div className="max-w-sm flex flex-col items-center">
       {successState ? (
         <>
-          <h1 className="flex text-large-semi text-green-500 uppercase mb-6">
-            <Badge className="p-2" color="green">
-              Email sent successfully
-            </Badge>
+          <h1 className="flex text-large-semi uppercase mb-6">
+            <CheckMini className="me-2"/>
+            Email sent successfully
           </h1>
 
           <p className="text-center text-base-regular text-ui-fg-base mb-8">
@@ -75,7 +72,7 @@ const PasswordReset = ({ setCurrentView }: Props) => {
               />
             </div>
             <ErrorMessage error={state?.error} />
-            <SubmitButton className="w-full mt-6"> Send email</SubmitButton>
+            <SubmitButton className="w-full mt-6">Send email</SubmitButton>
           </form>
           <span className="text-center text-gray-700 text-small-regular mt-6">
             Already a member?{" "}
