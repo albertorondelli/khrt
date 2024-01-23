@@ -21,18 +21,18 @@ const Login = ({ setCurrentView }: Props) => {
   const router = useRouter()
 
   const [message, formAction] = useFormState(logCustomerIn, null)
-const [customMessage, setCustomMessage] = useState("");
+  const [googleAuthMessage, setGoogleAuthMessage] = useState("")
 
-useEffect(() => {
-    let errorMessage: string = "";
-    
-    const searchParams = new URLSearchParams(window.location.search);
-    const messageFromUrl = searchParams.get("message");
-  
+  useEffect(() => {
+    let errorMessage: string = ""
+
+    const searchParams = new URLSearchParams(window.location.search)
+    const messageFromUrl = searchParams.get("message")
+
     // Check for null and provide a default value
-    errorMessage = messageFromUrl !== null ? messageFromUrl : "";
-    setCustomMessage(errorMessage)
-  }, []);
+    errorMessage = messageFromUrl !== null ? messageFromUrl : ""
+    setGoogleAuthMessage(errorMessage)
+  }, [])
 
   return (
     <div className="max-w-sm w-full flex flex-col items-center">
@@ -58,8 +58,8 @@ useEffect(() => {
             required
           />
         </div>
-        <ErrorMessage error={message || customMessage} />
-
+        <ErrorMessage error={message} />
+        {googleAuthMessage && <ErrorMessage error={`Google: ${googleAuthMessage}`} />}
         <span>
           <button
             onClick={() => setCurrentView(LOGIN_VIEW.PASSWORD_RESET_REQUEST)}
