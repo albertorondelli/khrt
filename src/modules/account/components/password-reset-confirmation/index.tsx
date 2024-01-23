@@ -10,11 +10,6 @@ import { SubmitButton } from "@modules/checkout/components/submit-button"
 import { CheckMini } from "@medusajs/icons"
 import { Button } from "@medusajs/ui"
 
-interface FormValues {
-  email: string
-  password: string
-}
-
 type Props = {
   setCurrentView: (view: LOGIN_VIEW) => void
 }
@@ -47,7 +42,7 @@ const PasswordResetConfirmation = ({ setCurrentView }: Props) => {
     <div className="max-w-sm w-full flex flex-col items-center">
       {successState ? (
         <>
-          <h1 className="flex text-large-semi uppercase mb-6">
+          <h1 className="flex text-large-semi text-center uppercase mb-6 me-2">
             <CheckMini className="me-2" />
             Password changed successfully
           </h1>

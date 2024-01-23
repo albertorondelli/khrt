@@ -33,11 +33,11 @@ export async function signUp(_currentState: unknown, formData: FormData) {
 
   try {
     await createCustomer(customer)
-    await getToken({ email: customer.email, password: customer.password }).then(
-      () => {
-        revalidateTag("customer")
-      }
-    )
+    // await getToken({ email: customer.email, password: customer.password }).then(
+    //   () => {
+    //     revalidateTag("customer")
+    //   }
+    // )
   } catch (error: any) {
     return error.toString()
   }
@@ -170,16 +170,15 @@ export async function generateCustomerPasswordToken(
   _currentState: unknown,
   formData: FormData
 ): Promise<{ success: boolean; error: null | string }> {
-  const email = formData.get("email") as string;
+  const email = formData.get("email") as string
 
   try {
-    await customerPasswordToken({ email });
-    return { success: true, error: null };
+    await customerPasswordToken({ email })
+    return { success: true, error: null }
   } catch (error: any) {
-    return { success: false, error: error.toString() };
+    return { success: false, error: error.toString() }
   }
 }
-
 
 export async function resetCustomerPassword(
   currentState: {
