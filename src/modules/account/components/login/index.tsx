@@ -58,8 +58,7 @@ const Login = ({ setCurrentView }: Props) => {
             required
           />
         </div>
-        <ErrorMessage error={message} />
-        {googleAuthMessage && <ErrorMessage error={`Google: ${googleAuthMessage}`} />}
+        <ErrorMessage error={message || googleAuthMessage} />
         <span>
           <button
             onClick={() => setCurrentView(LOGIN_VIEW.PASSWORD_RESET_REQUEST)}
