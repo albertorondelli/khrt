@@ -38,8 +38,9 @@ export async function signUp(_currentState: unknown, formData: FormData) {
     //     revalidateTag("customer")
     //   }
     // )
+    return { success: true, error: null }
   } catch (error: any) {
-    return error.toString()
+    return { success: false, error: error.toString() }
   }
 }
 
