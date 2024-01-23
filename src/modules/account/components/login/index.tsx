@@ -7,6 +7,7 @@ import { logCustomerIn } from "@modules/account/actions"
 import ErrorMessage from "@modules/checkout/components/error-message"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
 import { Button } from "@medusajs/ui"
+import { useEffect, useState } from "react"
 
 const medusa_url =
   process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000"
@@ -20,6 +21,18 @@ const Login = ({ setCurrentView }: Props) => {
   const router = useRouter()
 
   const [message, formAction] = useFormState(logCustomerIn, null)
+const [customMessage, setCustomMessage] = useState("");
+
+useEffect(() => {
+    let errorMessage: string = "";
+    
+    const searchParams = new URLSearchParams(window.location.search);
+    const messageFromUrl = searchParams.get("message");
+  
+    // Check for null and provide a default value
+    errorMessage = messageFromUrl !== null ? messageFromUrl : "";
+    setCustomMessage(errorMessage)
+  }, []);
 
   return (
     <div className="max-w-sm w-full flex flex-col items-center">
@@ -45,7 +58,8 @@ const Login = ({ setCurrentView }: Props) => {
             required
           />
         </div>
-        <ErrorMessage error={message} />
+        <ErrorMessage error={message || customMessage} />
+
         <span>
           <button
             onClick={() => setCurrentView(LOGIN_VIEW.PASSWORD_RESET_REQUEST)}
