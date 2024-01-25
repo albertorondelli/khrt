@@ -1,39 +1,26 @@
-import { Suspense } from "react"
+"use client"
 
-import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
-import RefinementList from "@modules/store/components/refinement-list"
-import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
+import InfiniteHits from "@modules/products/components/infinite-hits"
+import { SEARCH_INDEX_NAME, searchClient } from "@lib/search-client"
+import { InstantSearch } from "react-instantsearch"
+import MeilisearchRefinementList from "../components/meilisearch-refinement-list"
 
-import PaginatedProducts from "./paginated-products"
-
-const StoreTemplate = ({
-  sortBy,
-  page,
-  countryCode,
-}: {
-  sortBy?: SortOptions
-  page?: string
-  countryCode: string
-}) => {
-  const pageNumber = page ? parseInt(page) : 1
-
+export default function Store() {
   return (
-    <div className="flex flex-col small:flex-row small:items-start py-6 content-container">
-      <RefinementList sortBy={sortBy || "created_at"} />
-      <div className="w-full">
-        <div className="mb-8 text-2xl-semi">
-          <h1>All products</h1>
+    <div>
+      <InstantSearch indexName={SEARCH_INDEX_NAME} searchClient={searchClient}>
+        <div className="flex flex-col small:flex-row small:items-start py-6">
+          <div className="px-2 w-60">
+            {/* <MeilisearchRefinementList /> */}
+          </div>
+          <div className="flex-1 w-full">
+            <div className="content-container w-full mb-4 px-3 text-2xl-semi">
+              <h1>Store</h1>
+            </div>
+            <InfiniteHits />
+          </div>
         </div>
-        <Suspense fallback={<SkeletonProductGrid />}>
-          <PaginatedProducts
-            sortBy={sortBy || "created_at"}
-            page={pageNumber}
-            countryCode={countryCode}
-          />
-        </Suspense>
-      </div>
+      </InstantSearch>
     </div>
   )
 }
-
-export default StoreTemplate

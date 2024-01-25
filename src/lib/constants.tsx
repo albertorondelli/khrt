@@ -55,3 +55,5 @@ export const noDivisionCurrencies = [
   "xdr",
   "xau",
 ]
+
+export const IS_BROWSER = typeof window !== "undefined"

@@ -1,31 +1,31 @@
-import { Metadata } from "next"
+"use server"
 
-import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
-import StoreTemplate from "@modules/store/templates"
+import { Metadata } from "next"
+import Store from "@modules/store/templates"
+import { getServerState } from "react-instantsearch"
+import { renderToString } from 'react-dom/server';
 
 export const metadata: Metadata = {
   title: "Store",
   description: "Explore all of our products.",
 }
 
-type Params = {
-  searchParams: {
-    sortBy?: SortOptions
-    page?: string
-  }
-  params: {
-    countryCode: string
-  }
+export default async function StorePage() {
+
+  return <Store />
 }
 
-export default async function StorePage({ searchParams, params }: Params) {
-  const { sortBy, page } = searchParams
+export async function getServerSideProps() {
+  // const protocol = req.headers.referer?.split('://')[0] || 'https';
+  // const serverUrl = `${protocol}://${req.headers.host}${req.url}`;
+  const serverState = await getServerState(
+    <Store />,
+    { renderToString }
+  );
 
-  return (
-    <StoreTemplate
-      sortBy={sortBy}
-      page={page}
-      countryCode={params.countryCode}
-    />
-  )
+  return {
+    props: {
+      serverState,
+    },
+  };
 }
