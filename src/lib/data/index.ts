@@ -493,7 +493,8 @@ export async function getProductsListWithSort({
 }: {
   page?: number
   queryParams?: StoreGetProductsParams
-  sortBy?: SortOptions
+    sortBy?: SortOptions
+  q?:string
   countryCode: string
 }): Promise<{
   response: { products: ProductPreviewType[]; count: number }
@@ -514,6 +515,7 @@ export async function getProductsListWithSort({
   })
 
   const sortedProducts = sortProducts(products, sortBy)
+  // const filteredProducts = filterProducts(sortedProducts, sortBy)
 
   const pageParam = (page - 1) * limit
 
