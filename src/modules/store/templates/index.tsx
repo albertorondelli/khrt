@@ -5,6 +5,7 @@ import { SortOptions } from "@modules/store/components/refinement-list/sort-prod
 
 import PaginatedProducts from "./paginated-products"
 import { getCategoriesList } from "@lib/data"
+import { Button } from "@medusajs/ui"
 
 const fetchCategories = async () => {
   const { product_categories } = await getCategoriesList()
@@ -24,21 +25,12 @@ const StoreTemplate = async ({
 }) => {
   const pageNumber = page ? parseInt(page) : 1
 
-  const productCategories = await fetchCategories().then(
-    (categories) => categories
-  )
-
   return (
     <div className="flex flex-col small:flex-row small:items-start py-6 content-container">
-      <div>
-        <RefinementList
-          sortBy={sortBy || "created_at"}
-          productCategories={productCategories}
-        />
-      </div>
       <div className="w-full">
-        <div className="mb-8 text-2xl-semi">
+        <div className="flex justify-between mb-8 text-2xl-semi">
           <h1>All products</h1>
+          <RefinementList sortBy={sortBy || "created_at"} />
         </div>
         <Suspense fallback={<SkeletonProductGrid />}>
           <PaginatedProducts

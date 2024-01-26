@@ -1,18 +1,26 @@
 import { Dialog, Transition } from "@headlessui/react"
 import { Fragment } from "react"
 import { Button } from "@medusajs/ui"
-import useToggleState from "@lib/hooks/use-toggle-state"
+import { StateType } from "@lib/hooks/use-toggle-state"
 
 type TransitionContainerProps = {
+  state: boolean
+  open: () => void
+  close: () => void
   children: React.ReactNode
 }
 
-const TransitionContainer = ({ children }: TransitionContainerProps) => {
-  const { state, open, close } = useToggleState()
-
+const TransitionContainer = ({
+  children,
+  state,
+  open,
+  close,
+}: TransitionContainerProps) => {
   return (
     <div>
-      <Button onClick={open} variant="secondary" className="w-full">OPEN MODAL</Button>
+      <Button onClick={open} variant="secondary" className="w-full">
+        OPEN MODAL
+      </Button>
       <Transition show={state} as={Fragment}>
         <Dialog
           as="div"

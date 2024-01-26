@@ -5,40 +5,22 @@ import { useCallback, useState } from "react"
 
 import { SortOptions } from "./sort-products"
 import TransitionContainer from "@modules/layout/components/transition-container"
-import { ProductCategoryWithChildren } from "types/global"
 import Menu from "./menu"
+import { useToggleState } from "@medusajs/ui"
 
 type RefinementListProps = {
   sortBy: SortOptions
-  productCategories: ProductCategoryWithChildren[]
   search?: boolean
 }
 
-const RefinementList = ({ sortBy, productCategories }: RefinementListProps) => {
+const RefinementList = ({ sortBy, search }: RefinementListProps) => {
   const [attribute, setAttribute] = useState("")
-  const router = useRouter()
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams)
-      params.set(name, value)
-
-      return params.toString()
-    },
-    [searchParams]
-  )
-
-  const setQueryParams = (name: string, value: string) => {
-    const query = createQueryString(name, value)
-    router.push(`${pathname}?${query}`)
-  }
+  const { state, open, close } = useToggleState()
 
   return (
-    <div className="flex small:flex-col gap-12 py-4 mb-8 small:px-0 pl-6 small:min-w-[250px] small:ml-[1.675rem]">
-      <TransitionContainer>
-        <Menu attribute={attribute} setAttribute={setAttribute} />
+    <div>
+      <TransitionContainer open={open} close={close} state={state}>
+        <Menu attribute={attribute} setAttribute={setAttribute} close={close} />
       </TransitionContainer>
     </div>
   )

@@ -2,7 +2,8 @@
 
 import { ChangeEvent } from "react"
 
-import FilterRadioGroup from "@modules/common/components/filter-radio-group"
+import { EllipseMiniSolid } from "@medusajs/icons"
+import { Label, RadioGroup, Text, clx } from "@medusajs/ui"
 
 export type SortOptions = "price_asc" | "price_desc" | "created_at"
 
@@ -33,12 +34,33 @@ const SortProducts = ({ sortBy, setQueryParams }: SortProductsProps) => {
   }
 
   return (
-    <FilterRadioGroup
-      title="Sort by"
-      items={sortOptions}
-      value={sortBy}
-      handleChange={handleChange}
-    />
+    <div className="flex flex-col gap-5">
+      <RadioGroup>
+        {sortOptions?.map((i) => (
+          <div key={i.value} className={clx("flex gap-y-10 items-center", {})}>
+            <RadioGroup.Item
+              checked={i.value === sortBy}
+              onClick={(e) =>
+                handleChange(e as unknown as ChangeEvent<HTMLButtonElement>)
+              }
+              id={i.value}
+              value={i.value}
+            />
+            <Label
+              htmlFor={i.value}
+              className={clx(
+                "!txt-compact-small !transform-none text-ui-fg-subtle hover:cursor-pointer",
+                {
+                  "text-ui-fg-base": i.value === sortBy,
+                }
+              )}
+            >
+              {i.label}
+            </Label>
+          </div>
+        ))}
+      </RadioGroup>
+    </div>
   )
 }
 
