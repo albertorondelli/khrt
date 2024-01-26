@@ -24,6 +24,7 @@ import { ProductCategoryWithChildren, ProductPreviewType } from "types/global"
 import { medusaClient } from "../config"
 import medusaError from "@lib/util/medusa-error"
 import { cookies } from "next/headers"
+import { objectToURLSearchParams } from "@lib/medusa-fetch"
 
 const emptyResponse = {
   response: { products: [], count: 0 },
@@ -436,6 +437,24 @@ export async function getProductByHandle(
   return { product }
 }
 
+export async function getProductsOptions({
+  queryParams,
+}: {
+  queryParams?: StoreGetProductsParams
+}): Promise<{ response: { data: { size: Array<string>, color: Array<string> } } }> {
+  const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
+
+  delete queryParams?.['limit'];
+  const params = objectToURLSearchParams(queryParams || {}).toString()
+
+  const data = await fetch(`${BACKEND_URL}/store/products-options?${params}`)
+  const options = await data.json()
+
+  return {
+    response: options
+  }
+}
+
 export async function getProductsList({
   pageParam = 0,
   queryParams,
@@ -493,8 +512,8 @@ export async function getProductsListWithSort({
 }: {
   page?: number
   queryParams?: StoreGetProductsParams
-    sortBy?: SortOptions
-  q?:string
+  sortBy?: SortOptions
+  q?: string
   countryCode: string
 }): Promise<{
   response: { products: ProductPreviewType[]; count: number }
@@ -745,3 +764,5 @@ export async function getProductsByCategoryHandle({
     nextPage,
   }
 }
+
+

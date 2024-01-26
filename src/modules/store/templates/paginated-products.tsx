@@ -1,4 +1,5 @@
 import { getProductsListWithSort } from "@lib/data"
+import { getProductsOptions } from "@lib/data"
 import ProductPreview from "@modules/products/components/product-preview"
 import { Pagination } from "@modules/store/components/pagination"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
@@ -64,6 +65,12 @@ export default async function PaginatedProducts({
     sortBy,
     countryCode,
   })
+
+  const {response} = await getProductsOptions({
+    queryParams
+  });
+
+  console.log("options", response)
 
   const totalPages = Math.ceil(count / PRODUCT_LIMIT)
 
