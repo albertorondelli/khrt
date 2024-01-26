@@ -56,7 +56,7 @@ export default async function medusaRequest(
   }
 }
 
-function objectToURLSearchParams(obj: Record<string, any>): URLSearchParams {
+export function objectToURLSearchParams(obj: Record<string, any>): URLSearchParams {
   const params = new URLSearchParams()
 
   for (const key in obj) {
