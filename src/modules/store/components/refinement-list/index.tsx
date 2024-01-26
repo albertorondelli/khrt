@@ -1,16 +1,21 @@
 "use client"
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { useCallback } from "react"
+import { useCallback, useState } from "react"
 
-import SortProducts, { SortOptions } from "./sort-products"
+import { SortOptions } from "./sort-products"
+import TransitionContainer from "@modules/layout/components/transition-container"
+import { ProductCategoryWithChildren } from "types/global"
+import Menu from "./menu"
 
 type RefinementListProps = {
   sortBy: SortOptions
+  productCategories: ProductCategoryWithChildren[]
   search?: boolean
 }
 
-const RefinementList = ({ sortBy }: RefinementListProps) => {
+const RefinementList = ({ sortBy, productCategories }: RefinementListProps) => {
+  const [attribute, setAttribute] = useState("")
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -32,7 +37,9 @@ const RefinementList = ({ sortBy }: RefinementListProps) => {
 
   return (
     <div className="flex small:flex-col gap-12 py-4 mb-8 small:px-0 pl-6 small:min-w-[250px] small:ml-[1.675rem]">
-      <SortProducts sortBy={sortBy} setQueryParams={setQueryParams} />
+      <TransitionContainer>
+        <Menu attribute={attribute} setAttribute={setAttribute} />
+      </TransitionContainer>
     </div>
   )
 }
