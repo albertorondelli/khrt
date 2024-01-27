@@ -1,9 +1,7 @@
 "use client"
 
 import { ChangeEvent } from "react"
-
-import { EllipseMiniSolid } from "@medusajs/icons"
-import { Label, RadioGroup, Text, clx } from "@medusajs/ui"
+import { Label, RadioGroup, clx } from "@medusajs/ui"
 
 export type SortOptions = "price_asc" | "price_desc" | "created_at"
 
@@ -34,10 +32,10 @@ const SortProducts = ({ sortBy, setQueryParams }: SortProductsProps) => {
   }
 
   return (
-    <div className="flex flex-col gap-5">
-      <RadioGroup>
+    <div className="flex flex-col">
+      <RadioGroup className=" gap-y-6">
         {sortOptions?.map((i) => (
-          <div key={i.value} className={clx("flex gap-y-10 items-center", {})}>
+          <div key={i.value} className={clx("flex gap-x-4 items-center", {})}>
             <RadioGroup.Item
               checked={i.value === sortBy}
               onClick={(e) =>
@@ -49,7 +47,7 @@ const SortProducts = ({ sortBy, setQueryParams }: SortProductsProps) => {
             <Label
               htmlFor={i.value}
               className={clx(
-                "!txt-compact-small !transform-none text-ui-fg-subtle hover:cursor-pointer",
+                " !transform-none text-ui-fg-subtle hover:cursor-pointer",
                 {
                   "text-ui-fg-base": i.value === sortBy,
                 }

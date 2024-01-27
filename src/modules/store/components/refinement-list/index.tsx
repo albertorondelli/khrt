@@ -20,7 +20,7 @@ const RefinementList = ({ sortBy, search }: RefinementListProps) => {
   return (
     <div>
       <TransitionContainer open={open} close={close} state={state}>
-        <Menu attribute={attribute} setAttribute={setAttribute} close={close} />
+        <Menu attribute={attribute} setAttribute={setAttribute} close={close} sortBy={sortBy} />
       </TransitionContainer>
     </div>
   )

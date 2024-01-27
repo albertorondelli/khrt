@@ -5,16 +5,18 @@ import { ChevronDown, XMark } from "@medusajs/icons"
 import { Dispatch, SetStateAction, useCallback } from "react"
 import Category from "../category"
 import Collection from "../collection"
-import SortProducts from "../sort-products"
+import SortProducts, { SortOptions } from "../sort-products"
 import { useRouter } from "next/navigation"
 import { usePathname, useSearchParams } from "next/navigation"
 
 const filterableAttributes = [
   { id: "0", title: "Sort by", key: "sortby" },
-  { id: "1", title: "Categories", key: "category" },
-  { id: "2", title: "Collections", key: "collection" },
-  { id: "3", title: "Colors", key: "color" },
-  { id: "4", title: "Sizes", key: "size" },
+  // { id: "1", title: "Categories", key: "category" },
+  // { id: "2", title: "Collections", key: "collection" },
+  { id: "1", title: "Colors", key: "color" },
+  { id: "2", title: "Sizes", key: "size" },
+  // { id: "3", title: "Tags", key: "tags" },
+  
 ]
 
 type MainViewProps = {
@@ -78,11 +80,13 @@ type DetailViewProps = {
   attribute: string
   setAttribute: Dispatch<SetStateAction<any>>
   close: Dispatch<SetStateAction<any>>
+  sortBy: SortOptions
 }
 export const DetailView: React.FC<DetailViewProps> = ({
   attribute,
   setAttribute,
   close,
+  sortBy
 }) => {
   const router = useRouter()
   const pathname = usePathname()
@@ -131,16 +135,16 @@ export const DetailView: React.FC<DetailViewProps> = ({
         <ul className="flex flex-col flex-1 text-large-regular text-gray-900">
           <li className={attribute === "sortby" ? "block" : "hidden"}>
             <SortProducts
-              sortBy={"created_at"}
+              sortBy={sortBy}
               setQueryParams={setQueryParams}
             />
           </li>
-          <li className={attribute === "category" ? "block" : "hidden"}>
+          {/* <li className={attribute === "category" ? "block" : "hidden"}>
             <Category />
           </li>
           <li className={attribute === "collection" ? "block" : "hidden"}>
             <Collection />
-          </li>
+          </li> */}
           {/* <li className={attribute === "collection" ? "block" : "hidden"}>
             <Size  sortBy={sortBy} setQueryParams={setQueryParams}/>
           </li>
@@ -167,9 +171,10 @@ type MenuProps = {
   attribute: string
   setAttribute: Dispatch<SetStateAction<any>>
   close: () => void
+  sortBy: SortOptions
 }
 
-export default function Menu({ attribute, setAttribute, close }: MenuProps) {
+export default function Menu({ attribute, setAttribute, close, sortBy }: MenuProps) {
   return (
     <div className="h-full">
       <MainView
@@ -181,6 +186,7 @@ export default function Menu({ attribute, setAttribute, close }: MenuProps) {
         attribute={attribute}
         setAttribute={setAttribute}
         close={close}
+        sortBy={sortBy}
       />
     </div>
   )
