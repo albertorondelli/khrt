@@ -1,7 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react"
 import { Fragment } from "react"
 import { Button } from "@medusajs/ui"
-import { StateType } from "@lib/hooks/use-toggle-state"
+import { Adjustments } from "@medusajs/icons"
 
 type TransitionContainerProps = {
   state: boolean
@@ -18,9 +18,11 @@ const TransitionContainer = ({
 }: TransitionContainerProps) => {
   return (
     <div>
-      <Button onClick={open} variant="secondary" className="w-full">
-        OPEN MODAL
-      </Button>
+      <div className="pb-2">
+        <Button onClick={open} variant="secondary">
+          <Adjustments />
+        </Button>
+      </div>
       <Transition show={state} as={Fragment}>
         <Dialog
           as="div"

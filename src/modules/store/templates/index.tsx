@@ -28,8 +28,10 @@ const StoreTemplate = async ({
   return (
     <div className="flex flex-col small:flex-row small:items-start py-6 content-container">
       <div className="w-full">
-        <div className="flex justify-between mb-8 text-2xl-semi">
+        <div className="flex mb-8 text-2xl-semi">
           <h1>All products</h1>
+        </div>
+        <div className="flex justify-end">
           <RefinementList sortBy={sortBy || "created_at"} />
         </div>
         <Suspense fallback={<SkeletonProductGrid />}>
