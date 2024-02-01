@@ -67,13 +67,6 @@ const MainMenu = ({
                 return
               }
 
-              const children =
-                c.category_children?.map((child) => ({
-                  name: child.name,
-                  handle: child.handle,
-                  id: child.id,
-                })) || null
-
               return (
                 <li className="bg-gray-50 p-4" key={c.id}>
                   <button
@@ -99,19 +92,13 @@ const MainMenu = ({
                       Go to {collection.title} collection
                     </span>
                     <span>{collection.title}</span>
-                    {/* <ChevronDown className="-rotate-90" /> */}
                   </button>
                 </Link>
               </li>
             ))}
           </ul>
         </div>
-        <Footer
-          close={close}
-          customer={customer}
-          handleMenu={handleMenu}
-          regions={regions}
-        />
+        <Footer close={close} customer={customer} regions={regions} />
       </div>
     </div>
   )

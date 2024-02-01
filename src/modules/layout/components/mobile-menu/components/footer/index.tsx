@@ -5,16 +5,14 @@ import { useToggleState } from "@medusajs/ui"
 import { ChevronRightMini } from "@medusajs/icons"
 import CountrySelect from "@modules/layout/components/country-select"
 import Link from "next/link"
-import { ProductCategoryWithChildren } from "types/global"
 
 type FooterProps = {
   regions: Region[] | null
   close: () => void
   customer: Omit<Customer, "password_hash"> | null
-  handleMenu: (screen: string, category?: ProductCategoryWithChildren) => void
 }
 
-const Footer = ({ close, handleMenu, customer, regions }: FooterProps) => {
+const Footer = ({ close, customer, regions }: FooterProps) => {
   const toggleState = useToggleState()
 
   return (
