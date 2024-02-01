@@ -1,22 +1,19 @@
 "use-client"
 
-import { Button, useToggleState } from "@medusajs/ui"
+import { Button } from "@medusajs/ui"
 import { ChevronDown, XMark } from "@medusajs/icons"
 import { Dispatch, SetStateAction, useCallback } from "react"
-import Category from "../category"
-import Collection from "../collection"
 import SortProducts, { SortOptions } from "../sort-products"
 import { useRouter } from "next/navigation"
 import { usePathname, useSearchParams } from "next/navigation"
+import Size from "../size"
+import Color from "../color"
 
 const filterableAttributes = [
   { id: "0", title: "Sort by", key: "sortby" },
-  // { id: "1", title: "Categories", key: "category" },
-  // { id: "2", title: "Collections", key: "collection" },
   { id: "1", title: "Colors", key: "color" },
   { id: "2", title: "Sizes", key: "size" },
   // { id: "3", title: "Tags", key: "tags" },
-  
 ]
 
 type MainViewProps = {
@@ -24,7 +21,8 @@ type MainViewProps = {
   setAttribute: Dispatch<SetStateAction<any>>
   close: () => void
 }
-const MainView: React.FC<MainViewProps> = ({
+
+export const MainView: React.FC<MainViewProps> = ({
   attribute,
   setAttribute,
   close,
@@ -81,13 +79,17 @@ type DetailViewProps = {
   setAttribute: Dispatch<SetStateAction<any>>
   close: Dispatch<SetStateAction<any>>
   sortBy: SortOptions
+  filterOptions: any
 }
 export const DetailView: React.FC<DetailViewProps> = ({
   attribute,
   setAttribute,
   close,
-  sortBy
+  sortBy,
+  filterOptions,
 }) => {
+  console.log(filterOptions)
+
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -134,23 +136,20 @@ export const DetailView: React.FC<DetailViewProps> = ({
       <div className="space-y-6 flex-1 flex flex-col justify-between p-6">
         <ul className="flex flex-col flex-1 text-large-regular text-gray-900">
           <li className={attribute === "sortby" ? "block" : "hidden"}>
-            <SortProducts
-              sortBy={sortBy}
+            <SortProducts sortBy={sortBy} setQueryParams={setQueryParams} />
+          </li>
+          <li className={attribute === "size" ? "block" : "hidden"}>
+            <Size
+              sizeOptions={filterOptions.sizes}
               setQueryParams={setQueryParams}
             />
           </li>
-          {/* <li className={attribute === "category" ? "block" : "hidden"}>
-            <Category />
+          <li className={attribute === "color" ? "block" : "hidden"}>
+            <Color
+              colorOptions={filterOptions.colors}
+              setQueryParams={setQueryParams}
+            />
           </li>
-          <li className={attribute === "collection" ? "block" : "hidden"}>
-            <Collection />
-          </li> */}
-          {/* <li className={attribute === "collection" ? "block" : "hidden"}>
-            <Size  sortBy={sortBy} setQueryParams={setQueryParams}/>
-          </li>
-          <li className={attribute === "collection" ? "block" : "hidden"}>
-            <Color  sortBy={sortBy} setQueryParams={setQueryParams}/>
-          </li> */}
         </ul>
       </div>
       <div className="flex justify-center items-end p-4">
@@ -163,31 +162,6 @@ export const DetailView: React.FC<DetailViewProps> = ({
           </Button>
         </div>
       </div>
-    </div>
-  )
-}
-
-type MenuProps = {
-  attribute: string
-  setAttribute: Dispatch<SetStateAction<any>>
-  close: () => void
-  sortBy: SortOptions
-}
-
-export default function Menu({ attribute, setAttribute, close, sortBy }: MenuProps) {
-  return (
-    <div className="h-full">
-      <MainView
-        setAttribute={setAttribute}
-        close={close}
-        attribute={attribute}
-      />
-      <DetailView
-        attribute={attribute}
-        setAttribute={setAttribute}
-        close={close}
-        sortBy={sortBy}
-      />
     </div>
   )
 }

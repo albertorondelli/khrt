@@ -41,6 +41,7 @@ const MainMenu = ({
           <LocalizedClientLink
             className="flex items-center gap-x-2 hover:text-ui-fg-base"
             href="/search"
+            onClick={close}
             scroll={false}
           >
             <MagnifyingGlass />
