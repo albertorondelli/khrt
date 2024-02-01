@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from "react"
 import { DetailView, MainView } from "./menu"
 import { getFilterOptions } from "@lib/data"
-import { FilterOptions, PaginatedProductsParams } from "@lib/types"
 import { SortOptions } from "./sort-products"
 import { useToggleState } from "@medusajs/ui"
 import TransitionContainer from "@modules/layout/components/transition-container"
+import { FilterOptions, PaginatedProductsParams } from "types/global"
 
 type RefinementListProps = {
   sortBy: SortOptions

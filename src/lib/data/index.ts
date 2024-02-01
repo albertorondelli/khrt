@@ -19,13 +19,12 @@ import sortProducts from "@lib/util/sort-products"
 import transformProductPreview from "@lib/util/transform-product-preview"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import { getRegion } from "app/actions"
-import { ProductCategoryWithChildren, ProductPreviewType } from "types/global"
+import { FilterOptions, ProductCategoryWithChildren, ProductPreviewType } from "types/global"
 
 import { medusaClient } from "../config"
 import medusaError from "@lib/util/medusa-error"
 import { cookies } from "next/headers"
 import { objectToURLSearchParams } from "@lib/medusa-fetch"
-import { FilterOptions } from "@lib/types"
 
 const emptyResponse = {
   response: { products: [], count: 0 },
