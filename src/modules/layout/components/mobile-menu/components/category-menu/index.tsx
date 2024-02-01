@@ -48,6 +48,7 @@ const CategoryMenu = ({ close, handleMenu, category }: CategoryMenuProps) => {
                   className="flex items-center justify-between w-full"
                   onClick={close}
                 >
+                  <span className="sr-only">Go to {category.name}</span>
                   <span>{category.name}</span>
                   <ChevronRight />
                 </button>
@@ -60,6 +61,7 @@ const CategoryMenu = ({ close, handleMenu, category }: CategoryMenuProps) => {
                     className="flex items-center justify-between w-full"
                     onClick={close}
                   >
+                    <span className="sr-only">Go to {category.name}</span>
                     <span>{category.name}</span>
                     <ChevronRight />
                   </button>
