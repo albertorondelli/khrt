@@ -4,7 +4,7 @@ import { Customer, ProductCollection, Region } from "@medusajs/medusa"
 
 import Footer from "../footer"
 import Link from "next/link"
-import { MagnifyingGlass, ChevronDown, XMarkMini } from "@medusajs/icons"
+import { MagnifyingGlass, ChevronDown, XMark } from "@medusajs/icons"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { ProductCategoryWithChildren } from "types/global"
 
@@ -43,7 +43,7 @@ const MainMenu = ({
         </div>
         <div className="flex-1 basis-0 flex justify-end">
           <button onClick={close}>
-            <XMarkMini />
+            <XMark />
           </button>
         </div>
       </div>

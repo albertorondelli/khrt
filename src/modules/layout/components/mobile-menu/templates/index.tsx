@@ -1,10 +1,10 @@
 "use client"
 
-import { Popover, Transition } from "@headlessui/react"
-import { Fragment } from "react"
 import { Customer, ProductCollection, Region } from "@medusajs/medusa"
+
+import { Fragment, useState } from "react"
+import { Popover, Transition } from "@headlessui/react"
 import { ProductCategoryWithChildren } from "types/global"
-import { useState } from "react"
 import MainMenu from "../components/main-menu"
 import CategoryMenu from "../components/category-menu"
 
