@@ -26,8 +26,6 @@ export const Category = () => {
     return null
   }
 
-  console.log(productCategories)
-
   return (
     productCategories &&
     productCategories?.length > 0 && (

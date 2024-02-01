@@ -29,8 +29,11 @@ const StoreTemplate = async ({
   if (q) {
     queryParams["q"] = q
   }
-  
-  console.log("queryParams", queryParams)
+
+  // if (!q) {
+  //   return
+  // }
+
   return (
     <div className="flex flex-col small:flex-row small:items-start py-6 content-container">
       <div className="w-full">
@@ -38,7 +41,10 @@ const StoreTemplate = async ({
           <h1>All products</h1>
         </div>
         <div className="flex justify-end">
-          <RefinementList sortBy={sortBy || "created_at"} />
+          <RefinementList
+            sortBy={sortBy || "created_at"}
+            queryParams={queryParams}
+          />
         </div>
         <Suspense fallback={<SkeletonProductGrid />}>
           <PaginatedProducts

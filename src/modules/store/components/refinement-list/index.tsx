@@ -37,6 +37,10 @@ const RefinementList: React.FC<RefinementListProps> = ({
     fetchData()
   }, [queryParams])
 
+  if (!queryParams) {
+    return
+  }
+
   return (
     <TransitionContainer open={open} close={close} state={state}>
       <div className="h-full">
@@ -51,6 +55,7 @@ const RefinementList: React.FC<RefinementListProps> = ({
           close={close}
           sortBy={sortBy}
           filterOptions={filterOptions}
+          queryParams={queryParams}
         />
       </div>
     </TransitionContainer>

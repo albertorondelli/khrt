@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation"
 import { usePathname, useSearchParams } from "next/navigation"
 import Size from "../size"
 import Color from "../color"
+import { PaginatedProductsParams } from "@lib/types"
 
 const filterableAttributes = [
   { id: "0", title: "Sort by", key: "sortby" },
@@ -80,6 +81,7 @@ type DetailViewProps = {
   close: Dispatch<SetStateAction<any>>
   sortBy: SortOptions
   filterOptions: any
+  queryParams: PaginatedProductsParams
 }
 export const DetailView: React.FC<DetailViewProps> = ({
   attribute,
@@ -87,9 +89,8 @@ export const DetailView: React.FC<DetailViewProps> = ({
   close,
   sortBy,
   filterOptions,
+  queryParams,
 }) => {
-  console.log(filterOptions)
-
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -138,18 +139,24 @@ export const DetailView: React.FC<DetailViewProps> = ({
           <li className={attribute === "sortby" ? "block" : "hidden"}>
             <SortProducts sortBy={sortBy} setQueryParams={setQueryParams} />
           </li>
-          <li className={attribute === "size" ? "block" : "hidden"}>
-            <Size
-              sizeOptions={filterOptions.sizes}
-              setQueryParams={setQueryParams}
-            />
-          </li>
-          <li className={attribute === "color" ? "block" : "hidden"}>
-            <Color
-              colorOptions={filterOptions.colors}
-              setQueryParams={setQueryParams}
-            />
-          </li>
+          {filterOptions?.sizes ? (
+            <li className={attribute === "size" ? "block" : "hidden"}>
+              <Size
+                sizeOptions={filterOptions.sizes}
+                queryParams={queryParams}
+                setQueryParams={setQueryParams}
+              />
+            </li>
+          ) : null}
+          {filterOptions?.colors ? (
+            <li className={attribute === "color" ? "block" : "hidden"}>
+              <Color
+                colorOptions={filterOptions.colors}
+                queryParams={queryParams}
+                setQueryParams={setQueryParams}
+              />
+            </li>
+          ) : null}
         </ul>
       </div>
       <div className="flex justify-center items-end p-4">
