@@ -1,12 +1,10 @@
 "use client"
 
-import { Customer, ProductCategory, Region } from "@medusajs/medusa"
+import { Customer, Region } from "@medusajs/medusa"
 import { useToggleState } from "@medusajs/ui"
-import ChevronDown from "@modules/common/icons/chevron-down"
+import { ChevronRightMini } from "@medusajs/icons"
 import CountrySelect from "@modules/layout/components/country-select"
-import { useMeCustomer } from "medusa-react"
 import Link from "next/link"
-import { Dispatch, SetStateAction } from "react"
 import { ProductCategoryWithChildren } from "types/global"
 
 type FooterProps = {
@@ -33,7 +31,7 @@ const Footer = ({ close, handleMenu, customer, regions }: FooterProps) => {
             >
               <span className="sr-only">Go to sign in page</span>
               <span className="normal-case">Sign in</span>
-              <ChevronDown className="-rotate-90" />
+              <ChevronRightMini />
             </Link>
           </div>
         ) : (
@@ -46,7 +44,7 @@ const Footer = ({ close, handleMenu, customer, regions }: FooterProps) => {
               >
                 <span className="sr-only">Go to account page</span>
                 <span className="normal-case">{customer.email}</span>
-                <ChevronDown className="-rotate-90" />
+                <ChevronRightMini />
               </button>
             </Link>
           </div>
@@ -65,7 +63,7 @@ const Footer = ({ close, handleMenu, customer, regions }: FooterProps) => {
                 {regions && (
                   <CountrySelect toggleState={toggleState} regions={regions} />
                 )}
-                <ChevronDown className="-rotate-90 mt-2" />
+                <ChevronRightMini />
               </div>
             </div>
           </div>

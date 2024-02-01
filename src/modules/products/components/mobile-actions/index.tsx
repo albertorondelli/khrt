@@ -7,8 +7,7 @@ import { Button, clx } from "@medusajs/ui"
 import React, { Fragment, useMemo } from "react"
 
 import useToggleState from "@lib/hooks/use-toggle-state"
-import ChevronDown from "@modules/common/icons/chevron-down"
-import X from "@modules/common/icons/x"
+import {ChevronDown, XMark} from "@medusajs/icons"
 
 import { getProductPrice } from "@lib/util/get-product-price"
 import { Region } from "@medusajs/medusa"
@@ -155,7 +154,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                       onClick={close}
                       className="bg-white w-12 h-12 rounded-full text-ui-fg-base flex justify-center items-center"
                     >
-                      <X />
+                      <XMark />
                     </button>
                   </div>
                   <div className="bg-white px-6 py-12">

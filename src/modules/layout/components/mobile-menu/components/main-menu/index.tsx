@@ -1,21 +1,12 @@
 "use client"
 
-import { Dispatch, SetStateAction } from "react"
-import {
-  Customer,
-  ProductCategory,
-  ProductCollection,
-  Region,
-} from "@medusajs/medusa"
-import ChevronDown from "@modules/common/icons/chevron-down"
-import { MagnifyingGlass } from "@medusajs/icons"
-import { XMarkMini } from "@medusajs/icons"
-import Link from "next/link"
+import { Customer, ProductCollection, Region } from "@medusajs/medusa"
+
 import Footer from "../footer"
-import { ProductCategoryWithChildren } from "types/global"
-import { IconButton } from "@medusajs/ui"
-import { Children } from "../../templates"
+import Link from "next/link"
+import { MagnifyingGlass, ChevronDown, XMarkMini } from "@medusajs/icons"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { ProductCategoryWithChildren } from "types/global"
 
 type MainMenuProps = {
   customer: Omit<Customer, "password_hash"> | null

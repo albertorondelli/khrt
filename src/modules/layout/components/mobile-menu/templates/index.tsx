@@ -1,22 +1,10 @@
 "use client"
 
 import { Popover, Transition } from "@headlessui/react"
-import { Fragment, SetStateAction } from "react"
-import {
-  Customer,
-  ProductCategory,
-  ProductCollection,
-  Region,
-} from "@medusajs/medusa"
-import ChevronDown from "@modules/common/icons/chevron-down"
-import { MagnifyingGlass } from "@medusajs/icons"
-import X from "@modules/common/icons/x"
-import Link from "next/link"
+import { Fragment } from "react"
+import { Customer, ProductCollection, Region } from "@medusajs/medusa"
 import { ProductCategoryWithChildren } from "types/global"
 import { useState } from "react"
-import { useToggleState } from "@medusajs/ui"
-import CountrySelect from "@modules/layout/components/country-select"
-import Footer from "../components/footer"
 import MainMenu from "../components/main-menu"
 import CategoryMenu from "../components/category-menu"
 
@@ -42,10 +30,9 @@ const Menu = ({
   const [screen, setScreen] = useState("")
   const [category, setCategory] = useState<ProductCategoryWithChildren>()
 
-
   const handleMenu = (
     screen: string,
-    category?: ProductCategoryWithChildren,
+    category?: ProductCategoryWithChildren
   ) => {
     setScreen(screen)
 
