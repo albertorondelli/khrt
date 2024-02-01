@@ -9,23 +9,43 @@ import { SortOptions } from "@modules/store/components/refinement-list/sort-prod
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { Button } from "@medusajs/ui"
+import { PaginatedProductsParams } from "@lib/types"
+import { getProductsListWithSort } from "@lib/data"
 
-export default function CategoryTemplate({
-  categories,
-  sortBy,
-  page,
-  countryCode,
-}: {
+const PRODUCT_LIMIT = 12
+
+type CategoryTemplateProps = {
   categories: ProductCategoryWithChildren[]
   sortBy?: SortOptions
+  q?: string
   page?: string
   countryCode: string
-}) {
+}
+
+export default async function CategoryTemplate({
+  categories,
+  sortBy,
+  q,
+  page,
+  countryCode,
+}: CategoryTemplateProps) {
   const pageNumber = page ? parseInt(page) : 1
 
   const category = categories[categories.length - 1]
   const parents = categories.slice(0, categories.length - 1)
   const parent = category.parent_category
+
+  const queryParams: PaginatedProductsParams = {
+    limit: PRODUCT_LIMIT,
+  }
+
+  if (category.id) {
+    queryParams["category_id"] = [category.id]
+  }
+
+  if (q) {
+    queryParams["q"] = q
+  }
 
   if (!category || !countryCode) notFound()
 
@@ -83,13 +103,16 @@ export default function CategoryTemplate({
         )}
 
         <div className="flex justify-end">
-          <RefinementList sortBy={sortBy || "created_at"} />
+          <RefinementList
+            sortBy={sortBy || "created_at"}
+            queryParams={queryParams}
+          />
         </div>
         <Suspense fallback={<SkeletonProductGrid />}>
           <PaginatedProducts
             sortBy={sortBy || "created_at"}
             page={pageNumber}
-            categoryId={category.id}
+            queryParams={queryParams}
             countryCode={countryCode}
           />
         </Suspense>
