@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation"
 import { usePathname, useSearchParams } from "next/navigation"
 import Size from "../size"
 import Color from "../color"
-import { PaginatedProductsParams } from "@lib/types"
+import { PaginatedProductsParams } from "types/global"
 
 const filterableAttributes = [
   { id: "0", title: "Sort by", key: "sortby" },

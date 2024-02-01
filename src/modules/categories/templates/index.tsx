@@ -1,16 +1,13 @@
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
 
-import { ProductCategoryWithChildren } from "types/global"
-import InteractiveLink from "@modules/common/components/interactive-link"
+import { PaginatedProductsParams, ProductCategoryWithChildren } from "types/global"
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
 import RefinementList from "@modules/store/components/refinement-list"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { Button } from "@medusajs/ui"
-import { PaginatedProductsParams } from "@lib/types"
-import { getProductsListWithSort } from "@lib/data"
 
 const PRODUCT_LIMIT = 12
 

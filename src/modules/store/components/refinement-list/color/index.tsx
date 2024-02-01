@@ -2,7 +2,7 @@
 
 import { ChangeEvent } from "react"
 import { Checkbox, Label, clx } from "@medusajs/ui"
-import { PaginatedProductsParams } from "@lib/types"
+import { PaginatedProductsParams } from "types/global"
 
 type ColorProps = {
   colorOptions: string[]
@@ -17,7 +17,7 @@ export const Color = ({
 }: ColorProps) => {
 
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newColorFilter = e.target.value as string
     if (queryParams?.q) {
       const q = queryParams.q
@@ -35,7 +35,7 @@ export const Color = ({
               <Checkbox
                 // checked={i.value === sortBy}
                 onClick={(e) =>
-                  handleChange(e as unknown as React.ChangeEvent<HTMLInputElement>)
+                  handleChange(e as unknown as ChangeEvent<HTMLInputElement>)
                 }
                 id={c}
                 value={c}

@@ -2,7 +2,7 @@
 
 import { ChangeEvent } from "react"
 import { Checkbox, Label, clx } from "@medusajs/ui"
-import { PaginatedProductsParams } from "@lib/types"
+import { PaginatedProductsParams } from "types/global"
 
 type SizeProps = {
   sizeOptions: string[]
@@ -17,7 +17,7 @@ export const Size = ({
 }: SizeProps) => {
 
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newSizeFilter = e.target.value as string
     if (queryParams?.q) {
       const q = queryParams.q
@@ -34,7 +34,7 @@ export const Size = ({
               <Checkbox
                 // checked={i.value === sortBy}
                 onClick={(e) =>
-                  handleChange(e as unknown as React.ChangeEvent<HTMLInputElement>)
+                  handleChange(e as unknown as ChangeEvent<HTMLInputElement>)
                 }
                 id={s}
                 value={s}
