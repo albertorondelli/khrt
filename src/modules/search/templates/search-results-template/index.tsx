@@ -1,15 +1,18 @@
 import { Heading, Text } from "@medusajs/ui"
-import Link from "next/link"
 
 import RefinementList from "@modules/store/components/refinement-list"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { PaginatedProductsParams } from "@lib/types"
+
+const PRODUCT_LIMIT = 12
 
 type SearchResultsTemplateProps = {
   query: string
   ids: string[]
   sortBy?: SortOptions
+  q?: string
   page?: string
   countryCode: string
 }
@@ -18,10 +21,23 @@ const SearchResultsTemplate = ({
   query,
   ids,
   sortBy,
+  q,
   page,
   countryCode,
 }: SearchResultsTemplateProps) => {
   const pageNumber = page ? parseInt(page) : 1
+
+  const queryParams: PaginatedProductsParams = {
+    limit: PRODUCT_LIMIT,
+  }
+
+  if (ids) {
+    queryParams["category_id"] = ids
+  }
+
+  if (q) {
+    queryParams["q"] = q
+  }
 
   return (
     <>
@@ -29,7 +45,7 @@ const SearchResultsTemplate = ({
         <div className="flex flex-col items-start">
           <Text className="text-ui-fg-muted">Search Results for:</Text>
           <Heading>
-            {query} ({ids.length})
+            {decodeURI(query)} ({ids.length})
           </Heading>
         </div>
         <LocalizedClientLink
@@ -42,13 +58,13 @@ const SearchResultsTemplate = ({
       <div className="flex flex-col small:flex-row small:items-start p-6">
         {ids.length > 0 ? (
           <>
-            <RefinementList sortBy={sortBy || "created_at"} search />
+            <RefinementList sortBy={sortBy || "created_at"} />
             <div className="content-container">
               <PaginatedProducts
-                productsIds={ids}
                 sortBy={sortBy}
                 page={pageNumber}
                 countryCode={countryCode}
+                queryParams={queryParams}
               />
             </div>
           </>
