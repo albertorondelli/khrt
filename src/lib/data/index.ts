@@ -11,7 +11,7 @@ import {
   StorePostCustomersCustomerPasswordTokenReq,
   StorePostCustomersCustomerReq,
   StorePostCustomersReq,
-  StorePostCustomersResetPasswordReq
+  StorePostCustomersResetPasswordReq,
 } from "@medusajs/medusa"
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 
@@ -25,6 +25,7 @@ import { medusaClient } from "../config"
 import medusaError from "@lib/util/medusa-error"
 import { cookies } from "next/headers"
 import { objectToURLSearchParams } from "@lib/medusa-fetch"
+import { FilterOptions } from "@lib/types"
 
 const emptyResponse = {
   response: { products: [], count: 0 },
@@ -311,8 +312,9 @@ export async function resetPassword(data: StorePostCustomersResetPasswordReq) {
     .catch((err) => medusaError(err))
 }
 
-
-export async function customerPasswordToken(data: StorePostCustomersCustomerPasswordTokenReq) {
+export async function customerPasswordToken(
+  data: StorePostCustomersCustomerPasswordTokenReq
+) {
   const headers = getMedusaHeaders(["customer"])
 
   return medusaClient.customers
@@ -437,22 +439,20 @@ export async function getProductByHandle(
   return { product }
 }
 
-export async function getProductsOptions({
+export async function getFilterOptions({
   queryParams,
 }: {
   queryParams?: StoreGetProductsParams
-}): Promise<{ response: { data: { size: Array<string>, color: Array<string> } } }> {
+}): Promise<{ filterOptions: FilterOptions }> {
   const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
 
-  delete queryParams?.['limit'];
+  delete queryParams?.["limit"]
   const params = objectToURLSearchParams(queryParams || {}).toString()
 
   const data = await fetch(`${BACKEND_URL}/store/products-options?${params}`)
-  const options = await data.json()
+  const filterOptions = await data.json()
 
-  return {
-    response: options
-  }
+  return { filterOptions }
 }
 
 export async function getProductsList({
@@ -764,5 +764,3 @@ export async function getProductsByCategoryHandle({
     nextPage,
   }
 }
-
-
