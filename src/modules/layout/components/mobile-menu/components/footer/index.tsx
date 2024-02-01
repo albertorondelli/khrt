@@ -54,10 +54,7 @@ const Footer = ({ close, handleMenu, customer, regions }: FooterProps) => {
 
         <div className="flex flex-col gap-y-2">
           <span className="text-gray-700 uppercase">Delivery</span>
-          <button
-            className="flex items-center justify-between border-b border-gray-200 py-2"
-            onClick={() => handleMenu("country")}
-          >
+          <div className="flex items-center justify-between border-b border-gray-200 py-2">
             <span className="sr-only">Click to select shipping country</span>
             <div className="flex items-center gap-x-2 w-full">
               <div
@@ -68,10 +65,10 @@ const Footer = ({ close, handleMenu, customer, regions }: FooterProps) => {
                 {regions && (
                   <CountrySelect toggleState={toggleState} regions={regions} />
                 )}
+                <ChevronDown className="-rotate-90 mt-2" />
               </div>
             </div>
-            <ChevronDown className="-rotate-90" />
-          </button>
+          </div>
         </div>
       </div>
     </div>
