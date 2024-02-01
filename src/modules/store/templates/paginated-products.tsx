@@ -1,5 +1,5 @@
 import { getProductsListWithSort } from "@lib/data"
-import { getProductsOptions } from "@lib/data"
+import { PaginatedProductsParams } from "@lib/types"
 import ProductPreview from "@modules/products/components/product-preview"
 import { Pagination } from "@modules/store/components/pagination"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
@@ -7,55 +7,21 @@ import { getRegion } from "app/actions"
 
 const PRODUCT_LIMIT = 12
 
-type PaginatedProductsParams = {
-  limit: number
-  q?: string
-  collection_id?: string[]
-  category_id?: string[]
-  id?: string[]
-}
-
 export default async function PaginatedProducts({
   sortBy,
   page,
-  q,
-  collectionId,
-  categoryId,
-  productsIds,
   countryCode,
+  queryParams
 }: {
   sortBy?: SortOptions
   page: number
-  q?: string
-  collectionId?: string
-  categoryId?: string
-  productsIds?: string[]
   countryCode: string
+  queryParams: PaginatedProductsParams
 }) {
   const region = await getRegion(countryCode)
 
   if (!region) {
     return null
-  }
-
-  const queryParams: PaginatedProductsParams = {
-    limit: PRODUCT_LIMIT,
-  }
-
-  if (collectionId) {
-    queryParams["collection_id"] = [collectionId]
-  }
-
-  if (categoryId) {
-    queryParams["category_id"] = [categoryId]
-  }
-
-  if (productsIds) {
-    queryParams["id"] = productsIds
-  }
-
-  if (q) {
-    queryParams["q"] = q
   }
 
   const {
@@ -66,12 +32,6 @@ export default async function PaginatedProducts({
     sortBy,
     countryCode,
   })
-
-  const {response} = await getProductsOptions({
-    queryParams
-  });
-
-  console.log("options", response)
 
   const totalPages = Math.ceil(count / PRODUCT_LIMIT)
 

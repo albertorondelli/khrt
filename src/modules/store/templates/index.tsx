@@ -4,12 +4,15 @@ import RefinementList from "@modules/store/components/refinement-list"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 
 import PaginatedProducts from "./paginated-products"
-import { getCategoriesList } from "@lib/data"
-import { Button } from "@medusajs/ui"
+import { PaginatedProductsParams } from "@lib/types"
 
-const fetchCategories = async () => {
-  const { product_categories } = await getCategoriesList()
-  return product_categories
+const PRODUCT_LIMIT = 12
+
+type StoreTemplateProps = {
+  sortBy?: SortOptions
+  page?: string
+  q?: string
+  countryCode: string
 }
 
 const StoreTemplate = async ({
@@ -17,14 +20,17 @@ const StoreTemplate = async ({
   page,
   q,
   countryCode,
-}: {
-  sortBy?: SortOptions
-  page?: string
-  q?: string
-  countryCode: string
-}) => {
+}: StoreTemplateProps) => {
   const pageNumber = page ? parseInt(page) : 1
 
+  const queryParams: PaginatedProductsParams = {
+    limit: PRODUCT_LIMIT,
+  }
+  if (q) {
+    queryParams["q"] = q
+  }
+  
+  console.log("queryParams", queryParams)
   return (
     <div className="flex flex-col small:flex-row small:items-start py-6 content-container">
       <div className="w-full">
@@ -37,9 +43,9 @@ const StoreTemplate = async ({
         <Suspense fallback={<SkeletonProductGrid />}>
           <PaginatedProducts
             sortBy={sortBy || "created_at"}
-            q={q}
             page={pageNumber}
             countryCode={countryCode}
+            queryParams={queryParams}
           />
         </Suspense>
       </div>
