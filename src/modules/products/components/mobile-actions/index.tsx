@@ -7,7 +7,7 @@ import { Button, clx } from "@medusajs/ui"
 import React, { Fragment, useMemo } from "react"
 
 import useToggleState from "@lib/hooks/use-toggle-state"
-import {ChevronDown, XMark} from "@medusajs/icons"
+import { ChevronDown, XMark } from "@medusajs/icons"
 
 import { getProductPrice } from "@lib/util/get-product-price"
 import { Region } from "@medusajs/medusa"
@@ -157,7 +157,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                       <XMark />
                     </button>
                   </div>
-                  <div className="bg-white px-6 py-12">
+                  <div className="bg-white px-6 pt-10 pb-6">
                     {product.variants.length > 1 && (
                       <div className="flex flex-col gap-y-6">
                         {(product.options || []).map((option) => {
@@ -174,6 +174,22 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                         })}
                       </div>
                     )}
+                    <div className="flex w-full pt-10">
+                      <Button
+                        onClick={() => {
+                          handleAddToCart(), close()
+                        }}
+                        disabled={!inStock || !variant}
+                        className="w-full"
+                        isLoading={isAdding}
+                      >
+                        {!variant
+                          ? "Select variant"
+                          : !inStock
+                          ? "Out of stock"
+                          : "Add to cart"}
+                      </Button>
+                    </div>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
