@@ -12,13 +12,16 @@ type StoreTemplateProps = {
   sortBy?: SortOptions
   page?: string
   q?: string
+  colors?:string
+  sizes?:string
   countryCode: string
 }
 
 const StoreTemplate = async ({
   sortBy,
   page,
-  q,
+  colors,
+  sizes,
   countryCode,
 }: StoreTemplateProps) => {
   const pageNumber = page ? parseInt(page) : 1
@@ -27,8 +30,12 @@ const StoreTemplate = async ({
     limit: PRODUCT_LIMIT,
   }
   
-  if (q) {
-    queryParams["q"] = q
+  if (colors) {
+    queryParams["colors"] = colors
+  }
+
+  if (sizes) {
+    queryParams["sizes"] = sizes
   }
 
   return (

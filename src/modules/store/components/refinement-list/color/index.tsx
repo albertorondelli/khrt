@@ -16,15 +16,20 @@ export const Color = ({
   setQueryParams,
 }: ColorProps) => {
 
+  let colors: Array<string> = queryParams['colors']?.split(',') || [];
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const newColorFilter = e.target.value as string
-    if (queryParams?.q) {
-      const q = queryParams.q
-      setQueryParams("q", `${q}&_${newColorFilter}`)
-    } else {
-      setQueryParams("q", `_${newColorFilter}`)
+  const handleChange = (value: string) => {
+    const selectedColor= '_' + value;
+
+    // Set or remove size filter from array
+    if (colors.includes(selectedColor)) {
+      colors = colors.filter((sz) => sz != selectedColor);
     }
+    else
+      colors.push(selectedColor);
+
+    const newColorFilter = colors.join(',')
+    setQueryParams("colors", `${newColorFilter}`)
   }
 
   return (
@@ -33,9 +38,9 @@ export const Color = ({
         ? colorOptions?.map((c, i) => (
             <div key={i} className={clx("flex gap-x-4 items-center", {})}>
               <Checkbox
-                // checked={i.value === sortBy}
+                checked={colors.includes('_'+c)}
                 onClick={(e) =>
-                  handleChange(e as unknown as ChangeEvent<HTMLInputElement>)
+                  handleChange(c)
                 }
                 id={c}
                 value={c}

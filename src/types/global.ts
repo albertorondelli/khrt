@@ -59,7 +59,9 @@ export type ProductCategoryWithChildren = Omit<
 
 export type PaginatedProductsParams = {
   limit: number
-  q?: string
+  q?: string,
+  colors? : string,
+  sizes?: string,
   collection_id?: string[]
   category_id?: string[]
   id?: string[]

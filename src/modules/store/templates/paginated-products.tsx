@@ -24,6 +24,13 @@ export default async function PaginatedProducts({
     return null
   }
 
+  // sets colors and sizes as query
+  queryParams['q'] = queryParams['colors'] ? queryParams['colors'] : ''  + ',' + queryParams['sizes'] ? queryParams['sizes'] :''
+  delete queryParams['colors'];
+  delete queryParams['sizes'];
+
+  console.log("queryParams",queryParams)
+
   const {
     response: { products, count },
   } = await getProductsListWithSort({

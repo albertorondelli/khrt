@@ -35,7 +35,7 @@ const RefinementList: React.FC<RefinementListProps> = ({
     }
 
     fetchData()
-  }, [queryParams])
+  }, [])
 
   if (!queryParams) {
     return
