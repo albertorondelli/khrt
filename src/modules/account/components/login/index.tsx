@@ -8,6 +8,8 @@ import ErrorMessage from "@modules/checkout/components/error-message"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
 import { Button } from "@medusajs/ui"
 import { useEffect, useState } from "react"
+import Link from "next/link"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 const medusa_url =
   process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000"
@@ -59,14 +61,13 @@ const Login = ({ setCurrentView }: Props) => {
           />
         </div>
         <ErrorMessage error={message || googleAuthMessage} />
-        <span>
-          <button
-            onClick={() => setCurrentView(LOGIN_VIEW.PASSWORD_RESET_REQUEST)}
-            className="text-small-regular text-gray-700 italic"
-          >
-            Forgot password?
-          </button>
-        </span>
+        <LocalizedClientLink
+          onClick={() => setCurrentView(LOGIN_VIEW.PASSWORD_RESET_REQUEST)}
+          href="/account"
+          className="text-small-regular text-gray-700 italic"
+        >
+          Forgot your password?
+        </LocalizedClientLink>
         <SubmitButton className="w-full mt-6">Sign in</SubmitButton>
       </form>
       <Button
