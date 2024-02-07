@@ -31,13 +31,13 @@ const PasswordReset = ({ setCurrentView }: Props) => {
       {successState ? (
         <>
           <h1 className="flex text-large-semi text-center uppercase mb-6 me-2">
-            <CheckMini className="me-2"/>
+            <CheckMini className="me-2" />
             Email sent successfully
           </h1>
 
           <p className="text-center text-base-regular text-ui-fg-base mb-8">
-            If you can&apos;t locate it in your inbox, please wait a few minutes or
-            retry again.
+            If you can&apos;t locate it in your inbox, please wait a few minutes
+            or retry again.
           </p>
           <span className="text-center text-gray-700 text-small-regular">
             You didn&apos;t receive anything?{" "}

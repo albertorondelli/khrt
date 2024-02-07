@@ -6,6 +6,8 @@ import React from "react"
 import StripeWrapper from "./stripe-wrapper"
 import { PayPalScriptProvider } from "@paypal/react-paypal-js"
 
+const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "test"
+
 type WrapperProps = {
   cart: Omit<Cart, "refundable_amount" | "refunded_total">
   children: React.ReactNode
@@ -41,7 +43,7 @@ const Wrapper: React.FC<WrapperProps> = ({ cart, children }) => {
     return (
       <PayPalScriptProvider
         options={{
-          "client-id": "test",
+          "client-id": PAYPAL_CLIENT_ID,
           currency: cart?.region.currency_code.toUpperCase(),
           intent: "authorize",
           components: "buttons",

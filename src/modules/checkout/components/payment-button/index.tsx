@@ -31,6 +31,8 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({ cart }) => {
       return <StripePaymentButton notReady={notReady} cart={cart} />
     case "manual":
       return <ManualTestPaymentButton notReady={notReady} />
+    case "credit-card":
+      return <CreditCardPaymentButton notReady={notReady} cart={cart} />
     case "paypal":
       return <PayPalPaymentButton notReady={notReady} cart={cart} />
     default:
@@ -219,6 +221,47 @@ const ManualTestPaymentButton = ({ notReady }: { notReady: boolean }) => {
         size="large"
       >
         Place order
+      </Button>
+      <ErrorMessage error={errorMessage} />
+    </>
+  )
+}
+
+const CreditCardPaymentButton = ({
+  cart,
+  notReady,
+}: {
+  cart: Omit<Cart, "refundable_amount" | "refunded_total">
+  notReady: boolean
+}) => {
+  const [submitting, setSubmitting] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  const session = cart.payment_session as PaymentSession
+
+  const handlePayment = () => {
+    setSubmitting(true)
+
+    if (!session.data.redirectURL) {
+      setErrorMessage("An error, occurred please try again.")
+      setSubmitting(false)
+    } else {
+      const url: string = session.data.redirectURL as string
+      window.location.assign(url)
+
+      setSubmitting(false)
+    }
+  }
+
+  return (
+    <>
+      <Button
+        disabled={notReady}
+        isLoading={submitting}
+        onClick={handlePayment}
+        size="large"
+      >
+        {submitting ? <Spinner /> : "Place order"}
       </Button>
       <ErrorMessage error={errorMessage} />
     </>

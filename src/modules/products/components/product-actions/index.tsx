@@ -30,7 +30,7 @@ export type PriceType = {
 export default function ProductActions({
   product,
   region,
-}: ProductActionsProps): JSX.Element {
+}: Readonly<ProductActionsProps>): JSX.Element {
   const [options, setOptions] = useState<Record<string, string>>({})
   const [isAdding, setIsAdding] = useState(false)
 
@@ -121,55 +121,53 @@ export default function ProductActions({
   }
 
   return (
-    <>
-      <div className="flex flex-col gap-y-2" ref={actionsRef}>
-        <div>
-          {product.variants.length > 1 && (
-            <div className="flex flex-col gap-y-4">
-              {(product.options || []).map((option) => {
-                return (
-                  <div key={option.id}>
-                    <OptionSelect
-                      option={option}
-                      current={options[option.id]}
-                      updateOption={updateOptions}
-                      title={option.title}
-                    />
-                  </div>
-                )
-              })}
-              <Divider />
-            </div>
-          )}
-        </div>
-
-        <ProductPrice product={product} variant={variant} region={region} />
-
-        <Button
-          onClick={handleAddToCart}
-          disabled={!inStock || !variant}
-          variant="primary"
-          className="w-full h-10"
-          isLoading={isAdding}
-        >
-          {!variant
-            ? "Select variant"
-            : !inStock
-            ? "Out of stock"
-            : "Add to cart"}
-        </Button>
-        <MobileActions
-          product={product}
-          variant={variant}
-          region={region}
-          options={options}
-          updateOptions={updateOptions}
-          inStock={inStock}
-          handleAddToCart={handleAddToCart}
-          isAdding={isAdding}
-          show={!inView}
-        />
+    <div className="flex flex-col gap-y-2" ref={actionsRef}>
+      <div>
+        {product.variants.length > 1 && (
+          <div className="flex flex-col gap-y-4">
+            {(product.options || []).map((option) => {
+              return (
+                <div key={option.id}>
+                  <OptionSelect
+                    option={option}
+                    current={options[option.id]}
+                    updateOption={updateOptions}
+                    title={option.title}
+                  />
+                </div>
+              )
+            })}
+            <Divider />
+          </div>
+        )}
       </div>
-    </>
+
+      <ProductPrice product={product} variant={variant} region={region} />
+
+      <Button
+        onClick={handleAddToCart}
+        disabled={!inStock || !variant}
+        variant="primary"
+        className="w-full h-10"
+        isLoading={isAdding}
+      >
+        {!variant
+          ? "Select variant"
+          : !inStock
+          ? "Out of stock"
+          : "Add to cart"}
+      </Button>
+      <MobileActions
+        product={product}
+        variant={variant}
+        region={region}
+        options={options}
+        updateOptions={updateOptions}
+        inStock={inStock}
+        handleAddToCart={handleAddToCart}
+        isAdding={isAdding}
+        show={!inView}
+      />
+    </div>
   )
 }

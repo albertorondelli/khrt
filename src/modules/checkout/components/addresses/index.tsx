@@ -8,7 +8,7 @@ import {
 } from "next/navigation"
 import { Cart, Customer } from "@medusajs/medusa"
 import { CheckCircleSolid } from "@medusajs/icons"
-import { Heading, Text, useToggleState } from "@medusajs/ui"
+import { Button, Heading, Text, useToggleState } from "@medusajs/ui"
 
 import Divider from "@modules/common/components/divider"
 import Spinner from "@modules/common/icons/spinner"
@@ -45,6 +45,10 @@ const Addresses = ({
 
   const handleEdit = () => {
     router.push(pathname + "?step=address")
+  }
+
+  const handleSubmit = () => {
+    router.push(pathname + "?step=delivery", { scroll: false })
   }
 
   const [message, formAction] = useFormState(setAddresses, null)
@@ -93,7 +97,9 @@ const Addresses = ({
                 <BillingAddress cart={cart} countryCode={countryCode} />
               </div>
             )}
-            <SubmitButton className="mt-6">Continue to delivery</SubmitButton>
+            <Button size="large" className="mt-6" onClick={handleSubmit}>
+              Continue to delivery
+            </Button>
             <ErrorMessage error={message} />
           </div>
         </form>

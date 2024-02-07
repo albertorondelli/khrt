@@ -9,6 +9,7 @@ import PasswordResetConfirmation from "../components/password-reset-confirmation
 import TokenVerify from "../components/token-verify"
 import EmailVerify from "../components/email-verify"
 import { useSearchParams } from "next/navigation"
+import Spinner from "@modules/common/icons/spinner"
 
 export enum LOGIN_VIEW {
   SIGN_IN = "sign-in",
@@ -20,22 +21,27 @@ export enum LOGIN_VIEW {
 }
 
 const LoginTemplate = () => {
-  const [currentView, setCurrentView] = useState("sign-in")
+  const [currentView, setCurrentView] = useState("")
 
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    if (searchParams.get("token") || searchParams.get("email")) {
+    if (searchParams.get("token")) {
       setCurrentView(LOGIN_VIEW.PASSWORD_RESET_CONFIRMATION)
-    }
-
-    if (searchParams.get("token-verify")) {
+    } else if (searchParams.get("token-verify")) {
       setCurrentView(LOGIN_VIEW.TOKEN_VERIFY)
+    } else {
+      setCurrentView(LOGIN_VIEW.SIGN_IN)
     }
   }, [searchParams])
 
   return (
-    <div className="w-full flex justify-start p-8">
+    <div className="w-full flex justify-center lg:justify-start p-8">
+      {!currentView && (
+        <div className="max-w-sm flex flex-col items-center">
+          <Spinner />
+        </div>
+      )}
       {currentView == "sign-in" && <Login setCurrentView={setCurrentView} />}
       {currentView == "register" && (
         <Register setCurrentView={setCurrentView} />
