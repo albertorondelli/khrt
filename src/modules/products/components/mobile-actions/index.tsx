@@ -176,6 +176,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                     )}
                     <div className="flex w-full pt-10">
                       <Button
+                        size="large"
                         onClick={() => {
                           handleAddToCart(), close()
                         }}
