@@ -56,7 +56,7 @@ const PasswordResetConfirmation = ({ setCurrentView }: Props) => {
         <>
           <h1 className="text-large-semi uppercase mb-6">Reset you password</h1>
           <p className="text-center text-base-regular text-gray-700 mb-8">
-            Enter your email and new password in the form below.
+            Enter your new password in the form below.
           </p>
           <form
             className="w-full"
