@@ -11,22 +11,22 @@ import { cookies } from "next/headers"
 import { CartWithCheckoutStep } from "types/global"
 import { getCheckoutStep } from "@lib/util/get-checkout-step"
 
+function timeout() {
+  return new Promise(resolve => setTimeout(resolve, 500));
+}
+
 export default async function CheckoutForm() {
   const cartId = cookies().get("_medusa_cart_id")?.value
 
   if (!cartId) {
     return null
   }
-
-  // TODO: Controllare se è giusto che cart viene chiamato
   // create payment sessions and get cart
+  //TODO: this timeout is a workaround
+  await timeout();
   const cart = (await createPaymentSessions(cartId).then(
     (cart) => cart
   )) as CartWithCheckoutStep
-
-  if (!cart) {
-    return null
-  }
 
   cart.checkout_step = cart && getCheckoutStep(cart)
 
