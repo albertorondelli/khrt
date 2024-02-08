@@ -30,6 +30,10 @@ export const paymentInfoMap: Record<
     title: "Test payment",
     icon: <CreditCard />,
   },
+  "credit-card": {
+    title: "Credit card",
+    icon: <CreditCard />,
+  },
   // Add more payment providers here
 }
 

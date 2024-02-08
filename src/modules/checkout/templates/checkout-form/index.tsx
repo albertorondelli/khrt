@@ -18,6 +18,7 @@ export default async function CheckoutForm() {
     return null
   }
 
+  // TODO: Controllare se è giusto che cart viene chiamato
   // create payment sessions and get cart
   const cart = (await createPaymentSessions(cartId).then(
     (cart) => cart

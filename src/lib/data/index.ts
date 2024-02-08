@@ -443,7 +443,7 @@ export async function getFilterOptions({
 }: {
   queryParams?: StoreGetProductsParams
 }): Promise<{ filterOptions: FilterOptions }> {
-  const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
+  const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000"
 
   delete queryParams?.["limit"]
   const params = objectToURLSearchParams(queryParams || {}).toString()

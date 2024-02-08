@@ -243,7 +243,7 @@ const CreditCardPaymentButton = ({
     setSubmitting(true)
 
     if (!session.data.redirectURL) {
-      setErrorMessage("An error, occurred please try again.")
+      setErrorMessage("An error occurred, please try again.")
       setSubmitting(false)
     } else {
       const url: string = session.data.redirectURL as string

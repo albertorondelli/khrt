@@ -1,5 +1,4 @@
 const excludedPaths = [
-  "/unicredit-payment",
   "/checkout",
   "/account*",
   "/server-sitemap-index.xml",

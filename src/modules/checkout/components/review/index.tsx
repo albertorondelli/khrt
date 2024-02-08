@@ -5,6 +5,7 @@ import { Heading, Text, clx } from "@medusajs/ui"
 import PaymentButton from "../payment-button"
 import { useSearchParams } from "next/navigation"
 import { Cart } from "@medusajs/medusa"
+import { useEffect, useState } from "react"
 
 const Review = ({
   cart,
@@ -13,7 +14,12 @@ const Review = ({
 }) => {
   const searchParams = useSearchParams()
 
-  const isOpen = searchParams.get("step") === "review"
+  const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    const step = searchParams.get("step")
+    setIsOpen(step === "review")
+  }, [searchParams])
 
   const previousStepsCompleted =
     cart.shipping_address &&
