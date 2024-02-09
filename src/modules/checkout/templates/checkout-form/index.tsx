@@ -12,7 +12,7 @@ import { CartWithCheckoutStep } from "types/global"
 import { getCheckoutStep } from "@lib/util/get-checkout-step"
 
 function timeout() {
-  return new Promise(resolve => setTimeout(resolve, 500));
+  return new Promise((resolve) => setTimeout(resolve, 500))
 }
 
 export default async function CheckoutForm() {
@@ -23,7 +23,7 @@ export default async function CheckoutForm() {
   }
   // create payment sessions and get cart
   //TODO: this timeout is a workaround
-  await timeout();
+  await timeout()
   const cart = (await createPaymentSessions(cartId).then(
     (cart) => cart
   )) as CartWithCheckoutStep
