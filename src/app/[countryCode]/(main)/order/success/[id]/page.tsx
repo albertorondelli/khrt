@@ -1,5 +1,5 @@
-import SuccessComponent from "./components/SuccessComponent"
+import SuccessTemplate from "./components/SuccessTemplate"
 
 export default async function OrderConfirmedPage() {
-  return <SuccessComponent />
+  return <SuccessTemplate />
 }

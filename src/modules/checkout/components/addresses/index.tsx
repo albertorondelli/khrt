@@ -53,10 +53,6 @@ const Addresses = ({
     router.push(pathname + "?step=address")
   }
 
-  const handleSubmit = () => {
-    router.push(pathname + "?step=delivery", { scroll: false })
-  }
-
   const [message, formAction] = useFormState(setAddresses, null)
 
   return (
@@ -103,9 +99,7 @@ const Addresses = ({
                 <BillingAddress cart={cart} countryCode={countryCode} />
               </div>
             )}
-            <Button size="large" className="mt-6" onClick={handleSubmit}>
-              Continue to delivery
-            </Button>
+            <SubmitButton className="mt-6">Continue to delivery</SubmitButton>
             <ErrorMessage error={message} />
           </div>
         </form>

@@ -21,6 +21,8 @@ export default function SuccessComponent() {
     onPaymentCompleted()
   }, [])
 
+  console.log("errorMessage", errorMessage)
+
   return (
     <>
       {submitting ? (
