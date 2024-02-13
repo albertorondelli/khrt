@@ -1,8 +1,9 @@
-import { Order } from "@medusajs/medusa"
+
+import { ExtendedOrder } from "models"
 import { Text } from "@medusajs/ui"
 
 type OrderDetailsProps = {
-  order: Order
+  order: ExtendedOrder
   showStatus?: boolean
 }
 
@@ -44,6 +45,19 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
                 {formatStatus(order.payment_status)}
               </span>
             </Text>
+            {order?.invoice_url && (
+              <Text>
+                Invoice:{" "}
+                <a
+                  className="text-gray-900 text-small-semi"
+                  href={order.invoice_url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  download
+                </a>
+              </Text>
+            )}
           </>
         )}
       </div>

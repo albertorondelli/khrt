@@ -3,6 +3,8 @@ import { notFound } from "next/navigation"
 
 import { retrieveOrder } from "@lib/data"
 import OrderDetailsTemplate from "@modules/order/templates/order-details-template"
+import { ExtendedOrder } from "models"
+import { Order } from "@medusajs/medusa"
 
 type Props = {
   params: { id: string }
@@ -22,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function OrderDetailPage({ params }: Props) {
-  const order = await retrieveOrder(params.id).catch(() => null)
+  const order = await retrieveOrder(params.id).catch(() => null) as ExtendedOrder
 
   if (!order) {
     notFound()

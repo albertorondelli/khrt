@@ -1,7 +1,8 @@
 import { Metadata } from "next"
 
 import { retrieveOrder } from "@lib/data"
-import { LineItem, Order } from "@medusajs/medusa"
+import { LineItem } from "@medusajs/medusa"
+import { ExtendedOrder } from "models"
 import { enrichLineItems } from "@modules/cart/actions"
 import OrderCompletedTemplate from "@modules/order/templates/order-completed-template"
 import { notFound } from "next/navigation"
@@ -23,7 +24,7 @@ async function getOrder(id: string) {
     order: {
       ...order,
       items: enrichedItems as LineItem[],
-    } as Order,
+    } as ExtendedOrder,
   }
 }
 

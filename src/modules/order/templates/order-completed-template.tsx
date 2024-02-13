@@ -1,4 +1,4 @@
-import { Order } from "@medusajs/medusa"
+import { ExtendedOrder } from "models"
 import { Heading } from "@medusajs/ui"
 import { cookies } from "next/headers"
 
@@ -11,7 +11,7 @@ import ShippingDetails from "@modules/order/components/shipping-details"
 import PaymentDetails from "@modules/order/components/payment-details"
 
 type OrderCompletedTemplateProps = {
-  order: Order
+  order: ExtendedOrder
 }
 
 export default function OrderCompletedTemplate({
