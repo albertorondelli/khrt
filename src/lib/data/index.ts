@@ -19,7 +19,11 @@ import sortProducts from "@lib/util/sort-products"
 import transformProductPreview from "@lib/util/transform-product-preview"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import { getRegion } from "app/actions"
-import { FilterOptions, ProductCategoryWithChildren, ProductPreviewType } from "types/global"
+import {
+  FilterOptions,
+  ProductCategoryWithChildren,
+  ProductPreviewType,
+} from "types/global"
 
 import { medusaClient } from "../config"
 import medusaError from "@lib/util/medusa-error"
@@ -443,7 +447,8 @@ export async function getFilterOptions({
 }: {
   queryParams?: StoreGetProductsParams
 }): Promise<{ filterOptions: FilterOptions }> {
-  const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000"
+  const BACKEND_URL =
+    process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000"
 
   delete queryParams?.["limit"]
   const params = objectToURLSearchParams(queryParams || {}).toString()
@@ -762,4 +767,34 @@ export async function getProductsByCategoryHandle({
     response,
     nextPage,
   }
+}
+
+export async function getWishlist(customerId: string) {
+  const headers = getMedusaHeaders(["customer"])
+  const path = `/store/${customerId}/wishlist`
+
+  return medusaClient.client
+    .request("GET", path, undefined, {}, headers)
+    .then((res) => res.wishlist)
+    .catch((err) => medusaError(err))
+}
+
+export async function addWishItem(customerId: string, productId: string) {
+  const headers = getMedusaHeaders(["customer"])
+  const path = `/store/${customerId}/wishlist`
+
+  return medusaClient.client
+    .request("POST", path, { product_id: productId }, {}, headers)
+    .then((res) => res)
+    .catch((err) => medusaError(err))
+}
+
+export async function deleteWishItem(customerId: string, productId: string) {
+  const headers = getMedusaHeaders(["customer"])
+  const path = `/store/${customerId}/wishlist`
+
+  return medusaClient.client
+    .request("DELETE", path, { product_id: productId }, {}, headers)
+    .then((res) => res)
+    .catch((err) => medusaError(err))
 }
