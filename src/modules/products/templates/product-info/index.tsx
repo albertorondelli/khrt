@@ -38,7 +38,7 @@ const ProductInfo = ({ customer, onWishlist, product }: ProductInfoProps) => {
           </Heading>
           {customer && (
             <button
-              className="flex items-center"
+              className="flex items-end"
               onClick={() => {
                 handleButtonClick()
                 handleWishlist(customer.id, product)
