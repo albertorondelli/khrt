@@ -30,14 +30,13 @@ export async function handleWishlist(
 
   if (onWishlist) {
     try {
-      await deleteWishItem(customerId, product.id)
-      return "Product removed successfully"
+      await deleteWishItem(customerId, product.id).then((res) => res)
     } catch (error) {
       return "Error cannot remove item from wishlist:" + error
     }
   } else {
     try {
-      await addWishItem(customerId, product.id)
+      await addWishItem(customerId, product.id).then((res) => res)
       return "Product added successfully"
     } catch (error) {
       return "Error cannot add item to wishlist:" + error
