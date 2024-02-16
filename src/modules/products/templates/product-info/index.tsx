@@ -15,7 +15,7 @@ type ProductInfoProps = {
 }
 
 const ProductInfo = ({ customer, onWishlist, product }: ProductInfoProps) => {
-  const [isOnWishlist, setIsOnWishlist] = useState(onWishlist) // Initial state (ideally fetch this)
+  const [isOnWishlist, setIsOnWishlist] = useState(onWishlist)
 
   function handleButtonClick() {
     setIsOnWishlist((prevState) => !prevState)
