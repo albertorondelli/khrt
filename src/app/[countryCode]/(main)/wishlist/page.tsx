@@ -18,7 +18,6 @@ const Wishlist: React.FC = async () => {
   }
 
   const wishlist = await getWishlist(customer.id)
-  console.log("wishlist", wishlist)
   return <WishlistTemplate customer={customer} wishlist={wishlist} />
 }
 
