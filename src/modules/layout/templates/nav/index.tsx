@@ -69,6 +69,12 @@ export default async function Nav() {
               </LocalizedClientLink>
               <LocalizedClientLink
                 className="hover:text-ui-fg-base"
+                href="/wishlist"
+              >
+                Wishlist
+              </LocalizedClientLink>
+              <LocalizedClientLink
+                className="hover:text-ui-fg-base"
                 href="/account"
               >
                 Account

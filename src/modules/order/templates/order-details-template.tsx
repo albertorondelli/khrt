@@ -1,6 +1,6 @@
 "use client"
 
-import { Order } from "@medusajs/medusa"
+import { ExtendedOrder } from "models"
 import { XMark } from "@medusajs/icons"
 import React from "react"
 
@@ -12,7 +12,7 @@ import ShippingDetails from "@modules/order/components/shipping-details"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 type OrderDetailsTemplateProps = {
-  order: Order
+  order: ExtendedOrder
 }
 
 const OrderDetailsTemplate: React.FC<OrderDetailsTemplateProps> = ({

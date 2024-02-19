@@ -4,6 +4,7 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
 import {
+  getCustomer,
   getProductByHandle,
   getProductsList,
   listRegions,
@@ -98,8 +99,11 @@ export default async function ProductPage({ params }: Props) {
     notFound()
   }
 
+  const customer = await getCustomer().catch(() => null)
+
   return (
     <ProductTemplate
+      customer={customer}
       product={pricedProduct}
       region={region}
       countryCode={params.countryCode}
