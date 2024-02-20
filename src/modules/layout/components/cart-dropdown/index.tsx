@@ -12,6 +12,7 @@ import LineItemOptions from "@modules/common/components/line-item-options"
 import LineItemPrice from "@modules/common/components/line-item-price"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Thumbnail from "@modules/products/components/thumbnail"
+import { ShoppingBag } from "@medusajs/icons"
 
 const CartDropdown = ({
   cart: cartState,
@@ -71,17 +72,13 @@ const CartDropdown = ({
   }, [totalItems, itemRef.current])
 
   return (
-    <div
-      className="h-full"
-      onMouseEnter={openAndCancel}
-      onMouseLeave={close}
-    >
+    <div className="h-full" onMouseEnter={openAndCancel} onMouseLeave={close}>
       <Popover className="relative h-full">
         <Popover.Button className="h-full">
-          <LocalizedClientLink
-            className="hover:text-ui-fg-base"
-            href="/cart"
-          >{`Cart (${totalItems})`}</LocalizedClientLink>
+          <LocalizedClientLink className="flex hover:text-ui-fg-base" href="/cart">
+            <ShoppingBag />
+            <span>{totalItems}</span>
+          </LocalizedClientLink>
         </Popover.Button>
         <Transition
           show={cartDropdownOpen}

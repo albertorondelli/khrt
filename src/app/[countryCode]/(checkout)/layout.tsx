@@ -25,7 +25,7 @@ export default function CheckoutLayout({
           </LocalizedClientLink>
           <LocalizedClientLink
             href="/"
-            className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
+            className="text-xl-semi text-ui-fg-subtle hover:text-ui-fg-base uppercase"
           >
             KHRT
           </LocalizedClientLink>
