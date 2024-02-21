@@ -1,16 +1,27 @@
 import { Product } from "@medusajs/medusa"
 import { Metadata } from "next"
 
-import { getCollectionsList, getProductsList } from "@lib/data"
+import {
+  getCategoriesList,
+  getCollectionsList,
+  getProductsList,
+} from "@lib/data"
 import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
 import { getRegion } from "app/actions"
 import { ProductCollectionWithPreviews } from "types/global"
+import CollectionsBanners from "@modules/home/components/banners/collection"
+import CategoriesBanners from "@modules/home/components/banners/category"
 
 export const metadata: Metadata = {
   title: "Medusa Next.js Starter Template",
   description:
     "A performant frontend ecommerce starter template with Next.js 14 and Medusa.",
+}
+
+const fetchCategories = async () => {
+  const { product_categories } = await getCategoriesList()
+  return product_categories
 }
 
 const getCollectionsWithProducts = async (
@@ -60,20 +71,29 @@ export default async function Home({
   params: { countryCode: string }
 }) {
   const collections = await getCollectionsWithProducts(countryCode)
+  const categories = await fetchCategories().then((categories) => categories)
   const region = await getRegion(countryCode)
 
-  if (!collections || !region) {
+  if (!collections || !region || !categories) {
     return null
   }
 
   return (
-    <>
-      <Hero />
+    <div className="medium:content-container">
+      <div className="py-12">
+        <Hero />
+      </div>
+      <div className="py-12">
+        <CategoriesBanners categories={categories} />
+      </div>
+      <div className="py-12">
+        <CollectionsBanners collections={collections} />
+      </div>
       <div className="py-12">
         <ul className="flex flex-col gap-x-6">
           <FeaturedProducts collections={collections} region={region} />
         </ul>
       </div>
-    </>
+    </div>
   )
 }
