@@ -80,14 +80,17 @@ export default async function Home({
 
   return (
     <div className="md:content-container">
-      <div className="py-12">
         <Hero />
+      <div className="py-12">
+        <CategoriesBanners categories={categories} size="square"/>
       </div>
       <div className="py-12">
-        <CategoriesBanners categories={categories} />
-      </div>
-      <div className="py-12">
-        <CollectionsBanners collections={collections} categories={categories}/>
+        <CollectionsBanners
+          collections={collections}
+          categories={categories}
+          wButton={false}
+          size="square"
+        />
       </div>
       <div className="py-12">
         <ul className="flex flex-col gap-x-6">
