@@ -7,7 +7,7 @@ import PlaceholderImage from "@modules/common/icons/placeholder-image"
 
 type BannerImageProps = {
   thumbnail?: string | null
-  images?: MedusaImage[] | null
+  images?: any | null
   size?: "small" | "medium" | "large" | "full" | "square"
   isFeatured?: boolean
   className?: string
@@ -25,7 +25,7 @@ const BannerImage: React.FC<BannerImageProps> = ({
   return (
     <div
       className={clx(
-        "aspect-[1/1] relative w-full overflow-hidden p-4 bg-ui-bg-subtle",
+        "relative w-full overflow-hidden p-4 bg-ui-bg-subtle",
         className,
         {
           "aspect-[1/1]": size === "square",
@@ -36,7 +36,7 @@ const BannerImage: React.FC<BannerImageProps> = ({
         }
       )}
     >
-      <ImageOrPlaceholder image={initialImage} size={size} />
+      <ImageOrPlaceholder image={images} size={size} />
     </div>
   )
 }

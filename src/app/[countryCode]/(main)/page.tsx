@@ -79,7 +79,7 @@ export default async function Home({
   }
 
   return (
-    <div className="medium:content-container">
+    <div className="md:content-container">
       <div className="py-12">
         <Hero />
       </div>
@@ -87,7 +87,7 @@ export default async function Home({
         <CategoriesBanners categories={categories} />
       </div>
       <div className="py-12">
-        <CollectionsBanners collections={collections} />
+        <CollectionsBanners collections={collections} categories={categories}/>
       </div>
       <div className="py-12">
         <ul className="flex flex-col gap-x-6">
