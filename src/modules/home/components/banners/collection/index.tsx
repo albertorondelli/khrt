@@ -25,7 +25,7 @@ const CategoriesBanners = ({
 }: CategoriesBannersProps) => {
   const cols = collections?.length ?? 1
   return (
-    <div className={`grid gap-2 grid-cols-1 md:grid-cols-${cols}`}>
+    <div className={`grid gap-2 grid-cols-1 md:grid-cols-3`}>
       {collections?.slice(0, 3).map((c) => {
         return (
           <LocalizedClientLink

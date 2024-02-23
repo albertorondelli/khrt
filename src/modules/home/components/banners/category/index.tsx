@@ -19,7 +19,7 @@ const CategoriesBanners = ({
   const parentCategories = categories?.filter((c) => !c.parent_category)
   const cols = parentCategories?.length ?? 1
   return (
-    <div className={`grid gap-2 grid-cols-1 md:grid-cols-${cols}`}>
+    <div className={`grid gap-2 grid-cols-1 md:grid-cols-2`}>
       {parentCategories?.map((c) => {
         return (
           <LocalizedClientLink

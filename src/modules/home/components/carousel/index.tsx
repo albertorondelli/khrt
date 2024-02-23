@@ -9,6 +9,9 @@ import image from "../../../../../public/backgroundImage.webp"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { clx } from "@medusajs/ui"
 
+import "./style.css"
+import { DotButton, useDotButton } from "../dot-button"
+
 interface CarouselProps {
   className?: any
   size?: any
@@ -20,30 +23,31 @@ const Carousel: React.FC<CarouselProps> = ({
   slides,
   options,
   className,
-  size = "horizontal",
+  size = "square",
 }) => {
-  const [emblaRef] = useEmblaCarousel(options)
-  console.log("slides", slides)
+  const [emblaRef, emblaApi] = useEmblaCarousel(options)
+
+  const { selectedIndex, scrollSnaps, onDotButtonClick } =
+    useDotButton(emblaApi)
+
   return (
-    <div className="overflow-hidden" ref={emblaRef}>
-      <div className="flex relative">
-        {slides.map((slide: any) => {
-          return (
-            <LocalizedClientLink
-              href={`/categories/${slide.handle}`}
-              passHref
-              key={slide.id}
-            >
-              <div
-                className={clx("w-full h-full relative", className, {
-                  "aspect-[1/1]": size === "square",
-                  "aspect-[16/9]": size == "horizontal",
-                  "aspect-[9/16]": size == "vertical",
-                })}
+    <div className="embla">
+      <div className="embla__viewport" ref={emblaRef}>
+        <div className="embla__container">
+          {slides.map((slide: any) => {
+            return (
+              <LocalizedClientLink
+                className="embla__slide"
+                href={`/categories/${slide.handle}`}
+                passHref
+                key={slide.id}
               >
                 <div
-                  className="grow-0 shrink-0 basis-full min-w-0 w-full h-full"
-                  key={slide.id}
+                  className={clx("w-full h-full relative", className, {
+                    "aspect-[1/1]": size === "square",
+                    "aspect-[16/9]": size == "horizontal",
+                    "aspect-[9/16]": size == "vertical",
+                  })}
                 >
                   <Image
                     src={image}
@@ -54,13 +58,23 @@ const Carousel: React.FC<CarouselProps> = ({
                     sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
                     fill
                   />
-                  SLIDE {slide.id}
                   <h1 className="absolute inset-x-0">{slide.name}</h1>
                 </div>
-              </div>
-            </LocalizedClientLink>
-          )
-        })}
+              </LocalizedClientLink>
+            )
+          })}
+        </div>
+      </div>
+      <div className="embla__dots">
+        {scrollSnaps.map((_, index) => (
+          <DotButton
+            key={index}
+            onClick={() => onDotButtonClick(index)}
+            className={"embla__dot".concat(
+              index === selectedIndex ? " embla__dot--selected" : ""
+            )}
+          />
+        ))}
       </div>
     </div>
   )

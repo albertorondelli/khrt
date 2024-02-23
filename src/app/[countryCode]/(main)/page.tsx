@@ -84,9 +84,9 @@ export default async function Home({
   const OPTIONS: EmblaOptionsType = {
     slidesToScroll: "auto",
     containScroll: "trimSnaps",
-    align: 'start' 
-  };
-  
+    align: "start",
+  }
+
   const slides = categories?.map((category) => {
     return {
       ...category,
@@ -114,7 +114,7 @@ export default async function Home({
         </ul>
       </div>
       <div className="py-12">
-        <EmblaCarousel slides={slides} options={OPTIONS} />
+        <EmblaCarousel slides={slides} options={OPTIONS} size="horizontal" />
       </div>
     </div>
   )
