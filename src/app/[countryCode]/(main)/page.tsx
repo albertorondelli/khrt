@@ -10,8 +10,11 @@ import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
 import { getRegion } from "app/actions"
 import { ProductCollectionWithPreviews } from "types/global"
+import { EmblaOptionsType } from "embla-carousel"
+
 import CollectionsBanners from "@modules/home/components/banners/collection"
 import CategoriesBanners from "@modules/home/components/banners/category"
+import EmblaCarousel from "@modules/home/components/carousel"
 
 export const metadata: Metadata = {
   title: "Medusa Next.js Starter Template",
@@ -78,11 +81,24 @@ export default async function Home({
     return null
   }
 
+  const OPTIONS: EmblaOptionsType = {
+    slidesToScroll: "auto",
+    containScroll: "trimSnaps",
+    align: 'start' 
+  };
+  
+  const slides = categories?.map((category) => {
+    return {
+      ...category,
+      url: "/../../../../../public/backgroundImage.webp",
+    }
+  })
+
   return (
     <div className="md:content-container">
-        <Hero />
+      <Hero />
       <div className="py-12">
-        <CategoriesBanners categories={categories} size="square"/>
+        <CategoriesBanners categories={categories} size="square" />
       </div>
       <div className="py-12">
         <CollectionsBanners
@@ -96,6 +112,9 @@ export default async function Home({
         <ul className="flex flex-col gap-x-6">
           <FeaturedProducts collections={collections} region={region} />
         </ul>
+      </div>
+      <div className="py-12">
+        <EmblaCarousel slides={slides} options={OPTIONS} />
       </div>
     </div>
   )

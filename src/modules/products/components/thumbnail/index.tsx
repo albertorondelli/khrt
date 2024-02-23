@@ -43,7 +43,7 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
   )
 }
 
-const ImageOrPlaceholder = ({
+export const ImageOrPlaceholder = ({
   image,
   size,
 }: Pick<ThumbnailProps, "size"> & { image?: string }) => {
