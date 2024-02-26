@@ -38,7 +38,7 @@ const CategoriesBanners = ({
             >
               <BannerImage size={size} images={backgroundImage} />
               <div className="absolute inset-0 z-10 hover:opacity-100 hover:bg-black hover:bg-opacity-10 duration-300">
-                <div className="absolute inset-x-10 bottom-12 flex flex-col align-bottom small:p-10 gap-6">
+                <div className="absolute left-10 bottom-12 flex flex-col align-bottom">
                   <span>
                     <Heading
                       level="h1"
@@ -46,12 +46,9 @@ const CategoriesBanners = ({
                     >
                       {c.name}
                     </Heading>
-                    <Heading
-                      level="h2"
-                      className="text-base-regular underline text-ui-fg-on-color"
-                    >
-                      Scopri la categoria
-                    </Heading>
+                  </span>
+                  <span className="text-base-regular underline text-ui-fg-on-color">
+                    Scopri la categoria
                   </span>
                 </div>
               </div>

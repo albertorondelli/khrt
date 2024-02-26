@@ -14,7 +14,7 @@ import { EmblaOptionsType } from "embla-carousel"
 
 import CollectionsBanners from "@modules/home/components/banners/collection"
 import CategoriesBanners from "@modules/home/components/banners/category"
-import EmblaCarousel from "@modules/home/components/carousel"
+import Carousel from "@modules/home/components/carousel"
 
 export const metadata: Metadata = {
   title: "Medusa Next.js Starter Template",
@@ -114,7 +114,7 @@ export default async function Home({
         </ul>
       </div>
       <div className="py-12">
-        <EmblaCarousel slides={slides} options={OPTIONS} size="horizontal" />
+        <Carousel slides={slides} options={OPTIONS} size="horizontal" />
       </div>
     </div>
   )

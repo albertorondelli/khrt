@@ -58,20 +58,26 @@ const Carousel: React.FC<CarouselProps> = ({
                     sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
                     fill
                   />
-                  <h1 className="absolute inset-x-0">{slide.name}</h1>
+                  <span className="absolute left-10 bottom-12 text-xl-regular text-ui-fg-on-color">
+                    {slide.name}
+                  </span>
                 </div>
               </LocalizedClientLink>
             )
           })}
         </div>
       </div>
-      <div className="embla__dots">
+      <div className="flex flex-wrap justify-center items-center pt-4">
         {scrollSnaps.map((_, index) => (
           <DotButton
             key={index}
             onClick={() => onDotButtonClick(index)}
-            className={"embla__dot".concat(
-              index === selectedIndex ? " embla__dot--selected" : ""
+            className={clx(
+              "touch-manipulation cursor-pointer w-6 h-6 rounded-full flex items-center justify-center after:w-2 after:h-2 after:rounded-full after:flex after:items-center after:content-[''] after:shadow-inner after:ring-2 after:ring-black/10",
+              {
+                "after:shadow-inner after:ring-2 after:ring-black/40":
+                  index == selectedIndex,
+              }
             )}
           />
         ))}

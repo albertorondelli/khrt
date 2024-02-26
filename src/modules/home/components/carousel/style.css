@@ -1,5 +1,4 @@
 .embla {
-  max-width: 70rem;
   margin: auto;
   --slide-height: 19rem;
   --slide-spacing: 1rem;
@@ -51,19 +50,10 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-right: calc((2.6rem - 1.4rem) / 2 * -1);
 }
 .embla__dot {
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: transparent;
   touch-action: manipulation;
-  display: inline-flex;
-  text-decoration: none;
   cursor: pointer;
-  border: 0;
-  padding: 0;
-  margin: 0;
   width: 2.6rem;
   height: 2.6rem;
   display: flex;
