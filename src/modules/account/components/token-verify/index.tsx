@@ -59,7 +59,7 @@ const VerifyToken = ({ setCurrentView }: Props) => {
             Email successfully verified
           </h1>
 
-          <p className="text-base-regular text-gray-700 mb-8">
+          <p className="text-base-regular text-ui-fg-subtle mb-8">
             Your email has been successfully verified. You can now log in with
             your email and password
           </p>
@@ -74,7 +74,7 @@ const VerifyToken = ({ setCurrentView }: Props) => {
           <h1 className="text-large-semi text-center uppercase mb-6">
             Email not verified
           </h1>
-          <p className="text-base-regular text-gray-700 mb-4">
+          <p className="text-base-regular text-ui-fg-subtle mb-4">
             The email could not be verified. Please try reloading the page again
             or contact customer service if the problem persists.
           </p>

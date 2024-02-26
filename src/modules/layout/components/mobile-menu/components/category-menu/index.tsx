@@ -24,7 +24,7 @@ const CategoryMenu = ({ close, handleMenu, category }: CategoryMenuProps) => {
             className="flex items-center gap-x-2"
             onClick={() => handleMenu("main")}
           >
-            <ChevronLeft className="text-gray-700" />
+            <ChevronLeft className="text-ui-fg-subtle" />
           </button>
         </div>
         <div>
@@ -42,7 +42,7 @@ const CategoryMenu = ({ close, handleMenu, category }: CategoryMenuProps) => {
       <div className="space-y-6 flex-1 flex flex-col justify-between p-6">
         <div className="flex flex-col flex-1 text-large-semi text-ui-fg-base">
           <ul className="flex flex-col gap-y-2">
-            <li className="bg-ui-bg-component p-4">
+            <li className="bg-ui-bg-subtle p-4">
               <Link href={`/categories/${category.handle}`}>
                 <button
                   className="flex items-center justify-between w-full"
@@ -55,7 +55,7 @@ const CategoryMenu = ({ close, handleMenu, category }: CategoryMenuProps) => {
               </Link>
             </li>
             {category.category_children.map((category: any) => (
-              <li className="bg-ui-bg-component p-4" key={category.id}>
+              <li className="bg-ui-bg-subtle p-4" key={category.id}>
                 <Link href={`/categories/${category.handle}`}>
                   <button
                     className="flex items-center justify-between w-full"

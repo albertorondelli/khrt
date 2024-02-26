@@ -20,7 +20,7 @@ const Footer = ({ close, customer, regions }: FooterProps) => {
       <div className="flex flex-col gap-y-8 text-small-regular">
         {!customer ? (
           <div className="flex flex-col gap-y-2">
-            <span className="text-gray-700 uppercase">Account</span>
+            <span className="text-ui-fg-subtle uppercase">Account</span>
             <Link
               href={`/account`}
               onClick={close}
@@ -34,7 +34,7 @@ const Footer = ({ close, customer, regions }: FooterProps) => {
           </div>
         ) : (
           <div className="flex flex-col gap-y-2">
-            <span className="text-gray-700 uppercase">Signed in as</span>
+            <span className="text-ui-fg-subtle uppercase">Signed in as</span>
             <Link href={`/account`} passHref>
               <button
                 className="flex items-center justify-between border-b border-ui-border-base py-2 w-full"
@@ -49,7 +49,7 @@ const Footer = ({ close, customer, regions }: FooterProps) => {
         )}
 
         <div className="flex flex-col gap-y-2">
-          <span className="text-gray-700 uppercase">Delivery</span>
+          <span className="text-ui-fg-subtle uppercase">Delivery</span>
           <div className="flex items-center justify-between border-b border-ui-border-base py-2">
             <span className="sr-only">Click to select shipping country</span>
             <div className="flex items-center gap-x-2 w-full">

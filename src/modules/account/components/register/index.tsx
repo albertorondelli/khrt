@@ -47,7 +47,7 @@ const Register = ({ setCurrentView }: Props) => {
             or retry again.
           </p>
           <div className="flex flex-col text-small-regular">
-            <span className="text-center text-gray-700 ">
+            <span className="text-center text-ui-fg-subtle ">
               You didn&apos;t receive anything?{" "}
             </span>
             <button onClick={() => clearState()} className="underline">

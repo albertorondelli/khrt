@@ -6,7 +6,7 @@ import Spinner from "@modules/common/icons/spinner"
 import Help from "@modules/order/components/help"
 import { useEffect, useState } from "react"
 
-export default function SuccessComponent() {
+export default function SuccessTemplate() {
   const [submitting, setSubmitting] = useState(true)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
@@ -21,10 +21,8 @@ export default function SuccessComponent() {
     onPaymentCompleted()
   }, [])
 
-  console.log("errorMessage", errorMessage)
-
   return (
-    <>
+    <div className="bg-ui-bg-base">
       {submitting ? (
         <div className="flex flex-col items-center justify-center h-screen px-4 py-16 text-ui-fg-base">
           <Spinner />
@@ -41,10 +39,10 @@ export default function SuccessComponent() {
                 level="h1"
                 className="flex flex-col gap-y-3 text-ui-fg-base text-3xl mb-4"
               >
-                <span>Payment Error!</span>
+                <span>Payment error</span>
               </Heading>
               <Text>
-                <span>
+                <span className="text-ui-fg-base text-base">
                   There was an issue processing your payment. Please review your
                   information and try again.
                 </span>
@@ -54,6 +52,6 @@ export default function SuccessComponent() {
           </div>
         </div>
       )}
-    </>
+    </div>
   )
 }

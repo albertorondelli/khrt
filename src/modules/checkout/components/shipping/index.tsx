@@ -70,7 +70,7 @@ const Shipping: React.FC<ShippingProps> = ({
 
   return (
     <div className="bg-ui-bg-base">
-      <div className="flex flex-row items-center justify-between mb-6">
+      <div className="flex flex-row items-center justify-between mb-6 text-ui-fg-base">
         <Heading
           level="h2"
           className={clx(
@@ -112,7 +112,7 @@ const Shipping: React.FC<ShippingProps> = ({
                       key={option.id}
                       value={option.id}
                       className={clx(
-                        "flex items-center justify-between text-small-regular cursor-pointer py-4 border rounded-rounded px-8 mb-2 hover:shadow-borders-interactive-with-active",
+                        "flex items-center justify-between text-small-regular cursor-pointer py-4 border rounded-rounded px-8 mb-2 hover:shadow-borders-interactive-with-active text-ui-fg-base",
                         {
                           "border-ui-border-interactive":
                             option.id ===

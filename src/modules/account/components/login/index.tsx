@@ -38,7 +38,7 @@ const Login = ({ setCurrentView }: Props) => {
 
   return (
     <div className="max-w-sm w-full flex flex-col items-center">
-      <h1 className="text-large-semi uppercase mb-6">Welcome back</h1>
+      <h1 className="text-3xl uppercase mb-6">Welcome back</h1>
       <p className="text-center text-base-regular text-ui-fg-base mb-8">
         Sign in to access an enhanced shopping experience.
       </p>
@@ -64,7 +64,7 @@ const Login = ({ setCurrentView }: Props) => {
         <LocalizedClientLink
           onClick={() => setCurrentView(LOGIN_VIEW.PASSWORD_RESET_REQUEST)}
           href="/account"
-          className="text-small-regular text-gray-700 italic"
+          className="text-small-regular text-ui-fg-subtle"
         >
           Forgot your password?
         </LocalizedClientLink>

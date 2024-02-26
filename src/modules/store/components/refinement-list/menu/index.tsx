@@ -28,6 +28,10 @@ export const MainView: React.FC<MainViewProps> = ({
   setAttribute,
   close,
 }) => {
+  const handleRemove = () => {
+    // TODO: Remove all the filters (colors and sizes)
+  }
+
   return (
     <div
       className={`flex flex-col h-full ${
@@ -46,7 +50,7 @@ export const MainView: React.FC<MainViewProps> = ({
             {filterableAttributes.map((filter) => (
               <li key={filter.id}>
                 <button
-                  className="flex items-center justify-between w-full bg-gray-50 p-4"
+                  className="flex items-center justify-between w-full bg-ui-bg-subtle p-4"
                   onClick={() => {
                     setAttribute(filter.key)
                   }}
@@ -62,12 +66,22 @@ export const MainView: React.FC<MainViewProps> = ({
       </div>
       <div className="flex-grow"></div>
       <div className="flex justify-center items-end mt-auto p-4">
-        <div className="flex items-center justify-center gap-4 w-full">
-          <Button variant="secondary" className="w-full" size="large">
+        <div className="flex items-center justify-center gap-4 w-full py-5">
+          <Button
+            variant="secondary"
+            onClick={handleRemove}
+            className="w-full"
+            size="large"
+          >
             Elimina tutto
           </Button>
-          <Button onClick={close} className="w-full" size="large">
-            Conferma
+          <Button
+            variant="secondary"
+            onClick={close}
+            className="w-full"
+            size="large"
+          >
+            Chiudi
           </Button>
         </div>
       </div>
@@ -110,6 +124,10 @@ export const DetailView: React.FC<DetailViewProps> = ({
     router.push(`${pathname}?${query}`)
   }
 
+  const handleRemove = () => {
+    // TODO: remove the query string associated with the filter
+  }
+
   return (
     <div
       className={`flex flex-col min-h-full ${
@@ -122,7 +140,7 @@ export const DetailView: React.FC<DetailViewProps> = ({
             className="flex items-center gap-x-2"
             onClick={() => setAttribute("")}
           >
-            <ChevronDown className="rotate-90 text-gray-700" />
+            <ChevronDown className="rotate-90 text-ui-fg-subtle" />
           </button>
         </div>
         <div>
@@ -160,12 +178,22 @@ export const DetailView: React.FC<DetailViewProps> = ({
         </ul>
       </div>
       <div className="flex justify-center items-end p-4">
-        <div className="flex items-center justify-center gap-4 w-full">
-          <Button variant="secondary" className="w-full" size="large">
+        <div className="flex items-center justify-center gap-4 w-full py-5">
+          <Button
+            variant="secondary"
+            onClick={handleRemove}
+            className="w-full"
+            size="large"
+          >
             Rimuovi i filtri
           </Button>
-          <Button onClick={close} className="w-full" size="large">
-            Conferma
+          <Button
+            variant="secondary"
+            onClick={close}
+            className="w-full"
+            size="large"
+          >
+            Chiudi
           </Button>
         </div>
       </div>

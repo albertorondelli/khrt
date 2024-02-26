@@ -61,7 +61,7 @@ const Overview = ({ customer, orders }: OverviewProps) => {
                         <LocalizedClientLink
                           href={`/account/orders/details/${order.id}`}
                         >
-                          <Container className="bg-ui-bg-component flex justify-between items-center p-4">
+                          <div className="bg-ui-bg-subtle flex justify-between items-center p-4">
                             <div className="grid grid-cols-3 grid-rows-2 text-small-regular gap-x-4 flex-1">
                               <span className="font-semibold">Date placed</span>
                               <span className="font-semibold">
@@ -88,7 +88,7 @@ const Overview = ({ customer, orders }: OverviewProps) => {
                               </span>
                               <ChevronRight />
                             </button>
-                          </Container>
+                          </div>
                         </LocalizedClientLink>
                       </li>
                     )

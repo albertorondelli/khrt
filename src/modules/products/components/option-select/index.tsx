@@ -20,7 +20,7 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
   const filteredOptions = option.values.map((v) => v.value).filter(onlyUnique)
 
   return (
-    <div className="flex flex-col gap-y-3">
+    <div className="flex flex-col gap-y-3 text-ui-fg-base">
       <span className="text-sm">Select {title}</span>
       <div className="flex flex-wrap justify-between gap-2">
         {filteredOptions.map((v) => {

@@ -55,7 +55,7 @@ const PasswordResetConfirmation = ({ setCurrentView }: Props) => {
       ) : (
         <>
           <h1 className="text-large-semi uppercase mb-6">Reset you password</h1>
-          <p className="text-center text-base-regular text-gray-700 mb-8">
+          <p className="text-center text-base-regular text-ui-fg-subtle mb-8">
             Enter your new password in the form below.
           </p>
           <form
@@ -83,7 +83,7 @@ const PasswordResetConfirmation = ({ setCurrentView }: Props) => {
           </form>
         </>
       )}
-      <span className="text-center text-gray-700 text-small-regular mt-6">
+      <span className="text-center text-ui-fg-subtle text-small-regular mt-6">
         Not a member?{" "}
         <button
           onClick={() => setCurrentView(LOGIN_VIEW.REGISTER)}

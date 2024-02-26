@@ -28,7 +28,7 @@ const Review = ({
 
   return (
     <div className="bg-ui-bg-base">
-      <div className="flex flex-row items-center justify-between mb-6">
+      <div className="flex flex-row items-center justify-between mb-6 text-ui-fg-base">
         <Heading
           level="h2"
           className={clx(

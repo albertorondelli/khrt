@@ -34,8 +34,8 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
   const onWishlist = await isWishlisted(customerId, product.id)
   
   return (
-    <>
-      <div className="content-container flex flex-col small:flex-row small:items-start py-6 relative">
+    <div>
+      <div className="content-container flex flex-col small:flex-row small:items-start py-6 relative bg-ui-bg-base">
         <div className="flex flex-col small:hidden w-full pb-8 gap-y-6">
           <ProductInfo
             customer={customer}
@@ -64,12 +64,12 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
         </div>
       </div>
 
-      <div className="content-container my-16 small:my-32">
+      <div className="content-container py-16 small:py-32 bg-ui-bg-base">
         <Suspense fallback={<SkeletonRelatedProducts />}>
           <RelatedProducts product={product} countryCode={countryCode} />
         </Suspense>
       </div>
-    </>
+    </div>
   )
 }
 

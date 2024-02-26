@@ -39,7 +39,7 @@ const PasswordReset = ({ setCurrentView }: Props) => {
             If you can&apos;t locate it in your inbox, please wait a few minutes
             or retry again.
           </p>
-          <span className="text-center text-gray-700 text-small-regular">
+          <span className="text-center text-ui-fg-subtle text-small-regular">
             You didn&apos;t receive anything?{" "}
             <button onClick={() => clearState()} className="underline">
               Repeat the process
@@ -74,7 +74,7 @@ const PasswordReset = ({ setCurrentView }: Props) => {
             <ErrorMessage error={state?.error} />
             <SubmitButton className="w-full mt-6">Send email</SubmitButton>
           </form>
-          <span className="text-center text-gray-700 text-small-regular mt-6">
+          <span className="text-center text-ui-fg-base text-small-regular mt-6">
             Already a member?{" "}
             <button
               onClick={() => setCurrentView(LOGIN_VIEW.SIGN_IN)}

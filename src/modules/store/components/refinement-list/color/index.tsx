@@ -15,8 +15,7 @@ export const Color = ({
   queryParams,
   setQueryParams,
 }: ColorProps) => {
-
-
+  
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newColorFilter = e.target.value as string
     if (queryParams?.q) {
@@ -31,9 +30,13 @@ export const Color = ({
     <div className="flex flex-col gap-y-6">
       {colorOptions
         ? colorOptions?.map((c, i) => (
-            <div key={i} className={clx("flex gap-x-4 items-center", {})}>
+            <div
+              key={i}
+              className={clx("flex gap-x-4 items-center text-ui-fg-base ", {})}
+            >
               <Checkbox
                 // checked={i.value === sortBy}
+                className="text-ui-fg-base"
                 onClick={(e) =>
                   handleChange(e as unknown as ChangeEvent<HTMLInputElement>)
                 }
@@ -43,7 +46,7 @@ export const Color = ({
               <Label
                 htmlFor={c}
                 className={clx(
-                  " !transform-none text-ui-fg-subtle hover:cursor-pointer text-large-semi",
+                  " !transform-none text-ui-fg-base hover:cursor-pointer text-large-semi",
                   {
                     // "text-ui-fg-base": i.value === sortBy,
                   }

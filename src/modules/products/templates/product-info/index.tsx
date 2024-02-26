@@ -44,7 +44,7 @@ const ProductInfo = ({ customer, onWishlist, product }: ProductInfoProps) => {
                 handleWishlist(customer.id, product)
               }}
             >
-              <Heart className={isOnWishlist ? `text-ui-fg-error` : ``} />
+              <Heart className={isOnWishlist ? `text-ui-fg-error` : `text-ui-fg-base`} />
             </button>
           )}
         </div>
