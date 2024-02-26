@@ -62,7 +62,7 @@ const Modal = ({
                     "max-w-xl": size === "medium",
                     "max-w-3xl": size === "large",
                     "bg-transparent shadow-none": search,
-                    "bg-white shadow-xl border rounded-rounded": !search,
+                    "bg-ui-bg-base shadow-xl border rounded-rounded": !search,
                   }
                 )}
               >
@@ -80,10 +80,10 @@ const Title: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { close } = useModal()
 
   return (
-    <Dialog.Title className="flex items-center justify-between">
+    <Dialog.Title className="flex items-center justify-between text-ui-fg-subtle">
       <div className="text-large-semi">{children}</div>
       <div>
-        <button onClick={close}>
+        <button className="hover:text-ui-fg-base" onClick={close}>
           <X size={20} />
         </button>
       </div>

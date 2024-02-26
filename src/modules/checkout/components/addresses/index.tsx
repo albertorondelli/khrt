@@ -56,11 +56,11 @@ const Addresses = ({
   const [message, formAction] = useFormState(setAddresses, null)
 
   return (
-    <div className="bg-white">
+    <div className="bg-ui-bg-base">
       <div className="flex flex-row items-center justify-between mb-6">
         <Heading
           level="h2"
-          className="flex flex-row text-3xl-regular gap-x-2 items-baseline"
+          className="flex flex-row text-3xl gap-x-2 items-baseline text-ui-fg-base"
         >
           Address
           {!isOpen && <CheckCircleSolid />}
@@ -91,7 +91,7 @@ const Addresses = ({
               <div>
                 <Heading
                   level="h2"
-                  className="text-3xl-regular gap-x-4 pb-6 pt-8"
+                  className="text-3xl gap-x-4 pb-6 pt-8 text-ui-fg-base"
                 >
                   Billing address
                 </Heading>

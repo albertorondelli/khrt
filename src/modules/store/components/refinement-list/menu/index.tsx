@@ -34,14 +34,14 @@ export const MainView: React.FC<MainViewProps> = ({
         attribute === "" ? "block" : "hidden"
       }`}
     >
-      <div className="flex items-center justify-between w-full border-b border-gray-200 py-4 px-6">
+      <div className="flex items-center justify-between w-full border-b border-ui-border-base py-4 px-6">
         <h1 className="text-large-semi flex-1 text-center">Ordina e Filtra</h1>
         <button onClick={close}>
           <XMark />
         </button>
       </div>
       <div className="space-y-6 flex-1 flex flex-col justify-between p-6">
-        <div className="flex flex-col flex-1 text-large-regular text-gray-900">
+        <div className="flex flex-col flex-1 text-large-regular text-ui-fg-base">
           <ul className="flex flex-col gap-y-2">
             {filterableAttributes.map((filter) => (
               <li key={filter.id}>
@@ -116,7 +116,7 @@ export const DetailView: React.FC<DetailViewProps> = ({
         attribute === "" ? "hidden" : "block"
       }`}
     >
-      <div className="flex items-center justify-between w-full border-b border-gray-200 py-4 px-6">
+      <div className="flex items-center justify-between w-full border-b border-ui-border-base py-4 px-6">
         <div className="flex-1 basis-0">
           <button
             className="flex items-center gap-x-2"
@@ -135,7 +135,7 @@ export const DetailView: React.FC<DetailViewProps> = ({
         </div>
       </div>
       <div className="space-y-6 flex-1 flex flex-col justify-between p-6">
-        <ul className="flex flex-col flex-1 text-large-regular text-gray-900">
+        <ul className="flex flex-col flex-1 text-large-regular text-ui-fg-base">
           <li className={attribute === "sortby" ? "block" : "hidden"}>
             <SortProducts sortBy={sortBy} setQueryParams={setQueryParams} />
           </li>

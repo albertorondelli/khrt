@@ -95,7 +95,7 @@ export default async function Home({
   })
 
   return (
-    <div className="md:content-container">
+    <div className="md:content-container bg-ui-bg-base">
       <Hero />
       <div className="py-12">
         <CategoriesBanners categories={categories} size="square" />

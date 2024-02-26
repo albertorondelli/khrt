@@ -16,7 +16,7 @@ const Footer = ({ close, customer, regions }: FooterProps) => {
   const toggleState = useToggleState()
 
   return (
-    <div className="flex flex-col text-gray-900 ">
+    <div className="flex flex-col text-ui-fg-base ">
       <div className="flex flex-col gap-y-8 text-small-regular">
         {!customer ? (
           <div className="flex flex-col gap-y-2">
@@ -24,7 +24,7 @@ const Footer = ({ close, customer, regions }: FooterProps) => {
             <Link
               href={`/account`}
               onClick={close}
-              className="flex items-center justify-between border-b border-gray-200 py-2 w-full"
+              className="flex items-center justify-between border-b border-ui-border-base py-2 w-full"
               passHref
             >
               <span className="sr-only">Go to sign in page</span>
@@ -37,7 +37,7 @@ const Footer = ({ close, customer, regions }: FooterProps) => {
             <span className="text-gray-700 uppercase">Signed in as</span>
             <Link href={`/account`} passHref>
               <button
-                className="flex items-center justify-between border-b border-gray-200 py-2 w-full"
+                className="flex items-center justify-between border-b border-ui-border-base py-2 w-full"
                 onClick={close}
               >
                 <span className="sr-only">Go to account page</span>
@@ -50,7 +50,7 @@ const Footer = ({ close, customer, regions }: FooterProps) => {
 
         <div className="flex flex-col gap-y-2">
           <span className="text-gray-700 uppercase">Delivery</span>
-          <div className="flex items-center justify-between border-b border-gray-200 py-2">
+          <div className="flex items-center justify-between border-b border-ui-border-base py-2">
             <span className="sr-only">Click to select shipping country</span>
             <div className="flex items-center gap-x-2 w-full">
               <div

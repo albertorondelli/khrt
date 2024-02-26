@@ -27,7 +27,7 @@ const MainMenu = ({
 }: MainMenuProps) => {
   return (
     <div className="flex flex-col flex-1">
-      <div className="flex items-center justify-between w-full border-b border-gray-200 py-4 px-6">
+      <div className="flex items-center justify-between w-full border-b border-ui-border-base py-4 px-6">
         <div className="flex-1 basis-0">
           <LocalizedClientLink
             className="flex items-center gap-x-2 hover:text-ui-fg-base"
@@ -50,7 +50,7 @@ const MainMenu = ({
       <div className="space-y-6 flex-1 flex flex-col justify-between p-6">
         <div className="flex flex-col flex-1 text-large-semi">
           <ul className="flex flex-col gap-y-2">
-            <li className="bg-gray-50 p-4">
+            <li className="bg-ui-bg-component p-4">
               <Link href="/store">
                 <button
                   className="flex items-center justify-between w-full"
@@ -68,7 +68,7 @@ const MainMenu = ({
               }
 
               return (
-                <li className="bg-gray-50 p-4" key={c.id}>
+                <li className="bg-ui-bg-component p-4" key={c.id}>
                   <button
                     className="flex items-center justify-between w-full"
                     onClick={() => handleMenu("category", c)}

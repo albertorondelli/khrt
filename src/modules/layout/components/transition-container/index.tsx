@@ -52,7 +52,7 @@ const TransitionContainer = ({
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
           >
-            <div className="fixed inset-y-0 right-0 bg-white text-gray-900 overflow-y-auto w-full sm:w-[30rem]">
+            <div className="fixed inset-y-0 right-0 bg-ui-bg-base text-ui-fg-base overflow-y-auto w-full sm:w-[30rem]">
               {children}
             </div>
           </Transition.Child>

@@ -17,8 +17,8 @@ const CategoryMenu = ({ close, handleMenu, category }: CategoryMenuProps) => {
   }
 
   return (
-    <div className="flex flex-col flex-1 bg-white h-full">
-      <div className="flex items-center justify-between w-full border-b border-gray-200 py-4 px-6">
+    <div className="flex flex-col flex-1 bg-ui-bg-base h-full">
+      <div className="flex items-center justify-between w-full border-b border-ui-border-base py-4 px-6">
         <div className="flex-1 basis-0">
           <button
             className="flex items-center gap-x-2"
@@ -40,9 +40,9 @@ const CategoryMenu = ({ close, handleMenu, category }: CategoryMenuProps) => {
       </div>
 
       <div className="space-y-6 flex-1 flex flex-col justify-between p-6">
-        <div className="flex flex-col flex-1 text-large-semi text-gray-900">
+        <div className="flex flex-col flex-1 text-large-semi text-ui-fg-base">
           <ul className="flex flex-col gap-y-2">
-            <li className="bg-gray-50 p-4">
+            <li className="bg-ui-bg-component p-4">
               <Link href={`/categories/${category.handle}`}>
                 <button
                   className="flex items-center justify-between w-full"
@@ -55,7 +55,7 @@ const CategoryMenu = ({ close, handleMenu, category }: CategoryMenuProps) => {
               </Link>
             </li>
             {category.category_children.map((category: any) => (
-              <li className="bg-gray-50 p-4" key={category.id}>
+              <li className="bg-ui-bg-component p-4" key={category.id}>
                 <Link href={`/categories/${category.handle}`}>
                   <button
                     className="flex items-center justify-between w-full"

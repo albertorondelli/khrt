@@ -77,7 +77,7 @@ const ShippingAddress = ({
   return (
     <>
       {customer && (addressesInRegion?.length || 0) > 0 && (
-        <Container className="mb-6 flex flex-col gap-y-4 p-5">
+        <Container className="mb-6 flex flex-col gap-y-4 p-5 text-ui-fg-base">
           <p className="text-small-regular">
             {`Hi ${customer.first_name}, do you want to use one of your saved addresses?`}
           </p>
@@ -148,7 +148,7 @@ const ShippingAddress = ({
           onChange={handleChange}
         />
       </div>
-      <div className="my-8">
+      <div className="my-8 text-ui-fg-subtle">
         <Checkbox
           label="Same as billing address"
           name="same_as_billing"

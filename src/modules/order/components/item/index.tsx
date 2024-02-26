@@ -1,5 +1,5 @@
 import { LineItem, Region } from "@medusajs/medusa"
-import { Table, Text } from "@medusajs/ui"
+import { Table, Text, clx } from "@medusajs/ui"
 
 import LineItemOptions from "@modules/common/components/line-item-options"
 import LineItemPrice from "@modules/common/components/line-item-price"
@@ -9,14 +9,19 @@ import Thumbnail from "@modules/products/components/thumbnail"
 type ItemProps = {
   item: Omit<LineItem, "beforeInsert">
   region: Region
+  hover?: boolean
 }
 
-const Item = ({ item, region }: ItemProps) => {
+const Item = ({ item, region, hover = false }: ItemProps) => {
   return (
-    <Table.Row className="w-full">
+    <Table.Row
+      className={clx("w-full ", {
+        "hover:bg-transparent": !hover,
+      })}
+    >
       <Table.Cell className="!pl-0 p-4 w-24">
         <div className="flex w-16">
-          <Thumbnail thumbnail={item.thumbnail} size="square" />
+          <Thumbnail thumbnail={item.thumbnail} size="small" />
         </div>
       </Table.Cell>
 
@@ -26,7 +31,7 @@ const Item = ({ item, region }: ItemProps) => {
       </Table.Cell>
 
       <Table.Cell className="!pr-0">
-        <span className="!pr-0 flex flex-col items-end h-full justify-center">
+        <span className="flex flex-col items-end h-full justify-center">
           <span className="flex gap-x-1 ">
             <Text className="text-ui-fg-muted">{item.quantity}x </Text>
             <LineItemUnitPrice item={item} region={region} style="tight" />

@@ -25,7 +25,7 @@ const WishlistTemplate = ({ customer, wishlist }: WishlistTemplateProps) => {
           ))}
         </ul>
       ) : (
-        <p className="text-l-regular text-gray-900 max-w-lg mb-4">
+        <p className="text-l-regular text-ui-fg-base max-w-lg mb-4">
           Start adding products from the{" "}
           <Link className="link font-bold" href="/store">
             store

@@ -52,7 +52,7 @@ const AddAddress = ({ region }: { region: Region }) => {
 
       <Modal isOpen={state} close={close}>
         <Modal.Title>
-          <Heading className="mb-2">Add address</Heading>
+          <Heading className="mb-2 text-ui-fg-base">Add address</Heading>
         </Modal.Title>
         <form action={formAction}>
           <Modal.Body>

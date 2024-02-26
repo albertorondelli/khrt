@@ -49,7 +49,7 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
               <Text>
                 Invoice:{" "}
                 <a
-                  className="text-gray-900 text-small-semi"
+                  className="text-ui-fg-base text-small-semi"
                   href={order.invoice_url}
                   target="_blank"
                   rel="noreferrer"
