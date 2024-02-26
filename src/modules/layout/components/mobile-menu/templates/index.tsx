@@ -43,11 +43,11 @@ const Menu = ({
   return (
     <div className="h-full">
       <div className="flex items-center h-full">
-        <Popover className="h-full flex bg-ui-bg-base">
+        <Popover className="h-full flex">
           {({ open, close }) => (
             <>
               <div className="relative flex h-full">
-                <Popover.Button className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base">
+                <Popover.Button className="relative h-full flex items-center transition-all ease-out duration-200">
                   <BarsThree />
                 </Popover.Button>
                 <Transition

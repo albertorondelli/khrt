@@ -3,7 +3,6 @@ import { Text, clx } from "@medusajs/ui"
 import { getCategoriesList, getCollectionsList } from "@lib/data"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import MedusaCTA from "../../components/medusa-cta"
 
 const fetchCollections = async () => {
   const { collections } = await getCollectionsList()
@@ -24,20 +23,20 @@ export default async function Footer() {
   )
   return (
     <footer className="bg-ui-bg-base border-t border-ui-border-base w-full">
-      <div className="content-container flex flex-col w-full">
-        <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-40">
-          <div>
-            <LocalizedClientLink
-              href="/"
-              className="text-xl-semi text-ui-fg-subtle hover:text-ui-fg-base uppercase"
-            >
-              KHRT
-            </LocalizedClientLink>
-          </div>
-          <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-3">
+      <div className="content-container flex flex-col w-full py-16">
+        <div className="flex justify-center w-full py-5">
+          <LocalizedClientLink
+            href="/"
+            className="text-xl-semi text-ui-fg-subtle hover:text-ui-fg-base uppercase"
+          >
+            KHRT
+          </LocalizedClientLink>
+        </div>
+        <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between ">
+          <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-1 sm:grid-cols-3">
             {productCategories && productCategories?.length > 0 && (
               <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
+                <span className="txt-small-plus text-ui-fg-base">
                   Categories
                 </span>
                 <ul className="grid grid-cols-1 gap-2">
@@ -90,7 +89,7 @@ export default async function Footer() {
             )}
             {productCollections && productCollections.length > 0 && (
               <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
+                <span className="txt-small-plus text-ui-fg-base">
                   Collections
                 </span>
                 <ul
@@ -115,7 +114,7 @@ export default async function Footer() {
               </div>
             )}
             <div className="flex flex-col gap-y-2">
-              <span className="txt-small-plus txt-ui-fg-base">Medusa</span>
+              <span className="txt-small-plus text-ui-fg-base">Varie</span>
               <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
                 <li>
                   <a
