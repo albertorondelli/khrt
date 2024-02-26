@@ -58,7 +58,7 @@ const Carousel: React.FC<CarouselProps> = ({
                     sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
                     fill
                   />
-                  <span className="absolute left-10 bottom-12 text-xl-regular text-ui-fg-on-color">
+                  <span className="absolute left-10 bottom-12 text-2xl text-ui-fg-on-color">
                     {slide.name}
                   </span>
                 </div>

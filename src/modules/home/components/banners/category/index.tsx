@@ -42,12 +42,12 @@ const CategoriesBanners = ({
                   <span>
                     <Heading
                       level="h1"
-                      className="text-2xl-semi text-ui-fg-on-color"
+                      className="text-2xl text-ui-fg-on-color"
                     >
                       {c.name}
                     </Heading>
                   </span>
-                  <span className="text-base-regular underline text-ui-fg-on-color">
+                  <span className="text-base underline text-ui-fg-on-color">
                     Scopri la categoria
                   </span>
                 </div>
