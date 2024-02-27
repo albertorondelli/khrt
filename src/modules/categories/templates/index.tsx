@@ -54,7 +54,7 @@ export default async function CategoryTemplate({
             parents.map((parent) => (
               <span key={parent.id} className="text-ui-fg-subtle">
                 <LocalizedClientLink
-                  className="mr-4 hover:text-black"
+                  className="mr-4 hover:text-ui-fg-base"
                   href={`/categories/${parent.handle}`}
                 >
                   {parent.name}
@@ -65,7 +65,7 @@ export default async function CategoryTemplate({
           {parent && (
             <span key={parent.id} className="text-ui-fg-subtle">
               <LocalizedClientLink
-                className="mr-4 hover:text-black"
+                className="mr-4 hover:text-ui-fg-base"
                 href={`/categories/${parent.handle}`}
               >
                 {parent.name}
@@ -87,7 +87,7 @@ export default async function CategoryTemplate({
                 {category.category_children?.map((c) => (
                   <li key={c.id}>
                     <LocalizedClientLink
-                      className="hover:text-black"
+                      className="hover:text-ui-fg-base"
                       href={`/categories/${c.handle}`}
                     >
                       <Button>{c.name}</Button>

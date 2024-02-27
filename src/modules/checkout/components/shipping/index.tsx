@@ -113,7 +113,7 @@ const Shipping: React.FC<ShippingProps> = ({
                       key={option.id}
                       value={option.id}
                       className={clx(
-                        "flex items-center justify-between text-small-regular cursor-pointer py-4 border rounded-rounded px-8 mb-2 hover:shadow-borders-interactive-with-active text-ui-fg-base",
+                        "flex items-center justify-between text-small-regular cursor-pointer py-4 border rounded-sm px-8 mb-2 hover:shadow-borders-interactive-with-active text-ui-fg-base",
                         {
                           "border-ui-border-interactive":
                             option.id ===

@@ -1,27 +1,29 @@
 import { Button, clx } from "@medusajs/ui"
 
-
 export type CustomButtonProps = {
-  variant?: "primary" | "secondary" | "danger" | "transparent"
-  size?: "large" | "base" | "xlarge"
-  isLoading?: boolean
-  className?: string
   children: React.ReactNode
+  className?: string
+  isLoading?: boolean
+  onClick?: (event: MouseEvent) => void
+  size?: "large" | "base" | "xlarge"
+  variant?: "primary" | "secondary" | "danger" | "transparent"
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 const CustomButton = ({
   children,
-  variant = "primary",
-  size = "base",
-  isLoading = false,
   className,
+  isLoading = false,
+  onClick,
+  size = "base",
+  variant = "primary",
 }: CustomButtonProps) => {
   return (
     <Button
-      variant={variant}
-      size={size}
+      className={clx("rounded-sm", className)}
       isLoading={isLoading}
-      className={clx("rounded-sm",  className )}
+      onClick={onClick}
+      size={size}
+      variant={variant}
     >
       {children}
     </Button>

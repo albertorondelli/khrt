@@ -12,8 +12,8 @@ import { PaginatedProductsParams } from "types/global"
 
 const filterableAttributes = [
   { id: "0", title: "Sort by", key: "sortby" },
-  { id: "1", title: "Colors", key: "color" },
-  { id: "2", title: "Sizes", key: "size" },
+  // { id: "1", title: "Colors", key: "color" },
+  // { id: "2", title: "Sizes", key: "size" },
   // { id: "3", title: "Tags", key: "tags" },
 ]
 
@@ -50,7 +50,7 @@ export const MainView: React.FC<MainViewProps> = ({
             {filterableAttributes.map((filter) => (
               <li key={filter.id}>
                 <button
-                  className="flex items-center justify-between w-full bg-ui-bg-subtle p-4"
+                  className="flex items-center justify-between w-full p-4 rounded-sm bg-ui-bg-component text-large-semi text-ui-fg-base"
                   onClick={() => {
                     setAttribute(filter.key)
                   }}
@@ -157,7 +157,7 @@ export const DetailView: React.FC<DetailViewProps> = ({
           <li className={attribute === "sortby" ? "block" : "hidden"}>
             <SortProducts sortBy={sortBy} setQueryParams={setQueryParams} />
           </li>
-          {filterOptions?.sizes ? (
+          {/* {filterOptions?.sizes ? (
             <li className={attribute === "size" ? "block" : "hidden"}>
               <Size
                 sizeOptions={filterOptions.sizes}
@@ -174,7 +174,7 @@ export const DetailView: React.FC<DetailViewProps> = ({
                 setQueryParams={setQueryParams}
               />
             </li>
-          ) : null}
+          ) : null} */}
         </ul>
       </div>
       <div className="flex justify-center items-end p-4">

@@ -47,13 +47,11 @@ const SortProducts = ({ sortBy, setQueryParams }: SortProductsProps) => {
             <Label
               htmlFor={i.value}
               className={clx(
-                " !transform-none text-ui-fg-subtle hover:cursor-pointer",
-                {
-                  "text-ui-fg-base": i.value === sortBy,
-                }
+                "!transform-none text-ui-fg-subtle text-large-semi hover:cursor-pointer",
+                i.value === sortBy && "text-ui-fg-base text-large-semi" // Only apply text-ui-fg-base if the condition is true
               )}
             >
-              {i.label}
+              <span className="">{i.label}</span>
             </Label>
           </div>
         ))}

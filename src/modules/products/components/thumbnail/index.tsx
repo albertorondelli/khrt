@@ -23,9 +23,9 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
   const initialImage = thumbnail || images?.[0]?.url
 
   return (
-    <div
+    <Container
       className={clx(
-        "relative w-full overflow-hidden p-4 bg-ui-bg-subtle",
+        "relative w-full overflow-hidden p-4 bg-ui-bg-subtle rounded-sm",
         className,
         {
           "aspect-[11/14]": isFeatured,
@@ -39,7 +39,7 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
       )}
     >
       <ImageOrPlaceholder image={initialImage} size={size} />
-    </div>
+    </Container>
   )
 }
 
@@ -51,7 +51,7 @@ export const ImageOrPlaceholder = ({
     <Image
       src={image}
       alt="Thumbnail"
-      className="absolute inset-0 object-cover object-center"
+      className="absolute inset-0 object-cover object-center rounded-sm"
       draggable={false}
       quality={50}
       sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
