@@ -6,11 +6,11 @@ function DarkModeToggle() {
   const [isDarkMode, setIsDarkMode] = useState(false)
 
   // Check for preferred dark mode on initial load
-  useEffect(() => {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setIsDarkMode(true)
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  //     setIsDarkMode(true)
+  //   }
+  // }, [])
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode)
