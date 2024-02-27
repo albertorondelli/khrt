@@ -30,7 +30,7 @@ export const Category = () => {
     productCategories &&
     productCategories?.length > 0 && (
       <div className="flex flex-col gap-y-2">
-        <span className="txt-small-plus text-ui-fg-base">Categories</span>
+        <span className="text-base-semi text-ui-fg-base">Categories</span>
         <ul className="grid grid-cols-1 gap-2">
           {productCategories?.slice(0, 6).map((c) => {
             if (c.parent_category) {
@@ -52,7 +52,7 @@ export const Category = () => {
                 <LocalizedClientLink
                   className={clx(
                     "hover:text-ui-fg-base",
-                    children && "txt-small-plus"
+                    children && "text-base-semi"
                   )}
                   href={`/categories/${c.handle}`}
                 >

@@ -78,7 +78,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
             {address.first_name} {address.last_name}
           </Heading>
           {address.company && (
-            <Text className="txt-compact-small text-ui-fg-base">
+            <Text className="text-small-regular text-ui-fg-base">
               {address.company}
             </Text>
           )}

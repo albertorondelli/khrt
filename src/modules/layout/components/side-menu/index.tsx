@@ -83,7 +83,7 @@ const SideMenu = ({ regions }: { regions: Region[] | null }) => {
                           )}
                         />
                       </div>
-                      <Text className="flex justify-between txt-compact-small">
+                      <Text className="flex justify-between text-small-regular">
                         © {new Date().getFullYear()} KHRT. All rights
                         reserved.
                       </Text>

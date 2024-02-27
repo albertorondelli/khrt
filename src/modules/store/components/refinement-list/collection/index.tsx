@@ -30,7 +30,7 @@ export const Category = () => {
     productCollections &&
     productCollections.length > 0 && (
       <div className="flex flex-col gap-y-2">
-        <span className="txt-small-plus text-ui-fg-base">Collections</span>
+        <span className="text-base-semi text-ui-fg-base">Collections</span>
         <ul
           className={clx("grid grid-cols-1 gap-2 text-ui-fg-subtle txt-small", {
             "grid-cols-2": (productCollections?.length || 0) > 3,

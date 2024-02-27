@@ -5,7 +5,6 @@ import { useToggleState } from "@medusajs/ui"
 import { ChevronRightMini } from "@medusajs/icons"
 import CountrySelect from "@modules/layout/components/country-select"
 import Link from "next/link"
-import DarkModeToggle from "@modules/common/components/darkmode-toggle"
 
 type FooterProps = {
   regions: Region[] | null
@@ -19,9 +18,6 @@ const Footer = ({ close, customer, regions }: FooterProps) => {
   return (
     <div className="flex flex-col text-ui-fg-base ">
       <div className="flex flex-col gap-y-8 text-small-regular">
-        <div>
-          <DarkModeToggle />
-        </div>
         {!customer ? (
           <div className="flex flex-col gap-y-2">
             <span className="text-ui-fg-subtle uppercase">Account</span>

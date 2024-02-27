@@ -3,6 +3,7 @@ import { Text, clx } from "@medusajs/ui"
 import { getCategoriesList, getCollectionsList } from "@lib/data"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import DarkModeToggle from "@modules/common/components/darkmode-toggle"
 
 const fetchCollections = async () => {
   const { collections } = await getCollectionsList()
@@ -36,7 +37,7 @@ export default async function Footer() {
           <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-1 sm:grid-cols-3">
             {productCategories && productCategories?.length > 0 && (
               <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus text-ui-fg-base">
+                <span className="text-base-semi text-ui-fg-base">
                   Categories
                 </span>
                 <ul className="grid grid-cols-1 gap-2">
@@ -60,7 +61,7 @@ export default async function Footer() {
                         <LocalizedClientLink
                           className={clx(
                             "hover:text-ui-fg-base",
-                            children && "txt-small-plus"
+                            children && "text-base-semi"
                           )}
                           href={`/categories/${c.handle}`}
                         >
@@ -89,7 +90,7 @@ export default async function Footer() {
             )}
             {productCollections && productCollections.length > 0 && (
               <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus text-ui-fg-base">
+                <span className="text-base-semi text-ui-fg-base">
                   Collections
                 </span>
                 <ul
@@ -114,7 +115,7 @@ export default async function Footer() {
               </div>
             )}
             <div className="flex flex-col gap-y-2">
-              <span className="txt-small-plus text-ui-fg-base">Varie</span>
+              <span className="text-base-semi text-ui-fg-base">Varie</span>
               <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
                 <li>
                   <a
@@ -150,8 +151,11 @@ export default async function Footer() {
             </div>
           </div>
         </div>
+        <div>
+          <DarkModeToggle />
+        </div>
         <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
-          <Text className="txt-compact-small">
+          <Text className="text-small-regular">
             © {new Date().getFullYear()} KHRT. All rights reserved.
           </Text>
           {/* <MedusaCTA /> */}

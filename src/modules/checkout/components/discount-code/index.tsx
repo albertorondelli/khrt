@@ -63,7 +63,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
             <Heading className="txt-medium">Gift card(s) applied:</Heading>
             {gift_cards?.map((gc) => (
               <div
-                className="flex items-center justify-between txt-small-plus"
+                className="flex items-center justify-between text-base-semi"
                 key={gc.id}
               >
                 <Text className="flex gap-x-1 items-baseline">
@@ -94,7 +94,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
             <div className="flex flex-col w-full">
               <Heading className="txt-medium">Discount applied:</Heading>
               <div className="flex items-center justify-between w-full max-w-full">
-                <Text className="flex gap-x-1 items-baseline txt-small-plus w-4/5 pr-1">
+                <Text className="flex gap-x-1 items-baseline text-base-semi w-4/5 pr-1">
                   <span>Code:</span>
                   <span className="truncate">{discounts[0].code}</span>
                   <span className="min-w-fit">({appliedDiscount})</span>

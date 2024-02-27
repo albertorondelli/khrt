@@ -5,14 +5,14 @@ import { useState, useEffect } from "react"
 function DarkModeToggle() {
   const [isDarkMode, setIsDarkMode] = useState(false)
 
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("theme")
-    setIsDarkMode(
-      storedTheme
-        ? storedTheme === "dark"
-        : window.matchMedia("(prefers-color-scheme: dark)").matches
-    )
-  }, [])
+  // useEffect(() => {
+  //   const storedTheme = localStorage.getItem("theme")
+  //   setIsDarkMode(
+  //     storedTheme
+  //       ? storedTheme === "dark"
+  //       : window.matchMedia("(prefers-color-scheme: dark)").matches
+  //   )
+  // }, [])
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode)
@@ -25,7 +25,10 @@ function DarkModeToggle() {
   }, [isDarkMode])
 
   return (
-    <button onClick={toggleDarkMode} className="text-ui-fg-base">
+    <button
+      onClick={toggleDarkMode}
+      className="text-base-regular text-ui-fg-subtle"
+    >
       {isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
     </button>
   )
