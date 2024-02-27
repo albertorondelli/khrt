@@ -1,13 +1,13 @@
-import { Heading, clx } from "@medusajs/ui"
+import { clx } from "@medusajs/ui"
 import Button from "@modules/common/components/custom-button"
-
 import {
   ProductCategoryWithChildren,
   ProductCollectionWithPreviews,
 } from "types/global"
-import backgroundImage from "../../../../../../public/backgroundImage.webp"
 import BannerImage from "../banner-image"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+
+import backgroundImage from "../../../../../../public/backgroundImage.webp"
 
 interface CategoriesBannersProps {
   categories: ProductCategoryWithChildren[]
@@ -43,7 +43,7 @@ const CategoriesBanners = ({
                 "w-full": size === "full",
               })}
             >
-              <BannerImage size={size} images={backgroundImage} />
+              <BannerImage size={size} image={backgroundImage} />
               <div className="absolute inset-0 z-10 hover:opacity-100 hover:bg-black hover:bg-opacity-10 duration-300">
                 <div className="absolute left-1/2 -translate-x-1/2 bottom-12 flex flex-col align-bottom small:p-10 gap-6">
                   <span className="flex justify-center text-3xl text-ui-fg-on-color white-space-nowrap w-max">

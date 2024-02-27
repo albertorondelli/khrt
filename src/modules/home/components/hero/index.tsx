@@ -1,16 +1,17 @@
 import { Heading } from "@medusajs/ui"
 import Button from "@modules/common/components/custom-button"
-import backgroundImage from "../../../../../public/backgroundImage.webp"
 import Image from "next/image"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+
+import heroImage from "../../../../../public/hero.webp"
 
 const Hero = () => {
   return (
     <LocalizedClientLink href={`/store`} passHref>
       <div className="h-dvh w-full border border-ui-border-base relative mb-12 small:mb-24">
         <Image
-          src={backgroundImage}
-          alt="Hero image"
+          src={heroImage}
+          alt="Hero thumbnail"
           fill
           style={{
             objectFit: "cover",

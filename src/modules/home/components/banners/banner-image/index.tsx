@@ -1,4 +1,3 @@
-import { Image as MedusaImage } from "@medusajs/medusa"
 import { clx } from "@medusajs/ui"
 import Image from "next/image"
 import React from "react"
@@ -6,21 +5,16 @@ import React from "react"
 import PlaceholderImage from "@modules/common/icons/placeholder-image"
 
 type BannerImageProps = {
-  thumbnail?: string | null
-  images?: any | null
+  image?: any | null
   size?: "small" | "medium" | "large" | "full" | "square"
-  isFeatured?: boolean
   className?: string
 }
 
 const BannerImage: React.FC<BannerImageProps> = ({
-  thumbnail,
-  images,
+  image,
   size = "small",
-  isFeatured,
   className,
 }) => {
-  const initialImage = thumbnail || images?.[0]?.url
 
   return (
     <div
@@ -36,7 +30,7 @@ const BannerImage: React.FC<BannerImageProps> = ({
         }
       )}
     >
-      <ImageOrPlaceholder image={images} size={size} />
+      <ImageOrPlaceholder image={image} size={size} />
     </div>
   )
 }
@@ -48,10 +42,9 @@ const ImageOrPlaceholder = ({
   return image ? (
     <Image
       src={image}
-      alt="Thumbnail"
+      alt="Banner thumbnail"
       className="absolute inset-0 object-cover object-center"
       draggable={false}
-      quality={50}
       sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
       fill
     />
