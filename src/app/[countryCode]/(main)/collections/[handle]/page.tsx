@@ -72,8 +72,6 @@ export default async function CollectionPage({ params, searchParams }: Props) {
     notFound()
   }
 
-  console.log(collection)
-
   return (
     <CollectionTemplate
       collection={collection}

@@ -6,6 +6,7 @@ import RefinementList from "@modules/store/components/refinement-list"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 import { PaginatedProductsParams } from "types/global"
+import { notFound } from "next/navigation"
 
 const PRODUCT_LIMIT = 12
 
@@ -29,14 +30,17 @@ export default function CollectionTemplate({
   const queryParams: PaginatedProductsParams = {
     limit: PRODUCT_LIMIT,
   }
-
+  
   if (collection.id) {
-    queryParams["category_id"] = [collection.id]
+    queryParams["collection_id"] = [collection.id]
   }
 
   if (q) {
     queryParams["q"] = q
   }
+
+
+  if (!collection || !countryCode) notFound()
 
   return (
     <div className="flex flex-col small:flex-row small:items-start py-6 content-container bg-ui-bg-base">
