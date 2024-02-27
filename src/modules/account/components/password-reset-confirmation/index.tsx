@@ -8,7 +8,7 @@ import ErrorMessage from "@modules/checkout/components/error-message"
 import { resetCustomerPassword } from "@modules/account/actions"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
 import { CheckMini } from "@medusajs/icons"
-import { Button } from "@medusajs/ui"
+import Button from "@modules/common/components/custom-button"
 
 type Props = {
   setCurrentView: (view: LOGIN_VIEW) => void

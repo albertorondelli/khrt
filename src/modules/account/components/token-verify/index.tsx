@@ -1,5 +1,5 @@
 import medusaRequest from "@lib/medusa-fetch"
-import { Button } from "@medusajs/ui"
+import Button from "@modules/common/components/custom-button"
 import { LOGIN_VIEW } from "@modules/account/templates/login-template"
 import { CheckMini } from "@medusajs/icons"
 import Link from "next/link"

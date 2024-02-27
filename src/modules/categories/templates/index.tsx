@@ -7,7 +7,7 @@ import RefinementList from "@modules/store/components/refinement-list"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import { Button } from "@medusajs/ui"
+import Button from "@modules/common/components/custom-button"
 
 const PRODUCT_LIMIT = 12
 
@@ -47,7 +47,7 @@ export default async function CategoryTemplate({
   if (!category || !countryCode) notFound()
 
   return (
-    <div className="flex flex-col small:flex-row small:items-start py-6 content-container">
+    <div className="flex flex-col small:flex-row small:items-start py-6 content-container bg-ui-bg-base">
       <div className="w-full">
         <div className="flex flex-row mb-8 text-2xl-semi gap-4">
           {parents &&
@@ -73,10 +73,10 @@ export default async function CategoryTemplate({
               /
             </span>
           )}
-          <h1>{category.name}</h1>
+          <h1 className="text-3xl text-ui-fg-base">{category.name}</h1>
         </div>
         {category.description && (
-          <div className="mb-8 text-base-regular">
+          <div className="mb-8 text-ui-fg-base">
             <p>{category.description}</p>
           </div>
         )}

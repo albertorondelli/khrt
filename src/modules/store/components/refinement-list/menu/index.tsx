@@ -1,6 +1,6 @@
 "use-client"
 
-import { Button } from "@medusajs/ui"
+import Button from "@modules/common/components/custom-button"
 import { ChevronDown, XMark } from "@medusajs/icons"
 import { Dispatch, SetStateAction, useCallback } from "react"
 import SortProducts, { SortOptions } from "../sort-products"

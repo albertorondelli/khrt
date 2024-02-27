@@ -1,6 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react"
 import { Fragment } from "react"
-import { Button } from "@medusajs/ui"
+import Button from "@modules/common/components/custom-button"
 import { Adjustments } from "@medusajs/icons"
 
 type TransitionContainerProps = {
