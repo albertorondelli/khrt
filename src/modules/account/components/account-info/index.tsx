@@ -1,4 +1,4 @@
-import { Disclosure } from "@headlessui/react"
+import { Disclosure, Transition } from "@headlessui/react"
 import { Badge, clx } from "@medusajs/ui"
 import Button from "@modules/common/components/custom-button"
 import { useEffect } from "react"
@@ -102,29 +102,30 @@ const AccountInfo = ({
       </Disclosure>
 
       <Disclosure>
-        <Disclosure.Panel
-          static
-          className={clx(
-            "transition-[max-height,opacity] duration-300 ease-in-out overflow-visible",
-            {
-              "max-h-[1000px] opacity-100": state,
-              "max-h-0 opacity-0": !state,
-            }
-          )}
+        <Transition
+          show={state}
+          enter="transition ease-in-out duration-300"
+          enterFrom="max-h-0 opacity-0"
+          enterTo="transform scale-100 opacity-100"
+          leave="transition ease-in-out duration-300"
+          leaveFrom="transform scale-100 opacity-100"
+          leaveTo="transform scale-95 opacity-0"
         >
-          <div className="flex flex-col gap-y-2 py-4">
-            <div>{children}</div>
-            <div className="flex items-center justify-end mt-2">
-              <Button
-                isLoading={pending}
-                className="w-full small:max-w-[140px]"
-                type="submit"
-              >
-                Save changes
-              </Button>
+          <Disclosure.Panel>
+            <div className="flex flex-col gap-y-2 py-4">
+              <div>{children}</div>
+              <div className="flex items-center justify-end mt-2">
+                <Button
+                  isLoading={pending}
+                  className="w-full small:max-w-[140px]"
+                  type="submit"
+                >
+                  Save changes
+                </Button>
+              </div>
             </div>
-          </div>
-        </Disclosure.Panel>
+          </Disclosure.Panel>
+        </Transition>
       </Disclosure>
     </div>
   )
