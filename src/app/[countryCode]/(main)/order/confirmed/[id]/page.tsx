@@ -6,7 +6,6 @@ import { ExtendedOrder } from "models"
 import { enrichLineItems } from "@modules/cart/actions"
 import OrderCompletedTemplate from "@modules/order/templates/order-completed-template"
 import { notFound } from "next/navigation"
-import SkeletonOrderConfirmed from "@modules/skeletons/templates/skeleton-order-confirmed"
 
 type Props = {
   params: { id: string }
@@ -37,5 +36,5 @@ export const metadata: Metadata = {
 export default async function OrderConfirmedPage({ params }: Props) {
   const { order } = await getOrder(params.id)
 
-  return <SkeletonOrderConfirmed />
+  return <OrderCompletedTemplate order={order} />
 }
