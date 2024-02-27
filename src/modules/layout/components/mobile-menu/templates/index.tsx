@@ -52,7 +52,7 @@ const Menu = ({
                 </Popover.Button>
                 <Transition
                   as={Fragment}
-                  show={open}
+                  show={open && screen != "category"}
                   enter="ease-in-out duration-500"
                   enterFrom="opacity-0"
                   enterTo="opacity-100"
@@ -60,9 +60,7 @@ const Menu = ({
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-                  <Popover.Overlay
-                    className={`fixed inset-0 bg-gray-700 bg-opacity-75 backdrop-blur-sm`}
-                  />
+                  <Popover.Overlay className="fixed inset-0 bg-ui-bg-overlay bg-opacity-75 backdrop-blur-sm" />
                 </Transition>
               </div>
 
@@ -79,28 +77,44 @@ const Menu = ({
                 <Popover.Panel className="absolute inset-0 overflow-hidden overflow-y-auto h-screen transition-transform duration-300 sm:w-full 2xl:w-96 sm:min-w-min z-30 inset-x-0 text-sm text-ui-fg-on-color backdrop-blur-2xl bg-ui-bg-base">
                   <div className="pointer-events-none fixed inset-y-0 right-left flex max-w-full">
                     <div className="relative w-screen pointer-events-auto  text-ui-fg-base flex flex-col overflow-y-auto">
-                      {screen == "category" ? (
-                        <CategoryMenu
-                          close={close}
-                          category={category}
-                          handleMenu={handleMenu}
-                        />
-                      ) : (
-                        <MainMenu
-                          close={close}
-                          customer={customer}
-                          productCategories={productCategories}
-                          productCollections={productCollections}
-                          handleMenu={handleMenu}
-                          regions={regions}
-                        />
-                      )}
+                      <MainMenu
+                        close={close}
+                        customer={customer}
+                        productCategories={productCategories}
+                        productCollections={productCollections}
+                        handleMenu={handleMenu}
+                        regions={regions}
+                      />
                     </div>
                   </div>
                 </Popover.Panel>
               </Transition>
             </>
           )}
+        </Popover>
+        <Popover>
+          <Transition
+            as={Fragment}
+            show={screen === "category"}
+            enter="transition ease-in-out duration-500 transform"
+            enterFrom="translate-x-full" // Slide IN from right
+            enterTo="translate-x-0"
+            leave="transition ease-in-out duration-500 transform"
+            leaveFrom="translate-x-0"
+            leaveTo="translate-x-full" // Slide OUT to right
+          >
+            <Popover.Panel className="absolute inset-0 overflow-hidden overflow-y-auto h-screen transition-transform duration-300 sm:w-full 2xl:w-96 sm:min-w-min z-30 inset-x-0 text-sm text-ui-fg-on-color backdrop-blur-2xl bg-ui-bg-base">
+              <div className="pointer-events-none fixed inset-y-0 right-left flex max-w-full">
+                <div className="relative w-screen pointer-events-auto  text-ui-fg-base flex flex-col overflow-y-auto">
+                  <CategoryMenu
+                    close={close}
+                    category={category}
+                    handleMenu={handleMenu}
+                  />
+                </div>
+              </div>
+            </Popover.Panel>
+          </Transition>
         </Popover>
       </div>
     </div>

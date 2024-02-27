@@ -39,7 +39,7 @@ const TransitionContainer = ({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="absolute inset-0 bg-gray-700 bg-opacity-75 transition-opacity backdrop-blur-sm" />
+            <Dialog.Overlay className="absolute inset-0 bg-ui-bg-overlay bg-opacity-75 transition-opacity backdrop-blur-sm" />
           </Transition.Child>
 
           {/* Dialog content */}

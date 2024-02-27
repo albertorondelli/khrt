@@ -12,6 +12,7 @@ type CategoryMenuProps = {
 }
 
 const CategoryMenu = ({ close, handleMenu, category }: CategoryMenuProps) => {
+  
   if (!category) {
     notFound()
   }
