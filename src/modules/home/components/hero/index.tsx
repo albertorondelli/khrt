@@ -1,4 +1,5 @@
-import { Button, Heading } from "@medusajs/ui"
+import { Heading } from "@medusajs/ui"
+import Button from "@modules/common/components/custom-button"
 import backgroundImage from "../../../../../public/backgroundImage.webp"
 import Image from "next/image"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"

@@ -8,7 +8,7 @@ import {
 } from "next/navigation"
 import { Cart, Customer } from "@medusajs/medusa"
 import { CheckCircleSolid } from "@medusajs/icons"
-import { Button, Heading, Text, useToggleState } from "@medusajs/ui"
+import { Heading, Text, useToggleState } from "@medusajs/ui"
 
 import Divider from "@modules/common/components/divider"
 import Spinner from "@modules/common/icons/spinner"

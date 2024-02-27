@@ -1,5 +1,6 @@
 import { Button, clx } from "@medusajs/ui"
 
+
 export type CustomButtonProps = {
   variant?: "primary" | "secondary" | "danger" | "transparent"
   size?: "large" | "base" | "xlarge"
@@ -20,7 +21,7 @@ const CustomButton = ({
       variant={variant}
       size={size}
       isLoading={isLoading}
-      className={clx("rounded-none",  className )}
+      className={clx("rounded-sm",  className )}
     >
       {children}
     </Button>

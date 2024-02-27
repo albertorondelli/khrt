@@ -2,7 +2,8 @@
 
 import { Region } from "@medusajs/medusa"
 import { Plus } from "@medusajs/icons"
-import { Button, Heading } from "@medusajs/ui"
+import { Heading } from "@medusajs/ui"
+import Button from "@modules/common/components/custom-button"
 import { useEffect, useState } from "react"
 import { useFormState } from "react-dom"
 

@@ -1,4 +1,5 @@
-import { Button, Heading, clx } from "@medusajs/ui"
+import { Heading, clx } from "@medusajs/ui"
+import Button from "@modules/common/components/custom-button"
 
 import {
   ProductCategoryWithChildren,
