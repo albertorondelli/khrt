@@ -97,25 +97,22 @@ export default async function Home({
   return (
     <div className="md:content-container bg-ui-bg-base">
       <Hero />
-      <div className="py-12">
-        <CategoriesBanners categories={categories} size="square" />
-      </div>
-      <div className="py-12">
-        <CollectionsBanners
-          collections={collections}
-          categories={categories}
-          wButton={false}
-          size="square"
-        />
-      </div>
-      <div className="py-12">
-        <ul className="flex flex-col gap-x-6">
-          <FeaturedProducts collections={collections} region={region} />
-        </ul>
-      </div>
-      <div className="py-12">
-        <Carousel slides={slides} options={OPTIONS} size="horizontal" />
-      </div>
+
+      <CategoriesBanners categories={categories} size="square" />
+
+      <CollectionsBanners
+        collections={collections}
+        categories={categories}
+        wButton={false}
+        size="square"
+      />
+
+
+      <Carousel slides={slides} options={OPTIONS} size="horizontal" />
+
+      <ul className="flex flex-col gap-x-6">
+        <FeaturedProducts collections={collections} region={region} />
+      </ul>
     </div>
   )
 }

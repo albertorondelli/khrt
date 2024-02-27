@@ -31,7 +31,7 @@ const Carousel: React.FC<CarouselProps> = ({
     useDotButton(emblaApi)
 
   return (
-    <div className="embla">
+    <div className="embla py-12 small:py-24">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {slides.map((slide: any) => {

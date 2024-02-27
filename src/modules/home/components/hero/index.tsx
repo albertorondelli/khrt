@@ -7,7 +7,7 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 const Hero = () => {
   return (
     <LocalizedClientLink href={`/store`} passHref>
-      <div className="h-dvh w-full border border-ui-border-base relative">
+      <div className="h-dvh w-full border border-ui-border-base relative mb-12 small:mb-24">
         <Image
           src={backgroundImage}
           alt="Hero image"

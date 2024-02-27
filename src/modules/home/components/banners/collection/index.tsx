@@ -26,7 +26,7 @@ const CategoriesBanners = ({
 }: CategoriesBannersProps) => {
   const cols = collections?.length ?? 1
   return (
-    <div className={`grid gap-2 grid-cols-1 md:grid-cols-3`}>
+    <div className="grid gap-2 grid-cols-1 md:grid-cols-2 py-12 small:py-24">
       {collections?.slice(0, 3).map((c) => {
         return (
           <LocalizedClientLink
@@ -46,13 +46,8 @@ const CategoriesBanners = ({
               <BannerImage size={size} images={backgroundImage} />
               <div className="absolute inset-0 z-10 hover:opacity-100 hover:bg-black hover:bg-opacity-10 duration-300">
                 <div className="absolute left-1/2 -translate-x-1/2 bottom-12 flex flex-col align-bottom small:p-10 gap-6">
-                  <span>
-                    <Heading
-                      level="h3"
-                      className="flex justify-center text-3xl text-ui-fg-on-color"
-                    >
-                      {c.title}
-                    </Heading>
+                  <span className="flex justify-center text-3xl text-ui-fg-on-color white-space-nowrap w-max">
+                    {c.title}
                   </span>
                   {wButton && (
                     <div className="flex gap-6">
