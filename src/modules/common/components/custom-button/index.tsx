@@ -6,7 +6,7 @@ export type CustomButtonProps = {
   isLoading?: boolean
   onClick?: (event: MouseEvent) => void
   size?: "large" | "base" | "xlarge"
-  variant?: "primary" | "secondary" | "danger" | "transparent"
+  variant?: "primary" | "secondary" | "danger" | "transparent"  | null
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 const CustomButton = ({
