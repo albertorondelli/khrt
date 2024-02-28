@@ -4,6 +4,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ChevronLeft, ChevronRight, XMark } from "@medusajs/icons"
 import { ProductCategoryWithChildren } from "types/global"
+import { useEffect } from "react"
 
 type CategoryMenuProps = {
   close: () => void
@@ -16,6 +17,15 @@ const CategoryMenu = ({ close, handleMenu, category }: CategoryMenuProps) => {
   if (!category) {
     notFound()
   }
+
+  // Inside MainMenu and Category Menu
+useEffect(() => {
+  console.log("CategoryMenu Mounted!"); // Debug
+
+  return () => {
+    console.log("CategoryMenu Unmounted!"); // Debug
+  }
+}, [])
 
   return (
     <div className="flex flex-col flex-1 bg-ui-bg-base h-full">

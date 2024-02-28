@@ -7,6 +7,7 @@ import Link from "next/link"
 import { MagnifyingGlass, ChevronDown, XMark } from "@medusajs/icons"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { ProductCategoryWithChildren } from "types/global"
+import { useEffect } from "react"
 
 type MainMenuProps = {
   customer: Omit<Customer, "password_hash"> | null
@@ -25,6 +26,15 @@ const MainMenu = ({
   handleMenu,
   regions,
 }: MainMenuProps) => {
+  // Inside MainMenu and Category Menu
+  useEffect(() => {
+    console.log("MainMenu Mounted!") // Debug
+
+    return () => {
+      console.log("MainMenu Unmounted!") // Debug
+    }
+  }, [])
+
   return (
     <div className="flex flex-col flex-1">
       <div className="flex items-center justify-between w-full border-b border-ui-border-base py-4 px-6">

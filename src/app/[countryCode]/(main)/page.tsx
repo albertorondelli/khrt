@@ -95,24 +95,25 @@ export default async function Home({
   })
 
   return (
-    <div className="md:content-container bg-ui-bg-base">
-      <Hero />
+    <div className="bg-ui-bg-base">
+      <div className="md:content-container">
+        <Hero />
 
-      <CategoriesBanners categories={categories} size="square" />
+        <CategoriesBanners categories={categories} size="square" />
 
-      <CollectionsBanners
-        collections={collections}
-        categories={categories}
-        wButton={false}
-        size="square"
-      />
+        <CollectionsBanners
+          collections={collections}
+          categories={categories}
+          wButton={false}
+          size="square"
+        />
 
+        <Carousel slides={slides} options={OPTIONS} size="horizontal" />
 
-      <Carousel slides={slides} options={OPTIONS} size="horizontal" />
-
-      <ul className="flex flex-col gap-x-6">
-        <FeaturedProducts collections={collections} region={region} />
-      </ul>
+        <ul className="flex flex-col gap-x-6">
+          <FeaturedProducts collections={collections} region={region} />
+        </ul>
+      </div>
     </div>
   )
 }

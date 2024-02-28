@@ -21,24 +21,26 @@ export default function ProductRail({
   return (
     products &&
     products.length > 0 && (
-      <div className="content-container py-12 small:py-24">
-        <div className="flex justify-between mb-8">
-          <Text className="text-3xl text-ui-fg-base">{collection.title}</Text>
-          <InteractiveLink href={`/collections/${collection.handle}`}>
-            View all
-          </InteractiveLink>
+      <div className="bg-ui-bg-base">
+        <div className="content-container py-12 small:py-24">
+          <div className="flex justify-between mb-8">
+            <Text className="text-3xl text-ui-fg-base">{collection.title}</Text>
+            <InteractiveLink href={`/collections/${collection.handle}`}>
+              View all
+            </InteractiveLink>
+          </div>
+          <ul className="grid grid-cols-2 small:grid-cols-3 gap-x-6 gap-y-10 small:gap-y-14">
+            {products.map((product) => (
+              <li key={product.id}>
+                <ProductPreview
+                  productPreview={product}
+                  region={region}
+                  isFeatured
+                />
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul className="grid grid-cols-2 small:grid-cols-3 gap-x-6 gap-y-10 small:gap-y-14">
-          {products.map((product) => (
-            <li key={product.id}>
-              <ProductPreview
-                productPreview={product}
-                region={region}
-                isFeatured
-              />
-            </li>
-          ))}
-        </ul>
       </div>
     )
   )

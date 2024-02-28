@@ -34,8 +34,8 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
   const onWishlist = await isWishlisted(customerId, product.id)
   
   return (
-    <div>
-      <div className="content-container flex flex-col small:flex-row small:items-start py-6 relative bg-ui-bg-base">
+    <div className="bg-ui-bg-base">
+      <div className="content-container flex flex-col small:flex-row small:items-start py-6 relative">
         <div className="flex flex-col small:hidden w-full pb-8 gap-y-6">
           <ProductInfo
             customer={customer}
