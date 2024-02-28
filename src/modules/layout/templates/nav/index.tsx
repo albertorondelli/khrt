@@ -74,13 +74,15 @@ export default async function Nav() {
               >
                 <MagnifyingGlass />
               </LocalizedClientLink>
-              <LocalizedClientLink
-                className="hidden small:flex hover:text-ui-fg-base"
-                href="/wishlist"
-                aria-label="Wishlist Page"
-              >
-                <Heart />
-              </LocalizedClientLink>
+              {customer && (
+                <LocalizedClientLink
+                  className="hidden small:flex hover:text-ui-fg-base"
+                  href="/wishlist"
+                  aria-label="Wishlist Page"
+                >
+                  <Heart />
+                </LocalizedClientLink>
+              )}
               <LocalizedClientLink
                 className="hover:text-ui-fg-base"
                 href="/account"
