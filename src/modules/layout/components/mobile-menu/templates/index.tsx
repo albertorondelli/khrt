@@ -46,7 +46,7 @@ const Menu = ({
           {({ open, close }) => (
             <>
               <div className="relative flex">
-                <Popover.Button className="relative flex items-center transition-all ease-out duration-200 hover:text-ui-fg-base">
+                <Popover.Button className="relative flex items-center transition-all ease-out duration-200 text-ui-fg-base">
                   <BarsThree />
                 </Popover.Button>
 
@@ -76,7 +76,7 @@ const Menu = ({
                 leaveFrom="translate-x-0"
                 leaveTo="-translate-x-full"
               >
-                <Popover.Panel className="absolute inset-y-0 left-0 w-3/4 sm:w-96 overflow-hidden h-screen z-30 bg-ui-bg-base">
+                <Popover.Panel className="absolute inset-y-0 left-0 w-full sm:w-96 overflow-hidden overflow-y-hidden h-screen z-30 bg-ui-bg-base">
                   <div className="flex flex-col fixed inset-y-0 w-full">
                     <MainMenu
                       close={close}

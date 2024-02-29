@@ -35,7 +35,7 @@ export default async function Nav() {
   return (
     <div className="sticky top-0 inset-x-0 z-50 group">
       <header className="relative h-16 mx-auto border-b duration-200 bg-ui-bg-base border-ui-border-base">
-        <nav className="content-container txt-xsmall-plus text-ui-fg-subtle flex items-center justify-between w-full h-full text-small-regular">
+        <nav className="content-container txt-xsmall-plus text-ui-fg-base flex items-center justify-between w-full h-full text-small-regular">
           <div className="flex-1 basis-0 h-full flex  gap-x-6 items-center">
             <div className="h-full">
               <MobileMenu
@@ -46,7 +46,7 @@ export default async function Nav() {
               />
             </div>
             <LocalizedClientLink
-              className="small:hidden flex  hover:text-ui-fg-base"
+              className="small:hidden flex"
               href="/search"
               scroll={false}
               aria-label="Search Bar"
@@ -58,7 +58,7 @@ export default async function Nav() {
           <div className="flex items-center h-full">
             <LocalizedClientLink
               href="/"
-              className="text-xl-semi hover:text-ui-fg-base uppercase"
+              className="text-xl-semi uppercase"
             >
               KHRT
             </LocalizedClientLink>
@@ -67,7 +67,7 @@ export default async function Nav() {
           <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
             <div className="flex items-center gap-x-6 h-full">
               <LocalizedClientLink
-                className="hidden small:flex hover:text-ui-fg-base"
+                className="hidden small:flex"
                 href="/search"
                 scroll={false}
                 aria-label="Search Bar"
@@ -76,7 +76,7 @@ export default async function Nav() {
               </LocalizedClientLink>
               {customer && (
                 <LocalizedClientLink
-                  className="hidden small:flex hover:text-ui-fg-base"
+                  className="hidden small:flex"
                   href="/wishlist"
                   aria-label="Wishlist Page"
                 >
@@ -94,7 +94,7 @@ export default async function Nav() {
             <Suspense
               fallback={
                 <LocalizedClientLink
-                  className="flex hover:text-ui-fg-base"
+                  className="flex"
                   href="/cart"
                 >
                   <ShoppingBag />
