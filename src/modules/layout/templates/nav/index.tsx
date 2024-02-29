@@ -33,18 +33,16 @@ export default async function Nav() {
   )
 
   return (
-    <div className="sticky top-0 inset-x-0 z-50 group">
+    <div className="sticky top-0 inset-x-0 z-40 group">
       <header className="relative h-16 mx-auto border-b duration-200 bg-ui-bg-base border-ui-border-base">
-        <nav className="content-container txt-xsmall-plus text-ui-fg-base flex items-center justify-between w-full h-full text-small-regular">
-          <div className="flex-1 basis-0 h-full flex  gap-x-6 items-center">
-            <div className="h-full">
-              <MobileMenu
-                customer={customer}
-                productCategories={productCategories}
-                productCollections={productCollections}
-                regions={regions}
-              />
-            </div>
+        <nav className="content-container text-ui-fg-base flex items-center justify-between w-full h-full text-small-regular">
+          <div className="flex flex-1 basis-0 h-full gap-x-6 items-center">
+            <MobileMenu
+              customer={customer}
+              productCategories={productCategories}
+              productCollections={productCollections}
+              regions={regions}
+            />
             <LocalizedClientLink
               className="small:hidden flex"
               href="/search"
@@ -56,47 +54,39 @@ export default async function Nav() {
           </div>
 
           <div className="flex items-center h-full">
-            <LocalizedClientLink
-              href="/"
-              className="text-xl-semi uppercase"
-            >
+            <LocalizedClientLink href="/" className="text-xl-semi uppercase">
               KHRT
             </LocalizedClientLink>
           </div>
 
-          <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
-            <div className="flex items-center gap-x-6 h-full">
+          <div className="flex flex-1 basis-0 gap-x-6 h-full items-center justify-end">
+            <LocalizedClientLink
+              className="hidden small:flex"
+              href="/search"
+              scroll={false}
+              aria-label="Search Bar"
+            >
+              <MagnifyingGlass />
+            </LocalizedClientLink>
+            {customer && (
               <LocalizedClientLink
                 className="hidden small:flex"
-                href="/search"
-                scroll={false}
-                aria-label="Search Bar"
+                href="/wishlist"
+                aria-label="Wishlist Page"
               >
-                <MagnifyingGlass />
+                <Heart />
               </LocalizedClientLink>
-              {customer && (
-                <LocalizedClientLink
-                  className="hidden small:flex"
-                  href="/wishlist"
-                  aria-label="Wishlist Page"
-                >
-                  <Heart />
-                </LocalizedClientLink>
-              )}
-              <LocalizedClientLink
-                className="hover:text-ui-fg-base"
-                href="/account"
-                aria-label="Account Profile"
-              >
-                <User />
-              </LocalizedClientLink>
-            </div>
+            )}
+            <LocalizedClientLink
+              className="hover:text-ui-fg-base"
+              href="/account"
+              aria-label="Account Profile"
+            >
+              <User />
+            </LocalizedClientLink>
             <Suspense
               fallback={
-                <LocalizedClientLink
-                  className="flex"
-                  href="/cart"
-                >
+                <LocalizedClientLink className="flex" href="/cart">
                   <ShoppingBag />
                   <span>0</span>
                 </LocalizedClientLink>

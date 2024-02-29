@@ -2,10 +2,16 @@
 
 import { Customer, Region } from "@medusajs/medusa"
 import { useToggleState } from "@medusajs/ui"
-import { ChevronRightMini } from "@medusajs/icons"
 import CountrySelect from "@modules/layout/components/country-select"
-import Link from "next/link"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+
+import {
+  User,
+  Envelope,
+  ChevronRight,
+  Heart,
+  ShoppingBag,
+} from "@medusajs/icons"
 
 type FooterProps = {
   regions: Region[] | null
@@ -18,56 +24,50 @@ const Footer = ({ close, customer, regions }: FooterProps) => {
 
   return (
     <div className="flex flex-col text-ui-fg-subtle px-4">
-      <div className="flex flex-col gap-y-8 text-small-regular">
+      <div className="flex flex-col gap-y-2 text-large-semi">
         {!customer ? (
-          <div className="flex flex-col gap-y-2">
-            <span className="uppercase text-ui-fg-base text-small-semi">
-              Account
-            </span>
+          <div className="flex flex-col">
             <LocalizedClientLink
               href={`/account`}
-              className="flex items-center justify-between border-b border-ui-border-base py-2 w-full hover:text-ui-fg-base"
+              className="flex items-center justify-between w-full py-2"
               onClick={close}
             >
-              <span className="sr-only">Go to sign in page</span>
-              <span className="normal-case">Sign in</span>
-              <ChevronRightMini />
+              <div className="flex items-center">
+                <User />
+                <span className="sr-only">Go to sign in page</span>
+                <span className="px-3">Sign in</span>
+              </div>
             </LocalizedClientLink>
           </div>
         ) : (
-          <div className="flex flex-col gap-y-1">
-            <span className="text-ui-fg-subtle uppercase">Signed in as</span>
+          <div className="flex flex-col">
             <LocalizedClientLink
               href={`/account`}
-              className="flex items-center justify-between border-b border-ui-border-base py-2 w-full"
+              className="flex items-center justify-between w-full py-2"
               onClick={close}
             >
+              <User />
               <span className="sr-only">Go to account page</span>
               <span className="normal-case">{customer.email}</span>
-              <ChevronRightMini />
             </LocalizedClientLink>
           </div>
         )}
 
-        <div className="flex flex-col gap-y-1">
-          <span className="uppercase text-ui-fg-base text-small-semi">
-            Delivery
-          </span>
-          <div className="flex items-center justify-between border-b border-ui-border-base py-2">
-            <div className="flex items-center gap-x-2 w-full">
-              <div
-                className="flex justify-between w-full"
-                onMouseEnter={toggleState.open}
-                onMouseLeave={toggleState.close}
-              >
-                {regions && (
-                  <CountrySelect toggleState={toggleState} regions={regions} />
-                )}
-                <ChevronRightMini />
+        {regions && (
+          <div className="flex flex-col">
+            <div
+              className="flex items-center justify-between w-full py-2"
+              onMouseEnter={toggleState.open}
+              onMouseLeave={toggleState.close}
+            >
+              <div className="flex items-center F">
+                <Envelope />
+
+                <CountrySelect toggleState={toggleState} regions={regions} />
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   )

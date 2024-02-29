@@ -54,7 +54,7 @@ const CountrySelect = ({ toggleState, regions }: CountrySelectProps) => {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full px-3">
       <Listbox
         as="span"
         onChange={handleChange}
@@ -65,10 +65,10 @@ const CountrySelect = ({ toggleState, regions }: CountrySelectProps) => {
         }
       >
         <Listbox.Button className="py-1 w-full">
-          <div className="text-small-regular flex items-start gap-x-2">
+          <div className="text-large-semi flex items-start gap-x-2">
             <span>Shipping to</span>
             {current && (
-              <span className="text-small-regular flex items-center gap-x-2">
+              <span className="text-large-semi flex items-center gap-x-2">
                 <ReactCountryFlag
                   svg
                   style={{
@@ -91,7 +91,7 @@ const CountrySelect = ({ toggleState, regions }: CountrySelectProps) => {
             leaveTo="opacity-0"
           >
             <Listbox.Options
-              className="absolute -bottom-[calc(100%-36px)] left-0 xsmall:left-auto xsmall:right-0 max-h-[442px] overflow-y-scroll z-[900] bg-ui-bg-base drop-shadow-md text-small-regular uppercase text-black no-scrollbar rounded-sm w-full"
+              className="absolute -bottom-[calc(100%-36px)] left-0 xsmall:left-auto xsmall:right-0 max-h-[442px] overflow-y-scroll z-[900] bg-ui-bg-base drop-shadow-md text-large-semi uppercase text-ui-fg-base no-scrollbar rounded-sm w-full"
               static
             >
               {options?.map((o, index) => {

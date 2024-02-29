@@ -1,6 +1,9 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { Sun, Moon } from "@medusajs/icons"
+
+import Button from "@modules/common/components/custom-button"
 
 function DarkModeToggle() {
   const [isDarkMode, setIsDarkMode] = useState(false)
@@ -25,12 +28,13 @@ function DarkModeToggle() {
   }, [isDarkMode])
 
   return (
-    <button
+    <Button
+      variant="secondary"
       onClick={toggleDarkMode}
       className="text-base-regular text-ui-fg-subtle"
     >
-      {isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
-    </button>
+      {isDarkMode ? <Sun /> : <Moon />}
+    </Button>
   )
 }
 

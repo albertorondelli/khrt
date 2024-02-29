@@ -75,7 +75,10 @@ const CartDropdown = ({
     <div className="h-full" onMouseEnter={openAndCancel} onMouseLeave={close}>
       <Popover className="relative h-full">
         <Popover.Button className="h-full">
-          <LocalizedClientLink className="flex hover:text-ui-fg-base" href="/cart">
+          <LocalizedClientLink
+            className="flex hover:text-ui-fg-base"
+            href="/cart"
+          >
             <ShoppingBag />
             <span>{totalItems}</span>
           </LocalizedClientLink>

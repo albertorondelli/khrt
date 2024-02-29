@@ -40,7 +40,7 @@ const Menu = ({
   }
 
   return (
-    <div className="h-full">
+    <div className="h-full ">
       <div className="flex items-center h-full">
         <Popover className="h-full flex">
           {({ open, close }) => (
@@ -54,12 +54,12 @@ const Menu = ({
                 <Transition
                   as={Fragment}
                   show={open}
-                  enter="ease-in-out duration-500"
-                  enterFrom="opacity-0"
+                  enter="ease-in-out duration-200"
+                  enterFrom="opacity-10"
                   enterTo="opacity-100"
-                  leave="ease-in-out duration-500"
+                  leave="ease-in-out duration-200"
                   leaveFrom="opacity-100"
-                  leaveTo="opacity-0"
+                  leaveTo="opacity-10"
                 >
                   <Popover.Overlay className="fixed inset-0 bg-ui-bg-overlay bg-opacity-75 backdrop-blur-sm" />
                 </Transition>
@@ -69,12 +69,12 @@ const Menu = ({
               <Transition
                 show={open}
                 as={Fragment}
-                enter="transition ease-in-out duration-500 transform"
-                enterFrom="-translate-x-full"
-                enterTo="translate-x-0"
-                leave="transition ease-in-out duration-500 transform"
-                leaveFrom="translate-x-0"
-                leaveTo="-translate-x-full"
+                enter="transition ease-in-out duration-300 transform"
+                enterFrom="-translate-x-full opacity-10"
+                enterTo="translate-x-0 opacity-100"
+                leave="transition ease-in-out duration-300 transform"
+                leaveFrom="translate-x-0 opacity-100"
+                leaveTo="-translate-x-full opacity-10"
               >
                 <Popover.Panel className="absolute inset-y-0 left-0 w-full sm:w-96 overflow-hidden overflow-y-hidden h-screen z-30 bg-ui-bg-base">
                   <div className="flex flex-col fixed inset-y-0 w-full">
@@ -92,12 +92,12 @@ const Menu = ({
                   <Transition
                     as={Fragment}
                     show={screen === "secondary"}
-                    enter="transition ease-in-out duration-500 transform"
-                    enterFrom="-translate-x-full"
-                    enterTo="translate-x-0"
-                    leave="transition ease-in-out duration-500 transform"
-                    leaveFrom="translate-x-0"
-                    leaveTo="-translate-x-full"
+                    enter="transition ease-in-out duration-300 transform"
+                    enterFrom="-translate-x-full opacity-0"
+                    enterTo="translate-x-0 opacity-100"
+                    leave="transition ease-in-out duration-300 transform"
+                    leaveFrom="translate-x-0 opacity-100"
+                    leaveTo="-translate-x-full opacity-0"
                   >
                     <div className="flex flex-col fixed inset-y-0 w-full">
                       <CategoryMenu
