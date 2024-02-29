@@ -26,9 +26,8 @@ const MainMenu = ({
   handleMenu,
   regions,
 }: MainMenuProps) => {
-
   return (
-    <div className="flex flex-col flex-1 text-ui-fg-base">
+    <div className="flex flex-col flex-1 text-ui-fg-sutble">
       <div className="flex items-center justify-between w-full border-b border-ui-border-base py-4 px-6">
         <div className="flex-1 basis-0">
           <LocalizedClientLink
@@ -52,17 +51,16 @@ const MainMenu = ({
       <div className="space-y-6 flex-1 flex flex-col justify-between p-6">
         <div className="flex flex-col flex-1 text-large-semi">
           <ul className="flex flex-col gap-y-2">
-            <li className="bg-ui-bg-component p-4 rounded-sm">
-              <Link href="/store">
-                <button
-                  className="flex items-center justify-between w-full"
-                  onClick={close}
-                >
-                  <span className="sr-only">Go to Store</span>
-                  <span>Store</span>
-                  <ChevronDown className="-rotate-90" />
-                </button>
-              </Link>
+            <li className="bg-ui-bg-subtle hover:bg-ui-bg-subtle-hover p-4 rounded-sm">
+              <LocalizedClientLink
+                href="/store"
+                className="flex items-center justify-between w-full"
+                onClick={close}
+              >
+                <span className="sr-only">Go to Store</span>
+                <span>Store</span>
+                <ChevronDown className="-rotate-90" />
+              </LocalizedClientLink>
             </li>
             {productCategories?.map((c) => {
               if (c.parent_category) {
@@ -70,7 +68,10 @@ const MainMenu = ({
               }
 
               return (
-                <li className="bg-ui-bg-component p-4 rounded-sm" key={c.id}>
+                <li
+                  className="bg-ui-bg-subtle hover:bg-ui-bg-subtle-hover p-4 rounded-sm hover:text-ui-fg-base"
+                  key={c.id}
+                >
                   <button
                     className="flex items-center justify-between w-full"
                     onClick={() => handleMenu("secondary", c)}
@@ -85,17 +86,16 @@ const MainMenu = ({
 
             {productCollections.map((collection) => (
               <li key={collection.id} className="p-4">
-                <Link href={`/collections/${collection.handle}`}>
-                  <button
-                    className="flex items-center justify-between w-full"
-                    onClick={close}
-                  >
-                    <span className="sr-only">
-                      Go to {collection.title} collection
-                    </span>
-                    <span>{collection.title}</span>
-                  </button>
-                </Link>
+                <LocalizedClientLink
+                  href={`/collections/${collection.handle}`}
+                  className="flex items-center justify-between w-full hover:text-ui-fg-base"
+                  onClick={close}
+                >
+                  <span className="sr-only">
+                    Go to {collection.title} collection
+                  </span>
+                  <span>{collection.title}</span>
+                </LocalizedClientLink>
               </li>
             ))}
           </ul>

@@ -4,7 +4,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ChevronLeft, ChevronRight, XMark } from "@medusajs/icons"
 import { ProductCategoryWithChildren } from "types/global"
-import { useEffect } from "react"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 type CategoryMenuProps = {
   close: () => void
@@ -13,7 +13,6 @@ type CategoryMenuProps = {
 }
 
 const CategoryMenu = ({ close, handleMenu, category }: CategoryMenuProps) => {
-  
   if (!category) {
     notFound()
   }
@@ -30,9 +29,13 @@ const CategoryMenu = ({ close, handleMenu, category }: CategoryMenuProps) => {
           </button>
         </div>
         <div>
-          <h1 className="text-xl-semi uppercase">
-            {category.name || "Category"}
-          </h1>
+          <LocalizedClientLink
+            href={`/categories/${category.handle}`}
+            className="text-xl-semi uppercase text-ui-fg-subtle hover:text-ui-fg-base"
+            onClick={close}
+          >
+            {category.name}
+          </LocalizedClientLink>
         </div>
         <div className="flex-1 basis-0 flex justify-end">
           <button onClick={close}>
@@ -44,30 +47,32 @@ const CategoryMenu = ({ close, handleMenu, category }: CategoryMenuProps) => {
       <div className="space-y-6 flex-1 flex flex-col justify-between p-6">
         <div className="flex flex-col flex-1 text-large-semi text-ui-fg-base">
           <ul className="flex flex-col gap-y-2">
-            <li className="bg-ui-bg-component p-4 rounded-sm">
-              <Link href={`/categories/${category.handle}`}>
-                <button
-                  className="flex items-center justify-between w-full"
+            {/* Parent category */}
+            {/* <li className="bg-ui-bg-subtle hover:bg-ui-bg-subtle-hover p-4 rounded-sm">
+              <LocalizedClientLink
+                href={`/categories/${category.handle}`}
+                className="flex items-center justify-between w-full"
+                onClick={close}
+              >
+                <span className="sr-only">Go to {category.name}</span>
+                <span>{category.name}</span>
+                <ChevronRight />
+              </LocalizedClientLink>
+            </li> */}
+            {category.category_children.map((category: any) => (
+              <li
+                className="bg-ui-bg-subtle hover:bg-ui-bg-subtle-hover p-4 rounded-sm"
+                key={category.id}
+              >
+                <LocalizedClientLink
+                  href={`/categories/${category.handle}`}
+                  className="flex items-center justify-between w-full text-ui-fg-subtle hover:text-ui-fg-base"
                   onClick={close}
                 >
                   <span className="sr-only">Go to {category.name}</span>
                   <span>{category.name}</span>
                   <ChevronRight />
-                </button>
-              </Link>
-            </li>
-            {category.category_children.map((category: any) => (
-              <li className="bg-ui-bg-component p-4 rounded-sm" key={category.id}>
-                <Link href={`/categories/${category.handle}`}>
-                  <button
-                    className="flex items-center justify-between w-full"
-                    onClick={close}
-                  >
-                    <span className="sr-only">Go to {category.name}</span>
-                    <span>{category.name}</span>
-                    <ChevronRight />
-                  </button>
-                </Link>
+                </LocalizedClientLink>
               </li>
             ))}
           </ul>

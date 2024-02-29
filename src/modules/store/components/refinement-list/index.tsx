@@ -54,7 +54,7 @@ const RefinementList: React.FC<RefinementListProps> = ({
           {({ open, close }) => (
             <>
               <div className="relative flex h-full">
-                <Popover.Button className="relative h-full flex items-center transition-all ease-out duration-200">
+                <Popover.Button className="relative h-full flex items-center transition-all ease-out duration-200 text-ui-fg-sutbtle hover:text-ui-fg-base">
                   <Adjustments />
                 </Popover.Button>
 

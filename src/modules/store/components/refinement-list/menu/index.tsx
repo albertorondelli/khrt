@@ -12,8 +12,8 @@ import { FilterOptions, PaginatedProductsParams } from "types/global"
 
 const filterableAttributes = [
   { id: "0", title: "Sort by", key: "sortby" },
-  { id: "1", title: "Colors", key: "color" },
-  { id: "2", title: "Sizes", key: "size" },
+  // { id: "1", title: "Colors", key: "color" },
+  // { id: "2", title: "Sizes", key: "size" },
   // { id: "3", title: "Tags", key: "tags" },
 ]
 
@@ -33,7 +33,7 @@ export const MainMenu: React.FC<MainMenuProps> = ({ close, handleMenu }) => {
   return (
     <div className="flex flex-col h-full bg-ui-bg-base">
       <div className="flex items-center justify-between w-full border-b border-ui-border-base py-4 px-6">
-        <h1 className="text-large-semi flex-1 text-center">Ordina e Filtra</h1>
+        <h1 className="text-large-semi flex-1 text-center uppercase">Ordina e Filtra</h1>
         <button onClick={close}>
           <XMark />
         </button>
@@ -44,7 +44,7 @@ export const MainMenu: React.FC<MainMenuProps> = ({ close, handleMenu }) => {
             {filterableAttributes.map((filter) => (
               <li key={filter.id}>
                 <button
-                  className="flex items-center justify-between w-full p-4 rounded-sm bg-ui-bg-component text-large-semi text-ui-fg-base"
+                  className="flex items-center justify-between w-full p-4 rounded-sm bg-ui-bg-subtle hover:bg-ui-bg-subtle-hover text-large-semi text-ui-fg-base"
                   onClick={() => {
                     handleMenu("secondary", filter.key)
                   }}

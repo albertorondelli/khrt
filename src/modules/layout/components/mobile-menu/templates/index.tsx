@@ -45,8 +45,8 @@ const Menu = ({
         <Popover className="h-full flex">
           {({ open, close }) => (
             <>
-              <div className="relative flex h-full">
-                <Popover.Button className="relative h-full flex items-center transition-all ease-out duration-200">
+              <div className="relative flex">
+                <Popover.Button className="relative flex items-center transition-all ease-out duration-200 hover:text-ui-fg-base">
                   <BarsThree />
                 </Popover.Button>
 
