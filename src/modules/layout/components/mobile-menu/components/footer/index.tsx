@@ -17,7 +17,7 @@ const Footer = ({ close, customer, regions }: FooterProps) => {
   const toggleState = useToggleState()
 
   return (
-    <div className="flex flex-col text-ui-fg-subtle">
+    <div className="flex flex-col text-ui-fg-subtle px-4">
       <div className="flex flex-col gap-y-8 text-small-regular">
         {!customer ? (
           <div className="flex flex-col gap-y-2">
@@ -35,7 +35,7 @@ const Footer = ({ close, customer, regions }: FooterProps) => {
             </LocalizedClientLink>
           </div>
         ) : (
-          <div className="flex flex-col gap-y-2">
+          <div className="flex flex-col gap-y-1">
             <span className="text-ui-fg-subtle uppercase">Signed in as</span>
             <LocalizedClientLink
               href={`/account`}
@@ -49,7 +49,7 @@ const Footer = ({ close, customer, regions }: FooterProps) => {
           </div>
         )}
 
-        <div className="flex flex-col gap-y-2">
+        <div className="flex flex-col gap-y-1">
           <span className="uppercase text-ui-fg-base text-small-semi">
             Delivery
           </span>

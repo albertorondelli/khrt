@@ -27,11 +27,11 @@ const MainMenu = ({
   regions,
 }: MainMenuProps) => {
   return (
-    <div className="flex flex-col flex-1 text-ui-fg-sutble">
+    <div className="flex flex-col flex-1 text-ui-fg-base">
       <div className="flex items-center justify-between w-full border-b border-ui-border-base py-4 px-6">
         <div className="flex-1 basis-0">
           <LocalizedClientLink
-            className="flex items-center gap-x-2 hover:text-ui-fg-base"
+            className="flex items-center gap-x-2"
             href="/search"
             onClick={close}
             scroll={false}
@@ -51,10 +51,10 @@ const MainMenu = ({
       <div className="space-y-6 flex-1 flex flex-col justify-between p-6">
         <div className="flex flex-col flex-1 text-large-semi">
           <ul className="flex flex-col gap-y-2">
-            <li className="bg-ui-bg-subtle hover:bg-ui-bg-subtle-hover p-4 rounded-sm">
+            <li className="bg-ui-bg-subtle hover:bg-ui-bg-subtle-hover rounded-sm">
               <LocalizedClientLink
                 href="/store"
-                className="flex items-center justify-between w-full"
+                className="flex items-center justify-between w-full p-4"
                 onClick={close}
               >
                 <span className="sr-only">Go to Store</span>
@@ -69,11 +69,11 @@ const MainMenu = ({
 
               return (
                 <li
-                  className="bg-ui-bg-subtle hover:bg-ui-bg-subtle-hover p-4 rounded-sm hover:text-ui-fg-base"
+                  className="bg-ui-bg-subtle hover:bg-ui-bg-subtle-hover rounded-sm"
                   key={c.id}
                 >
                   <button
-                    className="flex items-center justify-between w-full"
+                    className="flex items-center justify-between w-full p-4"
                     onClick={() => handleMenu("secondary", c)}
                   >
                     <span className="sr-only">Go to {c.name}</span>
@@ -85,10 +85,10 @@ const MainMenu = ({
             })}
 
             {productCollections.map((collection) => (
-              <li key={collection.id} className="p-4">
+              <li key={collection.id}>
                 <LocalizedClientLink
                   href={`/collections/${collection.handle}`}
-                  className="flex items-center justify-between w-full hover:text-ui-fg-base"
+                  className="flex items-center justify-between w-full p-4"
                   onClick={close}
                 >
                   <span className="sr-only">
