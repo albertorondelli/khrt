@@ -18,15 +18,6 @@ const CategoryMenu = ({ close, handleMenu, category }: CategoryMenuProps) => {
     notFound()
   }
 
-  // Inside MainMenu and Category Menu
-useEffect(() => {
-  console.log("CategoryMenu Mounted!"); // Debug
-
-  return () => {
-    console.log("CategoryMenu Unmounted!"); // Debug
-  }
-}, [])
-
   return (
     <div className="flex flex-col flex-1 bg-ui-bg-base h-full">
       <div className="flex items-center justify-between w-full border-b border-ui-border-base py-4 px-6">

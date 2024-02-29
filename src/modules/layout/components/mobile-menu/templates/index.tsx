@@ -36,9 +36,6 @@ const Menu = ({
     category?: ProductCategoryWithChildren
   ) => {
     setScreen(screen)
-
-    console.log("handleMenu called, current screen:", screen) // Debug
-
     category && setCategory(category)
   }
 
@@ -52,6 +49,8 @@ const Menu = ({
                 <Popover.Button className="relative h-full flex items-center transition-all ease-out duration-200">
                   <BarsThree />
                 </Popover.Button>
+
+                {/* Overlay */}
                 <Transition
                   as={Fragment}
                   show={open}
@@ -66,6 +65,7 @@ const Menu = ({
                 </Transition>
               </div>
 
+              {/* Dialog content */}
               <Transition
                 show={open}
                 as={Fragment}
@@ -76,44 +76,37 @@ const Menu = ({
                 leaveFrom="translate-x-0"
                 leaveTo="-translate-x-full"
               >
-                <Popover.Panel className="absolute inset-0 overflow-hidden overflow-y-auto h-screen transition-transform duration-300 sm:w-full 2xl:w-96 sm:min-w-min z-30 inset-x-0 text-sm text-ui-fg-on-color backdrop-blur-2xl bg-ui-bg-base">
-                  <div className="pointer-events-none fixed inset-y-0 right-left flex max-w-full">
-                    <div className="relative w-screen pointer-events-auto  text-ui-fg-base flex flex-col overflow-y-auto">
-                      <MainMenu
-                        close={close}
-                        customer={customer}
-                        productCategories={productCategories}
-                        productCollections={productCollections}
-                        handleMenu={handleMenu}
-                        regions={regions}
-                      />
-                    </div>
+                <Popover.Panel className="absolute inset-y-0 left-0 w-3/4 sm:w-96 overflow-hidden h-screen z-30 bg-ui-bg-base">
+                  <div className="flex flex-col fixed inset-y-0 w-full">
+                    <MainMenu
+                      close={close}
+                      customer={customer}
+                      productCategories={productCategories}
+                      productCollections={productCollections}
+                      handleMenu={handleMenu}
+                      regions={regions}
+                    />
                   </div>
-                </Popover.Panel>
-              </Transition>
-              <Transition
-                as={Fragment}
-                show={screen === "category"}
-                enter="transition ease-in-out duration-500 transform"
-                enterFrom="translate-x-full" // Slide IN from right
-                enterTo="translate-x-0"
-                leave="transition ease-in-out duration-500 transform"
-                leaveFrom="translate-x-0"
-                leaveTo="translate-x-full" // Slide OUT to right
-              >
-                <Popover.Panel
-                  static
-                  className="absolute inset-0 overflow-hidden overflow-y-auto h-screen transition-transform duration-300 sm:w-full 2xl:w-96 sm:min-w-min z-30 inset-x-0 text-sm text-ui-fg-on-color backdrop-blur-2xl bg-ui-bg-base"
-                >
-                  <div className="pointer-events-none fixed inset-y-0 right-left flex max-w-full">
-                    <div className="relative w-screen pointer-events-auto  text-ui-fg-base flex flex-col overflow-y-auto">
+
+                  {/* Dialog content / second screen */}
+                  <Transition
+                    as={Fragment}
+                    show={screen === "secondary"}
+                    enter="transition ease-in-out duration-500 transform"
+                    enterFrom="-translate-x-full"
+                    enterTo="translate-x-0"
+                    leave="transition ease-in-out duration-500 transform"
+                    leaveFrom="translate-x-0"
+                    leaveTo="-translate-x-full"
+                  >
+                    <div className="flex flex-col fixed inset-y-0 w-full">
                       <CategoryMenu
                         close={close}
                         category={category}
                         handleMenu={handleMenu}
                       />
                     </div>
-                  </div>
+                  </Transition>
                 </Popover.Panel>
               </Transition>
             </>

@@ -26,17 +26,9 @@ const MainMenu = ({
   handleMenu,
   regions,
 }: MainMenuProps) => {
-  // Inside MainMenu and Category Menu
-  useEffect(() => {
-    console.log("MainMenu Mounted!") // Debug
-
-    return () => {
-      console.log("MainMenu Unmounted!") // Debug
-    }
-  }, [])
 
   return (
-    <div className="flex flex-col flex-1">
+    <div className="flex flex-col flex-1 text-ui-fg-base">
       <div className="flex items-center justify-between w-full border-b border-ui-border-base py-4 px-6">
         <div className="flex-1 basis-0">
           <LocalizedClientLink
@@ -81,7 +73,7 @@ const MainMenu = ({
                 <li className="bg-ui-bg-component p-4 rounded-sm" key={c.id}>
                   <button
                     className="flex items-center justify-between w-full"
-                    onClick={() => handleMenu("category", c)}
+                    onClick={() => handleMenu("secondary", c)}
                   >
                     <span className="sr-only">Go to {c.name}</span>
                     <span>{c.name}</span>

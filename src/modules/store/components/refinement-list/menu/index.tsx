@@ -8,36 +8,30 @@ import { useRouter } from "next/navigation"
 import { usePathname, useSearchParams } from "next/navigation"
 import Size from "../size"
 import Color from "../color"
-import { PaginatedProductsParams } from "types/global"
+import { FilterOptions, PaginatedProductsParams } from "types/global"
 
 const filterableAttributes = [
   { id: "0", title: "Sort by", key: "sortby" },
-  // { id: "1", title: "Colors", key: "color" },
-  // { id: "2", title: "Sizes", key: "size" },
+  { id: "1", title: "Colors", key: "color" },
+  { id: "2", title: "Sizes", key: "size" },
   // { id: "3", title: "Tags", key: "tags" },
 ]
 
-type MainViewProps = {
-  attribute: string
-  setAttribute: Dispatch<SetStateAction<any>>
+type MainMenuProps = {
+  handleMenu: (
+    screen: string,
+    attribute?: "sortBy" | "color" | "size" | "tags" | string
+  ) => void
   close: () => void
 }
 
-export const MainView: React.FC<MainViewProps> = ({
-  attribute,
-  setAttribute,
-  close,
-}) => {
+export const MainMenu: React.FC<MainMenuProps> = ({ close, handleMenu }) => {
   const handleRemove = () => {
     // TODO: Remove all the filters (colors and sizes)
   }
 
   return (
-    <div
-      className={`flex flex-col h-full ${
-        attribute === "" ? "block" : "hidden"
-      }`}
-    >
+    <div className="flex flex-col h-full bg-ui-bg-base">
       <div className="flex items-center justify-between w-full border-b border-ui-border-base py-4 px-6">
         <h1 className="text-large-semi flex-1 text-center">Ordina e Filtra</h1>
         <button onClick={close}>
@@ -52,7 +46,7 @@ export const MainView: React.FC<MainViewProps> = ({
                 <button
                   className="flex items-center justify-between w-full p-4 rounded-sm bg-ui-bg-component text-large-semi text-ui-fg-base"
                   onClick={() => {
-                    setAttribute(filter.key)
+                    handleMenu("secondary", filter.key)
                   }}
                 >
                   <span className="sr-only">{filter.title} products</span>
@@ -89,17 +83,20 @@ export const MainView: React.FC<MainViewProps> = ({
   )
 }
 
-type DetailViewProps = {
+type FilterMenuProps = {
   attribute: string
-  setAttribute: Dispatch<SetStateAction<any>>
+  handleMenu: (
+    screen: string,
+    attribute?: "sortBy" | "color" | "size" | "tags" | string
+  ) => void
   close: Dispatch<SetStateAction<any>>
   sortBy: SortOptions
   filterOptions: any
   queryParams: PaginatedProductsParams
 }
-export const DetailView: React.FC<DetailViewProps> = ({
+export const FilterMenu: React.FC<FilterMenuProps> = ({
   attribute,
-  setAttribute,
+  handleMenu,
   close,
   sortBy,
   filterOptions,
@@ -108,6 +105,40 @@ export const DetailView: React.FC<DetailViewProps> = ({
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
+
+  const Children = (attribute: any) => {
+    switch (attribute.attribute) {
+      case "sortby":
+        return (
+          <li>
+            <SortProducts sortBy={sortBy} setQueryParams={setQueryParams} />
+          </li>
+        )
+      case "size":
+        return (
+          <li>
+            <Size
+              sizeOptions={filterOptions.sizes}
+              queryParams={queryParams}
+              setQueryParams={setQueryParams}
+            />
+          </li>
+        )
+      case "color":
+        return (
+          <li>
+            <Color
+              colorOptions={filterOptions.colors}
+              queryParams={queryParams}
+              setQueryParams={setQueryParams}
+            />
+          </li>
+        )
+
+      default:
+        break
+    }
+  }
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
@@ -129,16 +160,12 @@ export const DetailView: React.FC<DetailViewProps> = ({
   }
 
   return (
-    <div
-      className={`flex flex-col min-h-full ${
-        attribute === "" ? "hidden" : "block"
-      }`}
-    >
+    <div className="flex flex-col min-h-full bg-ui-bg-base">
       <div className="flex items-center justify-between w-full border-b border-ui-border-base py-4 px-6">
         <div className="flex-1 basis-0">
           <button
             className="flex items-center gap-x-2"
-            onClick={() => setAttribute("")}
+            onClick={() => handleMenu("main")}
           >
             <ChevronDown className="rotate-90 text-ui-fg-subtle" />
           </button>
@@ -154,27 +181,7 @@ export const DetailView: React.FC<DetailViewProps> = ({
       </div>
       <div className="space-y-6 flex-1 flex flex-col justify-between p-6">
         <ul className="flex flex-col flex-1 text-large-regular text-ui-fg-base">
-          <li className={attribute === "sortby" ? "block" : "hidden"}>
-            <SortProducts sortBy={sortBy} setQueryParams={setQueryParams} />
-          </li>
-          {/* {filterOptions?.sizes ? (
-            <li className={attribute === "size" ? "block" : "hidden"}>
-              <Size
-                sizeOptions={filterOptions.sizes}
-                queryParams={queryParams}
-                setQueryParams={setQueryParams}
-              />
-            </li>
-          ) : null}
-          {filterOptions?.colors ? (
-            <li className={attribute === "color" ? "block" : "hidden"}>
-              <Color
-                colorOptions={filterOptions.colors}
-                queryParams={queryParams}
-                setQueryParams={setQueryParams}
-              />
-            </li>
-          ) : null} */}
+          <Children attribute={attribute} />
         </ul>
       </div>
       <div className="flex justify-center items-end p-4">
