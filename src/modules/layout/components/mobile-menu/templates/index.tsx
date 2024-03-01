@@ -54,10 +54,10 @@ const Menu = ({
                 <Transition
                   as={Fragment}
                   show={open}
-                  enter="ease-in-out duration-200"
+                  enter="ease-in-out duration-300"
                   enterFrom="opacity-10"
                   enterTo="opacity-100"
-                  leave="ease-in-out duration-200"
+                  leave="ease-in-out duration-300"
                   leaveFrom="opacity-100"
                   leaveTo="opacity-10"
                 >
@@ -69,14 +69,14 @@ const Menu = ({
               <Transition
                 show={open}
                 as={Fragment}
-                enter="ransition ease-in-out duration-300 transform"
-                enterFrom="-translate-x-full opacity-10"
+                enter="transition-all ease-in-out duration-300 transform"
+                enterFrom="-translate-x-full opacity-40"
                 enterTo="translate-x-0 opacity-100"
-                leave="transition ease-in-out duration-300 transform"
+                leave="transition-all ease-in-out duration-300 transform"
                 leaveFrom="translate-x-0 opacity-100"
-                leaveTo="-translate-x-full opacity-10"
+                leaveTo="-translate-x-full opacity-40"
               >
-                <Popover.Panel className="z-50 absolute inset-y-0 left-0 w-full sm:w-96 overflow-hidden overflow-y-hidden h-screen bg-ui-bg-base">
+                <Popover.Panel className="z-50 absolute inset-y-0 left-0 w-full sm:w-96 overflow-hidden overflow-y-auto h-screen bg-ui-bg-base">
                   <div className="flex flex-col fixed inset-y-0 w-full">
                     <MainMenu
                       close={close}
@@ -93,11 +93,11 @@ const Menu = ({
                     as={Fragment}
                     show={screen === "secondary"}
                     enter="transition ease-in-out duration-300 transform"
-                    enterFrom="-translate-x-full opacity-10"
+                    enterFrom="-translate-x-full opacity-60"
                     enterTo="translate-x-0 opacity-100"
                     leave="transition ease-in-out duration-300 transform"
                     leaveFrom="translate-x-0 opacity-100"
-                    leaveTo="-translate-x-full opacity-10"
+                    leaveTo="-translate-x-full opacity-60"
                   >
                     <div className="flex flex-col fixed inset-y-0 w-full">
                       <CategoryMenu

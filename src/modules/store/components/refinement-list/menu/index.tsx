@@ -31,9 +31,9 @@ export const MainMenu: React.FC<MainMenuProps> = ({ close, handleMenu }) => {
   }
 
   return (
-    <div className="flex flex-col h-full bg-ui-bg-base">
+    <div className="flex flex-col flex-1 text-ui-fg-base">
       <div className="flex items-center justify-between w-full border-b border-ui-border-base py-4 px-6">
-        <h1 className="text-large-semi flex-1 text-center uppercase">Ordina e Filtra</h1>
+        <h1 className="text-xl-semi flex-1 text-center uppercase">Ordina e Filtra</h1>
         <button onClick={close}>
           <XMark />
         </button>
