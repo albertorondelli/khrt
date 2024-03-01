@@ -7,6 +7,7 @@ import { SortOptions } from "./sort-products"
 import { FilterOptions, PaginatedProductsParams } from "types/global"
 import { Popover, Transition } from "@headlessui/react"
 import { Adjustments } from "@medusajs/icons"
+import { OverflowHiddenBackground } from "@modules/layout/components/mobile-menu/templates"
 
 type RefinementListProps = {
   sortBy: SortOptions
@@ -53,6 +54,7 @@ const RefinementList: React.FC<RefinementListProps> = ({
         <Popover className="h-full flex">
           {({ open, close }) => (
             <>
+              <OverflowHiddenBackground open={open} />
               <div className="relative flex">
                 <Popover.Button className="relative flex items-center transition-all ease-out duration-200 text-ui-fg-base">
                   <Adjustments />
@@ -69,7 +71,7 @@ const RefinementList: React.FC<RefinementListProps> = ({
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-                  <Popover.Overlay className="z-40 fixed inset-0 bg-ui-bg-overlay backdrop-blur-sm" />
+                  <Popover.Overlay className="z-50 fixed inset-0 bg-ui-bg-overlay backdrop-blur-sm" />
                 </Transition>
               </div>
 
@@ -84,7 +86,7 @@ const RefinementList: React.FC<RefinementListProps> = ({
                 leaveFrom="translate-x-0 opacity-100"
                 leaveTo="translate-x-full opacity-40"
               >
-                <Popover.Panel className="opacity- z-40 absolute inset-y-0 right-0 w-full sm:w-96 overflow-hidden overflow-y-auto h-screen bg-ui-bg-base">
+                <Popover.Panel className="z-50 absolute inset-y-0 right-0 w-full sm:w-96 overflow-hidden overflow-y-auto h-screen bg-ui-bg-base">
                   <div className="flex flex-col fixed inset-y-0 w-full">
                     <MainMenu close={close} handleMenu={handleMenu} />
                   </div>

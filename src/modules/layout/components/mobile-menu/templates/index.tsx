@@ -3,11 +3,25 @@
 import { Customer, ProductCollection, Region } from "@medusajs/medusa"
 
 import { BarsThree } from "@medusajs/icons"
-import { Fragment, useState } from "react"
+import { Fragment, useEffect, useState } from "react"
 import { Popover, Transition } from "@headlessui/react"
 import { ProductCategoryWithChildren } from "types/global"
 import MainMenu from "../components/main-menu"
 import CategoryMenu from "../components/category-menu"
+
+export const OverflowHiddenBackground = ({ open }: { open: boolean }) => {
+  useEffect(() => {
+    if (open) {
+      document.body.classList.add("overflow-hidden")
+    }
+
+    return () => {
+      document.body.classList.remove("overflow-hidden")
+    }
+  }, [open])
+
+  return <></>
+}
 
 export type Children = {
   name: string
@@ -45,6 +59,7 @@ const Menu = ({
         <Popover className="h-full flex">
           {({ open, close }) => (
             <>
+              <OverflowHiddenBackground open={open} />
               <div className="relative flex">
                 <Popover.Button className="relative flex items-center transition-all ease-out duration-200 text-ui-fg-base">
                   <BarsThree />
