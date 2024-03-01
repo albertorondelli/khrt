@@ -33,7 +33,7 @@ const ProductInfo = ({ customer, onWishlist, product }: ProductInfoProps) => {
           </LocalizedClientLink>
         )}
         <div className="flex justify-between">
-          <Heading level="h2" className="text-3xl leading-10 text-ui-fg-base">
+          <Heading level="h1" className="text-3xl leading-10 text-ui-fg-base">
             {product.title}
           </Heading>
           {customer && (
