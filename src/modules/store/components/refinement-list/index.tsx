@@ -48,12 +48,12 @@ const RefinementList: React.FC<RefinementListProps> = ({
   }
 
   return (
-    <div className="h-full z-40">
+    <div className="h-full">
       <div className="flex items-center h-full">
         <Popover className="h-full flex">
           {({ open, close }) => (
             <>
-              <div className="relative flex h-full">
+              <div className="relative flex">
                 <Popover.Button className="relative flex items-center transition-all ease-out duration-200 text-ui-fg-base">
                   <Adjustments />
                 </Popover.Button>
@@ -69,7 +69,7 @@ const RefinementList: React.FC<RefinementListProps> = ({
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-                  <Popover.Overlay className="fixed inset-0 bg-ui-bg-overlay bg-opacity-75 backdrop-blur-sm" />
+                  <Popover.Overlay className="z-50 fixed inset-0 bg-ui-bg-overlay backdrop-blur-sm" />
                 </Transition>
               </div>
 
@@ -84,7 +84,7 @@ const RefinementList: React.FC<RefinementListProps> = ({
                 leaveFrom="translate-x-0 opacity-100"
                 leaveTo="translate-x-full opacity-10"
               >
-                <Popover.Panel className="absolute inset-y-0 right-0 w-full sm:w-96 overflow-hidden overflow-y-hidden h-screen z-30 bg-ui-bg-base">
+                <Popover.Panel className="z-50 absolute inset-y-0 right-0 w-full sm:w-96 overflow-hidden overflow-y-hidden h-screen bg-ui-bg-base">
                   <div className="flex flex-col fixed inset-y-0 w-full">
                     <MainMenu close={close} handleMenu={handleMenu} />
                   </div>
@@ -100,7 +100,7 @@ const RefinementList: React.FC<RefinementListProps> = ({
                     leaveFrom="translate-x-0 opacity-100"
                     leaveTo="translate-x-full opacity-10"
                   >
-                    <div className="fixed inset-y-0 w-full transition ease-in-out duration transform ">
+                    <div className="flex flex-col fixed inset-y-0 w-full">
                       <FilterMenu
                         attribute={attribute}
                         handleMenu={handleMenu}
