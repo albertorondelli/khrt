@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
 
-import { PaginatedProductsParams, ProductCategoryWithChildren } from "types/global"
+import {
+  PaginatedProductsParams,
+  ProductCategoryWithChildren,
+} from "types/global"
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
 import RefinementList from "@modules/store/components/refinement-list"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
@@ -80,24 +83,24 @@ export default async function CategoryTemplate({
             <p>{category.description}</p>
           </div>
         )}
-        {category.category_children && (
-          <div className="mb-8 text-base-large">
+        {/* {category.category_children && (
+          <div className="mb-8">
             <div className="overflow-x-auto">
-              <ul className="flex space-x-4 p-2">
+              <ul className="gap-x-5 flex">
                 {category.category_children?.map((c) => (
                   <li key={c.id}>
                     <LocalizedClientLink
-                      className="hover:text-ui-fg-base"
+                      className="w-full text-large-semi"
                       href={`/categories/${c.handle}`}
                     >
-                      <Button>{c.name}</Button>
+                      {c.name}
                     </LocalizedClientLink>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-        )}
+        )} */}
 
         <div className="flex justify-end">
           <RefinementList

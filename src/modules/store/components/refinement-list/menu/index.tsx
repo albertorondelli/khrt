@@ -4,11 +4,10 @@ import Button from "@modules/common/components/custom-button"
 import { ChevronDown, XMark } from "@medusajs/icons"
 import { Dispatch, SetStateAction, useCallback } from "react"
 import SortProducts, { SortOptions } from "../sort-products"
-import { useRouter } from "next/navigation"
-import { usePathname, useSearchParams } from "next/navigation"
+import { usePathname, useSearchParams, useRouter } from "next/navigation"
 import Size from "../size"
 import Color from "../color"
-import { FilterOptions, PaginatedProductsParams } from "types/global"
+import { PaginatedProductsParams } from "types/global"
 
 const filterableAttributes = [
   { id: "0", title: "Sort by", key: "sortby" },

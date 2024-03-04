@@ -49,15 +49,25 @@ const RefinementList: React.FC<RefinementListProps> = ({
   }
 
   return (
-    <div className="h-full">
+    <div className="mb-8">
       <div className="flex items-center h-full">
         <Popover className="h-full flex">
           {({ open, close }) => (
             <>
               <OverflowHiddenBackground open={open} />
               <div className="relative flex">
-                <Popover.Button className="relative flex items-center transition-all ease-out duration-200 text-ui-fg-base">
-                  <Adjustments />
+                <Popover.Button
+                  className="
+                    ease-out duration-200 shadow-buttons-neutral text-ui-fg-base bg-ui-button-neutral 
+                    after:button-neutral-gradient hover:bg-ui-button-neutral-hover hover:after:button-neutral-hover-gradient
+                    active:bg-ui-button-neutral-pressed active:after:button-neutral-pressed-gradient
+                    focus-visible:shadow-buttons-neutral-focus txt-compact-small-plus gap-x-1.5 px-3 py-1.5
+                    transition-fg relative inline-flex w-fit items-center justify-center overflow-hidden 
+                    rounded-sm outline-none disabled:bg-ui-bg-disabled disabled:border-ui-border-base 
+                    disabled:text-ui-fg-disabled disabled:shadow-buttons-neutral disabled:after:hidden
+                    after:transition-fg after:absolute after:inset-0 after:content-['']"
+                >
+                  Filtra e ordina <Adjustments />
                 </Popover.Button>
 
                 {/* Overlay */}
