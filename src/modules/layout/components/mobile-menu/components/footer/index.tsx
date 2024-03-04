@@ -43,12 +43,12 @@ const Footer = ({ close, customer, regions }: FooterProps) => {
           <div className="flex flex-col">
             <LocalizedClientLink
               href={`/account`}
-              className="flex items-center justify-between w-full py-2"
+              className="flex items-center w-full py-2"
               onClick={close}
             >
               <User />
               <span className="sr-only">Go to account page</span>
-              <span className="normal-case">{customer.email}</span>
+              <span className="px-3">{customer.email}</span>
             </LocalizedClientLink>
           </div>
         )}
