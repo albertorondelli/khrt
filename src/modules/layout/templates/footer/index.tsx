@@ -47,14 +47,12 @@ export default async function Footer() {
             collections={productCollections}
           />
         </div>
-        <div>
-          <DarkModeToggle />
-        </div>
-        <div className="flex w-full justify-between text-ui-fg-muted">
+        <div className="flex w-full justify-between items-center text-ui-fg-muted">
           <Text className="text-base-regular">
             © {new Date().getFullYear()} KHRT. All rights reserved.
           </Text>
           {/* <MedusaCTA /> */}
+          <DarkModeToggle />
         </div>
       </div>
     </footer>

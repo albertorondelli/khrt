@@ -83,7 +83,7 @@ export default async function CategoryTemplate({
             <p>{category.description}</p>
           </div>
         )}
-        {/* {category.category_children && (
+        {category.category_children && (
           <div className="mb-8">
             <div className="overflow-x-auto">
               <ul className="gap-x-5 flex">
@@ -100,7 +100,7 @@ export default async function CategoryTemplate({
               </ul>
             </div>
           </div>
-        )} */}
+        )}
 
         <div className="flex justify-end">
           <RefinementList

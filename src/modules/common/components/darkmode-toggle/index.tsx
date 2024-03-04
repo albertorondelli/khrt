@@ -28,13 +28,12 @@ function DarkModeToggle() {
   }, [isDarkMode])
 
   return (
-    <Button
-      variant="secondary"
+    <button
       onClick={toggleDarkMode}
-      className="text-base-regular text-ui-fg-subtle"
+      className="text-ui-fg-muted"
     >
       {isDarkMode ? <Sun /> : <Moon />}
-    </Button>
+    </button>
   )
 }
 

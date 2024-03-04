@@ -98,7 +98,9 @@ export default async function Home({
     <div className="bg-ui-bg-base">
       <div className="md:content-container">
         <Hero />
-
+        <div className="bg-ui-bg-accent text-ui-fg-accent">
+  This element has your accent color scheme.
+</div>
         <CategoriesBanners categories={categories} size="square" />
 
         <CollectionsBanners

@@ -1,7 +1,7 @@
 const path = require("path")
 
 module.exports = {
-  darkMode: 'class',
+  darkMode: "class",
   presets: [require("@medusajs/ui-preset")],
   content: [
     "./src/app/**/*.{js,ts,jsx,tsx}",
@@ -21,6 +21,18 @@ module.exports = {
         padding: "padding-top padding-right padding-bottom padding-left",
       },
       colors: {
+        "bg-ui-bg-accent": {
+          light: "#B0A28B",
+          dark: "#CBBC9F",
+        },
+        "text-ui-fg-accent": {
+          light: "#B0A28B",
+          dark: "#CBBC9F",
+        },
+        "text-ui-fg-accent-hover": {
+          light: "#8E7F66",
+          dark: "#F1E7D3",
+        },
         grey: {
           0: "#FFFFFF",
           5: "#F9FAFB",
@@ -60,7 +72,7 @@ module.exports = {
       },
       fontFamily: {
         sans: [
-          'var(--font-nunito)',
+          "var(--font-nunito)",
           "Inter",
           "-apple-system",
           "BlinkMacSystemFont",

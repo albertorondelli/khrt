@@ -33,7 +33,7 @@ export const FooterAccordion = ({
     },
   ]
   return (
-    <Accordion type="multiple">
+    <Accordion type="single" collapsible>
       {tabs.map((tab, i) => (
         <Accordion.Item
           key={i}
