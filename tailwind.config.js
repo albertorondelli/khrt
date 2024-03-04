@@ -60,6 +60,7 @@ module.exports = {
       },
       fontFamily: {
         sans: [
+          'var(--font-nunito)',
           "Inter",
           "-apple-system",
           "BlinkMacSystemFont",
