@@ -1,6 +1,6 @@
 import { Suspense } from "react"
-import Logo from "../../../../../public/logo"
-import logo from "../../../../../public/logo.svg"
+import logoLight from "../../../../../public/khrt-min-light.png"
+import logoDark from "../../../../../public/khrt-min-dark.png"
 
 import {
   getCategoriesList,
@@ -58,7 +58,20 @@ export default async function Nav() {
 
           <div className="flex items-center h-full">
             <LocalizedClientLink href="/" className="text-xl-semi uppercase">
-              <Logo className="fill-ui-bg-accent fill-ui-fg-accent-hover" />
+              <Image
+                src={logoDark}
+                alt="KHRT"
+                draggable={false}
+                className="block dark:hidden"
+                width="100"
+              />
+              <Image
+                src={logoLight}
+                alt="KHRT"
+                draggable={false}
+                className="hidden dark:block"
+                width="100"
+              />
             </LocalizedClientLink>
           </div>
 

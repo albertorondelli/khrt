@@ -6,7 +6,9 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import DarkModeToggle from "@modules/common/components/darkmode-toggle"
 import { FooterAccordion } from "./accordion"
 import { FooterDiv } from "./div"
-import Logo from "../../../../../public/logo"
+import Image from "next/image"
+import logoLight from "../../../../../public/khrt-slogan-light.png"
+import logoDark from "../../../../../public/khrt-slogan-dark.png"
 
 const fetchCollections = async () => {
   const { collections } = await getCollectionsList()
@@ -33,7 +35,20 @@ export default async function Footer() {
             href="/"
             className="text-xl-semi text-ui-fg-subtle hover:text-ui-fg-base uppercase"
           >
-            <Logo className="fill-ui-bg-accent fill-ui-fg-accent-hover" />
+            <Image
+              src={logoDark}
+              alt="KHRT"
+              draggable={false}
+              className="block dark:hidden"
+              width="250"
+            />
+            <Image
+              src={logoLight}
+              alt="KHRT"
+              draggable={false}
+              className="hidden dark:block"
+              width="250"
+            />
           </LocalizedClientLink>
         </div>
         <div className="hidden small:flex">

@@ -1,5 +1,11 @@
 // app/server-sitemap.xml/route.ts
 import { medusaClient } from "@lib/config"
+import {
+  getCategoriesList,
+  getCollectionsList,
+  getProductsList,
+  getProductsListWithSort,
+} from "@lib/data"
 import { getServerSideSitemap } from "next-sitemap"
 
 type SitemapObject = {
@@ -9,17 +15,23 @@ type SitemapObject = {
 
 // Generate sitemap for products
 const productsSitemap = async () => {
-  const siteUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:8000"
+  const siteUrl = process.env.NEXT_PUBLIC_URL ?? "http://localhost:8000"
 
   let data = await medusaClient.products.list({
     fields: "handle",
     expand: "",
   })
 
+  const {
+    response: { products, count },
+  } = await getProductsList({ countryCode: "it" })
+
   const sitemapObjects: SitemapObject[] = []
 
-  data.products.forEach((p) => {
-    const lastModified = p.updated_at || p.created_at
+  products.forEach((p) => {
+    // TODO: p.updated_at doesnt exist in products: ProductPreviewType[]
+    // const lastModified = p.updated_at ?? p.created_at
+    const lastModified = p.created_at
 
     const isValidDate =
       typeof lastModified === "string" || typeof lastModified === "number"
@@ -39,17 +51,19 @@ const productsSitemap = async () => {
 
 // Generate sitemap for product categories
 const categoriesSitemap = async () => {
-  const siteUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:8000"
+  const siteUrl = process.env.NEXT_PUBLIC_URL ?? "http://localhost:8000"
 
-  let data = await medusaClient.productCategories.list({
-    fields: "handle",
-    expand: "",
-  })
+  // let data = await medusaClient.productCategories.list({
+  //   fields: "handle",
+  //   expand: "",
+  // })
+
+  const { product_categories } = await getCategoriesList()
 
   const sitemapObjects: SitemapObject[] = []
 
-  data.product_categories.forEach((p) => {
-    const lastModified = p.updated_at || p.created_at
+  product_categories.forEach((p) => {
+    const lastModified = p.updated_at ?? p.created_at
 
     const isValidDate =
       typeof lastModified === "string" || typeof lastModified === "number"
@@ -71,11 +85,13 @@ const categoriesSitemap = async () => {
 const collectionsSitemap = async () => {
   const siteUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:8000"
 
-  let data = await medusaClient.collections.list()
+  let { collections } = await getCollectionsList().then(
+    (collections) => collections
+  )
 
   const sitemapObjects: SitemapObject[] = []
 
-  data.collections.forEach((p) => {
+  collections.forEach((p) => {
     const lastModified = p.updated_at || p.created_at
 
     const isValidDate =
