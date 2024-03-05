@@ -5,27 +5,39 @@ import { EmblaOptionsType } from "embla-carousel"
 import useEmblaCarousel from "embla-carousel-react"
 
 import Image from "next/image"
-import image from "../../../../../public/backgroundImage.webp"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { clx } from "@medusajs/ui"
+import PlaceholderImage from "@modules/common/icons/placeholder-image"
+import { DotButton, useDotButton } from "../dot-button"
+import { ProductCategoryWithChildren } from "types/global"
 
 import "./style.css"
-import { DotButton, useDotButton } from "../dot-button"
 
 interface CarouselProps {
   className?: any
   size?: any
-  slides: any
-  options?: EmblaOptionsType
+  categories: ProductCategoryWithChildren[]
 }
 
 const Carousel: React.FC<CarouselProps> = ({
-  slides,
-  options,
+  categories,
   className,
   size = "square",
 }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel(options)
+  const OPTIONS: EmblaOptionsType = {
+    slidesToScroll: "auto",
+    containScroll: "trimSnaps",
+    align: "start",
+  }
+
+  const slides = categories?.map((category) => {
+    return {
+      ...category,
+      // image: "@public/backgroundImage.webp",
+    }
+  })
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS)
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi)
@@ -49,15 +61,21 @@ const Carousel: React.FC<CarouselProps> = ({
                     "aspect-[9/16]": size == "vertical",
                   })}
                 >
-                  <Image
-                    src={image}
-                    alt="Thumbnail"
-                    className="absolute inset-0 object-cover object-center"
-                    draggable={false}
-                    quality={50}
-                    sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
-                    fill
-                  />
+                  {/* {slide.image ? ( */}
+                    {/* <Image
+                      src="@public/backgroundImage.webp"
+                      alt={slide.name}
+                      className="absolute inset-0 object-cover object-center"
+                      draggable={false}
+                      quality={50}
+                      sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
+                      fill
+                    /> */}
+                  {/* // ) : (
+                  //   <div className="w-full h-full absolute inset-0 flex items-center justify-center">
+                  //     <PlaceholderImage size={size === "small" ? 16 : 24} />
+                  //   </div>
+                  // )} */}
                   <span className="absolute left-10 bottom-12 text-2xl text-ui-fg-on-color">
                     {slide.name}
                   </span>

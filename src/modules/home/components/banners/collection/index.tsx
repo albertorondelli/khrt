@@ -7,7 +7,7 @@ import {
 import BannerImage from "../image-banner"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
-import backgroundImage from "../../../../../../public/backgroundImage.webp"
+import backgroundImage from "@public/backgroundImage.webp"
 
 interface CategoriesBannersProps {
   categories: ProductCategoryWithChildren[]

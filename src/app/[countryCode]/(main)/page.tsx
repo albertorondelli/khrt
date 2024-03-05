@@ -82,19 +82,6 @@ export default async function Home({
     return null
   }
 
-  const OPTIONS: EmblaOptionsType = {
-    slidesToScroll: "auto",
-    containScroll: "trimSnaps",
-    align: "start",
-  }
-
-  const slides = categories?.map((category) => {
-    return {
-      ...category,
-      url: "/../../../../../public/backgroundImage.webp",
-    }
-  })
-
   return (
     <div className="bg-ui-bg-base">
       <div className="md:content-container">
@@ -113,7 +100,7 @@ export default async function Home({
           size="square"
         />
 
-        <Carousel slides={slides} options={OPTIONS} size="horizontal" />
+        <Carousel categories={categories} size="horizontal" />
 
         <ul className="flex flex-col gap-x-6">
           <FeaturedProducts collections={collections} region={region} />

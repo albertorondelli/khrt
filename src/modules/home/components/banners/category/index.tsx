@@ -4,8 +4,8 @@ import { ProductCategoryWithChildren } from "types/global"
 import BannerImage from "../image-banner"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
-import manLanding from "../../../../../../public/man-landing.webp"
-import womanLanding from "../../../../../../public/woman-landing.webp"
+import manLanding from "@public/man-landing.webp"
+import womanLanding from "@public/woman-landing.webp"
 
 interface CategoriesBannersProps {
   categories: ProductCategoryWithChildren[]

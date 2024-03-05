@@ -1,14 +1,13 @@
-import { Text, clx } from "@medusajs/ui"
-
+import { Text } from "@medusajs/ui"
 import { getCategoriesList, getCollectionsList } from "@lib/data"
-
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import DarkModeToggle from "@modules/common/components/darkmode-toggle"
 import { FooterAccordion } from "./accordion"
 import { FooterDiv } from "./div"
+
 import Image from "next/image"
-import logoLight from "../../../../../public/khrt-slogan-light.png"
-import logoDark from "../../../../../public/khrt-slogan-dark.png"
+import logoLight from "@public/khrt-slogan-light.png"
+import logoDark from "@public/khrt-slogan-dark.png"
 
 const fetchCollections = async () => {
   const { collections } = await getCollectionsList()

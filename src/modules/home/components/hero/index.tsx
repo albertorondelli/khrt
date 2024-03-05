@@ -3,7 +3,7 @@ import Button from "@modules/common/components/custom-button"
 import Image from "next/image"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
-import heroImage from "../../../../../public/hero.webp"
+import heroImage from "@public/hero.webp"
 
 const Hero = () => {
   return (

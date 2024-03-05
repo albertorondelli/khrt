@@ -1,18 +1,19 @@
 import { Suspense } from "react"
-import logoLight from "../../../../../public/khrt-min-light.png"
-import logoDark from "../../../../../public/khrt-min-dark.png"
-
 import {
   getCategoriesList,
   getCollectionsList,
   getCustomer,
   listRegions,
 } from "@lib/data"
-import Image from "next/image"
+
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CartButton from "@modules/layout/components/cart-button"
-import { User, MagnifyingGlass, Heart, ShoppingBag } from "@medusajs/icons"
+import { User, MagnifyingGlass, Heart } from "@medusajs/icons"
 import MobileMenu from "@modules/layout/components/mobile-menu/templates"
+import Image from "next/image"
+
+import logoLight from "@public/khrt-min-light.png"
+import logoDark from "@public/khrt-min-dark.png"
 
 const fetchCollections = async () => {
   const { collections } = await getCollectionsList()
