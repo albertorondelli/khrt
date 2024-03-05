@@ -172,4 +172,9 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-radix")()],
+  variants: {
+    extend: {
+      display: ["dark"],
+    },
+  },
 }
