@@ -50,6 +50,18 @@
 }
 
 @layer components {
+  .bg-ui-bg-accent {
+    @apply bg-ui-bg-accent-light dark:bg-ui-bg-accent-dark;
+  }
+
+  .text-ui-fg-accent {
+    @apply text-ui-fg-accent-light dark:text-ui-fg-accent-dark transition-colors;
+  }
+
+  .ui-fg-accent-hover {
+    @apply hover:text-ui-fg-accent-hover-light hover:dark:text-ui-fg-accent-hover-dark;
+  }
+
   .content-container {
     @apply max-w-[1440px] w-full mx-auto px-6;
   }

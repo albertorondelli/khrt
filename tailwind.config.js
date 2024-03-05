@@ -21,17 +21,17 @@ module.exports = {
         padding: "padding-top padding-right padding-bottom padding-left",
       },
       colors: {
-        "bg-ui-bg-accent": {
-          light: "#B0A28B",
-          dark: "#CBBC9F",
+        "ui-bg-accent": {
+          light: "#CBBC9F",
+          dark: "#B0A28B",
         },
-        "text-ui-fg-accent": {
-          light: "#B0A28B",
-          dark: "#CBBC9F",
+        "ui-fg-accent": {
+          light: "#423824",
+          dark: "#dbd1bd",
         },
-        "text-ui-fg-accent-hover": {
-          light: "#8E7F66",
-          dark: "#F1E7D3",
+        "ui-fg-accent-hover": {
+          light: "#847048",
+          dark: "#ada085",
         },
         grey: {
           0: "#FFFFFF",
