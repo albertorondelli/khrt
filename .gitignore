@@ -16,6 +16,11 @@
 /.next/
 /out/
 
+# sitemap
+robots.txt
+sitemap-0.xml
+sitemap.xml
+
 # production
 /build
 

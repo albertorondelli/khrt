@@ -1,4 +1,5 @@
 const excludedPaths = [
+  "/unicredit-payment",
   "/checkout",
   "/account*",
   "/server-sitemap-index.xml",
@@ -11,7 +12,7 @@ const siteUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:8000"
 module.exports = {
   siteUrl: siteUrl,
   generateRobotsTxt: true,
-  exclude: excludedPaths  + ["/[sitemap]"],
+  exclude: excludedPaths,
   robotsTxtOptions: {
     policies: [
       {
