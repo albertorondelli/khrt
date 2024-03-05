@@ -8,7 +8,7 @@ import heroImage from "../../../../../public/hero.webp"
 const Hero = () => {
   return (
     <LocalizedClientLink href={`/store`} passHref>
-      <div className="h-screen w-full border border-ui-border-base relative mb-12 small:mb-24">
+      <div className="h-[94vh] w-full border border-ui-border-base relative mb-12 small:mb-24">
         <Image
           src={heroImage}
           alt="Hero thumbnail"

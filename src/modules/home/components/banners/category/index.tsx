@@ -1,7 +1,7 @@
 import { Heading, clx } from "@medusajs/ui"
 
 import { ProductCategoryWithChildren } from "types/global"
-import BannerImage from "../banner-image"
+import BannerImage from "../image-banner"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 import manLanding from "../../../../../../public/man-landing.webp"

@@ -4,7 +4,7 @@ import {
   ProductCategoryWithChildren,
   ProductCollectionWithPreviews,
 } from "types/global"
-import BannerImage from "../banner-image"
+import BannerImage from "../image-banner"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 import backgroundImage from "../../../../../../public/backgroundImage.webp"

@@ -54,6 +54,14 @@
     @apply bg-ui-bg-accent-light dark:bg-ui-bg-accent-dark;
   }
 
+  .fill-ui-bg-accent {
+    @apply fill-ui-fg-accent-light dark:fill-ui-fg-accent-dark transition-colors;
+  }
+
+  .fill-ui-fg-accent-hover {
+    @apply hover:fill-ui-fg-accent-hover-light hover:dark:fill-ui-fg-accent-hover-dark;
+  }
+
   .text-ui-fg-accent {
     @apply text-ui-fg-accent-light dark:text-ui-fg-accent-dark transition-colors;
   }

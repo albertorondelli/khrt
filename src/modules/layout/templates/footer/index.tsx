@@ -6,6 +6,7 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import DarkModeToggle from "@modules/common/components/darkmode-toggle"
 import { FooterAccordion } from "./accordion"
 import { FooterDiv } from "./div"
+import Logo from "../../../../../public/logo"
 
 const fetchCollections = async () => {
   const { collections } = await getCollectionsList()
@@ -32,7 +33,7 @@ export default async function Footer() {
             href="/"
             className="text-xl-semi text-ui-fg-subtle hover:text-ui-fg-base uppercase"
           >
-            KHRT
+            <Logo className="fill-ui-bg-accent fill-ui-fg-accent-hover" />
           </LocalizedClientLink>
         </div>
         <div className="hidden small:flex">

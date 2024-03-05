@@ -4,18 +4,17 @@ import React from "react"
 
 import PlaceholderImage from "@modules/common/icons/placeholder-image"
 
-type BannerImageProps = {
+type ImageBannerProps = {
   image?: any | null
   size?: "small" | "medium" | "large" | "full" | "square"
   className?: string
 }
 
-const BannerImage: React.FC<BannerImageProps> = ({
+const ImageBanner: React.FC<ImageBannerProps> = ({
   image,
   size = "small",
   className,
 }) => {
-
   return (
     <div
       className={clx(
@@ -38,7 +37,7 @@ const BannerImage: React.FC<BannerImageProps> = ({
 const ImageOrPlaceholder = ({
   image,
   size,
-}: Pick<BannerImageProps, "size"> & { image?: string }) => {
+}: Pick<ImageBannerProps, "size"> & { image?: string }) => {
   return image ? (
     <Image
       src={image}
@@ -55,4 +54,4 @@ const ImageOrPlaceholder = ({
   )
 }
 
-export default BannerImage
+export default ImageBanner

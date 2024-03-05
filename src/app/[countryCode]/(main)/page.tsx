@@ -8,6 +8,7 @@ import {
 } from "@lib/data"
 import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
+import SolidBanner from "@modules/home/components/banners/solid-banner"
 import { getRegion } from "app/actions"
 import { ProductCollectionWithPreviews } from "types/global"
 import { EmblaOptionsType } from "embla-carousel"
@@ -97,10 +98,12 @@ export default async function Home({
   return (
     <div className="bg-ui-bg-base">
       <div className="md:content-container">
+      
+          <div className="flex w-full justify-center items-center h-10 bg-ui-bg-accent">
+            <span className="text-base-regular">Benvenuti nel nuovo sito</span>
+          </div>
+      
         <Hero />
-        <div className="h-20 flex items-center">
-          This element has your accent color scheme.
-        </div>
         <CategoriesBanners categories={categories} size="square" />
 
         <CollectionsBanners

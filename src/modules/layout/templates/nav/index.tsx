@@ -1,4 +1,6 @@
 import { Suspense } from "react"
+import Logo from "../../../../../public/logo"
+import logo from "../../../../../public/logo.svg"
 
 import {
   getCategoriesList,
@@ -6,6 +8,7 @@ import {
   getCustomer,
   listRegions,
 } from "@lib/data"
+import Image from "next/image"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CartButton from "@modules/layout/components/cart-button"
 import { User, MagnifyingGlass, Heart, ShoppingBag } from "@medusajs/icons"
@@ -55,7 +58,7 @@ export default async function Nav() {
 
           <div className="flex items-center h-full">
             <LocalizedClientLink href="/" className="text-xl-semi uppercase">
-              KHRT
+              <Logo className="fill-ui-bg-accent fill-ui-fg-accent-hover" />
             </LocalizedClientLink>
           </div>
 
@@ -85,7 +88,8 @@ export default async function Nav() {
               <User />
             </LocalizedClientLink>
             <Suspense
-              fallback={<></>
+              fallback={
+                <></>
                 // <LocalizedClientLink className="flex" href="/cart">
                 //   <ShoppingBag />
                 //   <span>0</span>
