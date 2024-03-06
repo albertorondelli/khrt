@@ -46,7 +46,7 @@ const CategoriesBanners = ({
               <BannerImage size={size} image={backgroundImage} />
               <div className="absolute inset-0 z-10 hover:opacity-100 hover:bg-black hover:bg-opacity-10 duration-300">
                 <div className="absolute left-1/2 -translate-x-1/2 bottom-12 flex flex-col align-bottom small:p-10 gap-6">
-                  <span className="flex justify-center text-3xl text-ui-fg-on-color white-space-nowrap w-max">
+                  <span className="flex justify-center text-2xl text-ui-fg-on-color white-space-nowrap w-max">
                     {c.title}
                   </span>
                   {wButton && (

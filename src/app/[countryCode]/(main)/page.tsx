@@ -87,7 +87,7 @@ export default async function Home({
       <div className="md:content-container">
       
           <div className="flex w-full justify-center items-center h-10 bg-ui-bg-accent">
-            <span className="text-base-regular">Benvenuti nel nuovo sito</span>
+            <span className="text-base-regular"></span>
           </div>
       
         <Hero />
