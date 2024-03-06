@@ -58,8 +58,8 @@ export const ImageOrPlaceholder = ({
       fill
     />
   ) : (
-    <div className="w-full h-full absolute inset-0 flex items-center justify-center">
-      <PlaceholderImage size={size === "small" ? 16 : 24} />
+    <div className="w-full h-full absolute inset-0 flex items-center justify-center bg-ui-bg-component">
+      <PlaceholderImage size={size === "small" ? 16 : 24} color="black dark:white"/>
     </div>
   )
 }

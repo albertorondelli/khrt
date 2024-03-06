@@ -9,6 +9,7 @@ const PlaceholderImage: React.FC<IconProps> = ({
 }) => {
   return (
     <svg
+      className="dark:stroke-white stroke-black"
       width={size}
       height={size}
       viewBox="0 0 20 20"
