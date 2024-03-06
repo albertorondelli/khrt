@@ -90,11 +90,11 @@ const RefinementList: React.FC<RefinementListProps> = ({
                 show={open}
                 as={Fragment}
                 enter="transition ease-in-out duration-300 transform"
-                enterFrom="translate-x-full opacity-40"
+                enterFrom="translate-x-full opacity-50"
                 enterTo="translate-x-0 opacity-100"
                 leave="transition ease-in-out duration-300 transform"
-                leaveFrom="translate-x-0 opacity-100"
-                leaveTo="translate-x-full opacity-40"
+                leaveFrom="translate-x-0"
+                leaveTo="translate-x-full"
               >
                 <Popover.Panel className="z-50 absolute inset-y-0 right-0 w-full sm:w-[40rem] overflow-hidden overflow-y-auto h-screen bg-ui-bg-base">
                   <div className="flex flex-col fixed inset-y-0 w-full">
@@ -106,11 +106,11 @@ const RefinementList: React.FC<RefinementListProps> = ({
                     as={Fragment}
                     show={screen === "secondary"}
                     enter="transition ease-in-out duration-300 transform"
-                    enterFrom="translate-x-full opacity-60"
+                    enterFrom="translate-x-full opacity-80"
                     enterTo="translate-x-0 opacity-100"
                     leave="transition ease-in-out duration-300 transform"
                     leaveFrom="translate-x-0 opacity-100"
-                    leaveTo="translate-x-full opacity-60"
+                    leaveTo="translate-x-full opacity-80"
                   >
                     <div className="flex flex-col fixed inset-y-0 w-full">
                       <FilterMenu
