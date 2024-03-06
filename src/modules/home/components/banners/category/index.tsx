@@ -20,8 +20,6 @@ const CategoriesBanners = ({
 }: CategoriesBannersProps) => {
   const parentCategories = categories?.filter((c) => !c.parent_category)
 
-  const cols = parentCategories?.length ?? 1
-
   const categoryImages: any[] = [{ url: manLanding }, { url: womanLanding }]
 
   const slides = parentCategories?.map((category, i) => {
@@ -31,7 +29,6 @@ const CategoriesBanners = ({
     }
   })
 
-  console.log("slides", slides)
 
   return (
     <div className="grid gap-2 grid-cols-1 md:grid-cols-2 py-12 small:py-24">

@@ -1,11 +1,11 @@
 import { clx } from "@medusajs/ui"
-import Image from "next/image"
+import Image, { StaticImageData } from "next/image"
 import React from "react"
 
 import PlaceholderImage from "@modules/common/icons/placeholder-image"
 
 type ImageBannerProps = {
-  image?: any | null
+  image?: StaticImageData | string | null
   size?: "small" | "medium" | "large" | "full" | "square"
   className?: string
 }
@@ -37,7 +37,9 @@ const ImageBanner: React.FC<ImageBannerProps> = ({
 const ImageOrPlaceholder = ({
   image,
   size,
-}: Pick<ImageBannerProps, "size"> & { image?: string }) => {
+}: Pick<ImageBannerProps, "size"> & {
+  image?: StaticImageData | string | null
+}) => {
   return image ? (
     <Image
       src={image}

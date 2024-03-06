@@ -8,10 +8,8 @@ import {
 } from "@lib/data"
 import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
-import SolidBanner from "@modules/home/components/banners/solid-banner"
 import { getRegion } from "app/actions"
 import { ProductCollectionWithPreviews } from "types/global"
-import { EmblaOptionsType } from "embla-carousel"
 
 import CollectionsBanners from "@modules/home/components/banners/collection"
 import CategoriesBanners from "@modules/home/components/banners/category"
@@ -71,9 +69,9 @@ const getCollectionsWithProducts = async (
 
 export default async function Home({
   params: { countryCode },
-}: {
+}: Readonly<{
   params: { countryCode: string }
-}) {
+}>) {
   const collections = await getCollectionsWithProducts(countryCode)
   const categories = await fetchCategories().then((categories) => categories)
   const region = await getRegion(countryCode)
@@ -85,11 +83,10 @@ export default async function Home({
   return (
     <div className="bg-ui-bg-base">
       <div className="md:content-container">
-      
-          <div className="flex w-full justify-center items-center h-10 bg-ui-bg-accent">
-            <span className="text-base-regular"></span>
-          </div>
-      
+        <div className="flex w-full justify-center items-center h-10 bg-ui-bg-accent">
+          <span className="text-base-regular"></span>
+        </div>
+
         <Hero />
         <CategoriesBanners categories={categories} size="square" />
 
