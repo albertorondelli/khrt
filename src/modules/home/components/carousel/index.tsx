@@ -11,6 +11,7 @@ import PlaceholderImage from "@modules/common/icons/placeholder-image"
 import { DotButton, useDotButton } from "../dot-button"
 import { ProductCategoryWithChildren } from "types/global"
 
+import image from "@public/backgroundImage.webp"
 import "./style.css"
 
 interface CarouselProps {
@@ -30,10 +31,12 @@ const Carousel: React.FC<CarouselProps> = ({
     align: "start",
   }
 
+  console.log("categories", categories)
+
   const slides = categories?.map((category) => {
     return {
       ...category,
-      // image: "@public/backgroundImage.webp",
+      image: image,
     }
   })
 
@@ -61,22 +64,23 @@ const Carousel: React.FC<CarouselProps> = ({
                     "aspect-[9/16]": size == "vertical",
                   })}
                 >
-                  {/* {slide.image ? ( */}
-                    {/* <Image
-                      src="@public/backgroundImage.webp"
+                  {slide.image ? (
+                    <Image
+                      src={slide.image}
                       alt={slide.name}
                       className="absolute inset-0 object-cover object-center"
                       draggable={false}
                       quality={50}
                       sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
                       fill
-                    /> */}
-                  {/* // ) : (
-                  //   <div className="w-full h-full absolute inset-0 flex items-center justify-center">
-                  //     <PlaceholderImage size={size === "small" ? 16 : 24} />
-                  //   </div>
-                  // )} */}
+                    />
+                  ) : (
+                    <div className="w-full h-full absolute inset-0 flex items-center justify-center">
+                      <PlaceholderImage size={size === "small" ? 16 : 24} />
+                    </div>
+                  )}
                   <span className="absolute left-10 bottom-12 text-2xl text-ui-fg-on-color">
+                    {slide?.parent_category && slide.parent_category.name + " / "}
                     {slide.name}
                   </span>
                 </div>

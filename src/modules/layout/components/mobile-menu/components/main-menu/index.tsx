@@ -48,7 +48,7 @@ const MainMenu = ({
           </button>
         </div>
       </div>
-      <div className="space-y-6 flex-1 flex flex-col justify-between p-6">
+      <div className="flex-1 flex flex-col justify-between p-6">
         <div className="flex flex-col flex-1 text-large-semi">
           <ul className="flex flex-col gap-y-2">
             <li className="bg-ui-bg-subtle hover:bg-ui-bg-subtle-hover rounded-sm">

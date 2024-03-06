@@ -96,7 +96,7 @@ const RefinementList: React.FC<RefinementListProps> = ({
                 leaveFrom="translate-x-0 opacity-100"
                 leaveTo="translate-x-full opacity-40"
               >
-                <Popover.Panel className="z-50 absolute inset-y-0 right-0 w-full sm:w-96 overflow-hidden overflow-y-auto h-screen bg-ui-bg-base">
+                <Popover.Panel className="z-50 absolute inset-y-0 right-0 w-full sm:w-[40rem] overflow-hidden overflow-y-auto h-screen bg-ui-bg-base">
                   <div className="flex flex-col fixed inset-y-0 w-full">
                     <MainMenu close={close} handleMenu={handleMenu} />
                   </div>
