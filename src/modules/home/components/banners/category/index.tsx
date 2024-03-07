@@ -22,11 +22,10 @@ const CategoriesBanners = async ({
   size = "square",
 }: CategoriesBannersProps) => {
   const categories = await fetchCategories().then((categories) => categories)
-
   const parentCategories = categories?.filter((c) => !c.parent_category)
 
+  // TODO: Replace this with real images from main category
   const categoryImages: any[] = [{ url: manLanding }, { url: womanLanding }]
-
   const slides = parentCategories?.map((category, i) => {
     return {
       ...category,
@@ -35,7 +34,7 @@ const CategoriesBanners = async ({
   })
 
   return (
-    <div className="grid gap-2 grid-cols-1 md:grid-cols-2 py-12 small:py-24">
+    <div className="grid gap-2 grid-cols-1 md:grid-cols-2">
       {slides?.map((c) => {
         return (
           <LocalizedClientLink

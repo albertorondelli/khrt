@@ -41,7 +41,7 @@ const CategoriesBanners = async ({
   )
 
   return (
-    <div className="grid gap-2 grid-cols-1 md:grid-cols-2 py-12 small:py-24">
+    <div className="grid gap-2 grid-cols-1 md:grid-cols-2">
       {collections?.slice(0, 3).map((c) => {
         return (
           <LocalizedClientLink

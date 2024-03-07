@@ -22,7 +22,7 @@ export default function ProductRail({
     products &&
     products.length > 0 && (
       <div className="bg-ui-bg-base">
-        <div className="content-container py-12 small:py-24">
+        <div>
           <div className="flex justify-between mb-8">
             <Text className="text-3xl text-ui-fg-base">{collection.title}</Text>
             <InteractiveLink href={`/collections/${collection.handle}`}>

@@ -13,6 +13,7 @@ import { ProductCategoryWithChildren } from "types/global"
 import backgroundImage from "@public/backgroundImage.webp"
 import "./style.css"
 import { getCategoriesList } from "@lib/data"
+import SkeletonCarousel from "@modules/skeletons/components/skeleton-carousel"
 
 const fetchCategories = async () => {
   const { product_categories } = await getCategoriesList()
@@ -22,25 +23,28 @@ const fetchCategories = async () => {
 interface CarouselProps {
   className?: any
   size?: any
-  // categories: ProductCategoryWithChildren[]
   parentCategoryName?: "man" | "woman" | null
 }
 
 const Carousel = ({
-  // categories,
   parentCategoryName = null,
   className,
   size = "square",
 }: CarouselProps) => {
+  const [categories, setCategories] = useState<ProductCategoryWithChildren[]>(
+    []
+  )
+  const [isLoading, setIsLoading] = useState(true)
+
   const OPTIONS: EmblaOptionsType = {
     slidesToScroll: "auto",
     containScroll: "trimSnaps",
     align: "start",
   }
-  const [categories, setCategories] = useState<ProductCategoryWithChildren[]>(
-    []
-  )
-  const [isLoading, setIsLoading] = useState(true)
+  const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS)
+
+  const { selectedIndex, scrollSnaps, onDotButtonClick } =
+    useDotButton(emblaApi)
 
   useEffect(() => {
     fetchCategories().then((categories) => {
@@ -74,17 +78,11 @@ const Carousel = ({
     })
   }
 
-  const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS)
-
-  const { selectedIndex, scrollSnaps, onDotButtonClick } =
-    useDotButton(emblaApi)
-
-    
-  if (isLoading) return <div>CAROUSEL IS LOADING</div>
+  if (isLoading) return <SkeletonCarousel size={size} />
   if (categories.length == 0) return <></>
 
   return (
-    <div className="embla py-12 small:py-24">
+    <div className="embla">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {filterCategories().map((slide: any) => {

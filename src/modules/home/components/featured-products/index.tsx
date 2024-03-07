@@ -1,5 +1,5 @@
 import { getCollectionsList, getProductsList } from "@lib/data"
-import { Product, Region } from "@medusajs/medusa"
+import { Product } from "@medusajs/medusa"
 import { getRegion } from "app/actions"
 
 import ProductRail from "@modules/home/components/featured-products/product-rail"

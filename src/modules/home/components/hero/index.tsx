@@ -8,10 +8,10 @@ import heroImage from "@public/hero.webp"
 const Hero = () => {
   return (
     <LocalizedClientLink href={`/store`} passHref>
-      <div className="h-[94vh] w-full border border-ui-border-base relative mb-12 small:mb-24">
+      <div className="relative h-[94vh] w-full border border-ui-border-base">
         <Image
           src={heroImage}
-          alt="Hero thumbnail"
+          alt="Hero KHRT"
           fill
           style={{
             objectFit: "cover",
