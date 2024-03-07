@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { EmblaOptionsType } from "embla-carousel"
 import useEmblaCarousel from "embla-carousel-react"
 
@@ -12,16 +12,22 @@ import { ProductCategoryWithChildren } from "types/global"
 
 import backgroundImage from "@public/backgroundImage.webp"
 import "./style.css"
+import { getCategoriesList } from "@lib/data"
+
+const fetchCategories = async () => {
+  const { product_categories } = await getCategoriesList()
+  return product_categories
+}
 
 interface CarouselProps {
   className?: any
   size?: any
-  categories: ProductCategoryWithChildren[]
+  // categories: ProductCategoryWithChildren[]
   parentCategoryName?: "man" | "woman" | null
 }
 
 const Carousel = ({
-  categories,
+  // categories,
   parentCategoryName = null,
   className,
   size = "square",
@@ -31,6 +37,17 @@ const Carousel = ({
     containScroll: "trimSnaps",
     align: "start",
   }
+  const [categories, setCategories] = useState<ProductCategoryWithChildren[]>(
+    []
+  )
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    fetchCategories().then((categories) => {
+      setCategories(categories)
+      setIsLoading(false)
+    })
+  }, [])
 
   // FIXME: There is no image inside the filtered categories
   function filterCategories() {
@@ -61,6 +78,10 @@ const Carousel = ({
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi)
+
+    
+  if (isLoading) return <div>CAROUSEL IS LOADING</div>
+  if (categories.length == 0) return <></>
 
   return (
     <div className="embla py-12 small:py-24">

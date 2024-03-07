@@ -8,22 +8,37 @@ import BannerImage from "../image-banner"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 import backgroundImage from "@public/backgroundImage.webp"
+import { getCategoriesList, getCollectionsList } from "@lib/data"
+
+const fetchCategories = async () => {
+  const { product_categories } = await getCategoriesList()
+  return product_categories
+}
+
+const fetchCollections = async () => {
+  const { collections } = await getCollectionsList()
+  return collections
+}
 
 interface CategoriesBannersProps {
-  categories: ProductCategoryWithChildren[]
-  collections: ProductCollectionWithPreviews[]
+  // categories: ProductCategoryWithChildren[]
+  // collections: ProductCollectionWithPreviews[]
   size?: "small" | "medium" | "large" | "full" | "square"
   className?: string
   wButton?: boolean
 }
 
-const CategoriesBanners = ({
-  categories,
-  collections,
+const CategoriesBanners = async ({
+  // categories,
+  // collections,
   className,
   size = "square",
   wButton = false,
 }: CategoriesBannersProps) => {
+  const categories = await fetchCategories().then((categories) => categories)
+  const collections = await fetchCollections().then(
+    (collections) => collections
+  )
 
   return (
     <div className="grid gap-2 grid-cols-1 md:grid-cols-2 py-12 small:py-24">

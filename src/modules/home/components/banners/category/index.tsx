@@ -1,23 +1,28 @@
 import { Heading, clx } from "@medusajs/ui"
 
-import { ProductCategoryWithChildren } from "types/global"
 import BannerImage from "../image-banner"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 import manLanding from "@public/man-landing.webp"
 import womanLanding from "@public/woman-landing.webp"
+import { getCategoriesList } from "@lib/data"
+
+const fetchCategories = async () => {
+  const { product_categories } = await getCategoriesList()
+  return product_categories
+}
 
 interface CategoriesBannersProps {
-  categories: ProductCategoryWithChildren[]
   size?: "small" | "medium" | "large" | "full" | "square"
   className?: string
 }
 
-const CategoriesBanners = ({
-  categories,
+const CategoriesBanners = async ({
   className,
   size = "square",
 }: CategoriesBannersProps) => {
+  const categories = await fetchCategories().then((categories) => categories)
+
   const parentCategories = categories?.filter((c) => !c.parent_category)
 
   const categoryImages: any[] = [{ url: manLanding }, { url: womanLanding }]
@@ -28,7 +33,6 @@ const CategoriesBanners = ({
       ...categoryImages[i],
     }
   })
-
 
   return (
     <div className="grid gap-2 grid-cols-1 md:grid-cols-2 py-12 small:py-24">

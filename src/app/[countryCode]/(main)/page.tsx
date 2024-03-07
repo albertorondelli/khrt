@@ -14,6 +14,7 @@ import { ProductCollectionWithPreviews } from "types/global"
 import CollectionsBanners from "@modules/home/components/banners/collection"
 import CategoriesBanners from "@modules/home/components/banners/category"
 import Carousel from "@modules/home/components/carousel"
+import { Suspense } from "react"
 
 export const metadata: Metadata = {
   title: "Medusa Next.js Starter Template",
@@ -74,7 +75,7 @@ export default async function Home({
 }>) {
   // const collections = await getCollectionsWithProducts(countryCode)
   // const categories = await fetchCategories().then((categories) => categories)
-  const region = await getRegion(countryCode)
+  // const region = await getRegion(countryCode)
 
   // if (!collections || !region || !categories) {
   //   return null
@@ -88,20 +89,20 @@ export default async function Home({
         </div>
 
         <Hero />
-        {/* <CategoriesBanners categories={categories} size="square" />
+        <Suspense fallback={<div>STO CARICANDO LE CATEGORIE</div>}>
+          <CategoriesBanners size="square" />
+        </Suspense>
 
-        <CollectionsBanners
-          collections={collections}
-          categories={categories}
-          wButton={false}
-          size="square"
-        />
+        <Suspense fallback={<div>STO CARICANDO LE COLLEZIONI</div>}>
+          <CollectionsBanners wButton={false} size="square" />
+        </Suspense>
 
-        <Carousel categories={categories} size="horizontal" />
-
-        <ul className="flex flex-col gap-x-6">
-          <FeaturedProducts collections={collections} region={region} />
-        </ul> */}
+        <Carousel size="horizontal" />
+        <Suspense fallback={<div>STO CARICANDO I PRODOTTI</div>}>
+          <ul className="flex flex-col gap-x-6">
+            <FeaturedProducts countryCode={countryCode} />
+          </ul>
+        </Suspense>
       </div>
     </div>
   )
