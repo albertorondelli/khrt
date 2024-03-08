@@ -32,7 +32,7 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
-  const [filter, setFilter] = useState<string[]>([])
+  const [filter, setFilter] = useState<string>("")
 
   console.log("filter", filter)
 

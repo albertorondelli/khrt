@@ -6,7 +6,7 @@ import { Checkbox, Label, clx } from "@medusajs/ui"
 type ColorProps = {
   colorOptions: string[]
   filter: string[]
-  setFilter: React.Dispatch<React.SetStateAction<string[]>>
+  setFilter: React.Dispatch<React.SetStateAction<string>>
 }
 
 export const ColorFilter = ({
@@ -37,23 +37,23 @@ export const ColorFilter = ({
               <Checkbox
                 className="text-ui-fg-base"
                 checked={checkedColors.includes(c)}
-                onCheckedChange={(checked) => {
-                  setCheckedColors((prevColors) => {
-                    if (checked) {
-                      return [...prevColors, c] // Add to checked sizes
-                    } else {
-                      return prevColors.filter((color) => color !== c) // Remove
-                    }
-                  })
+                // onCheckedChange={(checked) => {
+                //   setCheckedColors((prevColors) => {
+                //     if (checked) {
+                //       return [...prevColors, c] // Add to checked sizes
+                //     } else {
+                //       return prevColors.filter((color) => color !== c) // Remove
+                //     }
+                //   })
 
-                  setFilter((prevColors) => {
-                    if (checked) {
-                      return [...prevColors, c] // Add to checked sizes
-                    } else {
-                      return prevColors.filter((color) => color !== c) // Remove
-                    }
-                  })
-                }}
+                //   setFilter((prevColors) => {
+                //     if (checked) {
+                //       return [...prevColors, c] // Add to checked sizes
+                //     } else {
+                //       return prevColors.filter((color) => color !== c) // Remove
+                //     }
+                //   })
+                // }}
                 id={c}
                 value={c}
               />

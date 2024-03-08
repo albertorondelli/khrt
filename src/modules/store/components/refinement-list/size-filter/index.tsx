@@ -6,7 +6,7 @@ import { Checkbox, Label, clx } from "@medusajs/ui"
 type SizeProps = {
   sizeOptions: string[]
   filter: string[]
-  setFilter: React.Dispatch<React.SetStateAction<string[]>>
+  setFilter: React.Dispatch<React.SetStateAction<string>>
 }
 
 export const SizeFilter = ({ sizeOptions, filter, setFilter }: SizeProps) => {
@@ -21,17 +21,17 @@ export const SizeFilter = ({ sizeOptions, filter, setFilter }: SizeProps) => {
               <Checkbox
                 className="text-ui-fg-base"
                 checked={checkedSizes.includes(s)}
-                onCheckedChange={(checked) => {
-                  setCheckedSizes((prevCheckedSizes) => {
-                    const newCheckedSizes = checked
-                      ? [...prevCheckedSizes, s]
-                      : prevCheckedSizes.filter((size) => size !== s)
+                // onCheckedChange={(checked) => {
+                //   setCheckedSizes((prevCheckedSizes) => {
+                //     const newCheckedSizes = checked
+                //       ? [...prevCheckedSizes, s]
+                //       : prevCheckedSizes.filter((size) => size !== s)
 
-                    setFilter(newCheckedSizes) // Update filter with calculated value
+                //     setFilter(newCheckedSizes) // Update filter with calculated value
 
-                    return newCheckedSizes
-                  })
-                }}
+                //     return newCheckedSizes
+                //   })
+                // }}
                 id={s}
                 value={s}
               />
