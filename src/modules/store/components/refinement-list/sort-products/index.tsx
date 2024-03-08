@@ -1,14 +1,9 @@
 "use client"
 
-import { ChangeEvent } from "react"
 import { Label, RadioGroup, clx } from "@medusajs/ui"
+import { useEffect, useState } from "react"
 
-export type SortOptions = "price_asc" | "price_desc" | "created_at"
-
-type SortProductsProps = {
-  sortBy: SortOptions
-  setQueryParams: (name: string, value: SortOptions) => void
-}
+// export type SortOptions = "price_asc" | "price_desc" | "created_at"
 
 const sortOptions = [
   {
@@ -25,33 +20,35 @@ const sortOptions = [
   },
 ]
 
-const SortProducts = ({ sortBy, setQueryParams }: SortProductsProps) => {
-  const handleChange = (e: ChangeEvent<HTMLButtonElement>) => {
-    const newSortBy = e.target.value as SortOptions
-    setQueryParams("sortBy", newSortBy)
-  }
+type SortProductsProps = {
+  sortBy: string
+  setFilter: React.Dispatch<React.SetStateAction<string>>
+}
+
+const SortProducts = ({ sortBy, setFilter }: SortProductsProps) => {
+  const [selectedSort, setSelectedSort] = useState(sortBy)
 
   return (
     <div className="flex flex-col">
-      <RadioGroup className=" gap-y-6">
-        {sortOptions?.map((i) => (
-          <div key={i.value} className={clx("flex gap-x-4 items-center", {})}>
-            <RadioGroup.Item
-              checked={i.value === sortBy}
-              onClick={(e) =>
-                handleChange(e as unknown as ChangeEvent<HTMLButtonElement>)
-              }
-              id={i.value}
-              value={i.value}
-            />
+      <RadioGroup
+        className="gap-y-6"
+        onValueChange={(value) => {
+          setSelectedSort(value)
+          setFilter(value)
+        }}
+        value={selectedSort}
+      >
+        {sortOptions?.map((option, i) => (
+          <div key={i} className={clx("flex gap-x-4 items-center", {})}>
+            <RadioGroup.Item id={option.value} value={option.value} />
             <Label
-              htmlFor={i.value}
+              htmlFor={option.value}
               className={clx(
                 "!transform-none text-ui-fg-subtle text-large-semi hover:cursor-pointer",
-                i.value === sortBy && "text-ui-fg-base text-large-semi" // Only apply text-ui-fg-base if the condition is true
+                option.value === sortBy && "text-ui-fg-base text-large-semi" // Only apply text-ui-fg-base if the condition is true
               )}
             >
-              <span className="">{i.label}</span>
+              <span className="">{option.label}</span>
             </Label>
           </div>
         ))}

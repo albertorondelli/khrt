@@ -1,7 +1,6 @@
 import { Suspense } from "react"
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
 import RefinementList from "@modules/store/components/refinement-list"
-import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 
 import PaginatedProducts from "./paginated-products"
 import { PaginatedProductsParams } from "types/global"
@@ -9,7 +8,7 @@ import { PaginatedProductsParams } from "types/global"
 const PRODUCT_LIMIT = 12
 
 type StoreTemplateProps = {
-  sortBy?: SortOptions
+  sortBy?: string
   page?: string
   q?: string
   countryCode: string

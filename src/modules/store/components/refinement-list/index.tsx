@@ -1,16 +1,18 @@
 "use client"
 
 import React, { useState, useEffect, Fragment } from "react"
-import { FilterMenu, MainMenu } from "./menu"
+
 import { getFilterOptions } from "@lib/data"
-import { SortOptions } from "./sort-products"
 import { FilterOptions, PaginatedProductsParams } from "types/global"
 import { Popover, Transition } from "@headlessui/react"
 import { Adjustments } from "@medusajs/icons"
 import { OverflowHiddenBackground } from "@modules/layout/components/mobile-menu/templates"
 
+import MainMenu from "./main-menu"
+import FilterMenu from "./filter-menu"
+
 type RefinementListProps = {
-  sortBy: SortOptions
+  sortBy: string
   queryParams?: PaginatedProductsParams
 }
 
@@ -96,7 +98,7 @@ const RefinementList: React.FC<RefinementListProps> = ({
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <Popover.Panel className="z-50 absolute inset-y-0 right-0 w-full sm:w-[40rem] overflow-hidden overflow-y-auto h-screen bg-ui-bg-base">
+                <Popover.Panel className="z-50 absolute inset-y-0 right-0 w-full sm:w-[30rem] overflow-hidden overflow-y-auto h-screen bg-ui-bg-base">
                   <div className="flex flex-col fixed inset-y-0 w-full">
                     <MainMenu close={close} handleMenu={handleMenu} />
                   </div>
