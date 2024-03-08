@@ -4,11 +4,12 @@ import RefinementList from "@modules/store/components/refinement-list"
 
 import PaginatedProducts from "./paginated-products"
 import { PaginatedProductsParams } from "types/global"
+import { SortOptions } from "../components/refinement-list/sort-products"
 
 const PRODUCT_LIMIT = 12
 
 type StoreTemplateProps = {
-  sortBy?: string
+  sortBy?: SortOptions
   page?: string
   q?: string
   countryCode: string
