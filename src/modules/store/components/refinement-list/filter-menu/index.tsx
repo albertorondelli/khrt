@@ -34,14 +34,6 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
 
   const [filter, setFilter] = useState<string>("")
 
-  console.log("filter", filter)
-
-  const setQueryParams = (attribute: string, filter: string) => {
-    const query = createQueryString(attribute, filter)
-    router.push(`${pathname}?${query}`)
-    close()
-  }
-
   const createQueryString = useCallback(
     (name: string, value: string) => {
       const params = new URLSearchParams(searchParams)
@@ -53,8 +45,15 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
     [searchParams]
   )
 
-  const handleRemove = () => {
-    // TODO: remove the query string associated with the filter
+  const setQueryParams = (attribute: string, filter: string) => {
+    const query = createQueryString(attribute, filter)
+    router.push(`${pathname}?${query}`)
+    close()
+  }
+
+  const removeQueryParam = () => {
+    router.push(pathname)
+    close()
   }
 
   // TODO: uncomment this code to enable more filters
@@ -124,7 +123,7 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
         <div className="flex items-center justify-center gap-4 w-full py-5">
           <Button
             variant="secondary"
-            onClick={handleRemove}
+            onClick={() => removeQueryParam()}
             className="w-full"
             size="large"
           >
