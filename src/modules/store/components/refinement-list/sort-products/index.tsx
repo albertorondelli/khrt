@@ -1,9 +1,9 @@
 "use client"
 
 import { Label, RadioGroup, clx } from "@medusajs/ui"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
-// export type SortOptions = "price_asc" | "price_desc" | "created_at"
+export type SortOptions = "price_asc" | "price_desc" | "created_at"
 
 const sortOptions = [
   {
