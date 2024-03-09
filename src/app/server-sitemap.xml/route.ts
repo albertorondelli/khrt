@@ -6,7 +6,7 @@ import {
   getProductsList,
   getProductsListWithSort,
 } from "@lib/data"
-import { getServerSideSitemap } from "next-sitemap"
+// import { getServerSideSitemap } from "next-sitemap"
 
 type SitemapObject = {
   loc: string
@@ -110,12 +110,12 @@ const collectionsSitemap = async () => {
   return sitemapObjects
 }
 
-export async function GET(request: Request) {
-  let products = await productsSitemap()
-  let categories = await categoriesSitemap()
-  let collections = await collectionsSitemap()
+// export async function GET(request: Request) {
+//   let products = await productsSitemap()
+//   let categories = await categoriesSitemap()
+//   let collections = await collectionsSitemap()
 
-  const combinedSitemap = [...products, ...categories, ...collections]
+//   const combinedSitemap = [...products, ...categories, ...collections]
 
-  return getServerSideSitemap(combinedSitemap)
-}
+//   return getServerSideSitemap(combinedSitemap)
+// }
