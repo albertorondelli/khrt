@@ -1,20 +1,18 @@
 import { MetadataRoute } from "next"
-import { getCategoriesList } from "@lib/data"
+import { getCollectionsList } from "@lib/data"
+import { SitemapObject } from "app/test/category"
 
-type SitemapObject = {
-  url: string
-  lastmod: string
-}
-
-export default async function categorySitemap(): Promise<MetadataRoute.Sitemap> {
+export default async function sitemapCollection(): Promise<MetadataRoute.Sitemap> {
   const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://localhost:8000"
 
-  const { product_categories } = await getCategoriesList()
+  let { collections } = await getCollectionsList().then(
+    (collections) => collections
+  )
 
   const sitemapObjects: SitemapObject[] = []
 
-  product_categories.forEach((p) => {
-    const lastModified = p.updated_at ?? p.created_at
+  collections.forEach((p) => {
+    const lastModified = p.updated_at || p.created_at
 
     const isValidDate =
       typeof lastModified === "string" || typeof lastModified === "number"
