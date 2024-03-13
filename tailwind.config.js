@@ -27,11 +27,11 @@ module.exports = {
         },
         "ui-fg-accent": {
           light: "#423824",
-          dark: "#dbd1bd",
+          dark: "#DBD1BD",
         },
         "ui-fg-accent-hover": {
           light: "#847048",
-          dark: "#ada085",
+          dark: "#ADA085",
         },
         grey: {
           0: "#FFFFFF",
