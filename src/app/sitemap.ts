@@ -11,8 +11,9 @@ type SitemapObject = {
   lastmod: string
 }
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://localhost:8000"
-const routes = ["/cart", "/account"]
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://localhost:8000"
+// TODO: Add here static routes
+const routes = ["/store"]
 
 function generateProductsSiteMap(products: ProductPreviewType[]) {
   const sitemapObjects: SitemapObject[] = []
