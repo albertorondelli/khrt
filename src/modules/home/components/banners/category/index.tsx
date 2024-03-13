@@ -3,8 +3,8 @@ import { Heading, clx } from "@medusajs/ui"
 import BannerImage from "../image-banner"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
-import manLanding from "@public/man-landing.webp"
-import womanLanding from "@public/woman-landing.webp"
+import manLanding from "@public/images/man-landing.webp"
+import womanLanding from "@public/images/woman-landing.webp"
 import { getCategoriesList } from "@lib/data"
 
 const fetchCategories = async () => {

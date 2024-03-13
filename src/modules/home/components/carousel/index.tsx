@@ -10,7 +10,7 @@ import { clx } from "@medusajs/ui"
 import { DotButton, useDotButton } from "../dot-button"
 import { ProductCategoryWithChildren } from "types/global"
 
-import backgroundImage from "@public/backgroundImage.webp"
+import backgroundImage from "@public/images/backgroundImage.webp"
 import "./style.css"
 import { getCategoriesList } from "@lib/data"
 import SkeletonCarousel from "@modules/skeletons/components/skeleton-carousel"
