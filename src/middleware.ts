@@ -1,8 +1,7 @@
 import { Region } from "@medusajs/medusa"
 import { NextRequest, NextResponse } from "next/server"
 
-const BACKEND_URL =
-  process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000"
+const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000"
 const DEFAULT_REGION = process.env.NEXT_PUBLIC_DEFAULT_REGION || "us"
 
 /**
@@ -94,18 +93,16 @@ export async function middleware(request: NextRequest) {
 
   let response = NextResponse.redirect(request.nextUrl, 307)
 
-  if (request.nextUrl.pathname === "/sitemap.xml") {
-    return NextResponse.next()
-  }
+  if (request.nextUrl.pathname === '/sitemap.xml') {
+    return NextResponse.next();
+}
 
   // If no country code is set, we redirect to the relevant region.
   if (!urlHasCountryCode && countryCode) {
     let redirectPath =
       request.nextUrl.pathname === "/" ? "" : request.nextUrl.pathname
     // Adds search params if any
-    redirectPath += request.nextUrl.searchParams
-      ? "?" + request.nextUrl.searchParams
-      : ""
+      redirectPath += request.nextUrl.searchParams ? "?" + request.nextUrl.searchParams : ""
 
     response = NextResponse.redirect(
       `${request.nextUrl.origin}/${countryCode}${redirectPath}`,
