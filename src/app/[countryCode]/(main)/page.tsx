@@ -10,9 +10,9 @@ import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-relat
 import SkeletonFeaturedProducts from "@modules/skeletons/templates/skeleton-featured-products"
 
 export const metadata: Metadata = {
-  title: "Medusa Next.js Starter Template",
+  title: "KHRT | Moda Online",
   description:
-    "A performant frontend ecommerce starter template with Next.js 14 and Medusa.",
+    "Scopri le ultime tendenze moda uomo donna con KHRT.",
 }
 
 export default async function Home({
