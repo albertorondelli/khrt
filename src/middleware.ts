@@ -95,12 +95,12 @@ export async function middleware(request: NextRequest) {
   let response = NextResponse.redirect(request.nextUrl, 307)
 
   // Disable redirect if target is sitemap.xml or robots.txt
-  if (
-    request.nextUrl.pathname === "/sitemap.xml" ||
-    request.nextUrl.pathname === "/robots.txt"
-  ) {
-    return NextResponse.next()
-  }
+  // if (
+  //   request.nextUrl.pathname === "/sitemap.xml" ||
+  //   request.nextUrl.pathname === "/robots.txt"
+  // ) {
+  //   return NextResponse.next()
+  // }
 
   // If no country code is set, we redirect to the relevant region.
   if (!urlHasCountryCode && countryCode) {
@@ -126,5 +126,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|favicon.ico).*)"],
+  matcher: ["/((?!api|_next/static|favicon.ico|sitemap.xml|robots.txt).*)"],
 }
