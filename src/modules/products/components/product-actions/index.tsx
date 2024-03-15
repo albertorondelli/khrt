@@ -111,6 +111,8 @@ export default function ProductActions({
   // add the selected variant to the cart
   const handleAddToCart = async () => {
     if (!variant?.id) return
+    if (!inStock) return
+
     setIsAdding(true)
     await addToCart({
       variantId: variant.id,
