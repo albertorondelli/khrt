@@ -10,6 +10,12 @@ const excludedPaths = [
 const siteUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:8000"
 
 module.exports = {
+  i18n: {
+    locales: ['default', 'it', 'en'],
+    defaultLocale: 'default',
+    localeDetection: false,
+  },
+  trailingSlash: true,
   siteUrl: siteUrl,
   generateRobotsTxt: true,
   exclude: excludedPaths,

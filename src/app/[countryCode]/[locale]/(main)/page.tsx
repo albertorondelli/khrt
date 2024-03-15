@@ -6,7 +6,6 @@ import CategoriesBanners from "@modules/home/components/banners/category"
 import Carousel from "@modules/home/components/carousel"
 import { Suspense } from "react"
 import SkeletonBanner from "@modules/skeletons/components/skeleton-banner"
-import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-related-products"
 import SkeletonFeaturedProducts from "@modules/skeletons/templates/skeleton-featured-products"
 
 export const metadata: Metadata = {

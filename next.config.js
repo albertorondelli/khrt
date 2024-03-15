@@ -1,11 +1,17 @@
 const { withStoreConfig } = require("./store-config")
 const store = require("./store.config.json")
+const createNextIntlPlugin = require("next-intl/plugin")
+
+const withNextIntl = createNextIntlPlugin()
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {}
+
+module.exports = withNextIntl(nextConfig)
 
 module.exports = withStoreConfig({
   experimental: {
-    serverComponentsExternalPackages: [
-      "@medusajs/modules-sdk",
-    ],
+    serverComponentsExternalPackages: ["@medusajs/modules-sdk"],
   },
   features: store.features,
   reactStrictMode: true,
@@ -33,10 +39,9 @@ module.exports = withStoreConfig({
 
 console.log("next.config.js", JSON.stringify(module.exports, null, 2))
 
-
 // Injected content via Sentry wizard below
 
-const { withSentryConfig } = require("@sentry/nextjs");
+const { withSentryConfig } = require("@sentry/nextjs")
 
 module.exports = withSentryConfig(
   module.exports,
@@ -74,4 +79,4 @@ module.exports = withSentryConfig(
     // https://vercel.com/docs/cron-jobs
     automaticVercelMonitors: true,
   }
-);
+)

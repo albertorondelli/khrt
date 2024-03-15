@@ -1,9 +1,10 @@
 import { Region } from "@medusajs/medusa"
 import { NextRequest, NextResponse } from "next/server"
+import createMiddleware from "next-intl/middleware"
 
 const BACKEND_URL =
-  process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000"
-const DEFAULT_REGION = process.env.NEXT_PUBLIC_DEFAULT_REGION || "us"
+  process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL ?? "http://localhost:9000"
+const DEFAULT_REGION = process.env.NEXT_PUBLIC_DEFAULT_REGION ?? "it"
 
 /**
  * Fetches regions from Medusa and sets the region cookie.
@@ -84,6 +85,10 @@ export async function middleware(request: NextRequest) {
 
   const countryCode = regionMap && (await getCountryCode(request, regionMap))
 
+
+  const locale = request.nextUrl.locale || "it"
+
+
   const urlHasCountryCode =
     countryCode && request.nextUrl.pathname.split("/")[1].includes(countryCode)
 
@@ -94,13 +99,12 @@ export async function middleware(request: NextRequest) {
 
   let response = NextResponse.redirect(request.nextUrl, 307)
 
-  // Disable redirect if target is sitemap.xml or robots.txt
-  // if (
-  //   request.nextUrl.pathname === "/sitemap.xml" ||
-  //   request.nextUrl.pathname === "/robots.txt"
-  // ) {
-  //   return NextResponse.next()
-  // }
+  // Call the next-intl middleware to handle locale detection and redirection
+  const i18nMiddleware = createMiddleware({
+    locales: ["it", "en"],
+    defaultLocale: "it",
+  })
+  const i18nResponse = await i18nMiddleware(request)
 
   // If no country code is set, we redirect to the relevant region.
   if (!urlHasCountryCode && countryCode) {
@@ -112,7 +116,7 @@ export async function middleware(request: NextRequest) {
       : ""
 
     response = NextResponse.redirect(
-      `${request.nextUrl.origin}/${countryCode}${redirectPath}`,
+      `${request.nextUrl.origin}/${countryCode}/${locale}${redirectPath}`,
       307
     )
   }
@@ -125,6 +129,27 @@ export async function middleware(request: NextRequest) {
   return response
 }
 
+// export default createMiddleware({
+//   // A list of all locales that are supported
+//   locales: ["en", "de"],
+
+//   // Used when no locale matches
+//   defaultLocale: "en",
+// })
+
+// export const config = {
+//   matcher: ["/((?!api|_next/static|favicon.ico|sitemap.xml|robots.txt).*)"],
+// }
+
 export const config = {
-  matcher: ["/((?!api|_next/static|favicon.ico|sitemap.xml|robots.txt).*)"],
-}
+  // Matcher entries are linked with a logical "or", therefore
+  // if one of them matches, the middleware will be invoked.
+  matcher: [
+    // Match all pathnames except for
+    // - … if they start with `/api`, `/_next` or `/_vercel`
+    // - … the ones containing a dot (e.g. `favicon.ico`)
+    '/((?!api|_next|_vercel|.*\\..*).*)',
+    // However, match all pathnames within `/users`, optionally with a locale prefix
+    '/([\\w-]+)?/users/(.+)'
+  ]
+};

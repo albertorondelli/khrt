@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 import "styles/globals.css"
 import { Nunito_Sans } from "next/font/google"
+import { useParams } from "next/navigation"
 
 export const nunito = Nunito_Sans({
   subsets: ["latin"],
@@ -13,9 +14,20 @@ export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
 }
 
-export default function RootLayout(props: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+  params: { locale },
+}: {
+  children: React.ReactNode
+  params: { locale: string }
+}) {
+  console.log(locale)
   return (
-    <html className={`${nunito.variable} font-sans`} lang="en" data-mode="light">
+    <html
+      className={`${nunito.variable} font-sans`}
+      lang={locale}
+      data-mode="light"
+    >
       <head>
         <script
           async
@@ -24,7 +36,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
         ></script>
       </head>
       <body>
-        <main className="relative">{props.children}</main>
+        <main className="relative">{children}</main>
       </body>
     </html>
   )

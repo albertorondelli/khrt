@@ -42,8 +42,13 @@ export async function getRegion(countryCode: string) {
  * Updates the regionId cookie and revalidates the regions cache
  * @param regionId
  * @param countryCode
+ * @param locale
  */
-export async function updateRegion(countryCode: string, currentPath: string) {
+export async function updateRegion(
+  countryCode: string,
+  locale: string | string[],
+  currentPath: string
+) {
   const cartId = cookies().get("_medusa_cart_id")?.value
   const region = await getRegion(countryCode)
 
@@ -63,7 +68,7 @@ export async function updateRegion(countryCode: string, currentPath: string) {
     return "Error updating region"
   }
 
-  redirect(`/${countryCode}${currentPath}`)
+  redirect(`/${countryCode}/${locale}${currentPath}`)
 }
 
 export async function resetOnboardingState(orderId: string) {

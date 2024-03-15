@@ -23,12 +23,14 @@ type CountrySelectProps = {
 const CountrySelect = ({ toggleState, regions }: CountrySelectProps) => {
   const [current, setCurrent] = useState<CountryOption | undefined>(undefined)
 
-  const { countryCode } = useParams()
-  const currentPath = usePathname().split(`/${countryCode}`)[1]
+  const { countryCode, locale } = useParams()
+
+  const currentPath = usePathname().split(`/${locale}`)[1]
 
   const { state, close } = toggleState
 
   const options: CountryOption[] | undefined = useMemo(() => {
+    
     return regions
       ?.map((r) => {
         return r.countries.map((c) => ({
@@ -49,7 +51,7 @@ const CountrySelect = ({ toggleState, regions }: CountrySelectProps) => {
   }, [options, countryCode])
 
   const handleChange = (option: CountryOption) => {
-    updateRegion(option.country, currentPath)
+    updateRegion(option.country, locale, currentPath)
     close()
   }
 
