@@ -8,11 +8,11 @@ import { Suspense } from "react"
 import SkeletonBanner from "@modules/skeletons/components/skeleton-banner"
 import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-related-products"
 import SkeletonFeaturedProducts from "@modules/skeletons/templates/skeleton-featured-products"
+import { createTranslation } from "@i18n/server"
 
 export const metadata: Metadata = {
   title: "KHRT | Moda Online",
-  description:
-    "Scopri le ultime tendenze moda uomo donna con KHRT.",
+  description: "Scopri le ultime tendenze moda uomo donna con KHRT.",
 }
 
 export default async function Home({
@@ -27,7 +27,7 @@ export default async function Home({
         <div className="flex w-full justify-center items-center h-10 bg-ui-bg-accent">
           <span className="text-base-regular"></span>
         </div>
-
+        
         <div className="mb-12 small:mb-24">
           <Hero />
         </div>

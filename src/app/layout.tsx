@@ -1,6 +1,10 @@
+import ChangeLocale from "@modules/i18n/ChangeLocale"
+import { LocaleProvider } from "@lib/hooks/locale-provider"
+import { getLocale } from "@i18n/server"
 import { Metadata } from "next"
-import "styles/globals.css"
+
 import { Nunito_Sans } from "next/font/google"
+import "styles/globals.css"
 
 export const nunito = Nunito_Sans({
   subsets: ["latin"],
@@ -13,9 +17,17 @@ export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
 }
 
-export default function RootLayout(props: { children: React.ReactNode }) {
+export default function RootLayout(
+  props: Readonly<{ children: React.ReactNode }>
+) {
+  const locale = getLocale()
+
   return (
-    <html className={`${nunito.variable} font-sans`} lang="en" data-mode="light">
+    <html
+      className={`${nunito.variable} font-sans`}
+      lang={locale}
+      data-mode="light"
+    >
       <head>
         <script
           async
@@ -24,7 +36,12 @@ export default function RootLayout(props: { children: React.ReactNode }) {
         ></script>
       </head>
       <body>
-        <main className="relative">{props.children}</main>
+        <main className="relative">
+          <LocaleProvider value={locale}>
+            <ChangeLocale />
+            {props.children}
+          </LocaleProvider>
+        </main>
       </body>
     </html>
   )

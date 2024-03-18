@@ -2,10 +2,13 @@ import { Heading } from "@medusajs/ui"
 import Button from "@modules/common/components/custom-button"
 import Image from "next/image"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { createTranslation } from "@i18n/server"
 
 import heroImage from "@public/images/hero.webp"
 
-const Hero = () => {
+const Hero = async () => {
+  const { t } = await createTranslation("home")
+
   return (
     <LocalizedClientLink href={`/store`} passHref>
       <div className="relative h-[94vh] w-full border border-ui-border-base">
@@ -26,7 +29,7 @@ const Hero = () => {
               level="h2"
               className="text-2xl text-ui-fg-on-color font-normal"
             >
-              Welcome to our new online shop !
+              {t("greeting")}
             </Heading>
           </span>
         </div>

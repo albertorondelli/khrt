@@ -5,8 +5,11 @@ import Button from "@modules/common/components/custom-button"
 
 import OrderCard from "../order-card"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { useTranslation } from "@i18n/client"
 
 const OrderOverview = ({ orders }: { orders: Order[] }) => {
+  const { t } = useTranslation("account")
+
   if (orders?.length) {
     return (
       <div className="flex flex-col gap-y-8 w-full">
@@ -24,13 +27,13 @@ const OrderOverview = ({ orders }: { orders: Order[] }) => {
 
   return (
     <div className="w-full flex flex-col items-center gap-y-4">
-      <h2 className="text-large-semi">Nothing to see here</h2>
+      <h2 className="text-large-semi">{t("nothing-to-see")}</h2>
       <p className="text-base-regular">
-        You don&apos;t have any orders yet, let us change that {":)"}
+        {t("you-dont-have-orders")} {":)"}
       </p>
       <div className="mt-4">
         <LocalizedClientLink href="/" passHref>
-          <Button>Continue shopping</Button>
+          <Button> {t("continue-shopping")}</Button>
         </LocalizedClientLink>
       </div>
     </div>

@@ -8,12 +8,15 @@ import Input from "@modules/common/components/input"
 
 import AccountInfo from "../account-info"
 import { updateCustomerPhone } from "@modules/account/actions"
+import { useTranslation } from "@i18n/client"
 
 type MyInformationProps = {
   customer: Omit<Customer, "password_hash">
 }
 
-const ProfileEmail: React.FC<MyInformationProps> = ({ customer }) => {
+const ProfilePhone: React.FC<MyInformationProps> = ({ customer }) => {
+  const {t} = useTranslation('account');
+  
   const [successState, setSuccessState] = React.useState(false)
 
   const [state, formAction] = useFormState(updateCustomerPhone, {
@@ -32,7 +35,7 @@ const ProfileEmail: React.FC<MyInformationProps> = ({ customer }) => {
   return (
     <form action={formAction} className="w-full">
       <AccountInfo
-        label="Phone"
+        label={t("phone")}
         currentInfo={`${customer.phone}`}
         isSuccess={successState}
         isError={!!state.error}
@@ -41,7 +44,7 @@ const ProfileEmail: React.FC<MyInformationProps> = ({ customer }) => {
       >
         <div className="grid grid-cols-1 gap-y-2">
           <Input
-            label="Phone"
+            label={t("phone")}
             name="phone"
             type="phone"
             autoComplete="phone"
@@ -54,4 +57,4 @@ const ProfileEmail: React.FC<MyInformationProps> = ({ customer }) => {
   )
 }
 
-export default ProfileEmail
+export default ProfilePhone

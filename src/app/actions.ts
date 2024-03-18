@@ -1,11 +1,10 @@
 "use server"
 
 import { revalidateTag } from "next/cache"
-import { cookies, headers } from "next/headers"
+import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-
+import { LANGUAGE_COOKIE } from "@i18n/settings"
 import { listRegions, updateCart } from "@lib/data"
-
 import { Region } from "@medusajs/medusa"
 
 /**
@@ -69,4 +68,13 @@ export async function updateRegion(countryCode: string, currentPath: string) {
 export async function resetOnboardingState(orderId: string) {
   cookies().set("_medusa_onboarding", "false", { maxAge: -1 })
   redirect(`http://localhost:7001/a/orders/${orderId}`)
+}
+
+export async function switchLocaleAction(value: string) {
+  cookies().set(LANGUAGE_COOKIE, value)
+
+  // It does not matter what we return here
+  return {
+    status: "success",
+  }
 }

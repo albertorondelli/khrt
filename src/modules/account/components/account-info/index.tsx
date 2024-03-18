@@ -5,6 +5,7 @@ import { useEffect } from "react"
 
 import useToggleState from "@lib/hooks/use-toggle-state"
 import { useFormStatus } from "react-dom"
+import { useTranslation } from "@i18n/client"
 
 type AccountInfoProps = {
   label: string
@@ -25,6 +26,8 @@ const AccountInfo = ({
   errorMessage = "An error occurred, please try again",
   children,
 }: AccountInfoProps) => {
+  const {t} = useTranslation('account');
+  
   const { state, close, toggle } = useToggleState()
 
   const { pending } = useFormStatus()
@@ -60,7 +63,7 @@ const AccountInfo = ({
             onClick={handleToggle}
             type={state ? "reset" : "button"}
           >
-            {state ? "Cancel" : "Edit"}
+            {state ? t("cancel") : t("edit")}
           </Button>
         </div>
       </div>
@@ -78,7 +81,7 @@ const AccountInfo = ({
           )}
         >
           <Badge className="p-2 my-4" color="green">
-            <span>{label} updated succesfully</span>
+            <span>{label} {t("updated-succesfully")}</span>
           </Badge>
         </Disclosure.Panel>
       </Disclosure>
@@ -120,7 +123,7 @@ const AccountInfo = ({
                   className="w-full small:max-w-[140px]"
                   type="submit"
                 >
-                  Save changes
+                  {t("save-changes")}
                 </Button>
               </div>
             </div>

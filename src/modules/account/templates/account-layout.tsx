@@ -4,16 +4,20 @@ import UnderlineLink from "@modules/common/components/interactive-link"
 
 import AccountNav from "../components/account-nav"
 import { Customer } from "@medusajs/medusa"
+import { useTranslation } from "@i18n/client"
+import { createTranslation } from "@i18n/server"
 
 interface AccountLayoutProps {
   customer: Omit<Customer, "password_hash"> | null
   children: React.ReactNode
 }
 
-const AccountLayout: React.FC<AccountLayoutProps> = ({
+const AccountLayout: React.FC<AccountLayoutProps> = async ({
   customer,
   children,
 }) => {
+  const { t } = await createTranslation("account")
+
   return (
     <div className="flex-1 small:py-12 text-ui-fg-base bg-ui-bg-base">
       <div className="flex-1 content-container h-full max-w-5xl mx-auto bg-ui-bg-base flex flex-col">
@@ -23,15 +27,12 @@ const AccountLayout: React.FC<AccountLayoutProps> = ({
         </div>
         <div className="flex flex-col small:flex-row items-end justify-between small:border-t border-ui-border-base py-12 gap-8">
           <div>
-            <h3 className="text-xl-semi mb-4">Got questions?</h3>
-            <span className="txt-medium">
-              You can find frequently asked questions and answers on our
-              customer service page.
-            </span>
+            <h3 className="text-xl-semi mb-4">{t("got-questions")}</h3>
+            <span className="txt-medium">{t("questions-message")}</span>
           </div>
           <div>
             <UnderlineLink href="/customer-service">
-              Customer Service
+              {t("customer-service")}
             </UnderlineLink>
           </div>
         </div>

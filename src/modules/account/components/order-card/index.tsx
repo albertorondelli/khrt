@@ -5,12 +5,15 @@ import { useMemo } from "react"
 import Thumbnail from "@modules/products/components/thumbnail"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { formatAmount } from "@lib/util/prices"
+import { useTranslation } from "@i18n/client"
 
 type OrderCardProps = {
   order: Omit<Order, "beforeInsert">
 }
 
 const OrderCard = ({ order }: OrderCardProps) => {
+  const { t } = useTranslation("account")
+
   const numberOfLines = useMemo(() => {
     return order.items.reduce((acc, item) => {
       return acc + item.quantity
@@ -26,7 +29,17 @@ const OrderCard = ({ order }: OrderCardProps) => {
       <div className="uppercase text-large-semi mb-1">#{order.display_id}</div>
       <div className="flex items-center divide-x divide-gray-200 text-small-regular text-ui-fg-base">
         <span className="pr-2">
-          {new Date(order.created_at).toDateString()}
+        {t('dateTime', {
+          val: new Date(order.created_at),
+          formatParams: {
+            val: {
+              weekday: 'long',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            },
+          },
+        })}
         </span>
         <span className="px-2">
           {formatAmount({
@@ -36,7 +49,7 @@ const OrderCard = ({ order }: OrderCardProps) => {
           })}
         </span>
         <span className="pl-2">{`${numberOfLines} ${
-          numberOfLines > 1 ? "items" : "item"
+          numberOfLines > 1 ? t("items") : t("item")
         }`}</span>
       </div>
       <div className="grid grid-cols-2 small:grid-cols-4 gap-4 my-4">
@@ -57,13 +70,15 @@ const OrderCard = ({ order }: OrderCardProps) => {
             <span className="text-small-regular text-ui-fg-base">
               + {numberOfLines - 4}
             </span>
-            <span className="text-small-regular text-ui-fg-base">more</span>
+            <span className="text-small-regular text-ui-fg-base">
+              {t("more")}
+            </span>
           </div>
         )}
       </div>
       <div className="flex justify-end">
         <LocalizedClientLink href={`/account/orders/details/${order.id}`}>
-          <Button variant="secondary">See details</Button>
+          <Button variant="secondary">{t("see-details")}</Button>
         </LocalizedClientLink>
       </div>
     </div>

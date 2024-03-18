@@ -4,6 +4,7 @@ import NativeSelect, {
   NativeSelectProps,
 } from "@modules/common/components/native-select"
 import { Region } from "@medusajs/medusa"
+import { useTranslation } from "@i18n/client"
 
 const CountrySelect = forwardRef<
   HTMLSelectElement,
@@ -11,6 +12,8 @@ const CountrySelect = forwardRef<
     region?: Region
   }
 >(({ placeholder = "Country", region, defaultValue, ...props }, ref) => {
+  const { t } = useTranslation("account")
+
   const innerRef = useRef<HTMLSelectElement>(null)
 
   useImperativeHandle<HTMLSelectElement | null, HTMLSelectElement | null>(
@@ -38,7 +41,7 @@ const CountrySelect = forwardRef<
     >
       {countryOptions.map(({ value, label }, index) => (
         <option key={index} value={value}>
-          {label}
+          {t(label)}
         </option>
       ))}
     </NativeSelect>
