@@ -8,6 +8,7 @@ import { usePathname, useSearchParams, useRouter } from "next/navigation"
 import { PaginatedProductsParams } from "types/global"
 import SizeFilter from "../size-filter"
 import { ColorFilter } from "../color-filter"
+import { useTranslation } from "@i18n/client"
 
 type FilterMenuProps = {
   attribute: string
@@ -28,6 +29,8 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
   filterOptions,
   queryParams,
 }) => {
+  const { t } = useTranslation("store")
+
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -127,7 +130,7 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
             className="w-full"
             size="large"
           >
-            Rimuovi i filtri
+            {t("remove-filter")}
           </Button>
           <Button
             variant="secondary"
@@ -135,7 +138,7 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
             className="w-full"
             size="large"
           >
-            Conferma
+            {t("confirm")}
           </Button>
         </div>
       </div>

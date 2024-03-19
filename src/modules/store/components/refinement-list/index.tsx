@@ -10,6 +10,7 @@ import { OverflowHiddenBackground } from "@modules/layout/components/mobile-menu
 
 import MainMenu from "./main-menu"
 import FilterMenu from "./filter-menu"
+import { useTranslation } from "@i18n/client"
 
 type RefinementListProps = {
   sortBy: string
@@ -20,6 +21,8 @@ const RefinementList: React.FC<RefinementListProps> = ({
   sortBy,
   queryParams,
 }) => {
+  const { t } = useTranslation("store")
+
   const [filterOptions, setFilterOptions] = useState<FilterOptions | null>(null)
 
   const [attribute, setAttribute] = useState("")
@@ -69,7 +72,7 @@ const RefinementList: React.FC<RefinementListProps> = ({
                     disabled:text-ui-fg-disabled disabled:shadow-buttons-neutral disabled:after:hidden
                     after:transition-fg after:absolute after:inset-0 after:content-['']"
                 >
-                  Filtra e ordina <Adjustments />
+                  {t("refine-sort")} <Adjustments />
                 </Popover.Button>
 
                 {/* Overlay */}

@@ -5,6 +5,7 @@ import RefinementList from "@modules/store/components/refinement-list"
 import PaginatedProducts from "./paginated-products"
 import { PaginatedProductsParams } from "types/global"
 import { SortOptions } from "../components/refinement-list/sort-products"
+import { createTranslation } from "@i18n/server"
 
 const PRODUCT_LIMIT = 12
 
@@ -21,6 +22,8 @@ const StoreTemplate = async ({
   q,
   countryCode,
 }: StoreTemplateProps) => {
+  const { t } = await createTranslation("store")
+
   const pageNumber = page ? parseInt(page) : 1
 
   const queryParams: PaginatedProductsParams = {
@@ -36,7 +39,7 @@ const StoreTemplate = async ({
       <div className="flex flex-col small:flex-row small:items-start py-6 content-container">
         <div className="w-full">
           <div className="flex mb-8 text-3xl text-ui-fg-base">
-            <h1>All products</h1>
+            <h1>{t("all-products")}</h1>
           </div>
           <div className="flex justify-end">
             <RefinementList

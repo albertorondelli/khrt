@@ -1,5 +1,6 @@
 "use client"
 
+import { useTranslation } from "@i18n/client"
 import { Label, RadioGroup, clx } from "@medusajs/ui"
 import { useState } from "react"
 
@@ -9,14 +10,17 @@ const sortOptions = [
   {
     value: "created_at",
     label: "Latest Arrivals",
+    key: "latest-arrivals",
   },
   {
     value: "price_asc",
     label: "Price: Low -> High",
+    key: "price-asc",
   },
   {
     value: "price_desc",
     label: "Price: High -> Low",
+    key: "price-desc",
   },
 ]
 
@@ -26,6 +30,8 @@ type SortProductsProps = {
 }
 
 const SortProducts = ({ sortBy, setFilter }: SortProductsProps) => {
+const {t} = useTranslation("store")
+
   const [selectedSort, setSelectedSort] = useState(sortBy)
 
   return (
@@ -48,7 +54,7 @@ const SortProducts = ({ sortBy, setFilter }: SortProductsProps) => {
                 option.value === sortBy && "text-ui-fg-base text-large-semi" // Only apply text-ui-fg-base if the condition is true
               )}
             >
-              <span className="">{option.label}</span>
+              <span >{t(option.key)}</span>
             </Label>
           </div>
         ))}

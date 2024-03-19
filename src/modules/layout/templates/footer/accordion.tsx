@@ -8,6 +8,7 @@ import {
   CollectionsTab,
   CustomerServicesTab,
 } from "./components"
+import { useTranslation } from "@i18n/client"
 
 interface FooterAccordionProps {
   categories: ProductCategoryWithChildren[]
@@ -18,17 +19,22 @@ export const FooterAccordion = ({
   categories,
   collections,
 }: FooterAccordionProps) => {
+  const { t } = useTranslation("footer")
+
   const tabs = [
     {
       label: "Categories",
+      key: "categories",
       component: <CategoriesTab categories={categories} />,
     },
     {
       label: "Collections",
+      key: "collections",
       component: <CollectionsTab collections={collections} />,
     },
     {
       label: "Customer Services",
+      key: "customer-service",
       component: <CustomerServicesTab />,
     },
   ]
@@ -37,7 +43,7 @@ export const FooterAccordion = ({
       {tabs.map((tab, i) => (
         <Accordion.Item
           key={i}
-          title={tab.label}
+          title={t(tab.key)}
           headingSize="large"
           value={tab.label}
         >

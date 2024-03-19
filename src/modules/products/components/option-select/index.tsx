@@ -3,6 +3,7 @@ import { clx } from "@medusajs/ui"
 import React from "react"
 
 import { onlyUnique } from "@lib/util/only-unique"
+import { useTranslation } from "react-i18next"
 
 type OptionSelectProps = {
   option: ProductOption
@@ -17,11 +18,13 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
   updateOption,
   title,
 }) => {
+const {t} = useTranslation("product")
+
   const filteredOptions = option.values.map((v) => v.value).filter(onlyUnique)
 
   return (
     <div className="flex flex-col gap-y-3 text-ui-fg-base">
-      <span className="text-sm">Select {title}</span>
+      <span className="text-sm">{t("select")} {t(title)}</span>
       <div className="flex flex-wrap justify-between gap-2">
         {filteredOptions.map((v) => {
           return (

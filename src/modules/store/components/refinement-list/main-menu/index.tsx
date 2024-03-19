@@ -2,12 +2,13 @@
 
 import Button from "@modules/common/components/custom-button"
 import { ChevronDown, XMark } from "@medusajs/icons"
+import { useTranslation } from "@i18n/client"
 
 // TODO: Uncomment this code to enable more filters
 const filterableAttributes = [
-  { id: "0", title: "Sort by", key: "sortBy" },
-  // { id: "1", title: "Colors", key: "color" },
-  // { id: "2", title: "Sizes", key: "size" },
+  { id: "0", title: "Sort by", key: "sort-by" },
+  // { id: "1", title: "Colors", key: "colors" },
+  // { id: "2", title: "Sizes", key: "sizes" },
   // { id: "3", title: "Tags", key: "tags" },
 ]
 
@@ -20,6 +21,8 @@ type MainMenuProps = {
 }
 
 const MainMenu: React.FC<MainMenuProps> = ({ close, handleMenu }) => {
+  const { t } = useTranslation("store")
+
   const handleRemove = () => {
     // TODO: Remove all the filters (colors and sizes)
   }
@@ -28,7 +31,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ close, handleMenu }) => {
     <div className="flex flex-col flex-1 text-ui-fg-base">
       <div className="flex items-center justify-between w-full border-b border-ui-border-base py-4 px-6">
         <h1 className="text-xl-semi flex-1 text-center uppercase">
-          Ordina e Filtra
+          {t("refine-sort")}
         </h1>
         <button onClick={close}>
           <XMark />
@@ -45,8 +48,8 @@ const MainMenu: React.FC<MainMenuProps> = ({ close, handleMenu }) => {
                     handleMenu("secondary", filter.key)
                   }}
                 >
-                  <span className="sr-only">{filter.title} products</span>
-                  <span>{filter.key}</span>
+                  <span className="sr-only">{t(filter.key)}</span>
+                  <span>{t(filter.key)}</span>
                   <ChevronDown className="-rotate-90" />
                 </button>
               </li>
@@ -63,7 +66,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ close, handleMenu }) => {
             className="w-full"
             size="large"
           >
-            Rimuovi i filtri
+            {t("remove-filters")}
           </Button>
           <Button
             variant="secondary"
@@ -71,7 +74,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ close, handleMenu }) => {
             className="w-full"
             size="large"
           >
-            Chiudi
+            {t("close")}
           </Button>
         </div>
       </div>

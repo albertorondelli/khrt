@@ -13,6 +13,7 @@ import { ChevronDown, XMark } from "@medusajs/icons"
 import { getProductPrice } from "@lib/util/get-product-price"
 import { Region } from "@medusajs/medusa"
 import OptionSelect from "../option-select"
+import { useTranslation } from "@i18n/client"
 
 type MobileActionsProps = {
   product: PricedProduct
@@ -37,6 +38,8 @@ const MobileActions: React.FC<MobileActionsProps> = ({
   isAdding,
   show,
 }) => {
+  const {t} = useTranslation("product")
+  
   const { state, open, close } = useToggleState()
 
   const price = getProductPrice({
@@ -103,7 +106,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                   <span>
                     {variant
                       ? Object.values(options).join(" / ")
-                      : "Select Options"}
+                      : t("select-options")}
                   </span>
                   <ChevronDown />
                 </div>
@@ -115,10 +118,10 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                 isLoading={isAdding}
               >
                 {!variant
-                  ? "Select variant"
+                  ? t("select-variant")
                   : !inStock
-                  ? "Out of stock"
-                  : "Add to cart"}
+                  ? t("out-of-stock")
+                  : t("add-to-cart")}
               </Button>
             </div>
           </div>
@@ -186,10 +189,10 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                         isLoading={isAdding}
                       >
                         {!variant
-                          ? "Select variant"
+                          ? t("select-variant")
                           : !inStock
-                          ? "Out of stock"
-                          : "Add to cart"}
+                          ? t("out-of-stock")
+                          : t("add-to-cart")}
                       </Button>
                     </div>
                   </div>

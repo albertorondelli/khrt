@@ -14,6 +14,7 @@ import OptionSelect from "@modules/products/components/option-select"
 
 import MobileActions from "../mobile-actions"
 import ProductPrice from "../product-price"
+import { useTranslation } from "@i18n/client"
 
 type ProductActionsProps = {
   product: PricedProduct
@@ -31,6 +32,8 @@ export default function ProductActions({
   product,
   region,
 }: Readonly<ProductActionsProps>): JSX.Element {
+  const { t } = useTranslation("product")
+
   const [options, setOptions] = useState<Record<string, string>>({})
   const [isAdding, setIsAdding] = useState(false)
 
@@ -154,10 +157,10 @@ export default function ProductActions({
         isLoading={isAdding}
       >
         {!variant
-          ? "Select variant"
+          ? t("select-variant")
           : !inStock
-          ? "Out of stock"
-          : "Add to cart"}
+          ? t("out-of-stock")
+          : t("add-to-cart")}
       </Button>
       <MobileActions
         product={product}

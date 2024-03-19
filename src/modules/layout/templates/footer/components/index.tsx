@@ -4,16 +4,19 @@ import { clx } from "@medusajs/ui"
 import { ProductCategory, ProductCollection } from "@medusajs/medusa"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { ProductCategoryWithChildren } from "types/global"
+import { useTranslation } from "@i18n/client"
 
 interface CategoriesTabProps {
   categories: ProductCategoryWithChildren[]
 }
 
 export const CategoriesTab = ({ categories }: CategoriesTabProps) => {
+  const { t } = useTranslation("footer")
+
   return (
     <div className="flex flex-col gap-y-2">
       <span className="hidden small:flex text-ui-fg-base text-large-semi">
-        Categorie
+        {t("categories")}
       </span>
       <ul className="grid grid-cols-1 gap-2 py-2">
         {categories?.slice(0, 6).map((c) => {
@@ -70,10 +73,12 @@ interface CollectionsTabProps {
 }
 
 export const CollectionsTab = ({ collections }: CollectionsTabProps) => {
+  const { t } = useTranslation("footer")
+
   return (
     <div className="flex flex-col gap-y-2">
       <span className="hidden small:flex text-ui-fg-base text-large-semi">
-        Collezioni
+        {t("collections")}
       </span>
       <ul
         className={clx(
@@ -99,41 +104,37 @@ export const CollectionsTab = ({ collections }: CollectionsTabProps) => {
 }
 
 export const CustomerServicesTab = () => {
+  const { t } = useTranslation("footer")
+
   return (
     <div className="flex flex-col gap-y-2">
       <span className="hidden small:flex text-ui-fg-base text-large-semi">
-        Servizio Clienti
+        {t("customer-services")}
       </span>
       <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle text-base-regular py-2">
         <li>
-          <a
-            href="https://github.com/medusajs"
-            target="_blank"
-            rel="noreferrer"
+          <LocalizedClientLink
             className="hover:text-ui-fg-base"
+            href={`/shipping-returns`}
           >
-            GitHub
-          </a>
+            {t("shipping-returns")}
+          </LocalizedClientLink>
         </li>
         <li>
-          <a
-            href="https://docs.medusajs.com"
-            target="_blank"
-            rel="noreferrer"
+          <LocalizedClientLink
             className="hover:text-ui-fg-base"
+            href={`/customer-service`}
           >
-            Documentation
-          </a>
+            {t("customer-service")}
+          </LocalizedClientLink>
         </li>
         <li>
-          <a
-            href="https://github.com/medusajs/nextjs-starter-medusa"
-            target="_blank"
-            rel="noreferrer"
+          <LocalizedClientLink
             className="hover:text-ui-fg-base"
+            href={`/find-us`}
           >
-            Source code
-          </a>
+            {t("find-us")}
+          </LocalizedClientLink>
         </li>
       </ul>
     </div>
