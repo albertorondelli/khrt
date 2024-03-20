@@ -16,7 +16,7 @@ type Props = {
 }
 
 const PasswordResetConfirmation = ({ setCurrentView }: Props) => {
-  const { t } = useTranslation("common")
+  const { t } = useTranslation("account")
 
   const searchParams = useSearchParams()
   const token = searchParams.get("token") as string
@@ -75,14 +75,14 @@ const PasswordResetConfirmation = ({ setCurrentView }: Props) => {
           >
             <div className="flex flex-col w-full gap-y-2">
               <Input
-                label="Password"
+                label={t("password")}
                 name="password"
                 required
                 type="password"
                 autoComplete="new-password"
               />
               <Input
-                label="Confirm password"
+                label={t("confirm-password")}
                 type="password"
                 name="confirm_password"
                 required

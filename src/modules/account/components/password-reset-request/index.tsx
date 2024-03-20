@@ -13,7 +13,7 @@ type Props = {
 }
 
 const PasswordReset = ({ setCurrentView }: Props) => {
-  const { t } = useTranslation("common")
+  const { t } = useTranslation("account")
 
   const [state, formAction] = useFormState(generateCustomerPasswordToken, null)
 
@@ -64,7 +64,7 @@ const PasswordReset = ({ setCurrentView }: Props) => {
           >
             <div className="flex flex-col w-full gap-y-2">
               <Input
-                label="Email"
+                label={t("email")}
                 name="email"
                 type="email"
                 title="Enter a valid email address."

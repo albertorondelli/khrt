@@ -3,7 +3,7 @@
   "sign-in-message": "Sign in to access an enhanced shopping experience.",
   "email": "Email",
   "password": "Password",
-  "forgot-password": " Forgot your password?",
+  "forgot-password": "Forgot your password?",
   "sign-in": "Sign in",
   "sign-in-google": "Sign in with Google",
   "not-member": "Not a member?",
@@ -60,7 +60,7 @@
   "got-questions": "Got questions?",
   "questions-message": "You can find frequently asked questions and answers on our customer service page.",
   "customer-service": "Customer service",
-  
+
   "signed-in-as": "Signed in as",
   "completed": "Completed",
   "saved": "Saved",
@@ -71,12 +71,25 @@
   "total-amount": "Total amount",
   "go-to-order": "Go to order",
   "no-recent-orders": "No recent orders",
-  
+
   "email-verification": "Email verification",
-  "email-sent" : "We've just sent you an email to the address linked with your account.",
+  "email-sent": "We've just sent you an email to the address linked with your account.",
   "click-link": "Click on the link inside to complete the activation of your account.",
   "cant-locate-email": "If you can't locate it in your inbox, please wait a few minutes or check your spam folder.",
 
   "new-address": "New address",
-  "add-address": "Add address"
+  "add-address": "Add address",
+
+  "email-sent-successfully": "Email sent successfully",
+  "cant-find-email": "If you can't locate it in your inbox, please wait a few minutes or retry again.",
+  "didnt-receive-email": " You didn't receive anything?",
+  "repeat-process": "Repeat the process",
+  "enter-email": "Enter your email address below. We will send you an email with a link to follow.",
+  "send-email": "Send email",
+  "already-member": "Already a member?",
+  "password-changed-successfully": "Password changed successfully",
+  "sign-in-with-new-password": " You can sign in with your email and new password.",
+  "reset-password": "Reset you password",
+  "enter-new-password": "Enter your new password in the form below.",
+  "change-password": "Change Password"
 }
