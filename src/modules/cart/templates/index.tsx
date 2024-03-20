@@ -5,7 +5,6 @@ import { CartWithCheckoutStep } from "types/global"
 import SignInPrompt from "../components/sign-in-prompt"
 import Divider from "@modules/common/components/divider"
 import { Customer } from "@medusajs/medusa"
-import SkeletonCartPage from "@modules/skeletons/templates/skeleton-cart-page"
 
 const CartTemplate = ({
   cart,
@@ -15,7 +14,6 @@ const CartTemplate = ({
   customer: Omit<Customer, "password_hash"> | null
 }) => {
   return (
-    // <SkeletonCartPage />
     <div className="py-12 bg-ui-bg-base">
       <div className="content-container">
         {cart?.items.length ? (

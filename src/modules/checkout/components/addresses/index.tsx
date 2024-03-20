@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import {
   useSearchParams,
   useRouter,
@@ -20,7 +21,7 @@ import { SubmitButton } from "../submit-button"
 import { useFormState } from "react-dom"
 import ErrorMessage from "../error-message"
 import compareAddresses from "@lib/util/compare-addresses"
-import { useEffect, useState } from "react"
+import { useTranslation } from "@i18n/client"
 
 const Addresses = ({
   cart,
@@ -29,6 +30,8 @@ const Addresses = ({
   cart: Omit<Cart, "refundable_amount" | "refunded_total"> | null
   customer: Omit<Customer, "password_hash"> | null
 }) => {
+  const { t } = useTranslation("cart")
+
   const searchParams = useSearchParams()
   const router = useRouter()
   const pathname = usePathname()
@@ -62,7 +65,7 @@ const Addresses = ({
           level="h2"
           className="flex flex-row text-3xl gap-x-2 items-baseline text-ui-fg-base"
         >
-          Shipping Address
+          {t("shipping-address")}
           {!isOpen && <CheckCircleSolid />}
         </Heading>
         {!isOpen && cart?.shipping_address && (
@@ -71,7 +74,7 @@ const Addresses = ({
               onClick={handleEdit}
               className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover"
             >
-              Edit
+              {t("edit")}
             </button>
           </Text>
         )}
@@ -93,13 +96,13 @@ const Addresses = ({
                   level="h2"
                   className="text-3xl gap-x-4 pb-6 pt-8 text-ui-fg-base"
                 >
-                  Billing address
+                  {t("billing-address")}
                 </Heading>
 
                 <BillingAddress cart={cart} countryCode={countryCode} />
               </div>
             )}
-            <SubmitButton className="mt-6">Continue to delivery</SubmitButton>
+            <SubmitButton className="mt-6">{t("to-delivery")}</SubmitButton>
             <ErrorMessage error={message} />
           </div>
         </form>
@@ -111,7 +114,7 @@ const Addresses = ({
                 <div className="flex items-start gap-x-1 w-full">
                   <div className="flex flex-col w-1/3">
                     <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                      Shipping Address
+                      {t("shipping-address")}
                     </Text>
                     <Text className="txt-medium text-ui-fg-subtle">
                       {cart.shipping_address.first_name}{" "}
@@ -132,7 +135,7 @@ const Addresses = ({
 
                   <div className="flex flex-col w-1/3 ">
                     <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                      Contact
+                      {t("contact")}
                     </Text>
                     <Text className="txt-medium text-ui-fg-subtle">
                       {cart.shipping_address.phone}
@@ -144,12 +147,12 @@ const Addresses = ({
 
                   <div className="flex flex-col w-1/3">
                     <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                      Billing Address
+                      {t("billing-address")}
                     </Text>
 
                     {sameAsSBilling ? (
                       <Text className="txt-medium text-ui-fg-subtle">
-                        Billing- and delivery address are the same.
+                        {t("same-billing-shipping-address")}
                       </Text>
                     ) : (
                       <>

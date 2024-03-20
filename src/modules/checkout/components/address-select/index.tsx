@@ -8,6 +8,7 @@ import { Fragment, useMemo } from "react"
 import Radio from "@modules/common/components/radio"
 import { cartUpdate } from "@modules/checkout/actions"
 import compareAddresses from "@lib/util/compare-addresses"
+import { useTranslation } from "@i18n/client"
 
 type AddressSelectProps = {
   addresses: Address[]
@@ -15,6 +16,8 @@ type AddressSelectProps = {
 }
 
 const AddressSelect = ({ addresses, cart }: AddressSelectProps) => {
+  const { t } = useTranslation("cart")
+
   const handleSelect = (id: string) => {
     const savedAddress = addresses.find((a) => a.id === id)
     if (savedAddress) {
@@ -45,7 +48,7 @@ const AddressSelect = ({ addresses, cart }: AddressSelectProps) => {
               <span className="block truncate">
                 {selectedAddress
                   ? selectedAddress.address_1
-                  : "Choose an address"}
+                  : t("choose-address")}
               </span>
               <ChevronUpDown
                 className={clx("transition-rotate duration-200", {

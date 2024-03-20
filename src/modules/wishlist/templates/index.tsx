@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { Customer } from "@medusajs/medusa"
 import WishlistItem from "../wishlist-item"
+import { useTranslation } from "@i18n/client"
 
 interface WishlistTemplateProps {
   customer: Omit<Customer, "password_hash"> | null
@@ -10,11 +11,13 @@ interface WishlistTemplateProps {
 }
 
 const WishlistTemplate = ({ customer, wishlist }: WishlistTemplateProps) => {
+  const { t } = useTranslation("common")
+
   return (
     <div className="bg-ui-bg-base">
       <div className="content-container py-6">
         <div className="mb-8 text-2xl-semi">
-          <h1 className="uppercase">Wish list</h1>
+          <h1 className="uppercase">{t("wishlist")}</h1>
         </div>
 
         {wishlist?.length > 0 ? (
@@ -27,11 +30,11 @@ const WishlistTemplate = ({ customer, wishlist }: WishlistTemplateProps) => {
           </ul>
         ) : (
           <p className="text-l-regular text-ui-fg-base max-w-lg mb-4">
-            Start adding products from the{" "}
+            {t("start-add-products")}{" "}
             <Link className="link font-bold" href="/store">
-              store
+              {t("store")}
             </Link>{" "}
-            by clicking on the heart icon.
+            {t("click-hearth")}
           </p>
         )}
       </div>

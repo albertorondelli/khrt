@@ -7,6 +7,7 @@ import React from "react"
 import Radio from "@modules/common/components/radio"
 
 import PaymentTest from "../payment-test"
+import { useTranslation } from "@i18n/client"
 
 type PaymentContainerProps = {
   paymentSession: PaymentSession
@@ -21,6 +22,8 @@ const PaymentContainer: React.FC<PaymentContainerProps> = ({
   paymentInfoMap,
   disabled = false,
 }) => {
+const {t} = useTranslation("cart")
+
   const isDevelopment = process.env.NODE_ENV === "development"
 
 
@@ -43,8 +46,8 @@ const PaymentContainer: React.FC<PaymentContainerProps> = ({
             checked={selectedPaymentOptionId === paymentSession.provider_id}
           />
           <Text className="text-base-regular">
-            {paymentInfoMap[paymentSession.provider_id]?.title ||
-              paymentSession.provider_id}
+            {
+              t(paymentSession.provider_id)}
           </Text>
           {process.env.NODE_ENV === "development" &&
             !Object.hasOwn(paymentInfoMap, paymentSession.provider_id) && (

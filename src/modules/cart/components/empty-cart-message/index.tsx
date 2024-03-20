@@ -1,22 +1,24 @@
+import { createTranslation } from "@i18n/server"
 import { Heading, Text } from "@medusajs/ui"
 
 import InteractiveLink from "@modules/common/components/interactive-link"
 
-const EmptyCartMessage = () => {
+const EmptyCartMessage = async () => {
+  const { t } = await createTranslation("cart")
+
   return (
     <div className="py-48 px-2 flex flex-col justify-center items-start">
       <Heading
         level="h1"
         className="flex flex-row text-3xl text-ui-fg-base gap-x-2 items-baseline"
       >
-        Cart
+        {t("cart")}
       </Heading>
       <Text className="text-base text-ui-fg-base mt-4 mb-6 max-w-[32rem]">
-        You don&apos;t have anything in your cart. Let&apos;s change that, use
-        the link below to start browsing our products.
+        {t("empty-cart-message")}
       </Text>
       <div>
-        <InteractiveLink href="/store">Explore products</InteractiveLink>
+        <InteractiveLink href="/store">{t("explore-products")}</InteractiveLink>
       </div>
     </div>
   )

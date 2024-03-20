@@ -1,5 +1,6 @@
 "use client"
 
+import { useTranslation } from "@i18n/client"
 import { Heading, Text } from "@medusajs/ui"
 import { placeOrder } from "@modules/checkout/actions"
 import Spinner from "@modules/common/icons/spinner"
@@ -7,6 +8,8 @@ import Help from "@modules/order/components/help"
 import { useEffect, useState } from "react"
 
 export default function SuccessTemplate() {
+  const { t } = useTranslation("error")
+
   const [submitting, setSubmitting] = useState(true)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
@@ -39,12 +42,11 @@ export default function SuccessTemplate() {
                 level="h1"
                 className="flex flex-col gap-y-3 text-ui-fg-base text-3xl mb-4"
               >
-                <span>Payment error</span>
+                <span>{t("payment-error")}</span>
               </Heading>
               <Text>
                 <span className="text-ui-fg-base text-base">
-                  There was an issue processing your payment. Please review your
-                  information and try again.
+                  {t("payment-error-message")}
                 </span>
               </Text>
               <Help />

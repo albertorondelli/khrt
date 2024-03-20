@@ -16,12 +16,15 @@ import Spinner from "@modules/common/icons/spinner"
 import PaymentContainer from "@modules/checkout/components/payment-container"
 import { setPaymentMethod } from "@modules/checkout/actions"
 import { paymentInfoMap } from "@lib/constants"
+import { useTranslation } from "@i18n/client"
 
 const Payment = ({
   cart,
 }: {
   cart: Omit<Cart, "refundable_amount" | "refunded_total"> | null
 }) => {
+  const { t } = useTranslation("cart")
+
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [cardBrand, setCardBrand] = useState<string | null>(null)
@@ -37,7 +40,6 @@ const Payment = ({
     const step = searchParams.get("step")
     setIsOpen(step === "payment")
   }, [searchParams])
-
 
   const isStripe = cart?.payment_session?.provider_id === "stripe"
 
@@ -117,7 +119,7 @@ const Payment = ({
             }
           )}
         >
-          Payment
+          {t("payment")}
           {!isOpen && paymentReady && <CheckCircleSolid />}
         </Heading>
         {!isOpen && paymentReady && (
@@ -126,7 +128,7 @@ const Payment = ({
               onClick={handleEdit}
               className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover"
             >
-              Edit
+              {t("edit")}
             </button>
           </Text>
         )}
@@ -159,7 +161,7 @@ const Payment = ({
             {isStripe && (
               <div className="mt-5 transition-all duration-150 ease-in-out">
                 <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                  Enter your card details:
+                  {t("enter-card-details")}:
                 </Text>
 
                 <CardElement
@@ -185,7 +187,7 @@ const Payment = ({
               isLoading={isLoading}
               disabled={(isStripe && !cardComplete) || !cart.payment_session}
             >
-              Continue to review
+              {t("continue-to-review")}
             </Button>
           </div>
         ) : (
@@ -199,7 +201,7 @@ const Payment = ({
             <div className="flex items-start gap-x-1 w-full">
               <div className="flex flex-col w-1/3">
                 <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                  Payment method
+                  {t("payment-method")}
                 </Text>
                 <Text className="txt-medium text-ui-fg-subtle">
                   {paymentInfoMap[cart.payment_session.provider_id]?.title ||
@@ -215,7 +217,7 @@ const Payment = ({
               </div>
               <div className="flex flex-col w-1/3">
                 <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                  Payment details
+                  {t("payment-details")}
                 </Text>
                 <div className="flex gap-2 txt-medium text-ui-fg-subtle items-center">
                   <Container className="flex items-center h-7 w-fit p-2 bg-ui-button-neutral-hover">
@@ -226,7 +228,7 @@ const Payment = ({
                   <Text>
                     {cart.payment_session.provider_id === "stripe" && cardBrand
                       ? cardBrand
-                      : "Another step will appear"}
+                      : t("another-step")}
                   </Text>
                 </div>
               </div>

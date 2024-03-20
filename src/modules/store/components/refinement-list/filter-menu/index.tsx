@@ -106,7 +106,7 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
           </button>
         </div>
         <div>
-          <h1 className="text-large-semi">{attribute}</h1>
+          <h1 className="text-large-semi">{t(attribute)}</h1>
         </div>
         <div className="flex-1 basis-0 flex justify-end">
           <button onClick={close}>

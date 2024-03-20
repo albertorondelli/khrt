@@ -1,0 +1,6 @@
+{
+  "error-status": "Si è verificato un errore, stato:",
+  "unknown-error": "Si è verificato un errore sconosciuto, si prega di riprovare." ,
+  "payment-error": "Errore di pagamento",
+  "payment-error-message": "Si è verificato un problema nell'elaborazione del pagamento. Si prega di ricontrollare i dati inseriti e riprovare."
+}

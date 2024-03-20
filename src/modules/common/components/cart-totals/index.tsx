@@ -1,5 +1,6 @@
 "use client"
 
+import { useTranslation } from "@i18n/client"
 import { formatAmount } from "@lib/util/prices"
 import { InformationCircleSolid } from "@medusajs/icons"
 import { Cart, Order } from "@medusajs/medusa"
@@ -11,6 +12,8 @@ type CartTotalsProps = {
 }
 
 const CartTotals: React.FC<CartTotalsProps> = ({ data }) => {
+  const { t } = useTranslation("cart")
+
   const {
     subtotal,
     discount_total,
@@ -33,8 +36,8 @@ const CartTotals: React.FC<CartTotalsProps> = ({ data }) => {
       <div className="flex flex-col gap-y-2 txt-medium text-ui-fg-subtle ">
         <div className="flex items-center justify-between">
           <span className="flex gap-x-1 items-center">
-            Subtotal
-            <Tooltip content="Cart total excluding shipping and taxes.">
+            {t("subtotal")}
+            <Tooltip content={t("subtotal-tooltip")}>
               <InformationCircleSolid color="var(--fg-muted)" />
             </Tooltip>
           </span>
@@ -42,7 +45,7 @@ const CartTotals: React.FC<CartTotalsProps> = ({ data }) => {
         </div>
         {!!discount_total && (
           <div className="flex items-center justify-between">
-            <span>Discount</span>
+            <span>{t("discount")}</span>
             <span className="text-ui-fg-interactive">
               - {getAmount(discount_total)}
             </span>
@@ -50,24 +53,24 @@ const CartTotals: React.FC<CartTotalsProps> = ({ data }) => {
         )}
         {!!gift_card_total && (
           <div className="flex items-center justify-between">
-            <span>Gift card</span>
+            <span>{t("giftcard")}</span>
             <span className="text-ui-fg-interactive">
               - {getAmount(gift_card_total)}
             </span>
           </div>
         )}
         <div className="flex items-center justify-between">
-          <span>Shipping</span>
+          <span>{t("shipping")}</span>
           <span>{getAmount(shipping_total)}</span>
         </div>
         <div className="flex justify-between">
-          <span className="flex gap-x-1 items-center ">Taxes</span>
+          <span className="flex gap-x-1 items-center ">{t("taxes")}</span>
           <span>{getAmount(tax_total)}</span>
         </div>
       </div>
       <div className="h-px w-full border-b border-ui-border-base my-4" />
       <div className="flex items-center justify-between text-ui-fg-base mb-2 txt-medium ">
-        <span>Total</span>
+        <span>{t("total")}</span>
         <span className="txt-xlarge-plus">{getAmount(total)}</span>
       </div>
       <div className="h-px w-full border-b border-ui-border-base mt-4" />

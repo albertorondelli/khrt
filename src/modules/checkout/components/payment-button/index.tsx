@@ -9,6 +9,7 @@ import { placeOrder } from "@modules/checkout/actions"
 import React, { useState } from "react"
 import ErrorMessage from "../error-message"
 import Spinner from "@modules/common/icons/spinner"
+import { useTranslation } from "@i18n/client"
 
 type PaymentButtonProps = {
   cart: Omit<Cart, "refundable_amount" | "refunded_total">
@@ -47,6 +48,8 @@ const StripePaymentButton = ({
   cart: Omit<Cart, "refundable_amount" | "refunded_total">
   notReady: boolean
 }) => {
+  const { t } = useTranslation("cart")
+
   const [submitting, setSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
@@ -129,7 +132,7 @@ const StripePaymentButton = ({
         size="large"
         isLoading={submitting}
       >
-        Place order
+        {t("place-order")}
       </Button>
       <ErrorMessage error={errorMessage} />
     </>

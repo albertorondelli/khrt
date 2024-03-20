@@ -1,3 +1,4 @@
+import { createTranslation } from "@i18n/server"
 import { LineItem, Region } from "@medusajs/medusa"
 import { Heading, Table } from "@medusajs/ui"
 
@@ -9,25 +10,27 @@ type ItemsTemplateProps = {
   region?: Region
 }
 
-const ItemsTemplate = ({ items, region }: ItemsTemplateProps) => {
+const ItemsTemplate = async ({ items, region }: ItemsTemplateProps) => {
+  const { t } = await createTranslation("cart")
+
   return (
     <div>
       <div className="pb-3 flex items-center">
         <Heading className="text-3xl text-ui-fg-base leading-[2.75rem]">
-          Cart
+        {t("cart")}
         </Heading>
       </div>
       <Table>
         <Table.Header className="border-t-0">
           <Table.Row className="text-ui-fg-subtle txt-medium-plus">
-            <Table.HeaderCell className="!pl-0">Item</Table.HeaderCell>
+            <Table.HeaderCell className="!pl-0">{t("item")}</Table.HeaderCell>
             <Table.HeaderCell></Table.HeaderCell>
-            <Table.HeaderCell>Quantity</Table.HeaderCell>
+            <Table.HeaderCell>{t("quantity")}</Table.HeaderCell>
             <Table.HeaderCell className="hidden small:table-cell">
-              Price
+            {t("price")}
             </Table.HeaderCell>
             <Table.HeaderCell className="!pr-0 text-right">
-              Total
+            {t("total")}
             </Table.HeaderCell>
           </Table.Row>
         </Table.Header>

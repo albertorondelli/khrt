@@ -1,0 +1,6 @@
+{
+  "error-status": "An error occurred, status:",
+  "unknown-error": "An unknown error occurred, please try again.",
+  "payment-error": "Payment error",
+  "payment-error-message": " There was an issue processing your payment. Please review your information and try again."
+}

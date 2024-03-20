@@ -5,8 +5,11 @@ import DiscountCode from "@modules/checkout/components/discount-code"
 import CartTotals from "@modules/common/components/cart-totals"
 import Divider from "@modules/common/components/divider"
 import { retrieveCart } from "@modules/cart/actions"
+import { createTranslation } from "@i18n/server"
 
 const CheckoutSummary = async () => {
+  const { t } = await createTranslation("cart")
+
   const cart = await retrieveCart().then((cart) => cart)
 
   if (!cart) {
@@ -21,7 +24,7 @@ const CheckoutSummary = async () => {
           level="h2"
           className="flex flex-row text-3xl items-baseline text-ui-fg-base"
         >
-          In your Cart
+          {t("in-your-cart")}
         </Heading>
         <Divider className="my-6" />
         <CartTotals data={cart} />

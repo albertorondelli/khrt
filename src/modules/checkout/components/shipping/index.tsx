@@ -15,6 +15,7 @@ import ErrorMessage from "@modules/checkout/components/error-message"
 import { setShippingMethod } from "@modules/checkout/actions"
 import { useRouter, useSearchParams, usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
+import { useTranslation } from "@i18n/client"
 
 type ShippingProps = {
   cart: Omit<Cart, "refundable_amount" | "refunded_total">
@@ -25,6 +26,8 @@ const Shipping: React.FC<ShippingProps> = ({
   cart,
   availableShippingMethods,
 }) => {
+const {t} = useTranslation("cart")
+
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -82,7 +85,7 @@ const Shipping: React.FC<ShippingProps> = ({
             }
           )}
         >
-          Delivery
+          {t("delivery")}
           {!isOpen && cart.shipping_methods.length > 0 && <CheckCircleSolid />}
         </Heading>
         {!isOpen &&
@@ -94,7 +97,7 @@ const Shipping: React.FC<ShippingProps> = ({
                 onClick={handleEdit}
                 className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover"
               >
-                Edit
+                {t("edit")}
               </button>
             </Text>
           )}
@@ -157,7 +160,7 @@ const Shipping: React.FC<ShippingProps> = ({
             isLoading={isLoading}
             disabled={!cart.shipping_methods[0]}
           >
-            Continue to payment
+            {t("continue-to-payment")}
           </Button>
         </div>
       ) : (
@@ -166,7 +169,7 @@ const Shipping: React.FC<ShippingProps> = ({
             {cart && cart.shipping_methods.length > 0 && (
               <div className="flex flex-col w-1/3">
                 <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                  Method
+                {t("method")}
                 </Text>
                 <Text className="txt-medium text-ui-fg-subtle">
                   {cart.shipping_methods[0].shipping_option.name} (
