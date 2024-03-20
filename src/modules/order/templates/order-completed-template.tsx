@@ -9,6 +9,7 @@ import OnboardingCta from "@modules/order/components/onboarding-cta"
 import OrderDetails from "@modules/order/components/order-details"
 import ShippingDetails from "@modules/order/components/shipping-details"
 import PaymentDetails from "@modules/order/components/payment-details"
+import { useTranslation } from "@i18n/client"
 
 type OrderCompletedTemplateProps = {
   order: ExtendedOrder
@@ -17,6 +18,8 @@ type OrderCompletedTemplateProps = {
 export default function OrderCompletedTemplate({
   order,
 }: OrderCompletedTemplateProps) {
+  const { t } = useTranslation("common")
+
   const isOnboarding = cookies().get("_medusa_onboarding")?.value === "true"
 
   return (
@@ -28,12 +31,12 @@ export default function OrderCompletedTemplate({
             level="h1"
             className="flex flex-col gap-y-3 text-ui-fg-base text-3xl mb-4"
           >
-            <span>Thank you!</span>
-            <span>Your order was placed successfully.</span>
+            <span>{t("thank-you")}!</span>
+            <span>{t("order-placed-successfully")}</span>
           </Heading>
           <OrderDetails order={order} />
           <Heading level="h2" className="flex flex-row text-3xl-regular">
-            Summary
+            {t("summary")}
           </Heading>
           <Items items={order.items} region={order.region} />
           <CartTotals data={order} />

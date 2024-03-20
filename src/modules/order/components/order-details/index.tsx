@@ -1,6 +1,6 @@
-
 import { ExtendedOrder } from "models"
 import { Text } from "@medusajs/ui"
+import { useTranslation } from "@i18n/client"
 
 type OrderDetailsProps = {
   order: ExtendedOrder
@@ -8,6 +8,8 @@ type OrderDetailsProps = {
 }
 
 const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
+  const { t } =  useTranslation("common")
+
   const formatStatus = (str: string) => {
     const formatted = str.split("_").join(" ")
 
@@ -17,44 +19,44 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
   return (
     <div>
       <Text>
-        We have sent the order confirmation details to{" "}
+        {t("sent-order-confirmation-to")}{" "}
         <span className="text-ui-fg-medium-plus font-semibold">
           {order.email}
         </span>
         .
       </Text>
       <Text className="mt-2">
-        Order date: {new Date(order.created_at).toDateString()}
+        {t("order-date")}: {new Date(order.created_at).toDateString()}
       </Text>
       <Text className="mt-2 text-ui-fg-interactive">
-        Order number: {order.display_id}
+        {t("order-number")}: {order.display_id}
       </Text>
 
       <div className="flex items-center text-compact-small gap-x-4 mt-4">
         {showStatus && (
           <>
             <Text>
-              Order status:{" "}
+              {t("order-status")}:{" "}
               <span className="text-ui-fg-subtle ">
                 {formatStatus(order.fulfillment_status)}
               </span>
             </Text>
             <Text>
-              Payment status:{" "}
+              {t("payment-status")}:{" "}
               <span className="text-ui-fg-subtle ">
                 {formatStatus(order.payment_status)}
               </span>
             </Text>
             {order?.invoice_url && (
               <Text>
-                Invoice:{" "}
+                {t("invoice")}:{" "}
                 <a
                   className="text-ui-fg-base text-small-semi"
                   href={order.invoice_url}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  download
+                  {t("download")}
                 </a>
               </Text>
             )}

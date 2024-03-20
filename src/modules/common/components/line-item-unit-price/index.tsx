@@ -4,6 +4,7 @@ import { clx } from "@medusajs/ui"
 
 import { getPercentageDiff } from "@lib/util/get-precentage-diff"
 import { CalculatedVariant } from "types/medusa"
+import { useTranslation } from "@i18n/client"
 
 type LineItemUnitPriceProps = {
   item: Omit<LineItem, "beforeInsert">
@@ -16,6 +17,8 @@ const LineItemUnitPrice = ({
   region,
   style = "default",
 }: LineItemUnitPriceProps) => {
+  const { t } = useTranslation("common")
+
   const originalPrice = (item.variant as CalculatedVariant).original_price
   const hasReducedPrice = (originalPrice * item.quantity || 0) > item.total!
   const reducedPrice = (item.total || 0) / item.quantity!
@@ -26,7 +29,7 @@ const LineItemUnitPrice = ({
         <>
           <p>
             {style === "default" && (
-              <span className="text-ui-fg-muted">Original: </span>
+              <span className="text-ui-fg-muted">{t("original")}: </span>
             )}
             <span className="line-through">
               {formatAmount({

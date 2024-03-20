@@ -6,6 +6,7 @@ import { clx } from "@medusajs/ui"
 
 import { getProductPrice } from "@lib/util/get-product-price"
 import { RegionInfo } from "types/global"
+import { useTranslation } from "@i18n/client"
 
 export default function ProductPrice({
   product,
@@ -16,6 +17,8 @@ export default function ProductPrice({
   variant?: PricedVariant
   region: RegionInfo
 }) {
+  const { t } = useTranslation("common")
+
   const { cheapestPrice, variantPrice } = getProductPrice({
     product,
     variantId: variant?.id,
@@ -41,7 +44,7 @@ export default function ProductPrice({
       {selectedPrice.price_type === "sale" && (
         <>
           <p>
-            <span className="text-ui-fg-subtle">Original: </span>
+            <span className="text-ui-fg-subtle">{t("original")}: </span>
             <span className="line-through">{selectedPrice.original_price}</span>
           </p>
           <span className="text-ui-fg-interactive">
