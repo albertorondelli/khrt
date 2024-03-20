@@ -33,5 +33,26 @@
   "order-status": "Order status",
   "payment-status": "Payment status",
   "invoice": "Invoice",
-  "download": "download"
+  "download": "Download",
+
+  "email-sent-successfully": "Email sent successfully",
+  "cant-find-email": "If you can't locate it in your inbox, please wait a few minutes or retry again.",
+  "didnt-receive-email": " You didn't receive anything?",
+  "repeat-process": "Repeat the process",
+  "forgot-password": "Forgot your password?",
+  "enter-email": "Enter your email address below. We will send you an email with a link to follow.",
+  "send-email": "Send email",
+  "already-member": "Already a member?",
+  "sign-in": "Sign in",
+  "password-changed-successfully": "Password changed successfully",
+  "sign-in-with-new-password": " You can sign in with your email and new password.",
+  "reset-password": "Reset you password",
+  "enter-new-password": "Enter your new password in the form below.",
+  "change-password": "Change Password",
+  "not-member": "Not a member?",
+  "join-us": "Join us"
+
+
+
+
 }

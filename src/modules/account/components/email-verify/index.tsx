@@ -1,19 +1,22 @@
+import { useTranslation } from "@i18n/client"
+
 const EmailVerify = () => {
+  const { t } = useTranslation("account")
+
   return (
     <div className="max-w-sm flex flex-col items-center">
       <div>
         <h1 className="text-large-semi text-center uppercase mb-6">
-          Email verification
+          {t("email-verification")}
         </h1>
         <p className="text-center text-base-regular text-ui-fg-subtle mb-8">
-          We&apos;ve just sent you an email to the address linked with your account.
+          {t("email-sent")}
         </p>
         <p className="text-center text-base-regular text-ui-fg-subtle mb-8">
-          Click on the link inside to complete the activation of your account.
+          {t("click-link")}
         </p>
         <p className="text-center text-base-regular text-ui-fg-subtle mb-8">
-          If you can&apos;t locate it in your inbox, please wait a few minutes or
-          check your spam folder.
+          {t("cant-locate-email")}
         </p>
       </div>
     </div>

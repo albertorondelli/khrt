@@ -6,12 +6,15 @@ import { useFormState } from "react-dom"
 import { generateCustomerPasswordToken } from "@modules/account/actions"
 import ErrorMessage from "@modules/checkout/components/error-message"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
+import { useTranslation } from "@i18n/client"
 
 type Props = {
   setCurrentView: (view: LOGIN_VIEW) => void
 }
 
 const PasswordReset = ({ setCurrentView }: Props) => {
+  const { t } = useTranslation("common")
+
   const [state, formAction] = useFormState(generateCustomerPasswordToken, null)
 
   const [successState, setSuccessState] = useState(false)
@@ -32,17 +35,16 @@ const PasswordReset = ({ setCurrentView }: Props) => {
         <>
           <h1 className="flex text-large-semi text-center uppercase mb-6 me-2">
             <CheckMini className="me-2" />
-            Email sent successfully
+            {t("email-sent-successfully")}
           </h1>
 
           <p className="text-center text-base-regular text-ui-fg-base mb-8">
-            If you can&apos;t locate it in your inbox, please wait a few minutes
-            or retry again.
+            {t("cant-find-email")}
           </p>
           <span className="text-center text-ui-fg-subtle text-small-regular">
-            You didn&apos;t receive anything?{" "}
+            {t("didnt-receive-email")}{" "}
             <button onClick={() => clearState()} className="underline">
-              Repeat the process
+              {t("repeat-process")}
             </button>
             .
           </span>
@@ -50,11 +52,10 @@ const PasswordReset = ({ setCurrentView }: Props) => {
       ) : (
         <>
           <h1 className="text-large-semi uppercase mb-6">
-            Forgot your password?
+            {t("forgot-password")}
           </h1>
           <p className="text-center text-base-regular text-ui-fg-base mb-8">
-            Enter your email address below. We will send you an email with a
-            link to follow.
+            {t("enter-email")}
           </p>
           <form
             className="w-full"
@@ -72,15 +73,17 @@ const PasswordReset = ({ setCurrentView }: Props) => {
               />
             </div>
             <ErrorMessage error={state?.error} />
-            <SubmitButton className="w-full mt-6">Send email</SubmitButton>
+            <SubmitButton className="w-full mt-6">
+              {t("send-email")}
+            </SubmitButton>
           </form>
           <span className="text-center text-ui-fg-base text-small-regular mt-6">
-            Already a member?{" "}
+            {t("already-member")}{" "}
             <button
               onClick={() => setCurrentView(LOGIN_VIEW.SIGN_IN)}
               className="underline"
             >
-              Sign in
+              {t("sign-in")}
             </button>
             .
           </span>

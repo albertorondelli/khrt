@@ -59,5 +59,24 @@
   "weekdays": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
   "got-questions": "Got questions?",
   "questions-message": "You can find frequently asked questions and answers on our customer service page.",
-  "customer-service": "Customer service"
+  "customer-service": "Customer service",
+  
+  "signed-in-as": "Signed in as",
+  "completed": "Completed",
+  "saved": "Saved",
+  "save": "Save",
+  "recent-orders": "Recent orders",
+  "date-placed": "Date placed",
+  "order-number": "Order number",
+  "total-amount": "Total amount",
+  "go-to-order": "Go to order",
+  "no-recent-orders": "No recent orders",
+  
+  "email-verification": "Email verification",
+  "email-sent" : "We've just sent you an email to the address linked with your account.",
+  "click-link": "Click on the link inside to complete the activation of your account.",
+  "cant-locate-email": "If you can't locate it in your inbox, please wait a few minutes or check your spam folder.",
+
+  "new-address": "New address",
+  "add-address": "Add address"
 }

@@ -59,5 +59,23 @@
   "weekdays": ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì"],
   "got-questions": "Hai domande?",
   "questions-message": "Puoi trovare le domande frequenti (FAQ) e le relative risposte nella nostra pagina dedicata all'assistenza clienti.",
-  "customer-service": "Servizio clienti"
+  "customer-service": "Servizio clienti",
+  "signed-in-as": "Accesso come",
+"completed": "Completato",
+"saved": "Salvato",
+"save": "Salva",
+"recent-orders": "Ordini recenti",
+"date-placed": "Data ordine",
+"order-number": "Numero ordine",
+"total-amount": "Importo totale",
+"go-to-order": "Vai all'ordine",
+"no-recent-orders": "Nessun ordine recente",
+
+"email-verification": "Verifica email",
+"email-sent" : "Ti abbiamo appena inviato un'email all'indirizzo collegato al tuo account.",
+"click-link": "Clicca sul link all'interno per completare l'attivazione del tuo account.",
+"cant-locate-email": "Se non la trovi nella posta in arrivo, attendi qualche minuto o controlla la cartella spam.",
+
+"new-address": "Nuovo indirizzo",
+"add-address": "Aggiungi indirizzo"
 }
