@@ -91,5 +91,15 @@
   "sign-in-with-new-password": "Puoi accedere con la tua email e la nuova password.",
   "reset-password": "Reimposta la password",
   "enter-new-password": "Inserisci la tua nuova password nel modulo qui sotto.",
-  "change-password": "Cambia Password"
+  "change-password": "Cambia Password",
+  "delivery": "Consegna",
+  "shipping-address": "Indirizzo di spedizione",
+  "contact": "Contatti",
+  "method": "Metodo",
+  "order-summary": "Riepilogo ordine",
+  "subtotal": "Subtotale",
+  "discount": "Sconto",
+  "shipping": "Spedizione",
+  "taxes": "Tasse",
+  "total": "Totale"
 }

@@ -3,21 +3,24 @@ import { Heading, Text } from "@medusajs/ui"
 import { formatAmount } from "@lib/util/prices"
 
 import Divider from "@modules/common/components/divider"
+import { useTranslation } from "@i18n/client"
 
 type ShippingDetailsProps = {
   order: Order
 }
 
 const ShippingDetails = ({ order }: ShippingDetailsProps) => {
+const {t} = useTranslation("account")
+
   return (
     <div>
       <Heading level="h2" className="flex flex-row text-3xl-regular my-6">
-        Delivery
+        {t("delivery")}
       </Heading>
       <div className="flex items-start gap-x-8">
         <div className="flex flex-col w-1/3">
           <Text className="txt-medium-plus text-ui-fg-base mb-1">
-            Shipping Address
+          {t("shipping-address")}
           </Text>
           <Text className="txt-medium text-ui-fg-subtle">
             {order.shipping_address.first_name}{" "}
@@ -36,7 +39,7 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
         </div>
 
         <div className="flex flex-col w-1/3 ">
-          <Text className="txt-medium-plus text-ui-fg-base mb-1">Contact</Text>
+          <Text className="txt-medium-plus text-ui-fg-base mb-1">{t("contact")}</Text>
           <Text className="txt-medium text-ui-fg-subtle">
             {order.shipping_address.phone}
           </Text>
@@ -44,7 +47,7 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
         </div>
 
         <div className="flex flex-col w-1/3">
-          <Text className="txt-medium-plus text-ui-fg-base mb-1">Method</Text>
+          <Text className="txt-medium-plus text-ui-fg-base mb-1">{t("method")}</Text>
           <Text className="txt-medium text-ui-fg-subtle">
             {order.shipping_methods[0].shipping_option?.name} (
             {formatAmount({

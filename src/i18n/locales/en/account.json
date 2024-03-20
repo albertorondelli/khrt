@@ -91,5 +91,16 @@
   "sign-in-with-new-password": " You can sign in with your email and new password.",
   "reset-password": "Reset you password",
   "enter-new-password": "Enter your new password in the form below.",
-  "change-password": "Change Password"
+  "change-password": "Change Password",
+  "delivery": "Delivery",
+  "shipping-address": "Shipping Address",
+  "contact": "Contact",
+  "method": "Method",
+  "order-summary": "Order Summary",
+  "subtotal": "Subtotal",
+  "discount": "Discount",
+  "shipping": "Shipping",
+  "taxes": "Taxes",
+  "total": "Total"
+
 }
