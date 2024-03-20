@@ -26,7 +26,6 @@ export default function RootLayout(
     <html
       className={`${nunito.variable} font-sans`}
       lang={locale}
-      data-mode="light"
     >
       <head>
         <script
@@ -35,7 +34,7 @@ export default function RootLayout(
           src="//cdn.cookie-script.com/s/4616f9ced57c5c7377c5f25c13f8180b.js"
         ></script>
       </head>
-      <body>
+      <body className="bg-ui-bg-base">
         <main className="relative">
           <LocaleProvider value={locale}>
             <ChangeLocale />

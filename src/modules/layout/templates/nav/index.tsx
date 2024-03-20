@@ -37,8 +37,8 @@ export default async function Nav() {
   )
 
   return (
-    <div className="z-40 sticky top-0 inset-x-0 group">
-      <header className="relative h-16 mx-auto border-b duration-200 bg-ui-bg-base border-ui-border-base">
+    <div className="z-40 sticky top-0 inset-x-0 group bg-ui-bg-base">
+      <header className="relative h-16 mx-auto border-b duration-200 border-ui-border-base">
         <nav className="content-container text-ui-fg-base flex items-center justify-between w-full h-full text-small-regular">
           <div className="flex flex-1 basis-0 h-full gap-x-6 items-center">
             <MobileMenu
