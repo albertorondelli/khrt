@@ -47,7 +47,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
           <ImageGallery images={product?.images || []} />
         </div>
         <div className="flex flex-col small:sticky small:py-0 small:max-w-[300px] w-full py-8 gap-y-12">
-          <div className="hidden small:flex">
+          <div className="hidden small:flex flex-col">
             <ProductInfo
               customer={customer}
               onWishlist={onWishlist}
