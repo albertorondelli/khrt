@@ -2,6 +2,7 @@ import ChangeLocale from "@modules/i18n/ChangeLocale"
 import { LocaleProvider } from "@lib/hooks/locale-provider"
 import { getLocale } from "@i18n/server"
 import { Metadata } from "next"
+import Script from "next/script"
 
 import { Nunito_Sans } from "next/font/google"
 import "styles/globals.css"
@@ -23,16 +24,12 @@ export default function RootLayout(
   const locale = getLocale()
 
   return (
-    <html
-      className={`${nunito.variable} font-sans`}
-      lang={locale}
-    >
+    <html className={`${nunito.variable} font-sans`} lang={locale}>
       <head>
-        <script
-          async
-          type="text/javascript"
+        <Script
+          strategy="beforeInteractive"
           src="//cdn.cookie-script.com/s/4616f9ced57c5c7377c5f25c13f8180b.js"
-        ></script>
+        ></Script>
       </head>
       <body className="bg-ui-bg-base">
         <main className="relative">
