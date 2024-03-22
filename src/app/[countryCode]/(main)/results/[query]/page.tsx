@@ -4,10 +4,14 @@ import SearchResultsTemplate from "@modules/search/templates/search-results-temp
 
 import { search } from "@modules/search/actions"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
+import { createTranslation } from "@i18n/server"
 
-export const metadata: Metadata = {
-  title: "Search",
-  description: "Explore all of our products.",
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await createTranslation("metadata")
+  return {
+    title: t("search-title"),
+    description: t("search-description"),
+  }
 }
 
 type Params = {

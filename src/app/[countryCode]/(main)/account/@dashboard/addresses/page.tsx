@@ -9,14 +9,17 @@ import { getRegion } from "app/actions"
 import { headers } from "next/headers"
 import { createTranslation } from "@i18n/server"
 
-export const metadata: Metadata = {
-  title: "Addresses",
-  description: "View your addresses",
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await createTranslation("metadata")
+  return {
+    title: t("addresses-title"),
+    description: t("addresses-description"),
+  }
 }
 
 export default async function Addresses() {
-  const {t} = await createTranslation('account');
-  
+  const { t } = await createTranslation("account")
+
   const nextHeaders = headers()
   const countryCode = nextHeaders.get("next-url")?.split("/")[1] || ""
   const customer = await getCustomer()
@@ -30,9 +33,7 @@ export default async function Addresses() {
     <div className="w-full">
       <div className="mb-8 flex flex-col gap-y-4">
         <h1 className="text-2xl-semi">{t("shipping-addresses")}</h1>
-        <p className="text-base-regular">
-        {t("shipping-addresses-message")}
-        </p>
+        <p className="text-base-regular">{t("shipping-addresses-message")}</p>
       </div>
       <AddressBook customer={customer} region={region} />
     </div>

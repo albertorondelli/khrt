@@ -6,6 +6,7 @@ import { ExtendedOrder } from "models"
 import { enrichLineItems } from "@modules/cart/actions"
 import OrderCompletedTemplate from "@modules/order/templates/order-completed-template"
 import { notFound } from "next/navigation"
+import { createTranslation } from "@i18n/server"
 
 type Props = {
   params: { id: string }
@@ -28,9 +29,12 @@ async function getOrder(id: string) {
   }
 }
 
-export const metadata: Metadata = {
-  title: "Order Confirmed",
-  description: "Your purchase was successful",
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await createTranslation("metadata")
+  return {
+    title: t("order-title"),
+    description: t("order-description"),
+  }
 }
 
 export default async function OrderConfirmedPage({ params }: Props) {

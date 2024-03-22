@@ -10,9 +10,12 @@ import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-relat
 import SkeletonFeaturedProducts from "@modules/skeletons/templates/skeleton-featured-products"
 import { createTranslation } from "@i18n/server"
 
-export const metadata: Metadata = {
-  title: "KHRT | Moda Online",
-  description: "Scopri le ultime tendenze moda uomo donna con KHRT.",
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await createTranslation("metadata")
+  return {
+    title: t("home-title"),
+    description: t("home-description"),
+  }
 }
 
 export default async function Home({
@@ -27,7 +30,7 @@ export default async function Home({
         <div className="flex w-full justify-center items-center h-10 bg-ui-bg-accent">
           <span className="text-base-regular"></span>
         </div>
-        
+
         <div className="mb-12 small:mb-24">
           <Hero />
         </div>

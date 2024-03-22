@@ -10,9 +10,12 @@ import { getCustomer, listRegions } from "@lib/data"
 import { notFound } from "next/navigation"
 import { createTranslation } from "@i18n/server"
 
-export const metadata: Metadata = {
-  title: "Profile",
-  description: "View and edit your KHRT profile.",
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await createTranslation("metadata")
+  return {
+    title: t("profile-title"),
+    description: t("profile-description"),
+  }
 }
 
 export default async function Profile() {

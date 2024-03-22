@@ -2,14 +2,17 @@ import { Metadata } from "next"
 
 import { Heading, Text } from "@medusajs/ui"
 import Help from "@modules/order/components/help"
+import { createTranslation } from "@i18n/server"
 
-export const metadata: Metadata = {
-  title: "Payment Error",
-  description: "Your purchase was not successful",
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await createTranslation("metadata")
+  return {
+    title: t("payment-title"),
+    description: t("payment-description"),
+  }
 }
 
 export default async function OrderConfirmedPage() {
-  // const { order } = await getOrder(params.id)
 
   return (
     <div className="py-6 min-h-[calc(100vh-64px)] bg-ui-bg-base">

@@ -33,5 +33,10 @@
   "order-status": "Stato ordine",
   "payment-status": "Stato pagamento",
   "invoice": "Fattura",
-  "download": "Scarica"
+  "download": "Scarica",
+  "error-status": "Si è verificato un errore, stato:",
+"unknown-error": "Si è verificato un errore sconosciuto, si prega di riprovare.",
+"payment-error": "Errore di pagamento",
+"payment-error-message": "Si è verificato un problema nell'elaborazione del pagamento. Si prega di controllare le informazioni inserite e riprovare.",
+"page-doesnt-exist": "La pagina a cui hai cercato di accedere non esiste."
   }

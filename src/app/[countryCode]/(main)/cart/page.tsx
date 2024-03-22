@@ -7,10 +7,14 @@ import { enrichLineItems, retrieveCart } from "@modules/cart/actions"
 import { getCheckoutStep } from "@lib/util/get-checkout-step"
 import { CartWithCheckoutStep } from "types/global"
 import { getCustomer } from "@lib/data"
+import { createTranslation } from "@i18n/server"
 
-export const metadata: Metadata = {
-  title: "Cart",
-  description: "View your cart",
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await createTranslation("metadata")
+  return {
+    title: t("cart-title"),
+    description: t("cart-description"),
+  }
 }
 
 const fetchCart = async () => {

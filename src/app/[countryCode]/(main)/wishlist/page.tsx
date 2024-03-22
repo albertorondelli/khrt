@@ -2,17 +2,19 @@ import React from "react"
 import WishlistTemplate from "@modules/wishlist/templates"
 import { Metadata } from "next"
 import { getCustomer, getWishlist } from "@lib/data"
+import { createTranslation } from "@i18n/server"
 
-
-export const metadata: Metadata = {
-  title: "Wishlist",
-  description: "Explore your favorite products.",
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await createTranslation("metadata")
+  return {
+    title: t("wishlist-title"),
+    description: t("wishlist-description"),
+  }
 }
 
 const Wishlist: React.FC = async () => {
   const customer = await getCustomer()
 
-  // TODO: handle page layout when user is not logged in
   if (!customer) {
     return null
   }

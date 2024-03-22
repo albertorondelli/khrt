@@ -4,7 +4,6 @@ import { notFound } from "next/navigation"
 import { retrieveOrder } from "@lib/data"
 import OrderDetailsTemplate from "@modules/order/templates/order-details-template"
 import { ExtendedOrder } from "models"
-import { Order } from "@medusajs/medusa"
 
 type Props = {
   params: { id: string }

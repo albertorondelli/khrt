@@ -5,9 +5,12 @@ import { listCustomerOrders } from "@lib/data"
 import { notFound } from "next/navigation"
 import { createTranslation } from "@i18n/server"
 
-export const metadata: Metadata = {
-  title: "Orders",
-  description: "Overview of your previous orders.",
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await createTranslation("metadata")
+  return {
+    title: t("orders-title"),
+    description: t("orders-description"),
+  }
 }
 
 export default async function Orders() {
