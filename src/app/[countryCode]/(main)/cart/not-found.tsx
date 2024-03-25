@@ -12,8 +12,8 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default function NotFound() {
-  const {t} = useTranslation("common")
+export default async function NotFound() {
+  const {t} = await createTranslation("common")
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-64px)]">
