@@ -199,6 +199,8 @@ const PayPalPaymentButton = ({
 }
 
 const ManualTestPaymentButton = ({ notReady }: { notReady: boolean }) => {
+  const { t } = useTranslation("cart")
+
   const [submitting, setSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
@@ -223,7 +225,7 @@ const ManualTestPaymentButton = ({ notReady }: { notReady: boolean }) => {
         onClick={handlePayment}
         size="large"
       >
-        Place order
+        {t("place-order")}
       </Button>
       <ErrorMessage error={errorMessage} />
     </>
@@ -237,6 +239,8 @@ const CreditCardPaymentButton = ({
   cart: Omit<Cart, "refundable_amount" | "refunded_total">
   notReady: boolean
 }) => {
+  const { t } = useTranslation("cart")
+  
   const [submitting, setSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
@@ -264,7 +268,7 @@ const CreditCardPaymentButton = ({
         onClick={handlePayment}
         size="large"
       >
-        {submitting ? <Spinner /> : "Place order"}
+        {submitting ? <Spinner /> :  t("place-order")}
       </Button>
       <ErrorMessage error={errorMessage} />
     </>

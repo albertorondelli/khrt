@@ -45,7 +45,7 @@ export const CategoriesTab = ({ categories }: CategoriesTabProps) => {
               >
                 {c.name}
               </LocalizedClientLink>
-              {children && (
+              {/* {children && (
                 <ul>
                   {children.map((child: any) => (
                     <li key={child.id}>
@@ -58,7 +58,7 @@ export const CategoriesTab = ({ categories }: CategoriesTabProps) => {
                     </li>
                   ))}
                 </ul>
-              )}
+              )} */}
             </li>
           )
         })}
@@ -88,7 +88,7 @@ export const CollectionsTab = ({ collections }: CollectionsTabProps) => {
         )}
       >
         {collections?.slice(0, 6).map((c) => (
-          <li key={c.id}>
+          <li key={c.id} className="text-ui-fg-subtle">
             <LocalizedClientLink
               className="hover:text-ui-fg-base"
               href={`/collections/${c.handle}`}
