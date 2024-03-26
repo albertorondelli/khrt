@@ -38,5 +38,16 @@
 "unknown-error": "Si è verificato un errore sconosciuto, si prega di riprovare.",
 "payment-error": "Errore di pagamento",
 "payment-error-message": "Si è verificato un problema nell'elaborazione del pagamento. Si prega di controllare le informazioni inserite e riprovare.",
-"page-doesnt-exist": "La pagina a cui hai cercato di accedere non esiste."
+"page-doesnt-exist": "La pagina a cui hai cercato di accedere non esiste.",
+
+"registration-successful": "Registrazione avvenuta con successo",
+"email-activate-account": "Ti abbiamo inviato un'email con le istruzioni per attivare il tuo account",
+"contact-customer-service": "Contatta il servizio clienti",
+"khrt-member": "Diventa un membro di KHRT Store",
+"create-khrt-profile": "Crea il tuo profilo KHRT Store Member e accedi a un'esperienza di acquisto migliorata.",
+"you-agree": "Creando un account, accetti i seguenti documenti di KHRT Store:",
+"privacy-policy": "Informativa sulla Privacy",
+"and": "e",
+"terms-of-use": "Condizioni d'Uso",
+"join": "Iscriviti"
   }
