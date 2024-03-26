@@ -30,8 +30,8 @@ const EditAddress: React.FC<EditAddressProps> = ({
   address,
   isActive = false,
 }) => {
-  const {t} = useTranslation('account');
-  
+  const { t } = useTranslation("account")
+
   const [removing, setRemoving] = useState(false)
   const [successState, setSuccessState] = useState(false)
   const { state, open, close: closeModal } = useToggleState(false)

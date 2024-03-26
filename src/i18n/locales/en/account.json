@@ -75,14 +75,14 @@
   "email-verification": "Email verification",
   "email-sent": "We've just sent you an email to the address linked with your account.",
   "click-link": "Click on the link inside to complete the activation of your account.",
-  "cant-locate-email": "If you can't locate it in your inbox, please wait a few minutes or check your spam folder.",
+  "cant-locate-email": "If you can't locate it in your inbox, please wait a few minutes, check your spam folder or retry again.",
 
   "new-address": "New address",
   "add-address": "Add address",
 
   "email-sent-successfully": "Email sent successfully",
   "cant-find-email": "If you can't locate it in your inbox, please wait a few minutes or retry again.",
-  "didnt-receive-email": " You didn't receive anything?",
+  "didnt-receive-email": "You didn't receive anything?",
   "repeat-process": "Repeat the process",
   "enter-email": "Enter your email address below. We will send you an email with a link to follow.",
   "send-email": "Send email",
@@ -101,6 +101,16 @@
   "discount": "Discount",
   "shipping": "Shipping",
   "taxes": "Taxes",
-  "total": "Total"
+  "total": "Total",
 
+  "registration-successful": "Registration successful",
+  "email-activate-account": "We sent you an email with instructions for activating your account",
+  "contact-customer-service": "Contact customer service.",
+  "khrt-member": "Become a KHRT Store Member",
+  "create-khrt-profile": " Create your KHRT Store Member profile, and get access to an enhanced shopping experience.",
+  "you-agree": "By creating an account, you agree to KHRT Store's",
+  "privacy-policy": "Privacy Policy",
+  "and": "and",
+  "terms-of-use": "Terms of Use",
+  "join": "Join"
 }

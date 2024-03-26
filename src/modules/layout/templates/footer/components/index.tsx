@@ -46,18 +46,17 @@ export const CategoriesTab = ({ categories }: CategoriesTabProps) => {
                 {c.name}
               </LocalizedClientLink>
               {children && (
-                <ul className="grid grid-cols-1 ml-3 gap-2">
-                  {children &&
-                    children.map((child: any) => (
-                      <li key={child.id}>
-                        <LocalizedClientLink
-                          className="hover:text-ui-fg-base"
-                          href={`/categories/${child.handle}`}
-                        >
-                          {child.name}
-                        </LocalizedClientLink>
-                      </li>
-                    ))}
+                <ul>
+                  {children.map((child: any) => (
+                    <li key={child.id}>
+                      <LocalizedClientLink
+                        className="hover:text-ui-fg-base"
+                        href={`/categories/${child.handle}`}
+                      >
+                        {child.name}
+                      </LocalizedClientLink>
+                    </li>
+                  ))}
                 </ul>
               )}
             </li>

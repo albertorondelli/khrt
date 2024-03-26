@@ -8,7 +8,7 @@ import Help from "@modules/order/components/help"
 import { useEffect, useState } from "react"
 
 export default function SuccessTemplate() {
-  const { t } = useTranslation("error")
+  const { t } = useTranslation("common")
 
   const [submitting, setSubmitting] = useState(true)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
@@ -46,9 +46,15 @@ export default function SuccessTemplate() {
               </Heading>
               <Text>
                 <span className="text-ui-fg-base text-base">
-                  {t("payment-error-message")}
+                  {t("payment-error-message")}{" "}
                 </span>
               </Text>
+              <Text>
+                <span className="text-ui-fg-base text-base">
+                  {errorMessage}
+                </span>
+              </Text>
+              <div className="h-10"></div>
               <Help />
             </div>
           </div>
