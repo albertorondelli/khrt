@@ -12,7 +12,7 @@ const CountrySelect = forwardRef<
     region?: Region
   }
 >(({ placeholder = "country", region, defaultValue, ...props }, ref) => {
-const {t} = useTranslation("country-select")
+const {t} = useTranslation("common")
   const innerRef = useRef<HTMLSelectElement>(null)
 
   useImperativeHandle<HTMLSelectElement | null, HTMLSelectElement | null>(

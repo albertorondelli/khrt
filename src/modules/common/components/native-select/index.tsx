@@ -21,7 +21,7 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
     { placeholder = "select", defaultValue, className, children, ...props },
     ref
   ) => {
-    const {t} = useTranslation("country-select")
+    const {t} = useTranslation("common")
     
     const innerRef = useRef<HTMLSelectElement>(null)
     const [isPlaceholder, setIsPlaceholder] = useState(false)
