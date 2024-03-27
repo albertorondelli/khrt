@@ -82,7 +82,7 @@
 
   "email-sent-successfully": "Email inviata con successo",
   "cant-find-email": "Se non la trovi nella posta in arrivo, attendi qualche minuto o riprova.",
-  "didnt-receive-email": "Non hai ricevuto niente?",
+  "didnt-receive-email": "Non hai ricevuto la mail?",
   "repeat-process": "Ripeti il processo",
   "enter-email": "Inserisci il tuo indirizzo email qui sotto. Ti invieremo un'email con un link da seguire.",
   "send-email": "Invia email",
@@ -97,7 +97,7 @@
   "contact": "Contatti",
   "method": "Metodo",
   "order-summary": "Riepilogo ordine",
-  "subtotal": "Subtotale",
+  "subtotal": "Totale parziale",
   "discount": "Sconto",
   "shipping": "Spedizione",
   "taxes": "Tasse",

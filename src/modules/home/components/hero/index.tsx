@@ -7,7 +7,7 @@ import { createTranslation } from "@i18n/server"
 import heroImage from "@public/images/hero.webp"
 
 const Hero = async () => {
-  const { t } = await createTranslation("home")
+  const { t } = await createTranslation("common")
 
   return (
     <LocalizedClientLink href={`/store`} passHref>
@@ -35,7 +35,7 @@ const Hero = async () => {
         </div>
         <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10 flex flex-col justify-center items-baseline small:p-32 gap-6">
           <Button variant="secondary" size="large">
-            Sfoglia il catalogo
+            {t("browse-all")}
           </Button>
         </div>
       </div>

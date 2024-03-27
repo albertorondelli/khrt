@@ -57,5 +57,9 @@
   "country": "Country",
   "credit-card": "Credit Card",
   "paypal": "Paypal",
-  "place-order": "Place order" 
+  "place-order": "Place order",
+  "paid-at": "paid at",
+  "dateTime": "{{val, datetime}}",
+  "back": "Back",
+  "back-to-cart": "Back to shopping cart"
 }

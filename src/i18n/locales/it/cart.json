@@ -17,7 +17,7 @@
   "add-giftcard-discount-code": "Aggiungi carta regalo o codice sconto",
   "apply": "Applica",
   "enter-code": "Inserisci il codice",
-  "subtotal": "Subtotale",
+  "subtotal": "Totale parziale",
   "discount": "Sconto",
   "giftcard": "Carta regalo",
   "shipping": "Spedizione",
@@ -57,5 +57,9 @@
   "country": "Nazione", 
   "credit-card": "Carta di credito",
   "paypal": "Paypal",
-  "place-order": "Effettua ordine"
+  "place-order": "Effettua ordine",
+  "paid-at": "pagato il",
+  "dateTime": "{{val, datetime}}",
+  "back": "Indietro",
+  "back-to-cart": "Torna al carrello"
 }

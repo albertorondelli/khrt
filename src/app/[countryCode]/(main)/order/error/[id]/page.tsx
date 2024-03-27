@@ -13,6 +13,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function OrderConfirmedPage() {
+const {t} = await createTranslation("common")
+
 
   return (
     <div className="py-6 min-h-[calc(100vh-64px)] bg-ui-bg-base">
@@ -22,12 +24,11 @@ export default async function OrderConfirmedPage() {
             level="h1"
             className="flex flex-col gap-y-3 text-ui-fg-base text-3xl mb-4"
           >
-            <span>Payment error</span>
+            <span>{t("payment-error")}</span>
           </Heading>
           <Text>
             <span>
-              There was an issue processing your payment. Please review your
-              information and try again.
+              {t("payment-issue")}
             </span>
           </Text>
           <Help />

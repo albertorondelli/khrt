@@ -8,7 +8,7 @@ type OrderDetailsProps = {
 }
 
 const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
-  const { t } =  useTranslation("common")
+  const { t } = useTranslation("common")
 
   const formatStatus = (str: string) => {
     const formatted = str.split("_").join(" ")
@@ -26,7 +26,18 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
         .
       </Text>
       <Text className="mt-2">
-        {t("order-date")}: {new Date(order.created_at).toDateString()}
+        {t("order-date")}:{" "}
+        {t("dateTime", {
+          val: new Date(order.created_at),
+          formatParams: {
+            val: {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            },
+          },
+        })}
       </Text>
       <Text className="mt-2 text-ui-fg-interactive">
         {t("order-number")}: {order.display_id}

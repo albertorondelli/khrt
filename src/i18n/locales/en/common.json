@@ -48,6 +48,9 @@
   "go-to-cart": "Go to cart",
   "shopping-bag-empty": "Your shopping bag is empty.",
   "go-to-all-products": "Go to all products page",
-  "explore-products": "Explore products"
-
+  "explore-products": "Explore products",
+  "payment-issue": "There was an issue processing your payment. Please review your information and try again.",
+  "greeting": "Welcome to our new online shop!",
+  "browse-all": "Browse all",
+  "dateTime": "{{val, datetime}}"
 }

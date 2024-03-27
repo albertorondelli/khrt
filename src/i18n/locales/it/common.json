@@ -49,5 +49,9 @@
 "privacy-policy": "Informativa sulla Privacy",
 "and": "e",
 "terms-of-use": "Condizioni d'Uso",
-"join": "Iscriviti"
+"join": "Iscriviti",
+"payment-issue": "Si è verificato un problema nell'elaborazione del pagamento. Si prega di rivedere le informazioni e riprovare.",
+"greeting": "Benvenuti nel nostro nuovo negozio online!",
+"browse-all": "Sfoglia tutto",
+"dateTime": "{{val, datetime}}"
   }
