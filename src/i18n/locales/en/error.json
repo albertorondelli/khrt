@@ -1,0 +1,10 @@
+{
+  "wrong-email-or-password": "Wrong email or password.",
+  "email-not-verified": "Email not verified, we sent you an email to your address.",
+  "order-or-items-empty": "Order or line items are empty.",
+  "canceled-order-cannot-update": "A canceled order cannot be updated.",
+  "email-already-verified": "This account is already verified.",
+  "create-account-to-reset-password": "You must have an account to reset the password. Create an account first",
+  "no-cartid-cookie-found": "No cartId cookie found",
+  "no-form-data-received": "No form data received"
+}

@@ -29,6 +29,8 @@ import { medusaClient } from "../config"
 import medusaError from "@lib/util/medusa-error"
 import { cookies } from "next/headers"
 import { objectToURLSearchParams } from "@lib/medusa-fetch"
+import { useTranslation } from "@i18n/client"
+import { createTranslation } from "@i18n/server"
 
 const emptyResponse = {
   response: { products: [], count: 0 },
@@ -245,6 +247,8 @@ export async function addShippingMethod({
 
 // Authentication actions
 export async function getToken(credentials: StorePostAuthReq) {
+const {t} = await createTranslation("error")
+
   return medusaClient.auth
     .getToken(credentials, {
       next: {
@@ -259,9 +263,9 @@ export async function getToken(credentials: StorePostAuthReq) {
       throw new Error(
         err.response.data.message &&
         err.response.data.message ==
-          "User cannot log in due to email not verified"
-          ? "User cannot log in due to email not verified"
-          : "Wrong email or password."
+          "User cannot log in due to email not verified."
+          ? t("email-not-verified")
+          : t("wrong-email-or-password")
       )
     })
 }

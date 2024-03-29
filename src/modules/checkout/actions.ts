@@ -12,11 +12,14 @@ import {
 import { GiftCard, StorePostCartsCartReq } from "@medusajs/medusa"
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
+import { createTranslation } from "@i18n/server"
 
 export async function cartUpdate(data: StorePostCartsCartReq) {
+const {t} = await createTranslation("error")
+
   const cartId = cookies().get("_medusa_cart_id")?.value
 
-  if (!cartId) return "No cartId cookie found"
+  if (!cartId) return t("no-cartid-cookie-found")
 
   try {
     await updateCart(cartId, data)
@@ -27,9 +30,11 @@ export async function cartUpdate(data: StorePostCartsCartReq) {
 }
 
 export async function applyDiscount(code: string) {
+  const {t} = await createTranslation("error")
+
   const cartId = cookies().get("_medusa_cart_id")?.value
 
-  if (!cartId) return "No cartId cookie found"
+  if (!cartId) return t("no-cartid-cookie-found")
 
   try {
     await updateCart(cartId, { discounts: [{ code }] }).then(() => {
@@ -41,9 +46,11 @@ export async function applyDiscount(code: string) {
 }
 
 export async function applyGiftCard(code: string) {
+  const {t} = await createTranslation("error")
+
   const cartId = cookies().get("_medusa_cart_id")?.value
 
-  if (!cartId) return "No cartId cookie found"
+  if (!cartId) return t("no-cartid-cookie-found")
 
   try {
     await updateCart(cartId, { gift_cards: [{ code }] }).then(() => {
@@ -55,9 +62,11 @@ export async function applyGiftCard(code: string) {
 }
 
 export async function removeDiscount(code: string) {
+  const {t} = await createTranslation("error")
+
   const cartId = cookies().get("_medusa_cart_id")?.value
 
-  if (!cartId) return "No cartId cookie found"
+  if (!cartId) return t("no-cartid-cookie-found")
 
   try {
     await deleteDiscount(cartId, code)
@@ -71,9 +80,11 @@ export async function removeGiftCard(
   codeToRemove: string,
   giftCards: GiftCard[]
 ) {
+  const {t} = await createTranslation("error")
+
   const cartId = cookies().get("_medusa_cart_id")?.value
 
-  if (!cartId) return "No cartId cookie found"
+  if (!cartId) return t("no-cartid-cookie-found")
 
   try {
     await updateCart(cartId, {
@@ -105,11 +116,13 @@ export async function submitDiscountForm(
 }
 
 export async function setAddresses(currentState: unknown, formData: FormData) {
-  if (!formData) return "No form data received"
+  const {t} = await createTranslation("error")
+
+  if (!formData) return t("no-form-data-received")
 
   const cartId = cookies().get("_medusa_cart_id")?.value
 
-  if (!cartId) return { message: "No cartId cookie found" }
+  if (!cartId) return { message: t("no-cartid-cookie-found") }
 
   const data = {
     shipping_address: {
@@ -158,9 +171,11 @@ export async function setAddresses(currentState: unknown, formData: FormData) {
 }
 
 export async function setShippingMethod(shippingMethodId: string) {
+  const { t } = await createTranslation("error")
+
   const cartId = cookies().get("_medusa_cart_id")?.value
 
-  if (!cartId) throw new Error("No cartId cookie found")
+  if (!cartId) throw new Error(t("no-cartid-cookie-found"))
 
   try {
     await addShippingMethod({ cartId, shippingMethodId })
@@ -171,9 +186,11 @@ export async function setShippingMethod(shippingMethodId: string) {
 }
 
 export async function setPaymentMethod(providerId: string) {
+  const { t } = await createTranslation("error")
+
   const cartId = cookies().get("_medusa_cart_id")?.value
 
-  if (!cartId) throw new Error("No cartId cookie found")
+  if (!cartId) throw new Error(t("no-cartid-cookie-found"))
 
   try {
     const cart = await setPaymentSession({ cartId, providerId })
@@ -185,9 +202,11 @@ export async function setPaymentMethod(providerId: string) {
 }
 
 export async function placeOrder() {
+  const { t } = await createTranslation("error")
+
   const cartId = cookies().get("_medusa_cart_id")?.value
 
-  if (!cartId) throw new Error("No cartId cookie found")
+  if (!cartId) throw new Error(t("no-cartid-cookie-found"))
 
   let cart
 
