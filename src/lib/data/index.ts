@@ -256,7 +256,13 @@ export async function getToken(credentials: StorePostAuthReq) {
       return access_token
     })
     .catch((err) => {
-      throw new Error("Wrong email or password.")
+      throw new Error(
+        err.response.data.message &&
+        err.response.data.message ==
+          "User cannot log in due to email not verified"
+          ? "User cannot log in due to email not verified"
+          : "Wrong email or password."
+      )
     })
 }
 
