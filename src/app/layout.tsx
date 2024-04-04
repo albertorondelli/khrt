@@ -26,10 +26,11 @@ export default function RootLayout(
   return (
     <html className={`${nunito.variable} font-sans`} lang={locale}>
       {/* <head>
-        <Script
-          strategy="beforeInteractive"
+        <script
+          async
+          type="text/javascript"
           src="//cdn.cookie-script.com/s/4616f9ced57c5c7377c5f25c13f8180b.js"
-        ></Script>
+        ></script>
       </head> */}
       <body className="bg-ui-bg-base">
         <main className="relative">
@@ -38,6 +39,11 @@ export default function RootLayout(
             {props.children}
           </LocaleProvider>
         </main>
+        <script
+          async
+          type="text/javascript"
+          src="//cdn.cookie-script.com/s/4616f9ced57c5c7377c5f25c13f8180b.js"
+        ></script>
       </body>
     </html>
   )
