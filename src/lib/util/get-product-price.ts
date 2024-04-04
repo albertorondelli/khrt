@@ -3,9 +3,8 @@ import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import { formatAmount } from "@lib/util/prices"
 import { RegionInfo } from "types/global"
 import { CalculatedVariant } from "types/medusa"
-import { createTranslation } from "@i18n/server"
 
-export async function getProductPrice({
+export function getProductPrice({
   product,
   variantId,
   region,
@@ -14,10 +13,8 @@ export async function getProductPrice({
   variantId?: string
   region: RegionInfo
 }) {
-const {t} = await createTranslation("error")
-
   if (!product || !product.id) {
-    throw new Error(t("no-product-provided"))
+    throw new Error("No product provided")
   }
 
   const getPercentageDiff = (original: number, calculated: number) => {
