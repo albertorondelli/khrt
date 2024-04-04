@@ -12,7 +12,6 @@ import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-relat
 import { notFound } from "next/navigation"
 import ProductActionsWrapper from "./product-actions-wrapper"
 import { isWishlisted } from "@modules/wishlist/actions"
-import { getWishlist } from "@lib/data"
 
 type ProductTemplateProps = {
   customer: Omit<Customer, "password_hash"> | null
