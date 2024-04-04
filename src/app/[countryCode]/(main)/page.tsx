@@ -6,7 +6,6 @@ import CategoriesBanners from "@modules/home/components/banners/category"
 import Carousel from "@modules/home/components/carousel"
 import { Suspense } from "react"
 import SkeletonBanner from "@modules/skeletons/components/skeleton-banner"
-import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-related-products"
 import SkeletonFeaturedProducts from "@modules/skeletons/templates/skeleton-featured-products"
 import { createTranslation } from "@i18n/server"
 
@@ -30,7 +29,6 @@ export default async function Home({
         <div className="flex w-full justify-center items-center h-10 bg-ui-bg-accent">
           <span className="text-base-regular"></span>
         </div>
-
         <div className="mb-12 small:mb-24">
           <Hero />
         </div>
