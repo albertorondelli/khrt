@@ -15,6 +15,7 @@ import {
   updateItem,
 } from "@lib/data"
 import { getRegion } from "app/actions"
+import { createTranslation } from "@i18n/server"
 
 /**
  * Retrieves the cart based on the cartId cookie
@@ -78,21 +79,22 @@ export async function addToCart({
   quantity: number
   countryCode: string
 }) {
+  const { t } = await createTranslation("error")
   const cart = await getOrSetCart(countryCode).then((cart) => cart)
 
   if (!cart) {
-    return "Missing cart ID"
+    return t("missing-cart-id")
   }
 
   if (!variantId) {
-    return "Missing product variant ID"
+    return t("missing-product-variant-id")
   }
 
   try {
     await addItem({ cartId: cart.id, variantId, quantity })
     revalidateTag("cart")
   } catch (e) {
-    return "Error adding item to cart"
+    return t("error-adding-item-to-cart")
   }
 }
 
@@ -103,18 +105,20 @@ export async function updateLineItem({
   lineId: string
   quantity: number
 }) {
+  const { t } = await createTranslation("error")
+
   const cartId = cookies().get("_medusa_cart_id")?.value
 
   if (!cartId) {
-    return "Missing cart ID"
+    return t("missing-cart-id")
   }
 
   if (!lineId) {
-    return "Missing lineItem ID"
+    return t("missing-lineitem-id")
   }
 
   if (!cartId) {
-    return "Missing cart ID"
+    return t("missing-cart-id")
   }
 
   try {
@@ -126,18 +130,20 @@ export async function updateLineItem({
 }
 
 export async function deleteLineItem(lineId: string) {
+  const { t } = await createTranslation("error")
+
   const cartId = cookies().get("_medusa_cart_id")?.value
 
   if (!cartId) {
-    return "Missing cart ID"
+    return t("missing-cart-id")
   }
 
   if (!lineId) {
-    return "Missing lineItem ID"
+    return t("missing-lineitem-id")
   }
 
   if (!cartId) {
-    return "Missing cart ID"
+    return t("missing-cart-id")
   }
 
   try {

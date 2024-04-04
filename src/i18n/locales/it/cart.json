@@ -61,5 +61,11 @@
   "paid-at": "pagato il",
   "dateTime": "{{val, datetime}}",
   "back": "Indietro",
-  "back-to-cart": "Torna al carrello"
+  "back-to-cart": "Torna al carrello",
+"remove": "Rimuovi",
+"excluded-taxes": "IVA esclusa",
+"go-to-cart": "Vai al carrello",
+"shopping-bag-empty": "Il tuo carrello è vuoto.",
+"go-to-all-products": "Vai alla pagina dei prodotti"
+
 }

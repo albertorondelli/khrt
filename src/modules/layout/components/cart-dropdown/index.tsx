@@ -20,7 +20,7 @@ const CartDropdown = ({
 }: {
   cart?: Omit<Cart, "beforeInsert" | "afterLoad"> | null
 }) => {
-  const { t } = useTranslation("common")
+  const { t } = useTranslation("cart")
 
   const [activeTimer, setActiveTimer] = useState<NodeJS.Timer | undefined>(
     undefined
@@ -119,7 +119,7 @@ const CartDropdown = ({
                           href={`/products/${item.variant.product.handle}`}
                           className="w-24"
                         >
-                          <Thumbnail thumbnail={item.thumbnail} size="square" />
+                          <Thumbnail thumbnail={item.thumbnail} size="full" />
                         </LocalizedClientLink>
                         <div className="flex flex-col justify-between flex-1">
                           <div className="flex flex-col flex-1">

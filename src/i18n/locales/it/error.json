@@ -1,10 +1,24 @@
 {
-  "wrong-email-or-password": "Email o password errata.",
-  "email-not-verified": "Email non verificata, ti abbiamo inviato un'email al tuo indirizzo",
-  "order-or-items-empty": "L'ordine o qualche prodotto è vuoto.",
+  "wrong-email-or-password": "Email o password errati.",
+  "email-not-verified": "Email non verificata, ti abbiamo inviato un'email al tuo indirizzo.",
+  "order-or-items-empty": "L'ordine o gli articoli sono vuoti.",
   "canceled-order-cannot-update": "Un ordine annullato non può essere aggiornato.",
   "email-already-verified": "Questo account è già stato verificato.",
-  "create-account-to-reset-password": "Devi avere un account per reimpostare la password",
-  "no-cartid-cookie-found": "Nessun cookie cartId trovato",
-  "no-form-data-received": "Dati del modulo mancanti"
-}
+  "create-account-to-reset-password": "Devi avere un account per reimpostare la password. Crea prima un account.",
+  "no-cartid-cookie-found": "Nessun cookie cartId trovato.",
+  "no-form-data-received": "Nessun dato del modulo ricevuto.",
+  "missing-cart-id": "ID carrello mancante.",
+  "missing-product-variant-id": "ID variante prodotto mancante.",
+  "error-adding-item-to-cart": "Errore durante l'aggiunta dell'articolo al carrello.",
+  "missing-lineitem-id": "ID articolo riga mancante.",
+  "error-deleting-line-item": "Errore durante l'eliminazione dell'articolo.",
+  "error-fetching-wishlist": "Errore durante il recupero della lista dei desideri.",
+  "no-customer-id-found": "Nessun ID cliente trovato.",
+  "no-product-id-found": "Nessun ID prodotto trovato.",
+  "cannot-remove-item-from-wishlist": "Errore: impossibile rimuovere l'articolo dalla lista dei desideri.",
+  "cannot-add-item-to-wishlist": "Errore: impossibile aggiungere l'articolo alla lista dei desideri.",
+  "product-added-successfully": "Prodotto aggiunto con successo.",
+  "no-response-received": "Nessuna risposta ricevuta.",
+  "error-setting-up-request": "Errore durante l'impostazione della richiesta.",
+  "no-product-provided": "Nessun prodotto fornito."
+  }

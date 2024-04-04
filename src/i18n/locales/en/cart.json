@@ -61,5 +61,10 @@
   "paid-at": "paid at",
   "dateTime": "{{val, datetime}}",
   "back": "Back",
-  "back-to-cart": "Back to shopping cart"
+  "back-to-cart": "Back to shopping cart",
+  "remove": "Remove",
+  "excluded-taxes": "excl. taxes",
+  "go-to-cart": "Go to cart",
+  "shopping-bag-empty": "Your shopping bag is empty.",
+  "go-to-all-products": "Go to all products page"
 }
