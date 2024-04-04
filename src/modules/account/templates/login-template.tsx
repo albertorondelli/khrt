@@ -37,11 +37,6 @@ const LoginTemplate = () => {
 
   return (
     <div className="w-full flex justify-center lg:justify-start p-8">
-      {!currentView && (
-        <div className="max-w-sm flex flex-col items-center">
-          <Spinner />
-        </div>
-      )}
       {currentView == "sign-in" && <Login setCurrentView={setCurrentView} />}
       {currentView == "register" && (
         <Register setCurrentView={setCurrentView} />
