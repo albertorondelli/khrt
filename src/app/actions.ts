@@ -3,7 +3,7 @@
 import { revalidateTag } from "next/cache"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-import { LANGUAGE_COOKIE } from "@i18n/settings"
+import { FALLBACK_LOCALE, LANGUAGE_COOKIE } from "@i18n/settings"
 import { listRegions, updateCart } from "@lib/data"
 import { Region } from "@medusajs/medusa"
 
@@ -78,3 +78,24 @@ export async function switchLocaleAction(value: string) {
     status: "success",
   }
 }
+
+// TODO: We can set a default language using vercel header country
+// export async function setVercelLanguage(vercelCountry: string | undefined) {
+//   // Set default language based on vercel country code
+//   console.log("vercelCountry", vercelCountry)
+//   if (vercelCountry) {
+//     switch (vercelCountry) {
+//       case "it":
+//         cookies().set(LANGUAGE_COOKIE, vercelCountry)
+//         break
+//       default:
+//         cookies().set(LANGUAGE_COOKIE, FALLBACK_LOCALE)
+//         break
+//     }
+//   }
+
+//   // It does not matter what we return here
+//   return {
+//     status: "success",
+//   }
+// }
