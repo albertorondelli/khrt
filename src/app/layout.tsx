@@ -27,13 +27,11 @@ export default function RootLayout(
 
   return (
     <html className={`${nunito.variable} font-sans`} lang={locale}>
-      <head>
+      <body className="bg-ui-bg-base">
         <Script
           strategy="beforeInteractive"
           src={`//cdn.cookie-script.com/s/${COOKIE_SCRIPT_SECRET}.js`}
         ></Script>
-      </head>
-      <body className="bg-ui-bg-base">
         <main className="relative">
           <LocaleProvider value={locale}>
             <ChangeLocale />
