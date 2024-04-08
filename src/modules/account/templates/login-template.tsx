@@ -9,7 +9,6 @@ import PasswordResetConfirmation from "../components/password-reset-confirmation
 import TokenVerify from "../components/token-verify"
 import EmailVerify from "../components/email-verify"
 import { useSearchParams } from "next/navigation"
-import Spinner from "@modules/common/icons/spinner"
 
 export enum LOGIN_VIEW {
   SIGN_IN = "sign-in",
