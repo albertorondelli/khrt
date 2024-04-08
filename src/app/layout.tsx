@@ -23,15 +23,16 @@ export default function RootLayout(
 ) {
   const locale = getLocale()
 
+  const COOKIE_SCRIPT_SECRET = "4616f9ced57c5c7377c5f25c13f8180b"
+
   return (
     <html className={`${nunito.variable} font-sans`} lang={locale}>
-      {/* <head>
-        <script
-          async
-          type="text/javascript"
-          src="//cdn.cookie-script.com/s/4616f9ced57c5c7377c5f25c13f8180b.js"
-        ></script>
-      </head> */}
+      <head>
+        <Script
+          strategy="beforeInteractive"
+          src={`//cdn.cookie-script.com/s/${COOKIE_SCRIPT_SECRET}.js`}
+        ></Script>
+      </head>
       <body className="bg-ui-bg-base">
         <main className="relative">
           <LocaleProvider value={locale}>
