@@ -1,8 +1,11 @@
-
 import { createTranslation } from "@i18n/server"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import ChevronDown from "@modules/common/icons/chevron-down"
 import MedusaCTA from "@modules/layout/components/medusa-cta"
+import Image from "next/image"
+
+import logoLight from "@public/khrt-min-light.png"
+import logoDark from "@public/khrt-min-dark.png"
 
 export default async function CheckoutLayout({
   children,
@@ -27,11 +30,21 @@ export default async function CheckoutLayout({
               {t("back")}
             </span>
           </LocalizedClientLink>
-          <LocalizedClientLink
-            href="/"
-            className="text-xl-semi text-ui-fg-subtle hover:text-ui-fg-base uppercase"
-          >
-            KHRT
+          <LocalizedClientLink href="/" className="text-xl-semi uppercase">
+            <Image
+              src={logoDark}
+              alt="KHRT"
+              draggable={false}
+              className="block dark:hidden"
+              width="100"
+            />
+            <Image
+              src={logoLight}
+              alt="KHRT"
+              draggable={false}
+              className="hidden dark:block"
+              width="100"
+            />
           </LocalizedClientLink>
           <div className="flex-1 basis-0" />
         </nav>
