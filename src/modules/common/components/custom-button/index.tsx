@@ -1,6 +1,7 @@
 import { Button, clx } from "@medusajs/ui"
 
 export type CustomButtonProps = {
+  disabled?: boolean
   children: React.ReactNode
   className?: string
   isLoading?: boolean
@@ -13,6 +14,7 @@ export type CustomButtonProps = {
 const CustomButton = ({
   children,
   className,
+  disabled = false,
   isLoading = false,
   onClick,
   size = "base",
@@ -27,6 +29,7 @@ const CustomButton = ({
       size={size}
       type={type}
       variant={variant}
+      disabled={disabled}
     >
       {children}
     </Button>
