@@ -8,6 +8,7 @@ import ReactCountryFlag from "react-country-flag"
 import { StateType } from "@lib/hooks/use-toggle-state"
 import { updateRegion } from "app/actions"
 import { useParams, usePathname } from "next/navigation"
+import { useTranslation } from "react-i18next"
 
 type CountryOption = {
   country: string
@@ -21,6 +22,8 @@ type CountrySelectProps = {
 }
 
 const CountrySelect = ({ toggleState, regions }: CountrySelectProps) => {
+  const { t } = useTranslation("common")
+
   const [current, setCurrent] = useState<CountryOption | undefined>(undefined)
 
   const { countryCode } = useParams()
@@ -65,8 +68,8 @@ const CountrySelect = ({ toggleState, regions }: CountrySelectProps) => {
         }
       >
         <Listbox.Button className="py-1 w-full">
-          <div className="text-large-semi flex items-start gap-x-2">
-            <span>Shipping to</span>
+          <div className="text-large-semi flex items-start gap-x-2 w-full">
+            <span>{t("shipping-to")}</span>
             {current && (
               <span className="text-large-semi flex items-center gap-x-2">
                 <ReactCountryFlag

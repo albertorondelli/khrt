@@ -1,8 +1,6 @@
-import ChangeLocale from "@modules/i18n/ChangeLocale"
 import { LocaleProvider } from "@lib/hooks/locale-provider"
 import { getLocale } from "@i18n/server"
 import { Metadata } from "next"
-import Script from "next/script"
 
 import { Nunito_Sans } from "next/font/google"
 import "styles/globals.css"
@@ -23,6 +21,7 @@ export default function RootLayout(
 ) {
   const locale = getLocale()
 
+  // TODO: Add this to ENV in local and prod
   const COOKIE_SCRIPT_SECRET = "4616f9ced57c5c7377c5f25c13f8180b"
 
   return (
@@ -30,7 +29,6 @@ export default function RootLayout(
       <body className="bg-ui-bg-base">
         <main className="relative">
           <LocaleProvider value={locale}>
-            <ChangeLocale />
             {props.children}
           </LocaleProvider>
         </main>
@@ -38,7 +36,7 @@ export default function RootLayout(
       <script
         async
         type="text/javascript"
-        src="//cdn.cookie-script.com/s/4616f9ced57c5c7377c5f25c13f8180b.js"
+        src={`//cdn.cookie-script.com/s/${COOKIE_SCRIPT_SECRET}.js`}
       ></script>
     </html>
   )

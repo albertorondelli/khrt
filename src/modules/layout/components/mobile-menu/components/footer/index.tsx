@@ -5,13 +5,8 @@ import { useToggleState } from "@medusajs/ui"
 import CountrySelect from "@modules/layout/components/country-select"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
-import {
-  User,
-  Envelope,
-  ChevronRight,
-  Heart,
-  ShoppingBag,
-} from "@medusajs/icons"
+import { User, Envelope, ChatBubble, Heart, ShoppingBag } from "@medusajs/icons"
+import ChangeLocale from "@modules/i18n/ChangeLocale"
 
 type FooterProps = {
   regions: Region[] | null
@@ -54,15 +49,14 @@ const Footer = ({ close, customer, regions }: FooterProps) => {
         )}
 
         {regions && (
-          <div className="flex flex-col">
+          <div className="flex flex-col  w-full">
             <div
               className="flex items-center justify-between w-full py-2"
               onMouseEnter={toggleState.open}
               onMouseLeave={toggleState.close}
             >
-              <div className="flex items-center F">
+              <div className="flex items-center w-full">
                 <Envelope />
-
                 <CountrySelect toggleState={toggleState} regions={regions} />
               </div>
             </div>

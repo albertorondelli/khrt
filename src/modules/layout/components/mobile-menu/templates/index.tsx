@@ -8,6 +8,7 @@ import { Popover, Transition } from "@headlessui/react"
 import { ProductCategoryWithChildren } from "types/global"
 import MainMenu from "../components/main-menu"
 import CategoryMenu from "../components/category-menu"
+import LanguageMenu from "../components/language-menu"
 
 export const OverflowHiddenBackground = ({ open }: { open: boolean }) => {
   useEffect(() => {
@@ -103,7 +104,7 @@ const Menu = ({
                     />
                   </div>
 
-                  {/* Dialog content / second screen */}
+                  {/* Dialog content / category menu */}
                   <Transition
                     as={Fragment}
                     show={screen === "secondary"}
@@ -120,6 +121,22 @@ const Menu = ({
                         category={category}
                         handleMenu={handleMenu}
                       />
+                    </div>
+                  </Transition>
+
+                  {/* Dialog content / language menu */}
+                  <Transition
+                    as={Fragment}
+                    show={screen === "language"}
+                    enter="transition ease-in-out duration-300 transform"
+                    enterFrom="-translate-x-full opacity-80"
+                    enterTo="translate-x-0 opacity-100"
+                    leave="transition ease-in-out duration-300 transform"
+                    leaveFrom="translate-x-0 opacity-100"
+                    leaveTo="-translate-x-full opacity-80"
+                  >
+                    <div className="flex flex-col fixed inset-y-0 w-full">
+                      <LanguageMenu close={close} handleMenu={handleMenu} />
                     </div>
                   </Transition>
                 </Popover.Panel>

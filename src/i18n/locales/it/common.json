@@ -56,5 +56,6 @@
 "dateTime": "{{val, datetime}}",
 "country": "Nazione",
 "Italy": "Italia",
-"France": "Francia"
+"France": "Francia",
+"shipping-to": "Spedizione verso"
   }

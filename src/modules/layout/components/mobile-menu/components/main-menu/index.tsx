@@ -4,10 +4,11 @@ import { Customer, ProductCollection, Region } from "@medusajs/medusa"
 
 import Footer from "../footer"
 import Link from "next/link"
-import { MagnifyingGlass, ChevronDown, XMark } from "@medusajs/icons"
+import { MagnifyingGlass, XMark, ChevronRight } from "@medusajs/icons"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { ProductCategoryWithChildren } from "types/global"
 import { useEffect } from "react"
+import ChangeLocale from "@modules/i18n/ChangeLocale"
 
 type MainMenuProps = {
   customer: Omit<Customer, "password_hash"> | null
@@ -52,6 +53,9 @@ const MainMenu = ({
         <div className="flex flex-col flex-1 text-large-semi">
           <ul className="flex flex-col gap-y-2">
             <li className="bg-ui-bg-subtle hover:bg-ui-bg-subtle-hover rounded-sm">
+              <ChangeLocale handleMenu={handleMenu}/>
+            </li>
+            <li className="bg-ui-bg-subtle hover:bg-ui-bg-subtle-hover rounded-sm">
               <LocalizedClientLink
                 href="/store"
                 className="flex items-center justify-between w-full p-4"
@@ -59,7 +63,7 @@ const MainMenu = ({
               >
                 <span className="sr-only">Go to Store</span>
                 <span>Store</span>
-                <ChevronDown className="-rotate-90" />
+                <ChevronRight />
               </LocalizedClientLink>
             </li>
             {productCategories?.map((c) => {
@@ -78,7 +82,7 @@ const MainMenu = ({
                   >
                     <span className="sr-only">Go to {c.name}</span>
                     <span>{c.name}</span>
-                    <ChevronDown className="-rotate-90" />
+                    <ChevronRight />
                   </button>
                 </li>
               )

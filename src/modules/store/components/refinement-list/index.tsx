@@ -106,7 +106,7 @@ const RefinementList: React.FC<RefinementListProps> = ({
                     <MainMenu close={close} handleMenu={handleMenu} />
                   </div>
 
-                  {/* Dialog content / second screen */}
+                  {/* Dialog content / Secondary screen menu for category */}
                   <Transition
                     as={Fragment}
                     show={screen === "secondary"}
