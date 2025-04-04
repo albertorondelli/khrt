@@ -1,9 +1,10 @@
 import { Table } from "@medusajs/ui"
 import { Tag } from "@medusajs/icons"
-import { useTranslation } from "@i18n/client"
+import { createTranslation } from "@i18n/server"
 
-export default function Recycling() {
-  const { t } = useTranslation("recycling-and-sustainability")
+export async function Recycling() {
+  
+  const { t } = await createTranslation("recycling-and-sustainability")
 
   return (
     <div className="content-container w-full space-y-8 h-[80dvh] mb-4 px-3 py-6">
@@ -38,3 +39,6 @@ export default function Recycling() {
     </div>
   )
 }
+
+
+export default Recycling;
